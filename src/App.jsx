@@ -14,6 +14,13 @@ import Gallery from "./pages/Gallery/Gallery";
 import FloatingAction from "./components/FloatingAction";
 import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
 import CourseDetails from "./schools/SchoolEngenering/CourseDetails";
+import SOET from "./schools/SOET/SOET";
+import SOCSE from "./schools/SOCSE/SOCSE";
+import SOCMS from "./schools/SOCMS/SOCMS";
+import SOS from "./schools/SOS/SOS";
+import SOPS from "./schools/SOPS/SOPS";
+import SOL from "./schools/SOL/SOL";
+import SOD from "./schools/SOD/SOD";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./ScrollToTop";
 
@@ -58,11 +65,15 @@ function App() {
          <Route path="/placement" element={<Placement/>} />
           <Route path="/gallery" element={<Gallery/>} />
            <Route path="/schools/engineering" element={<SchoolEngineering/>} />
+           <Route path="/schools/soet" element={<SOET/>} />
+           <Route path="/schools/socse" element={<SOCSE/>} />
+           <Route path="/schools/socms" element={<SOCMS/>} />
+           <Route path="/schools/sos" element={<SOS/>} />
+           <Route path="/schools/sops" element={<SOPS/>} />
+           <Route path="/schools/sol" element={<SOL/>} />
+           <Route path="/schools/sod" element={<SOD/>} />
            <Route path="/contact" element={<Contact/>} />
-           <Route
-  path="/schools/engineering/:courseSlug"
-  element={<CourseDetails/>}
-/>
+          <Route path="/schools/:schoolSlug/:courseSlug" element={<CourseDetails/>} />
         
       </Routes>
       

@@ -1,9 +1,4 @@
 
-import { motion } from "framer-motion";
-import { FaQuoteLeft, FaArrowRight } from "react-icons/fa";
-import deanImage from "../../../assets/images/Dean_SOET.jpg";
-import deanData from "../data/deanData";
-
 
 const DeanSection = () => {
   return (
@@ -133,3 +128,4 @@ const DeanSection = () => {
 };
 
 export default DeanSection;
+  export { default } from "../../components/DeanSection";

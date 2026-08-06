@@ -118,6 +118,41 @@ const menuData = [
             icon: GraduationCap,
           },
           {
+            title: "SOET",
+            path: "/schools/soet",
+            icon: GraduationCap,
+          },
+          {
+            title: "CSE",
+            path: "/schools/socse",
+            icon: BookOpen,
+          },
+          {
+            title: "Commerce",
+            path: "/schools/socms",
+            icon: Briefcase,
+          },
+          {
+            title: "Science",
+            path: "/schools/sos",
+            icon: FlaskConical,
+          },
+          {
+            title: "Pharmacy",
+            path: "/schools/sops",
+            icon: Pill,
+          },
+          {
+            title: "Law",
+            path: "/schools/sol",
+            icon: Scale,
+          },
+          {
+            title: "Design",
+            path: "/schools/sod",
+            icon: Award,
+          },
+          {
             title: "Management",
             path: "/schools/management",
             icon: Briefcase,

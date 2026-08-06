@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Footer from "../../components/Footer";
 import Header from "../../components/Header/Header";
@@ -6,14 +7,54 @@ import SEO from "../../components/SEO/SEO";
 import seoData from "../../components/SEO/seoData";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "../components/Sidebar";
+
+import soetSections from "../SOET/data/sectionComponents";
+import soetSidebar from "../SOET/data/sidebarData";
+import socseSections from "../SOCSE/data/sectionComponents";
+import socseSidebar from "../SOCSE/data/sidebarData";
+import socmsSections from "../SOCMS/data/sectionComponents";
+import socmsSidebar from "../SOCMS/data/sidebarData";
+import sosSections from "../SOS/data/sectionComponents";
+import sosSidebar from "../SOS/data/sidebarData";
+import sopsSections from "../SOPS/data/sectionComponents";
+import sopsSidebar from "../SOPS/data/sidebarData";
+import solSections from "../SOL/data/sectionComponents";
+import solSidebar from "../SOL/data/sidebarData";
+import sodSections from "../SOD/data/sectionComponents";
+import sodSidebar from "../SOD/data/sidebarData";
 
 import aboutBanner from "../../assets/images/slider2.webp";
 
-import sectionComponents from "./data/sectionComponents";
+const sectionsMap = {
+  engineering: soetSections,
+  soet: soetSections,
+  socse: socseSections,
+  socms: socmsSections,
+  sos: sosSections,
+  sops: sopsSections,
+  sol: solSections,
+  sod: sodSections,
+};
+
+const sidebarMap = {
+  engineering: soetSidebar,
+  soet: soetSidebar,
+  socse: socseSidebar,
+  socms: socmsSidebar,
+  sos: sosSidebar,
+  sops: sopsSidebar,
+  sol: solSidebar,
+  sod: sodSidebar,
+};
 
 const CourseDetails = () => {
+  const { schoolSlug } = useParams();
   const [activeSection, setActiveSection] = useState("about");
+
+  const sectionComponents = sectionsMap[schoolSlug] || soetSections;
+  const sidebarData = sidebarMap[schoolSlug] || soetSidebar;
+
   const ActiveSection = sectionComponents[activeSection];
 
   return (
@@ -23,8 +64,8 @@ const CourseDetails = () => {
       <Header />
 
       <Breadcrumb
-        badge="Engineering"
-        title="Engineering"
+        badge={schoolSlug ? schoolSlug.toUpperCase() : "School"}
+        title={schoolSlug ? schoolSlug.toUpperCase() : "School"}
         description="Discover our journey, vision, mission, leadership, innovation and commitment to academic excellence."
         currentPage="About"
         image={aboutBanner}
@@ -36,10 +77,7 @@ const CourseDetails = () => {
           <div className="grid lg:grid-cols-[320px_1fr] gap-10">
 
             {/* Sidebar */}
-            <Sidebar
-              activeSection={activeSection}
-              setActiveSection={setActiveSection}
-            />
+            <Sidebar sidebarData={sidebarData} schoolName={schoolSlug ? schoolSlug.toUpperCase() : "School"} activeSection={activeSection} setActiveSection={setActiveSection} />
 
             {/* Content */}
             <div

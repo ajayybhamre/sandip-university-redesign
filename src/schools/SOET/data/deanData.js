@@ -4,8 +4,7 @@ const deanData = {
 
   designation: "Dean, Faculty of Engineering",
 
-  qualification:
-    "B.E., M.Tech., Ph.D. (Computer Engineering)",
+  qualification: "B.E., M.Tech., Ph.D. (Computer Engineering)",
 
   experience: "25",
 
@@ -23,8 +22,7 @@ const deanData = {
   office: "Administrative Block, Sandip University",
 
   // Short Introduction
-  intro:
-    "An accomplished academic leader with extensive experience in higher education, research, innovation, and institutional development.",
+  intro: "An accomplished academic leader with extensive experience in higher education, research, innovation, and institutional development.",
 
   // Dean's Message
   message: `Welcome to the Faculty of Engineering.
@@ -42,8 +40,7 @@ Together, let us build a future driven by knowledge, integrity, excellence, and 
 I wish you every success in your academic and professional journey.`,
 
   // Quote
-  quote:
-    "Education is the foundation of innovation, leadership, and a better tomorrow.",
+  quote: "Education is the foundation of innovation, leadership, and a better tomorrow.",
 
   // Button
   buttonText: "Read Full Message",
