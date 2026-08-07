@@ -10,55 +10,50 @@ import {
   ClipboardCheck,
   Building2,
   Home,
-  
   Briefcase,
   Scale,
   Pill,
   Leaf,
   FlaskConical,
   Microscope,
-  
   Award,
   FolderKanban,
+  FileEdit,
+  Globe,
+  Sparkles,
 } from "lucide-react";
 
 const menuData = [
   {
     title: "Admissions",
     mega: true,
+    customType: "admissions",
+    header: {
+      title: "ADMISSIONS",
+      subtitle: "Explore National & International admission pathways for 2026-27",
+      badgeText: "Admissions Open 2026-27",
+    },
     sections: [
       {
-        heading: "Admissions",
+        heading: "NATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "cap",
         links: [
           {
-            title: "School of Engineering",
-            path: "/schools/engineering",
-            icon: GraduationCap,
+            title: "Apply Now",
+            path: "/apply",
+            icon: FileEdit,
+            badge: "NEW",
           },
           {
-            title: "Postgraduate",
-            path: "/postgraduate",
+            title: "Programs",
+            path: "/programs",
             icon: BookOpen,
           },
           {
-            title: "PhD Admissions",
-            path: "/phd",
-            icon: Users,
-          },
-        ],
-      },
-      {
-        heading: "Resources",
-        links: [
-          {
-            title: "Fee Structure",
-            path: "/fee-structure",
-            icon: IndianRupee,
-          },
-          {
-            title: "Admission Process",
-            path: "/admission-process",
-            icon: ClipboardCheck,
+            title: "Document List",
+            path: "/documents",
+            icon: FileText,
           },
           {
             title: "Eligibility",
@@ -66,39 +61,52 @@ const menuData = [
             icon: BadgeCheck,
           },
           {
-            title: "Brochure",
-            path: "/brochure",
-            icon: Download,
+            title: "Fees & Scholarships",
+            path: "/fee-structure",
+            icon: IndianRupee,
           },
           {
-            title: "FAQ",
-            path: "/faq",
+            title: "Help Centre",
+            path: "/contact",
             icon: HelpCircle,
           },
         ],
       },
       {
-        heading: "Quick Links",
+        heading: "INTERNATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "globe",
         links: [
           {
             title: "Apply Now",
             path: "/apply",
-            icon: FileText,
+            icon: FileEdit,
+            badge: "NEW",
           },
           {
-            title: "Download Form",
-            path: "/download-form",
-            icon: Download,
+            title: "Programs",
+            path: "/programs",
+            icon: BookOpen,
           },
           {
-            title: "Campus Tour",
-            path: "/campus-tour",
-            icon: Building2,
+            title: "Admission Procedure",
+            path: "/admission-process",
+            icon: ClipboardCheck,
           },
           {
-            title: "Hostel",
-            path: "/hostel",
-            icon: Home,
+            title: "Visa & Transfer Support",
+            path: "/international",
+            icon: Globe,
+          },
+          {
+            title: "Fees & Scholarships",
+            path: "/fee-structure",
+            icon: IndianRupee,
+          },
+          {
+            title: "International Help Desk",
+            path: "/contact",
+            icon: HelpCircle,
           },
         ],
       },

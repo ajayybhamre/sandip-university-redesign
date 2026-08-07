@@ -15,6 +15,9 @@ import FloatingAction from "./components/FloatingAction";
 import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
 import CourseDetails from "./schools/SchoolEngenering/CourseDetails";
 import Contact from "./pages/contact/Contact";
+import Admission from "./pages/Admission/Admission";
+import AdmissionPrograms from "./pages/Admission/AdmissionPrograms";
+import DocumentList from "./pages/Admission/DocumentList";
 import ScrollToTop from "./ScrollToTop";
 
 
@@ -51,6 +54,10 @@ function App() {
     <Popup />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/apply" element={<Admission />} />
+        <Route path="/programs" element={<AdmissionPrograms />} />
+        <Route path="/documents" element={<DocumentList />} />
+        <Route path="/brochure" element={<DocumentList />} />
 
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />
