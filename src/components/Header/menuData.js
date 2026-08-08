@@ -56,18 +56,13 @@ const menuData = [
             icon: FileText,
           },
           {
-            title: "Eligibility",
-            path: "/eligibility",
-            icon: BadgeCheck,
-          },
-          {
-            title: "Fees & Scholarships",
-            path: "/fee-structure",
+            title: "Scholarships",
+            path: "/scholarships",
             icon: IndianRupee,
           },
           {
             title: "Help Centre",
-            path: "/contact",
+            path: "/help",
             icon: HelpCircle,
           },
         ],
@@ -99,8 +94,8 @@ const menuData = [
             icon: Globe,
           },
           {
-            title: "Fees & Scholarships",
-            path: "/fee-structure",
+            title: "Scholarships",
+            path: "/scholarships",
             icon: IndianRupee,
           },
           {

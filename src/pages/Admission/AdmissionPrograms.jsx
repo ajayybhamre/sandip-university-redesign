@@ -1,604 +1,321 @@
 import React, { useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer";
 import SEO from "../../components/SEO/SEO";
 import ProgramDetailView from "./ProgramDetailView";
-import heroEntranceImg from "../../assets/images/programs-hero-entrance.jpg";
+import graduationHeroImg from "../../assets/images/programs-graduation-hero.jpg";
+import ProgramCard from "../../components/ProgramCard/ProgramCard";
 import {
-  SCHOOLS_DATA,
-  ALL_PROGRAMS_DATA,
-  WHY_CHOOSE_CARDS
+  SCHOOLS_LIST,
+  ALL_PROGRAMS_DATA
 } from "./programsData";
 import {
-  ChevronDown,
-  ChevronRight,
-  BookOpen,
-  Building2,
-  Users,
-  Zap,
-  Briefcase,
-  Microscope,
-  Globe,
-  Phone,
-  Download,
-  X,
   Search as SearchIcon,
-  Sparkles
+  X,
+  ChevronDown,
+  ArrowRight,
+  Clock,
+  Sparkles,
+  Layers,
+  GraduationCap
 } from "lucide-react";
 
-import AnimatedHeroHeading from "../../components/AnimatedHeroHeading";
-
 export default function AdmissionPrograms() {
-  // Filter Dropdown States matching 1ss (Select Level, Select School, Select Specialization)
+  // Discovery State
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("all");
-  const [selectedSchool, setSelectedSchool] = useState("cse"); // default CSE or all
-  const [selectedSpecialization, setSelectedSpecialization] = useState("all");
+  const [selectedSchool, setSelectedSchool] = useState("all");
 
-  // Selected program for Dedicated Program Details view
+  // Active Program Detail State (for modal view)
   const [activeDetailProgram, setActiveDetailProgram] = useState(null);
 
-  // Modals state
-  const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
-  const [isCounsellorModalOpen, setIsCounsellorModalOpen] = useState(false);
-  const [modalSuccessMsg, setModalSuccessMsg] = useState("");
-
-  const resultsRef = useRef(null);
-
-  // Dynamic Specializations list based on Selected School
-  const availableSpecializations = useMemo(() => {
-    if (selectedSchool === "all") {
-      return [
-        "Artificial Intelligence",
-        "Data Science",
-        "Software Engineering",
-        "Robotics & Automation",
-        "Finance & Banking",
-        "HR Management",
-        "Pharmaceutics",
-        "Corporate Law",
-        "Fashion Design",
-        "UI/UX Design",
-      ];
-    }
-    switch (selectedSchool) {
-      case "cse":
-        return ["Artificial Intelligence", "Data Science", "Computer Applications", "Software Systems"];
-      case "eng":
-        return ["Mechanical Engg", "Civil Engg", "Electrical Engg", "Robotics & Automation"];
-      case "mgmt":
-        return ["General Management", "Finance & Investment", "HR Management", "Banking & Insurance"];
-      case "pharm":
-        return ["Pharmaceutics", "Pharmacology", "Clinical Pharmacy"];
-      case "law":
-        return ["Constitutional Law", "Corporate & Mergers Law", "Litigation & Advocacy"];
-      case "sci":
-        return ["Biotechnology", "Organic Chemistry", "Microbiology"];
-      case "des":
-        return ["Fashion Design", "UI/UX Communication Design", "Spatial Design"];
-      case "voc":
-        return ["Software Development", "Digital Marketing"];
-      default:
-        return [];
-    }
-  }, [selectedSchool]);
+  const discoveryRef = useRef(null);
 
   // Filtered Programs Calculation
   const filteredPrograms = useMemo(() => {
     return ALL_PROGRAMS_DATA.filter((prog) => {
+      const q = searchQuery.trim().toLowerCase();
+      const matchesSearch =
+        !q ||
+        prog.title.toLowerCase().includes(q) ||
+        prog.school.toLowerCase().includes(q) ||
+        (prog.overview && prog.overview.toLowerCase().includes(q)) ||
+        (prog.compactEligibility && prog.compactEligibility.toLowerCase().includes(q));
+
       const matchesLevel =
         selectedLevel === "all" ||
-        prog.level === selectedLevel ||
-        (selectedLevel === "UG" && prog.level === "UG") ||
-        (selectedLevel === "PG" && prog.level === "PG") ||
-        (selectedLevel === "Diploma" && prog.level === "Diploma") ||
-        (selectedLevel === "PhD" && prog.level === "PhD");
+        prog.level.toUpperCase() === selectedLevel.toUpperCase();
 
       const matchesSchool =
         selectedSchool === "all" || prog.schoolId === selectedSchool;
 
-      const matchesSpecialization =
-        selectedSpecialization === "all" ||
-        prog.title.toLowerCase().includes(selectedSpecialization.toLowerCase()) ||
-        (prog.overview && prog.overview.toLowerCase().includes(selectedSpecialization.toLowerCase()));
-
-      return matchesLevel && matchesSchool && matchesSpecialization;
+      return matchesSearch && matchesLevel && matchesSchool;
     });
-  }, [selectedLevel, selectedSchool, selectedSpecialization]);
+  }, [searchQuery, selectedLevel, selectedSchool]);
 
-  // Active School Metadata
-  const activeSchoolObj = useMemo(() => {
-    if (selectedSchool === "all") return null;
-    return SCHOOLS_DATA.find((s) => s.id === selectedSchool) || null;
-  }, [selectedSchool]);
-
-  // Trigger search scroll
-  const handleSearchClick = (e) => {
-    e.preventDefault();
-    if (resultsRef.current) {
-      resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollToDiscovery = () => {
+    if (discoveryRef.current) {
+      discoveryRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
-  // Modal form submit
-  const handleModalSubmit = (e, type) => {
-    e.preventDefault();
-    setModalSuccessMsg(
-      type === "brochure"
-        ? "Brochure PDF sent to your email & WhatsApp!"
-        : "Admission Counsellor callback request received!"
-    );
-    setTimeout(() => {
-      setModalSuccessMsg("");
-      setIsBrochureModalOpen(false);
-      setIsCounsellorModalOpen(false);
-    }, 2500);
-  };
+  const levelOptions = [
+    { id: "all", label: "All" },
+    { id: "UG", label: "UG" },
+    { id: "PG", label: "PG" },
+    { id: "Diploma", label: "Diploma" },
+    { id: "PhD", label: "PhD" }
+  ];
 
-  // Icon Resolver for Why Choose Cards
-  const renderIcon = (iconName) => {
-    switch (iconName) {
-      case "Building2": return <Building2 size={22} />;
-      case "Users": return <Users size={22} />;
-      case "Zap": return <Zap size={22} />;
-      case "Briefcase": return <Briefcase size={22} />;
-      case "Microscope": return <Microscope size={22} />;
-      case "Globe": return <Globe size={22} />;
-      default: return <Sparkles size={22} />;
+  // Colored Degree Level Badge helper
+  const getBadgeStyle = (level) => {
+    switch (level.toUpperCase()) {
+      case "UG":
+        return "bg-blue-50 text-blue-800 border-blue-200";
+      case "PG":
+        return "bg-teal-50 text-teal-800 border-teal-200";
+      case "DIPLOMA":
+        return "bg-purple-50 text-purple-800 border-purple-200";
+      case "PHD":
+        return "bg-indigo-50 text-indigo-800 border-indigo-200";
+      default:
+        return "bg-slate-100 text-slate-800 border-slate-200";
     }
   };
-
-  // If program detail view is active, render dedicated ProgramDetailView page
-  if (activeDetailProgram) {
-    return (
-      <ProgramDetailView
-        program={activeDetailProgram}
-        onBack={() => setActiveDetailProgram(null)}
-      />
-    );
-  }
 
   return (
     <>
       <SEO
-        title="Find Your Program | Sandip University"
-        description="Filter and search undergraduate, postgraduate, diploma, and PhD programs offered at Sandip University."
+        title="Programs & Detailed Information | Sandip University"
+        description="Explore academic programs and detailed course information at Sandip University including eligibility criteria, fees, curriculum, and career pathways."
       />
 
       <Header />
 
-      <main className="bg-[#f8fafc] dark:bg-[#09090b] text-gray-900 dark:text-gray-100 min-h-screen font-sans selection:bg-[#C8102E] selection:text-white transition-colors duration-300">
+      <main className="bg-[#FBFBFA] text-[#0F1B2B] min-h-screen font-sans selection:bg-[#2DD4BF] selection:text-[#0F1B2B]">
 
         {/* ==========================================
-            1. HERO BANNER WITH ENTRANCE IMAGE BACKGROUND
+            1. HERO SECTION WITH GRADUATION PHOTO
         ========================================== */}
-        <section className="relative w-full min-h-[380px] sm:min-h-[440px] flex items-center justify-center py-16 sm:py-24 px-4 overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full">
-            <img
-              src={heroEntranceImg}
-              alt="Sandip University Main Entrance"
-              className="w-full h-full object-cover object-center scale-105 filter brightness-90 transition-transform duration-[10000ms]"
-            />
-            {/* Dark & Brand Red Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/75 to-[#C8102E]/65 dark:from-black/95 dark:via-black/85 dark:to-black/75"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-          </div>
+        <section className="relative w-full bg-gradient-to-b from-[#FBFBFA] via-[#F0F7FF] to-[#FBFBFA] py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 overflow-hidden">
+          {/* Subtle Ambient Background Accent */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#2DD4BF]/10 via-[#0F1B2B]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
-          <div className="relative z-10 max-w-6xl mx-auto w-full text-center sm:text-left space-y-3">
-            <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-white/20 px-3.5 py-1 rounded-full text-white backdrop-blur-md border border-white/20">
-              Admissions 2026-27
-            </span>
-            <AnimatedHeroHeading
-              headingText="Explore Degree Courses & Specializations"
-              className="text-3xl sm:text-5xl font-black tracking-tight text-white drop-shadow-md"
-              delay={0.2}
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="text-xs sm:text-sm text-gray-200 max-w-2xl font-medium leading-relaxed"
-            >
-              Select your academic level, school, and specialization to find the exact program for your career goals.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* ==========================================
-            2. FIND YOUR PROGRAM CARD SECTION (PLACED UNDER HERO SECTION)
-        ========================================== */}
-        <section className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-16 mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white dark:bg-[#121215] rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100 dark:border-gray-800 text-gray-900 dark:text-white space-y-4"
-          >
-            {/* Card Heading */}
-            <h2 className="text-base sm:text-lg font-bold text-[#1e293b] dark:text-white font-serif tracking-tight">
-              Find Your Program
-            </h2>
-
-            {/* 4-Element Horizontal Form Grid (3 Select Dropdowns + Red Search Button) */}
-            <form onSubmit={handleSearchClick} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 items-center">
-              
-              {/* 1. Select Level Dropdown */}
-              <div className="relative">
-                <select
-                  value={selectedLevel}
-                  onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1a1e] border border-gray-300 dark:border-gray-700 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#C8102E] appearance-none pr-10 cursor-pointer shadow-2xs"
-                >
-                  <option value="all">Select Level</option>
-                  <option value="UG">UG (Undergraduate)</option>
-                  <option value="PG">PG (Postgraduate)</option>
-                  <option value="Diploma">Diploma</option>
-                  <option value="PhD">PhD (Doctoral)</option>
-                </select>
-                <ChevronDown
-                  size={16}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                />
-              </div>
-
-              {/* 2. Select School Dropdown */}
-              <div className="relative">
-                <select
-                  value={selectedSchool}
-                  onChange={(e) => {
-                    setSelectedSchool(e.target.value);
-                    setSelectedSpecialization("all");
-                  }}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1a1e] border border-gray-300 dark:border-gray-700 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#C8102E] appearance-none pr-10 cursor-pointer shadow-2xs"
-                >
-                  <option value="all">Select School</option>
-                  {SCHOOLS_DATA.map((sch) => (
-                    <option key={sch.id} value={sch.id}>
-                      {sch.name}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown
-                  size={16}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                />
-              </div>
-
-              {/* 3. Select Specialization Dropdown */}
-              <div className="relative">
-                <select
-                  value={selectedSpecialization}
-                  onChange={(e) => setSelectedSpecialization(e.target.value)}
-                  className="w-full px-4 py-3 bg-white dark:bg-[#1a1a1e] border border-gray-300 dark:border-gray-700 rounded-xl text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-200 focus:outline-none focus:border-[#C8102E] appearance-none pr-10 cursor-pointer shadow-2xs"
-                >
-                  <option value="all">Select Specialization</option>
-                  {availableSpecializations.map((spec, idx) => (
-                    <option key={idx} value={spec}>
-                      {spec}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown
-                  size={16}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
-                />
-              </div>
-
-              {/* 4. Red Search Button */}
-              <button
-                type="submit"
-                className="w-full py-3 px-6 bg-[#C8102E] hover:bg-[#a00d24] text-white font-bold text-xs sm:text-sm rounded-xl transition-all shadow-md hover:scale-102 cursor-pointer flex items-center justify-center gap-2"
+          <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] bg-white border border-slate-200/80 text-xs font-medium text-[#0F1B2B] shadow-2xs"
               >
-                <SearchIcon size={16} />
-                <span>Search</span>
-              </button>
+                <Sparkles size={14} className="text-[#0D9488]" />
+                <span>Programs & Detailed Information</span>
+              </motion.div>
 
-            </form>
-          </motion.div>
-        </section>
+              <motion.h1
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#0F1B2B] tracking-tight leading-tight"
+              >
+                Programs & Detail Information
+              </motion.h1>
 
-        {/* ==========================================
-            2. FILTERED RESULTS SECTION
-        ========================================== */}
-        <section ref={resultsRef} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          
-          {/* Header Row: School Name + Programs Count */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-gray-200 dark:border-gray-800 gap-2">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white flex items-center gap-2">
-                {activeSchoolObj ? (
-                  <>
-                    <span>{activeSchoolObj.icon}</span>
-                    <span>{activeSchoolObj.name}</span>
-                  </>
-                ) : (
-                  <span>All Academic Programs</span>
-                )}
-              </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                {selectedLevel !== "all" ? `Filtered by Level: ${selectedLevel}` : "Showing all degree levels"}
-                {selectedSpecialization !== "all" ? ` • Specialization: ${selectedSpecialization}` : ""}
-              </p>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-sm sm:text-base text-[#667085] max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed"
+              >
+                Choose from over 20+ accredited undergraduate, postgraduate, diploma, and Ph.D. degrees designed to empower your career ambitions.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+              >
+                <button
+                  onClick={scrollToDiscovery}
+                  className="px-6 py-3 rounded-[8px] bg-[#0F1B2B] hover:bg-[#1a2c42] text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Explore Programs</span>
+                  <ArrowRight size={16} className="text-[#2DD4BF]" />
+                </button>
+              </motion.div>
             </div>
 
-            <span className="px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/40 text-[#C8102E] dark:text-red-400 text-xs font-extrabold self-start sm:self-auto">
-              {filteredPrograms.length} {filteredPrograms.length === 1 ? "Program Found" : "Programs Found"}
-            </span>
-          </div>
+            {/* Right Graduation Hero Image Showcase */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative mx-auto max-w-md lg:max-w-none rounded-[16px] overflow-hidden border border-slate-200 shadow-xl bg-white group">
+                <img
+                  src={graduationHeroImg}
+                  alt="Graduation Celebration - Sandip University Programs"
+                  className="w-full h-[360px] sm:h-[420px] object-cover object-center group-hover:scale-103 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F1B2B]/70 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-[12px] bg-white/90 backdrop-blur-md border border-white/20 text-[#0F1B2B] shadow-md space-y-1">
+                  <span className="text-[10px] font-bold text-[#0D9488] uppercase tracking-wider block">
+                    Degrees Awarded 2026–27
+                  </span>
+                  <p className="text-xs font-serif font-bold text-[#0F1B2B]">
+                    Transforming Passion into Professional Success
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-          {/* Results List */}
+          </div>
+        </section>
+
+        {/* ==========================================
+            2. SEARCH & FILTER BAR (Sticky)
+        ========================================== */}
+        <section ref={discoveryRef} className="sticky top-0 z-30 bg-[#FBFBFA]/95 backdrop-blur-md py-4 border-b border-slate-200 shadow-2xs">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+            
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+              
+              {/* Search Bar Input */}
+              <div className="relative flex-1 min-w-[280px]">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search programs by name or keyword..."
+                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-[8px] text-xs sm:text-sm text-[#0F1B2B] placeholder-[#667085] focus:outline-none focus:border-[#0D9488] transition-colors shadow-2xs"
+                />
+                <SearchIcon
+                  size={16}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#667085] pointer-events-none"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#667085] hover:text-[#0F1B2B]"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+
+              {/* Filter Buttons & School Dropdown */}
+              <div className="flex flex-wrap items-center gap-2">
+                
+                {/* Level Buttons */}
+                <div className="flex items-center gap-1 bg-white p-1 rounded-[8px] border border-slate-200 shadow-2xs">
+                  {levelOptions.map((lvl) => {
+                    const isActive = selectedLevel === lvl.id;
+                    return (
+                      <button
+                        key={lvl.id}
+                        onClick={() => setSelectedLevel(lvl.id)}
+                        className={`px-3 py-1.5 rounded-[6px] text-xs font-medium transition-colors cursor-pointer ${
+                          isActive
+                            ? "bg-[#0F1B2B] text-white shadow-2xs"
+                            : "text-[#667085] hover:text-[#0F1B2B] hover:bg-slate-50"
+                        }`}
+                      >
+                        {lvl.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* School Dropdown */}
+                <div className="relative min-w-[200px]">
+                  <select
+                    value={selectedSchool}
+                    onChange={(e) => setSelectedSchool(e.target.value)}
+                    className="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-[8px] text-xs font-medium text-[#0F1B2B] focus:outline-none focus:border-[#0D9488] appearance-none pr-9 cursor-pointer shadow-2xs"
+                  >
+                    {SCHOOLS_LIST.map((sch) => (
+                      <option key={sch.id} value={sch.id}>
+                        {sch.name}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={14}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#667085] pointer-events-none"
+                  />
+                </div>
+
+              </div>
+            </div>
+
+            {/* Results Counter Bar */}
+            <div className="flex items-center justify-between text-xs text-[#667085] pt-1">
+              <span>Dynamic academic program catalog</span>
+              <span className="font-semibold text-[#0F1B2B]">
+                Showing {filteredPrograms.length} of {ALL_PROGRAMS_DATA.length} programs
+              </span>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ==========================================
+            3. PROGRAM CARDS (Responsive Grid)
+        ========================================== */}
+        <section className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           {filteredPrograms.length === 0 ? (
-            <div className="text-center py-16 bg-white dark:bg-[#121215] rounded-2xl border border-dashed border-gray-300 dark:border-gray-800">
-              <BookOpen size={40} className="mx-auto text-gray-400 mb-3" />
-              <h3 className="text-base font-bold text-gray-700 dark:text-gray-300">
+            <div className="text-center py-16 bg-white rounded-[12px] border border-slate-200 space-y-3">
+              <GraduationCap size={36} className="mx-auto text-slate-400" />
+              <h3 className="text-base font-serif font-bold text-[#0F1B2B]">
                 No matching programs found
               </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                Try resetting your Level or Specialization filter options.
+              <p className="text-xs text-[#667085]">
+                Try adjusting your search criteria or clearing filter selections.
               </p>
               <button
                 onClick={() => {
+                  setSearchQuery("");
                   setSelectedLevel("all");
                   setSelectedSchool("all");
-                  setSelectedSpecialization("all");
                 }}
-                className="mt-3 px-4 py-2 rounded-xl bg-red-50 text-[#C8102E] font-bold text-xs hover:bg-red-100 transition-colors"
+                className="px-4 py-2 rounded-[8px] bg-slate-100 hover:bg-slate-200 text-[#0F1B2B] text-xs font-semibold transition-colors"
               >
                 Reset All Filters
               </button>
             </div>
           ) : (
-            <div className="bg-white dark:bg-[#121215] rounded-2xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800/80 shadow-xs">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPrograms.map((prog) => (
-                <div
+                <ProgramCard
                   key={prog.id}
-                  onClick={() => setActiveDetailProgram(prog)}
-                  className="p-5 hover:bg-gray-50/80 dark:hover:bg-gray-800/40 transition-colors flex items-center justify-between group cursor-pointer"
-                >
-                  <div className="space-y-1.5">
-                    <h3 className="font-bold text-base text-gray-900 dark:text-white group-hover:text-[#C8102E] transition-colors">
-                      {prog.title}
-                    </h3>
-                    <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                      <span className="font-medium text-gray-700 dark:text-gray-300">{prog.duration}</span>
-                      <span>•</span>
-                      <span className="font-bold text-[#C8102E] dark:text-red-400">{prog.level}</span>
-                      <span>•</span>
-                      <span>{prog.approval}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#C8102E] dark:text-red-400 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 ml-4">
-                    <span>View Details</span>
-                    <ChevronRight size={16} />
-                  </div>
-                </div>
+                  program={prog}
+                  getBadgeStyle={getBadgeStyle}
+                  onViewDetails={setActiveDetailProgram}
+                />
               ))}
             </div>
           )}
 
         </section>
 
-        {/* ==========================================
-            3. WHY CHOOSE SANDIP (6 MINIMAL CARDS)
-        ========================================== */}
-        <section className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-              Why Choose Sandip University
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {WHY_CHOOSE_CARDS.map((card, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-white dark:bg-[#121215] border border-gray-200/80 dark:border-gray-800 flex items-start gap-3.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-100 dark:border-red-900/40 flex items-center justify-center text-[#C8102E] dark:text-red-400 flex-shrink-0">
-                  {renderIcon(card.icon)}
-                </div>
-                <div>
-                  <h3 className="font-bold text-sm text-gray-900 dark:text-white">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-normal">
-                    {card.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ==========================================
-            4. FINAL CTA SECTION
-        ========================================== */}
-        <section className="pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-r from-gray-950 via-black to-[#1a0709] text-white border border-gray-800 shadow-xl relative overflow-hidden text-center sm:text-left">
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-              <div className="lg:col-span-7 space-y-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-red-400">
-                  Admissions 2026-27 Open
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-white">
-                  Ready to Build Your Future?
-                </h2>
-                <p className="text-xs sm:text-sm text-gray-300">
-                  Join thousands of students shaping their global careers at Sandip University.
-                </p>
-              </div>
-
-              <div className="lg:col-span-5 flex flex-wrap sm:flex-nowrap gap-3 items-center justify-center lg:justify-end">
-                <Link
-                  to="/apply"
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#C8102E] hover:bg-[#a00d24] text-white font-bold text-xs text-center transition-colors"
-                >
-                  Apply Now
-                </Link>
-
-                <button
-                  onClick={() => setIsBrochureModalOpen(true)}
-                  className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors cursor-pointer border border-white/20"
-                >
-                  Download Brochure
-                </button>
-
-                <button
-                  onClick={() => setIsCounsellorModalOpen(true)}
-                  className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors cursor-pointer border border-white/20"
-                >
-                  Talk to Counsellor
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
       </main>
 
-      {/* Brochure Modal */}
+      {/* ==========================================
+          4. PROGRAM DETAILS MODAL
+      ========================================== */}
       <AnimatePresence>
-        {isBrochureModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white dark:bg-[#18181b] w-full max-w-md rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-2xl relative"
-            >
-              <button
-                onClick={() => setIsBrochureModalOpen(false)}
-                className="absolute right-5 top-5 p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              >
-                <X size={18} />
-              </button>
-
-              <div className="flex items-center gap-2 text-[#C8102E] font-bold text-xs uppercase mb-2">
-                <Download size={14} />
-                <span>Instant PDF Download</span>
-              </div>
-
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                Download Brochure 2026-27
-              </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
-                Enter your details to receive the official prospectus.
-              </p>
-
-              {modalSuccessMsg ? (
-                <div className="p-4 rounded-xl bg-green-50 dark:bg-green-950/50 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 text-xs font-bold text-center">
-                  {modalSuccessMsg}
-                </div>
-              ) : (
-                <form onSubmit={(e) => handleModalSubmit(e, "brochure")} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#C8102E]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                      Mobile / WhatsApp No. *
-                    </label>
-                    <input
-                      required
-                      type="tel"
-                      placeholder="+91 9876543210"
-                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#C8102E]"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-xl bg-[#C8102E] hover:bg-[#a00d24] text-white font-bold text-xs transition-colors shadow-md cursor-pointer"
-                  >
-                    Download PDF Brochure
-                  </button>
-                </form>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Counsellor Modal */}
-      <AnimatePresence>
-        {isCounsellorModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white dark:bg-[#18181b] w-full max-w-md rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-2xl relative"
-            >
-              <button
-                onClick={() => setIsCounsellorModalOpen(false)}
-                className="absolute right-5 top-5 p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              >
-                <X size={18} />
-              </button>
-
-              <div className="flex items-center gap-2 text-[#C8102E] font-bold text-xs uppercase mb-2">
-                <Phone size={14} />
-                <span>Talk to Counsellor</span>
-              </div>
-
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                Request Callback
-              </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
-                Our admission expert will call you shortly.
-              </p>
-
-              {modalSuccessMsg ? (
-                <div className="p-4 rounded-xl bg-green-50 dark:bg-green-950/50 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 text-xs font-bold text-center">
-                  {modalSuccessMsg}
-                </div>
-              ) : (
-                <form onSubmit={(e) => handleModalSubmit(e, "counsellor")} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="e.g. Ananya Patel"
-                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#C8102E]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                      Mobile Number *
-                    </label>
-                    <input
-                      required
-                      type="tel"
-                      placeholder="+91 9876543210"
-                      className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#C8102E]"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-3 rounded-xl bg-[#C8102E] hover:bg-[#a00d24] text-white font-bold text-xs transition-colors shadow-md cursor-pointer"
-                  >
-                    Request Call Now
-                  </button>
-                </form>
-              )}
-            </motion.div>
-          </div>
+        {activeDetailProgram && (
+          <ProgramDetailView
+            program={activeDetailProgram}
+            onClose={() => setActiveDetailProgram(null)}
+          />
         )}
       </AnimatePresence>
 

@@ -18,6 +18,8 @@ import Contact from "./pages/contact/Contact";
 import Admission from "./pages/Admission/Admission";
 import AdmissionPrograms from "./pages/Admission/AdmissionPrograms";
 import DocumentList from "./pages/Admission/DocumentList";
+import Scholarships from "./pages/Admission/Scholarships";
+import Help from "./pages/Admission/Help";
 import ScrollToTop from "./ScrollToTop";
 
 
@@ -56,8 +58,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/apply" element={<Admission />} />
         <Route path="/programs" element={<AdmissionPrograms />} />
+        <Route path="/eligibility" element={<AdmissionPrograms />} />
         <Route path="/documents" element={<DocumentList />} />
         <Route path="/brochure" element={<DocumentList />} />
+        <Route path="/scholarships" element={<Scholarships />} />
+        <Route path="/fee-structure" element={<Scholarships />} />
+        <Route path="/help" element={<Help />} />
 
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />

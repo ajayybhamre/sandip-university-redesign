@@ -94,8 +94,7 @@ const Footer = () => {
     {[
       "Apply Now",
       "Admission Process",
-      "Eligibility",
-      "Fees & Scholarships",
+      "Scholarships",
       "Downloads",
       "Important Dates",
     ].map((item, index) => (

@@ -1,205 +1,213 @@
-// Single source of truth for Sandip University Document Checklist Data
+// Sandip University Complete Admission Documents Dataset
 
-export const CHECKLIST_SECTIONS = [
-  { id: "academic", label: "Academic" },
-  { id: "identity", label: "Identity" },
-  { id: "category", label: "Category" },
-  { id: "additional", label: "Additional" },
-  { id: "faq", label: "FAQ" },
+export const DOCUMENT_CATEGORIES = [
+  {
+    id: "academic",
+    name: "Academic Documents",
+    description: "Official marksheets, passing certificates, and transcripts from qualifying examinations.",
+    bgClass: "bg-blue-50/70",
+    borderClass: "border-t-4 border-t-blue-500 border-blue-200",
+    textClass: "text-blue-700",
+    progressClass: "from-blue-500 to-[#0F1B2B]"
+  },
+  {
+    id: "identity",
+    name: "Identity Documents",
+    description: "Government-issued identity cards, nationality proof, and address verification documents.",
+    bgClass: "bg-purple-50/70",
+    borderClass: "border-t-4 border-t-purple-500 border-purple-200",
+    textClass: "text-purple-700",
+    progressClass: "from-purple-500 to-[#0F1B2B]"
+  },
+  {
+    id: "category",
+    name: "Category Documents",
+    description: "Certificates required for reservation quotas, fee concessions, and special categories.",
+    bgClass: "bg-amber-50/70",
+    borderClass: "border-t-4 border-t-amber-500 border-amber-200",
+    textClass: "text-amber-700",
+    progressClass: "from-amber-500 to-[#0F1B2B]"
+  },
+  {
+    id: "additional",
+    name: "Additional Documents",
+    description: "Supplementary certificates, gap affidavits, medical fitness, and domicile records.",
+    bgClass: "bg-teal-50/70",
+    borderClass: "border-t-4 border-t-teal-500 border-teal-200",
+    textClass: "text-teal-700",
+    progressClass: "from-teal-500 to-[#0F1B2B]"
+  }
 ];
 
-export const CHECKLIST_DOCUMENTS = [
-  // --- Academic Section ---
+export const DOCUMENTS_MASTER_LIST = [
+  // --- 1. ACADEMIC DOCUMENTS ---
   {
-    id: "academic-10th-12th-marksheet",
-    section: "academic",
-    title: "Qualifying examination marksheets (10th & 12th)",
-    status: "mandatory", // 'mandatory' | 'conditional'
-    copyType: "original", // 'original' | 'photocopy'
-    description: "Official statement of marks for 10th (SSC) and 12th (HSC) or qualifying diploma exam.",
-    iconType: "certificate", // 'file' | 'id-card' | 'certificate' | 'photo'
-    hasDetailedModal: false,
+    id: "acad-1",
+    category: "academic",
+    name: "Qualifying Examination Certificate",
+    required: true,
+    description: "Official 10th (SSC) & 12th (HSC) or qualifying diploma passing certificate issued by recognized Board.",
+    notes: "Must present original certificate along with two self-attested photocopies during physical campus verification."
   },
   {
-    id: "academic-degree-certificate",
-    section: "academic",
-    title: "Degree passing certificate",
-    status: "mandatory",
-    copyType: "photocopy",
-    description: "Official passing certificate or degree completion certificate issued by recognized board or university.",
-    iconType: "certificate",
-    hasDetailedModal: false,
+    id: "acad-2",
+    category: "academic",
+    name: "Degree Certificate",
+    required: true,
+    description: "Bachelor's or Master's degree passing certificate for postgraduate and Ph.D. applicants.",
+    notes: "Provisional degree certificate accepted if final convocation degree is pending."
   },
   {
-    id: "academic-transfer-certificate",
-    section: "academic",
-    title: "School / college leaving certificate (TC)",
-    status: "mandatory",
-    copyType: "original",
+    id: "acad-3",
+    category: "academic",
+    name: "College / School Leaving Certificate (TC)",
+    required: true,
     description: "Original Transfer Certificate (TC) or Leaving Certificate from the institution last attended.",
-    iconType: "file",
-    hasDetailedModal: false,
+    notes: "Mandatory original document submission. Photocopies will not be accepted for TC."
   },
   {
-    id: "academic-migration-certificate",
-    section: "academic",
-    title: "Migration certificate",
-    status: "conditional",
-    copyType: "original",
-    description: "Required for candidates passing from board or university located outside Maharashtra state.",
-    iconType: "file",
-    hasDetailedModal: false,
-  },
-
-  // --- Identity Section ---
-  {
-    id: "identity-aadhaar-card",
-    section: "identity",
-    title: "Aadhaar identity card",
-    status: "mandatory",
-    copyType: "photocopy",
-    description: "Clear photocopy of Government of India issued Aadhaar Card showing student UID number.",
-    iconType: "id-card",
-    hasDetailedModal: false,
+    id: "acad-4",
+    category: "academic",
+    name: "Mark Sheet / Transcript",
+    required: true,
+    description: "Semester-wise statement of marks for all qualifying examinations.",
+    notes: "All semester marksheets must be verified. Backlog marksheets must also be produced."
   },
   {
-    id: "identity-domicile-certificate",
-    section: "identity",
-    title: "Domicile and nationality certificate",
-    status: "mandatory",
-    copyType: "photocopy",
-    description: "Certificate issued by Executive Magistrate or Revenue Department establishing domicile and nationality.",
-    iconType: "id-card",
-    hasDetailedModal: false,
-  },
-  {
-    id: "identity-passport-photographs",
-    section: "identity",
-    title: "Recent passport size photographs",
-    status: "mandatory",
-    copyType: "original",
-    description: "Four recent color photographs (3.5 cm x 4.5 cm) with white background and candidate name written on reverse.",
-    iconType: "photo",
-    hasDetailedModal: false,
+    id: "acad-5",
+    category: "academic",
+    name: "Migration Certificate",
+    required: false,
+    description: "Migration certificate issued by previous Board or University outside Maharashtra State.",
+    notes: "Compulsory only for non-Maharashtra State Board candidates. 15-day submission grace period granted."
   },
 
-  // --- Category Section ---
+  // --- 2. IDENTITY DOCUMENTS ---
   {
-    id: "category-caste-certificate",
-    section: "category",
-    title: "Caste and caste validity certificate",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Required for SC, ST, OBC, VJ/NT, SBC, and EWS candidates claiming fee concessions or reserved seat quotas.",
-    iconType: "certificate",
-    hasDetailedModal: false,
+    id: "ident-1",
+    category: "identity",
+    name: "Aadhaar Card",
+    required: true,
+    description: "Clear photocopy of Government of India issued Aadhaar Card displaying 12-digit UID number.",
+    notes: "Name on Aadhaar card must match academic marksheets exactly."
   },
   {
-    id: "category-disability-certificate",
-    section: "category",
-    title: "Persons with disability (PWD) certificate",
-    status: "conditional",
-    copyType: "photocopy",
+    id: "ident-2",
+    category: "identity",
+    name: "PAN Card",
+    required: false,
+    description: "Permanent Account Number (PAN) card of student or parent for financial records.",
+    notes: "Recommended for scholarship applications and fee payment receipting."
+  },
+  {
+    id: "ident-3",
+    category: "identity",
+    name: "Passport",
+    required: false,
+    description: "Valid Indian or International Passport for identity verification and international exchanges.",
+    notes: "Mandatory for NRI / OCI / Foreign National candidates along with valid Student Visa."
+  },
+  {
+    id: "ident-4",
+    category: "identity",
+    name: "Driving License",
+    required: false,
+    description: "Government-issued driving permit copy as valid photo identity proof.",
+    notes: "Optional secondary identity verification document."
+  },
+  {
+    id: "ident-5",
+    category: "identity",
+    name: "Voter ID / Election Card",
+    required: false,
+    description: "Elector's Photo Identity Card (EPIC) issued by Election Commission of India.",
+    notes: "Optional address and identity verification proof."
+  },
+
+  // --- 3. CATEGORY DOCUMENTS ---
+  {
+    id: "cat-1",
+    category: "category",
+    name: "Caste Certificate & Validity",
+    required: false,
+    description: "Caste Certificate and Caste Validity Certificate issued by Competent Revenue Authority of Maharashtra.",
+    notes: "Required for SC, ST, OBC, VJ/NT, SBC candidates claiming fee concessions or reserved seat quota."
+  },
+  {
+    id: "cat-2",
+    category: "category",
+    name: "Income Certificate",
+    required: false,
+    description: "Annual family income certificate issued by Tehsildar for EBC / Freeship scholarship eligibility.",
+    notes: "Income certificate must be valid for financial year 2025–26."
+  },
+  {
+    id: "cat-3",
+    category: "category",
+    name: "Disability Certificate (PwD)",
+    required: false,
     description: "Disability certificate issued by Civil Surgeon or Authorized Medical Board (minimum 40% disability).",
-    iconType: "file",
-    hasDetailedModal: false,
-  },
-  {
-    id: "category-defence-certificate",
-    section: "category",
-    title: "Defence personnel dependent certificate",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Certificate issued by Zilla Sainik Welfare Board for children of active or ex-servicemen personnel.",
-    iconType: "file",
-    hasDetailedModal: false,
-  },
-  {
-    id: "category-gazette-name-change",
-    section: "category",
-    title: "Government gazette for name change",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Official Gazette publication copy if the candidate's legal name differs between Aadhaar and marksheets.",
-    iconType: "file",
-    hasDetailedModal: false,
-  },
-  {
-    id: "category-kashmiri-migrant",
-    section: "category",
-    title: "Jammu and Kashmir migrant certificate",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Displaced Kashmiri family certificate issued by Relief Commissioner or District Magistrate.",
-    iconType: "file",
-    hasDetailedModal: false,
+    notes: "Qualifies candidate for specialized campus accessibility support and quota benefits."
   },
 
-  // --- Additional Section ---
+  // --- 4. ADDITIONAL DOCUMENTS ---
   {
-    id: "additional-gap-affidavit",
-    section: "additional",
-    title: "Educational gap affidavit",
-    status: "conditional",
-    copyType: "original",
-    description: "Notarized affidavit on ₹100 Judicial Stamp Paper explaining any gap of 1 year or more post-qualifying exam.",
-    iconType: "file",
-    hasDetailedModal: false,
+    id: "add-1",
+    category: "additional",
+    name: "Gap Certificate",
+    required: false,
+    description: "Notarized affidavit on ₹100 Stamp Paper explaining any academic gap of 1 year or more post-qualifying exam.",
+    notes: "Format draft available at the University Admission Helpdesk."
   },
   {
-    id: "additional-entrance-scorecard",
-    section: "additional",
-    title: "Entrance examination scorecard",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Valid scorecard of MHT-CET, JEE Main, GATE, PERA CET, or SU-JEE entrance exam.",
-    iconType: "certificate",
-    hasDetailedModal: false,
+    id: "add-2",
+    category: "additional",
+    name: "Medical Fitness Certificate",
+    required: false,
+    description: "Certificate of physical fitness issued by Registered Medical Practitioner (MBBS).",
+    notes: "Required prior to hostel room allotment and sports facility access."
   },
   {
-    id: "additional-equivalence-certificate",
-    section: "additional",
-    title: "AIU equivalence certificate",
-    status: "conditional",
-    copyType: "photocopy",
-    description: "Association of Indian Universities (AIU) certificate for candidates passing from international or foreign boards.",
-    iconType: "certificate",
-    hasDetailedModal: true, // Special document needing multi-format detailed modal preview
-    modalDetails: {
-      title: "AIU Equivalence Certificate Guidelines",
-      acceptedFormats: [
-        "Official AIU Equivalence Certificate (Original + Attested Copy)",
-        "Association of Indian Universities Evaluation Statement",
-        "Embassy Student Verification Letter (for Foreign Nationals)",
-      ],
-      notes: [
-        "Mandatory for Cambridge International (IGCSE/A-Levels), International Baccalaureate (IB), and foreign school boards.",
-        "Foreign nationals must also submit student visa, valid passport, and NOC.",
-      ],
-    },
+    id: "add-3",
+    category: "additional",
+    name: "NRI Certificate",
+    required: false,
+    description: "NRI sponsorship affidavit and embassy verification certificate for international quota seats.",
+    notes: "Must include sponsor's passport copy and bank statement."
   },
+  {
+    id: "add-4",
+    category: "additional",
+    name: "Domicile Certificate",
+    required: false,
+    description: "Domicile certificate issued by Maharashtra State Revenue Department establishing state domicile.",
+    notes: "Mandatory for State Quota seats under Maharashtra DTE CAP CAP allotment."
+  },
+  {
+    id: "add-5",
+    category: "additional",
+    name: "Sports Certificate",
+    required: false,
+    description: "District, State, or National level athletic representation certificate issued by recognized sports federation.",
+    notes: "Qualifies candidate for up to 25% Sports Scholarship fee waiver."
+  }
 ];
 
-export const CHECKLIST_FAQS = [
+export const DOCUMENT_FAQS = [
   {
-    id: "faq-1",
     question: "Can I submit self-attested photocopies during initial verification?",
-    answer: "Yes, self-attested photocopies are accepted for initial document submission. However, original marksheets and certificates must be presented at the campus verification desk for physical cross-checking.",
+    answer: "Yes, self-attested photocopies are accepted for initial document submission. However, original marksheets and certificates must be presented at the campus desk for physical cross-checking."
   },
   {
-    id: "faq-2",
     question: "How many passport size photographs are required?",
-    answer: "You must submit 4 recent color passport-size photographs (3.5 cm x 4.5 cm) with a plain white background. Write your candidate name and application ID on the back of each photo.",
+    answer: "You must bring 4 recent color passport-size photographs (3.5 cm x 4.5 cm) with a plain white background. Write your full name and application ID on the back of each photo."
   },
   {
-    id: "faq-3",
     question: "What if I am missing a conditional document at the time of admission?",
-    answer: "Candidates missing non-mandatory documents (such as Gap Affidavit or Migration Certificate) are granted a 10-day grace period post-allotment to submit them at the admissions office.",
+    answer: "Candidates missing non-mandatory documents (such as Gap Affidavit or Migration Certificate) are granted a 15-day grace period post-allotment to submit them at the admissions office."
   },
   {
-    id: "faq-[#4]",
-    id: "faq-4",
     question: "Is the Migration Certificate compulsory for all candidates?",
-    answer: "Migration Certificate is compulsory only for candidates who passed their qualifying examination from a Board or University outside the State of Maharashtra.",
-  },
+    answer: "Migration Certificate is compulsory only for candidates who passed their qualifying examination from a Board or University located outside the State of Maharashtra."
+  }
 ];
