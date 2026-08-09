@@ -64,14 +64,13 @@ function MegaMenu({ item, sections }) {
 
         {/* Section Grid */}
         <div
-          className={`grid gap-8 ${
-            isAdmissions ? "min-w-[720px] max-w-[840px] grid-cols-2" : ""
-          }`}
+          className={`grid gap-8 ${isAdmissions ? "min-w-[720px] max-w-[840px] grid-cols-2" : ""
+            }`}
           style={
             !isAdmissions
               ? {
-                  gridTemplateColumns: `repeat(${sections.length}, minmax(220px, auto))`,
-                }
+                gridTemplateColumns: `repeat(${sections.length}, minmax(220px, auto))`,
+              }
               : undefined
           }
         >

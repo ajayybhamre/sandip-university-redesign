@@ -1,141 +1,293 @@
-import { Link } from "react-router-dom";
-import { GraduationCap, Sparkles, ArrowRight } from "lucide-react";
-import { admissionsMenuData } from "./admissionsData";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  GraduationCap,
+  Globe,
+  Sparkles,
+  ArrowRight,
+  FileEdit,
+  BookOpen,
+  FileText,
+  IndianRupee,
+  HelpCircle,
+  Users,
+  Phone,
+} from "lucide-react";
+import MagneticButton from "../../components/Animated/MagneticButton";
+import SpotlightCard from "../../components/Animated/SpotlightCard";
 
-function AdmissionsSectionMenu({ className = "" }) {
-  const { header, sections } = admissionsMenuData;
+const nationalLinks = [
+  { title: "Apply Now", path: "/apply", icon: FileEdit, badge: "NEW ✦" },
+  { title: "Programs", path: "/programs", icon: BookOpen },
+  { title: "Document List", path: "/documents", icon: FileText },
+  { title: "Scholarships", path: "/scholarships", icon: IndianRupee },
+  { title: "Help Centre", path: "/help", icon: HelpCircle },
+];
+
+const intlLinks = [
+  { title: "Overview", path: "/international-admission/overview", icon: Globe },
+  { title: "How to Apply", path: "/international-admission/how-to-apply", icon: FileEdit, badge: "NEW ✦" },
+  { title: "Programs", path: "/international-admission/programs", icon: BookOpen },
+  { title: "International Partnerships", path: "/international-admission/partnerships", icon: Users },
+  { title: "FAQs", path: "/international-admission/faqs", icon: HelpCircle },
+  { title: "Contact Us", path: "/international-admission/contact", icon: Phone },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const columnVariantsLeft = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+const columnVariantsRight = {
+  hidden: { opacity: 0, x: 20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+export default function AdmissionsSectionMenu({ className = "" }) {
+  const location = useLocation();
+
+  const getIconAnimation = (iconTitle) => {
+    switch (iconTitle) {
+      case "Apply Now":
+        return "group-hover:-translate-y-1";
+      case "Programs":
+        return "group-hover:rotate-12";
+      case "Scholarships":
+        return "group-hover:scale-125";
+      case "Help Centre":
+      case "FAQs":
+        return "group-hover:rotate-45";
+      case "Overview":
+        return "group-hover:rotate-180";
+      case "International Partnerships":
+        return "group-hover:scale-115";
+      case "Contact Us":
+        return "group-hover:translate-x-1";
+      default:
+        return "group-hover:scale-110";
+    }
+  };
 
   return (
-    <div
-      className={`w-full bg-white dark:bg-[#111111] rounded-[16px] p-6 sm:p-8 border border-gray-100 dark:border-gray-800 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.06)] transition-all duration-300 ${className}`}
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className={`w-full bg-[#FFFFFF] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#E7E7E9] shadow-xl overflow-hidden relative ${className}`}
     >
-      {/* 1. Header Section */}
-      {header && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-6 border-b border-gray-100 dark:border-gray-800 gap-4">
-          <div className="flex items-center gap-3.5">
-            {/* Header Icon */}
-            <div className="w-11 h-11 rounded-full bg-red-50/90 dark:bg-red-950/40 border border-red-100/80 dark:border-red-900/40 flex items-center justify-center text-[#C8102E] dark:text-red-400 flex-shrink-0 shadow-xs">
-              <GraduationCap size={22} className="text-[#C8102E] dark:text-red-400" />
-            </div>
-            <div>
-              {/* Red (#C8102E) Heading */}
-              <h2 className="text-xl sm:text-2xl font-black text-[#C8102E] dark:text-red-400 tracking-tight leading-none font-sans">
-                {header.title}
-              </h2>
-              {/* Black / Dark Subtitle */}
-              <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium mt-1">
-                {header.subtitle}
-              </p>
-            </div>
-          </div>
+      {/* Ambient Red Sweep Background */}
+      <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Admissions Open Badge */}
-          {header.badgeText && (
-            <div className="self-start sm:self-auto flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fff1f2] dark:bg-red-950/50 text-[#C8102E] dark:text-red-400 border border-red-200/80 dark:border-red-900/50 text-xs font-extrabold shadow-2xs hover:scale-105 transition-transform">
-              <Sparkles size={14} className="text-[#C8102E] dark:text-red-400 animate-pulse" />
-              <span>{header.badgeText}</span>
-            </div>
-          )}
+      {/* 1. Header Section */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-[#E7E7E9] gap-4 relative z-10">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-ping" />
+            <span className="text-[11px] font-black text-[#C8102E] tracking-[0.2em] uppercase">
+              ADMISSIONS 2026–27
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0B0B0D] tracking-tight font-serif">
+            Admissions
+          </h2>
+          <p className="text-xs sm:text-sm text-[#6B6B73] font-medium">
+            Explore National & International admission pathways for 2026–27
+          </p>
         </div>
-      )}
+
+        {/* Admissions Open Pill Button with Magnetic Hover & Shine */}
+        <MagneticButton className="self-start sm:self-auto">
+          <Link
+            to="/apply"
+            className="group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border-2 border-[#C8102E] text-[#C8102E] hover:bg-[#C8102E] hover:text-white font-extrabold text-xs tracking-wide shadow-md transition-all duration-300 overflow-hidden cursor-pointer"
+          >
+            {/* Animated Shine Effect */}
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none" />
+            <Sparkles size={14} className="text-[#C8102E] group-hover:text-white transition-colors animate-pulse" />
+            <span>Admissions Open 2026–27</span>
+          </Link>
+        </MagneticButton>
+      </div>
 
       {/* 2. Main 2-Column Menu Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {sections.map((section, index) => (
-          <div key={index} className="space-y-2">
-            {/* Column Header */}
-            <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-[#C8102E]/20 dark:border-[#C8102E]/40">
-              <div className="flex items-center gap-2">
-                {section.iconType === "cap" && (
-                  <span className="text-lg leading-none">🎓</span>
-                )}
-                {section.iconType === "globe" && (
-                  <span className="text-lg leading-none">🌐</span>
-                )}
-                {/* Red (#C8102E) Section Title */}
-                <h3 className="font-extrabold text-[#C8102E] dark:text-red-400 uppercase text-xs sm:text-sm tracking-wider font-sans">
-                  {section.heading}
-                </h3>
-              </div>
-
-              {/* Small "NEW" Pill Badge */}
-              {section.badge && (
-                <span className="bg-[#fff1f2] dark:bg-red-950/80 text-[#C8102E] dark:text-red-300 border border-red-200/80 dark:border-red-900/60 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
-                  {section.badge}
-                </span>
-              )}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative z-10">
+        
+        {/* LEFT COLUMN: NATIONAL ADMISSION */}
+        <motion.div variants={columnVariantsLeft} className="space-y-4">
+          
+          {/* Column Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-[#C8102E]/20">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] animate-pulse" />
+              <GraduationCap size={18} className="text-[#C8102E]" />
+              <h3 className="font-black text-[#0B0B0D] uppercase text-xs tracking-widest">
+                NATIONAL ADMISSION MENU
+              </h3>
             </div>
+            <span className="text-[10px] font-black text-[#C8102E] bg-[#FFF1F3] px-2.5 py-0.5 rounded-full border border-red-200 uppercase tracking-wider">
+              INDIAN CAMPUSES
+            </span>
+          </div>
 
-            {/* List Links */}
-            <ul className="space-y-1.5">
-              {section.links.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to={link.path}
-                    className="
-                      group/item
-                      relative
-                      flex
-                      items-center
-                      justify-between
-                      py-2.5
-                      px-3
-                      rounded-[16px]
-                      bg-white
-                      dark:bg-[#161618]
-                      border
-                      border-transparent
-                      hover:border-red-100
-                      dark:hover:border-red-950
-                      hover:bg-red-50/40
-                      dark:hover:bg-red-950/20
-                      hover:shadow-[0_8px_25px_-5px_rgba(200,16,46,0.12)]
-                      transition-all
-                      duration-300
-                      cursor-pointer
-                    "
+          {/* National Links List */}
+          <div className="space-y-2.5">
+            {nationalLinks.map((link, idx) => {
+              const isActive = location.pathname === link.path;
+              const IconComp = link.icon;
+              const iconAnim = getIconAnimation(link.title);
+
+              return (
+                <Link
+                  key={idx}
+                  to={link.path}
+                  className="block group"
+                >
+                  <SpotlightCard
+                    className={`relative flex items-center justify-between py-3 px-4 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
+                      isActive
+                        ? "bg-[#FFF1F3] border-l-4 border-l-[#C8102E] border-[#E7E7E9] shadow-md"
+                        : "bg-[#FFFFFF] border-[#E7E7E9] hover:bg-[#FFF1F3] hover:border-l-4 hover:border-l-[#C8102E] hover:translate-x-1.5 hover:shadow-lg"
+                    }`}
                   >
                     {/* Left Icon + Text */}
                     <div className="flex items-center gap-3.5">
-                      {/* Icon container */}
-                      {link.icon && (
-                        <div className="w-9 h-9 rounded-[12px] bg-gray-100/90 dark:bg-gray-800/80 flex items-center justify-center text-[#C8102E] dark:text-red-400 group-hover/item:bg-[#C8102E] group-hover/item:text-white transition-all duration-300 flex-shrink-0 shadow-2xs">
-                          <link.icon size={17} />
-                        </div>
-                      )}
+                      <div
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 flex-shrink-0 shadow-2xs ${
+                          isActive
+                            ? "bg-[#C8102E] text-white"
+                            : "bg-[#F8F8F6] text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white"
+                        }`}
+                      >
+                        <IconComp size={18} className={`transition-transform duration-300 ${iconAnim}`} />
+                      </div>
 
-                      {/* Black Text with Animated Red Underline */}
-                      <span className="relative inline-block font-bold text-sm text-gray-900 dark:text-white group-hover/item:text-[#C8102E] transition-colors py-0.5">
+                      <span
+                        className={`font-bold text-sm transition-colors ${
+                          isActive ? "text-[#C8102E]" : "text-[#15151A] group-hover:text-[#C8102E]"
+                        }`}
+                      >
                         {link.title}
-                        {/* Animated Underline */}
-                        <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C8102E] group-hover/item:w-full transition-all duration-300 rounded-full"></span>
                       </span>
                     </div>
 
-                    {/* Right side: Badge + Animated Right Arrow */}
-                    <div className="flex items-center gap-2">
-                      {/* Small "NEW" Pill Badge */}
+                    {/* Right side: Badge + Arrow */}
+                    <div className="flex items-center gap-2.5">
                       {link.badge && (
-                        <span className="bg-[#fff1f2] dark:bg-red-950/80 text-[#C8102E] dark:text-red-300 border border-red-200/80 dark:border-red-900/60 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs">
+                        <span className="bg-[#C8102E] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-xs animate-pulse">
                           {link.badge}
                         </span>
                       )}
 
-                      {/* Right-arrow animation */}
                       <ArrowRight
                         size={16}
-                        className="text-[#C8102E] dark:text-red-400 opacity-60 group-hover/item:opacity-100 group-hover/item:translate-x-1.5 transition-all duration-300"
+                        className={`text-[#C8102E] transition-all duration-300 ${
+                          isActive ? "translate-x-1 opacity-100" : "opacity-60 group-hover:opacity-100 group-hover:translate-x-2"
+                        }`}
                       />
                     </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  </SpotlightCard>
+                </Link>
+              );
+            })}
           </div>
-        ))}
+
+        </motion.div>
+
+        {/* RIGHT COLUMN: INTERNATIONAL ADMISSION */}
+        <motion.div variants={columnVariantsRight} className="space-y-4">
+          
+          {/* Column Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-[#C8102E]/20">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] animate-pulse" />
+              <Globe size={18} className="text-[#C8102E]" />
+              <h3 className="font-black text-[#0B0B0D] uppercase text-xs tracking-widest">
+                INTERNATIONAL ADMISSION MENU
+              </h3>
+            </div>
+            <span className="text-[10px] font-black text-[#C8102E] bg-[#FFF1F3] px-2.5 py-0.5 rounded-full border border-red-200 uppercase tracking-wider">
+              GLOBAL CAMPUSES
+            </span>
+          </div>
+
+          {/* International Links List */}
+          <div className="space-y-2.5">
+            {intlLinks.map((link, idx) => {
+              const isActive = location.pathname === link.path;
+              const IconComp = link.icon;
+              const iconAnim = getIconAnimation(link.title);
+
+              return (
+                <Link
+                  key={idx}
+                  to={link.path}
+                  className="block group"
+                >
+                  <SpotlightCard
+                    className={`relative flex items-center justify-between py-3 px-4 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
+                      isActive
+                        ? "bg-[#FFF1F3] border-l-4 border-l-[#C8102E] border-[#E7E7E9] shadow-md"
+                        : "bg-[#FFFFFF] border-[#E7E7E9] hover:bg-[#FFF1F3] hover:border-l-4 hover:border-l-[#C8102E] hover:translate-x-1.5 hover:shadow-lg"
+                    }`}
+                  >
+                    {/* Left Icon + Text */}
+                    <div className="flex items-center gap-3.5">
+                      <div
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 flex-shrink-0 shadow-2xs ${
+                          isActive
+                            ? "bg-[#C8102E] text-white"
+                            : "bg-[#F8F8F6] text-[#C8102E] group-hover:bg-[#C8102E] group-hover:text-white"
+                        }`}
+                      >
+                        <IconComp size={18} className={`transition-transform duration-300 ${iconAnim}`} />
+                      </div>
+
+                      <span
+                        className={`font-bold text-sm transition-colors ${
+                          isActive ? "text-[#C8102E]" : "text-[#15151A] group-hover:text-[#C8102E]"
+                        }`}
+                      >
+                        {link.title}
+                      </span>
+                    </div>
+
+                    {/* Right side: Badge + Arrow */}
+                    <div className="flex items-center gap-2.5">
+                      {link.badge && (
+                        <span className="bg-[#C8102E] text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-xs animate-pulse">
+                          {link.badge}
+                        </span>
+                      )}
+
+                      <ArrowRight
+                        size={16}
+                        className={`text-[#C8102E] transition-all duration-300 ${
+                          isActive ? "translate-x-1 opacity-100" : "opacity-60 group-hover:opacity-100 group-hover:translate-x-2"
+                        }`}
+                      />
+                    </div>
+                  </SpotlightCard>
+                </Link>
+              );
+            })}
+          </div>
+
+        </motion.div>
+
       </div>
-    </div>
+    </motion.div>
   );
 }
-
-export default AdmissionsSectionMenu;

@@ -1,6 +1,8 @@
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
+import TiltCard from "../Animated/TiltCard";
+import SpotlightCard from "../Animated/SpotlightCard";
 
 export default function ScholarshipCard({
   title,
@@ -12,156 +14,104 @@ export default function ScholarshipCard({
   waiverValue,
   waiverText,
   note,
-  colorScheme = "crimson" // "crimson" | "gold" | "navy"
+  colorScheme = "crimson"
 }) {
-  const shouldReduceMotion = useReducedMotion();
-
-  // Distinct theme color tokens
   const themeStyles = {
     crimson: {
-      cardBg: "bg-white",
-      headerBg: "bg-gradient-to-r from-[#C8102E]/10 to-red-50/60",
+      headerBg: "bg-[#C8102E]/10",
       headerBorder: "border-[#C8102E]/20",
       badgeBg: "bg-[#C8102E]",
       valueColor: "text-[#C8102E]",
-      dotColor: "bg-[#C8102E]",
-      glowShadow: "0 20px 35px -10px rgba(200, 16, 46, 0.28), 0 10px 20px -5px rgba(212, 175, 55, 0.2)"
     },
     gold: {
-      cardBg: "bg-white",
-      headerBg: "bg-gradient-to-r from-amber-50 to-yellow-100/50",
+      headerBg: "bg-amber-50",
       headerBorder: "border-amber-200",
       badgeBg: "bg-[#D4AF37]",
-      valueColor: "text-[#B48811]",
-      dotColor: "bg-[#D4AF37]",
-      glowShadow: "0 20px 35px -10px rgba(212, 175, 55, 0.35), 0 10px 20px -5px rgba(200, 16, 46, 0.15)"
+      valueColor: "text-amber-800",
     },
     navy: {
-      cardBg: "bg-white",
-      headerBg: "bg-gradient-to-r from-slate-100 to-slate-200/50",
+      headerBg: "bg-slate-100",
       headerBorder: "border-slate-200",
-      badgeBg: "bg-[#0F1B2B]",
-      valueColor: "text-[#0F1B2B]",
-      dotColor: "bg-[#0F1B2B]",
-      glowShadow: "0 20px 35px -10px rgba(15, 27, 43, 0.25), 0 10px 20px -5px rgba(212, 175, 55, 0.2)"
+      badgeBg: "bg-slate-900",
+      valueColor: "text-slate-900",
     }
   };
 
   const theme = themeStyles[colorScheme] || themeStyles.crimson;
 
-  // Spring animation transition settings
-  const cardSpring = {
-    type: "spring",
-    stiffness: 300,
-    damping: 20
-  };
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      whileHover={
-        shouldReduceMotion
-          ? {}
-          : {
-              y: -8,
-              boxShadow: theme.glowShadow
-            }
-      }
-      transition={cardSpring}
-      className="relative rounded-[12px] bg-white border border-[#0F1B2B]/20 overflow-hidden flex flex-col justify-between group cursor-pointer"
-      style={{ willChange: "transform, box-shadow" }}
-    >
-      {/* 2px Gold Animated Sweep Border Overlay */}
-      <motion.div
-        className="absolute inset-0 rounded-[12px] border-2 border-[#D4AF37] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ willChange: "opacity" }}
-      />
-
-      {/* Card Header */}
-      <div className={`p-4 ${theme.headerBg} border-b ${theme.headerBorder} flex items-center justify-between gap-2`}>
-        <h3 className="font-semibold text-xs sm:text-sm text-[#0F1B2B] line-clamp-1">
-          {title}
-        </h3>
-        {tier && (
-          <span className={`px-2.5 py-0.5 rounded-[6px] ${theme.badgeBg} text-white text-[10px] font-bold flex-shrink-0 shadow-2xs`}>
-            {tier}
-          </span>
-        )}
-      </div>
-
-      {/* Card Body */}
-      <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
+    <TiltCard className="h-full">
+      <SpotlightCard className="h-full rounded-2xl bg-white border border-slate-200/90 overflow-hidden flex flex-col justify-between shadow-md hover:shadow-2xl hover:border-[#C8102E] transition-all duration-300 group cursor-pointer">
         
-        {/* Criteria / Description Section */}
-        <div className="space-y-2">
-          {criteria ? (
-            <>
-              <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
-                Eligibility Criteria
-              </span>
-              <ul className="space-y-2">
-                {criteria.map((crit, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-[#0F1B2B] font-medium leading-snug">
-                    <span className={`w-2 h-2 rounded-full ${theme.dotColor} mt-1 flex-shrink-0`} />
-                    <span>{crit}</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : achievement ? (
-            <>
-              <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
-                Achievement Level
-              </span>
-              <p className="text-xs text-[#0F1B2B] font-medium leading-relaxed">
-                {achievement}
-              </p>
-            </>
-          ) : type ? (
-            <>
-              <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
-                Beneficiary Type
-              </span>
-              <p className="text-xs text-[#0F1B2B] font-medium leading-relaxed">
-                {type}
-              </p>
-            </>
-          ) : null}
+        {/* Card Header */}
+        <div className={`p-4 ${theme.headerBg} border-b ${theme.headerBorder} flex items-center justify-between gap-2`}>
+          <h3 className="font-bold text-xs sm:text-sm text-slate-900 line-clamp-1">
+            {title}
+          </h3>
+          {tier && (
+            <span className={`px-2.5 py-0.5 rounded-full ${theme.badgeBg} text-white text-[10px] font-black uppercase tracking-wider shadow-2xs`}>
+              {tier}
+            </span>
+          )}
         </div>
 
-        {/* Amount / Value Section with Spring Scale */}
-        <div className="pt-3 border-t border-slate-100 space-y-0.5">
-          <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider block">
-            Scholarship Value
-          </span>
+        {/* Card Body */}
+        <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
+          
+          <div className="space-y-2">
+            {criteria ? (
+              <>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                  Eligibility Criteria
+                </span>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-semibold">
+                  {criteria}
+                </p>
+              </>
+            ) : achievement ? (
+              <>
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                  Achievement Level
+                </span>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-semibold">
+                  {achievement}
+                </p>
+              </>
+            ) : null}
 
-          <motion.div
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            transition={cardSpring}
-            className="inline-block origin-left"
-            style={{ willChange: "transform" }}
-          >
-            <p className={`text-2xl sm:text-3xl font-bold font-serif ${theme.valueColor} tracking-tight`}>
+            {level && (
+              <span className="inline-block text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                Level: {level}
+              </span>
+            )}
+          </div>
+
+          {/* Waiver Value Hero Box */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-center space-y-0.5">
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
+              Tuition Fee Waiver
+            </span>
+            <p className={`text-2xl sm:text-3xl font-black ${theme.valueColor}`}>
               {waiverValue}
             </p>
-          </motion.div>
+            {waiverText && (
+              <span className="text-[11px] font-bold text-slate-600 block">
+                {waiverText}
+              </span>
+            )}
+          </div>
 
-          <p className="text-xs text-[#64748B]">
-            {waiverText}
-          </p>
+          {/* Note Footer */}
+          {note && (
+            <div className="flex items-start gap-1.5 text-[11px] text-slate-500 pt-2 border-t border-slate-100 font-medium">
+              <AlertCircle size={13} className="text-[#C8102E] flex-shrink-0 mt-0.5" />
+              <span>{note}</span>
+            </div>
+          )}
+
         </div>
 
-        {/* Optional Note */}
-        {note && (
-          <div className="p-2.5 rounded-[6px] bg-slate-50 border border-slate-200 text-[11px] text-[#64748B] flex items-center gap-1.5">
-            <AlertCircle size={13} className="text-[#C8102E] flex-shrink-0" />
-            <span>{note}</span>
-          </div>
-        )}
-
-      </div>
-    </motion.div>
+      </SpotlightCard>
+    </TiltCard>
   );
 }

@@ -1,86 +1,148 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
-body,
-a,
-button {
-  cursor: none;
-}
-html{
-scroll-behavior:smooth;
+
+/* ==================================================
+   CENTRALIZED THEME DESIGN TOKENS
+   Official Sandip University Visual Identity
+   ================================================== */
+
+[data-theme="light"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAF8F5;
+  --bg-elevated: #F8F8F6;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0B0B0D;
+  --text-secondary: #333339;
+  --text-muted: #6B6B73;
+  --brand-primary: #C8102E;
+  --brand-dark: #9F0D24;
+  --brand-light: #FFF1F3;
+  --border-color: #E7E7E9;
+  --card-bg: #FFFFFF;
+  --card-border: #E7E7E9;
+  --shadow-main: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
-body{
-  font-family: "Roboto Slab", serif;
-  background: #fff;
-  color: #ea1f28;
-  transition: background-color 0.3s, color 0.3s;
+[data-theme="dark"] {
+  --bg-primary: #0B0B0D;
+  --bg-secondary: #121216;
+  --bg-elevated: #1D1D22;
+  --bg-surface: #15151A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D1D6;
+  --text-muted: #8E8E93;
+  --brand-primary: #C8102E;
+  --brand-dark: #9F0D24;
+  --brand-light: rgba(200, 16, 46, 0.2);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --card-bg: #15151A;
+  --card-border: rgba(255, 255, 255, 0.12);
+  --shadow-main: 0 10px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="night"] {
+  --bg-primary: #070708;
+  --bg-secondary: #0D0D10;
+  --bg-elevated: #16161C;
+  --bg-surface: #101014;
+  --text-primary: #F2F2F4;
+  --text-secondary: #A0A0A8;
+  --text-muted: #72727A;
+  --brand-primary: #C8102E;
+  --brand-dark: #8F0A20;
+  --brand-light: rgba(200, 16, 46, 0.12);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-bg: #101014;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --shadow-main: 0 8px 24px -10px rgba(0, 0, 0, 0.8);
+}
+
+/* Specific Night Mode Theme Overrides */
+[data-theme="night"] body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="night"] .bg-white,
+[data-theme="night"] .bg-\[\#FAF8F5\],
+[data-theme="night"] .bg-slate-50 {
+  background-color: var(--bg-surface) !important;
+}
+
+[data-theme="night"] .dark\:bg-\[\#0c0c0d\],
+[data-theme="night"] .dark\:bg-black,
+[data-theme="night"] .dark\:bg-slate-900,
+[data-theme="night"] .dark\:bg-zinc-900 {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="night"] .text-slate-900,
+[data-theme="night"] .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="night"] .text-slate-600,
+[data-theme="night"] .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="night"] .border-slate-200,
+[data-theme="night"] .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+/* Global Transitions for Theme Switching */
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   font-size: 15px;
+  overflow-x: hidden;
 }
 
-.dark body{
-  background: black;
-  color: white;
+/* Custom Selection */
+::selection {
+  background-color: var(--brand-primary);
+  color: #FFFFFF;
 }
-.container-custom{
-max-width:1400px;
-margin:auto;
-padding:0 20px;
+
+/* Container Custom */
+.container-custom {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 20px;
 }
-.swiper-button-next, .swiper-button-prev {
-    color: black !important;
-}
+
+/* Animations */
 @keyframes floatSlow {
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-18px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
 }
 
-@keyframes floatMedium{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(20px);
-  }
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
 }
 
-@keyframes floatFast{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-28px);
-  }
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-28px); }
 }
 
-.animate-floatSlow{
-  animation:floatSlow 6s ease-in-out infinite;
-}
+.animate-floatSlow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-floatMedium { animation: floatMedium 5s ease-in-out infinite; }
+.animate-floatFast { animation: floatFast 4s ease-in-out infinite; }
 
-.animate-floatMedium{
-  animation:floatMedium 5s ease-in-out infinite;
-}
-
-.animate-floatFast{
-  animation:floatFast 4s ease-in-out infinite;
-}
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-marquee {

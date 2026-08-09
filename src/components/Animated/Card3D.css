@@ -1,0 +1,8 @@
+.card-3d-perspective {
+  perspective: 1200px;
+}
+
+.card-3d-wrapper {
+  transform-style: preserve-3d;
+  will-change: transform;
+}

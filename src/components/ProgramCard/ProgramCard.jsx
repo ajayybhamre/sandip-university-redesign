@@ -1,154 +1,86 @@
-import React, { useRef, useEffect } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import gsap from "gsap";
-import { Clock, ArrowRight } from "lucide-react";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { Clock, ArrowRight, Sparkles } from "lucide-react";
+import TiltCard from "../Animated/TiltCard";
+import SpotlightCard from "../Animated/SpotlightCard";
 
 export default function ProgramCard({
   program,
   getBadgeStyle,
   onViewDetails
 }) {
-  const imageRef = useRef(null);
-  const cardRef = useRef(null);
-  const shouldReduceMotion = useReducedMotion();
-
-  // GSAP Smooth Slow Image Zoom (scale 1 -> 1.08) on Hover
-  useEffect(() => {
-    if (shouldReduceMotion || !imageRef.current || !cardRef.current) return;
-
-    const el = cardRef.current;
-    const img = imageRef.current;
-
-    const handleMouseEnter = () => {
-      gsap.to(img, {
-        scale: 1.08,
-        duration: 0.6,
-        ease: "power2.out"
-      });
-    };
-
-    const handleMouseLeave = () => {
-      gsap.to(img, {
-        scale: 1,
-        duration: 0.6,
-        ease: "power2.out"
-      });
-    };
-
-    el.addEventListener("mouseenter", handleMouseEnter);
-    el.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      el.removeEventListener("mouseenter", handleMouseEnter);
-      el.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [shouldReduceMotion]);
-
   return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="relative rounded-[12px] bg-white border border-[#0F1B2B]/20 overflow-hidden flex flex-col justify-between shadow-2xs hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
-      style={{ willChange: "box-shadow, transform" }}
-    >
-      {/* Top Red Gradient Accent Bar (4px) */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#C8102E] via-[#0F1B2B] to-[#D4AF37]" />
-
-      {/* Card Header & Content Container */}
-      <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+    <TiltCard className="h-full">
+      <SpotlightCard className="h-full rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 overflow-hidden flex flex-col justify-between shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_50px_-12px_rgba(200,16,46,0.2)] hover:border-[#C8102E] transition-all duration-300 group cursor-pointer">
         
-        <div className="space-y-3">
+        {/* Top Sandip Red & Gold Accent Bar */}
+        <div className="h-1.5 w-full bg-gradient-to-r from-[#C8102E] via-[#0F172A] to-[#D4AF37]" />
+
+        {/* Card Header & Content Container */}
+        <div className="p-6 sm:p-7 space-y-4 flex-1 flex flex-col justify-between">
           
-          {/* Level Badge & Duration Row */}
-          <div className="flex items-center justify-between gap-2">
-            <span
-              className={`px-2.5 py-0.5 rounded-[6px] text-[11px] font-bold border ${getBadgeStyle(
-                program.level
-              )}`}
-            >
-              {program.level}
+          <div className="space-y-3">
+            
+            {/* Level Badge & Duration Row */}
+            <div className="flex items-center justify-between gap-2">
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider border shadow-2xs ${getBadgeStyle(
+                  program.level
+                )}`}
+              >
+                {program.level}
+              </span>
+
+              <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-bold">
+                <Clock size={13} className="text-[#C8102E]" />
+                <span>• {program.duration}</span>
+              </div>
+            </div>
+
+            {/* Program Title */}
+            <div className="relative pt-1">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white leading-tight group-hover:text-[#C8102E] transition-colors">
+                {program.title}
+              </h3>
+
+              {/* Red Underline Sweep */}
+              <div className="h-[2.5px] bg-[#C8102E] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out mt-2 shadow-[0_0_8px_#C8102E]" />
+            </div>
+
+            {/* School Subtitle */}
+            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              {program.school}
+            </p>
+
+            {/* Overview / Compact Eligibility Snippet */}
+            {program.overview && (
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2 font-medium pt-1">
+                {program.overview}
+              </p>
+            )}
+          </div>
+
+          {/* Action Footer Button */}
+          <div className="pt-4 border-t border-slate-100 dark:border-zinc-800/80 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-[#C8102E] transition-colors">
+              Explore Course Details
             </span>
 
-            <div className="flex items-center gap-1.5 text-xs text-[#64748B] font-medium">
-              <Clock size={13} className="text-[#C8102E]" />
-              <span>• {program.duration}</span>
-            </div>
-          </div>
-
-          {/* Program Title with Animated Crimson Underline */}
-          <div className="relative pt-1">
-            <motion.h3
-              whileHover={shouldReduceMotion ? {} : { y: -3 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl font-bold font-serif text-[#0C0C0D] leading-tight group-hover:text-[#C8102E] transition-colors"
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onViewDetails(program);
+              }}
+              className="w-9 h-9 rounded-xl bg-slate-900 text-white group-hover:bg-[#C8102E] flex items-center justify-center transition-colors shadow-md group-hover:shadow-[#C8102E]/30"
+              aria-label={`View details for ${program.title}`}
             >
-              {program.title}
-            </motion.h3>
-
-            {/* Crimson Underline Sweep (scaleX 0 -> 1) */}
-            <motion.div
-              className="h-[2px] bg-[#C8102E] w-full origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out mt-1"
-              style={{ willChange: "transform" }}
-            />
+              <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+            </button>
           </div>
-
-          {/* School Subtitle */}
-          <p className="text-xs font-semibold text-[#64748B]">
-            {program.school}
-          </p>
-
-          {/* 2-line Truncated Description */}
-          {program.overview && (
-            <p className="text-xs text-[#64748B] leading-relaxed line-clamp-2">
-              {program.overview}
-            </p>
-          )}
-
-          {/* Quick Eligibility Preview Light Box */}
-          {program.compactEligibility && (
-            <div className="p-2.5 rounded-[6px] bg-slate-50 border border-slate-200/80 text-[11px] text-[#0C0C0D] font-medium leading-snug">
-              <span className="text-[#C8102E] font-bold block mb-0.5">Eligibility Preview:</span>
-              <span>{program.compactEligibility}</span>
-            </div>
-          )}
-
-          {/* Specializations Badges (max 2) */}
-          {program.specializations && program.specializations.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {program.specializations.slice(0, 2).map((spec, sIdx) => (
-                <span
-                  key={sIdx}
-                  className="px-2 py-0.5 rounded-[4px] bg-slate-100 text-[#0C0C0D] text-[10px] font-semibold border border-slate-200"
-                >
-                  {spec}
-                </span>
-              ))}
-            </div>
-          )}
 
         </div>
 
-        {/* View Details Primary Action Button */}
-        <div className="pt-4 border-t border-slate-100">
-          <button
-            onClick={() => onViewDetails(program)}
-            className="w-full py-2.5 px-4 rounded-[8px] bg-[#0C0C0D] group-hover:bg-[#C8102E] text-white text-xs font-semibold transition-all duration-300 flex items-center justify-between cursor-pointer active:scale-97 shadow-2xs"
-          >
-            <span>View Details</span>
-
-            {/* Arrow Slide & Fade In (x: 8 -> 0, opacity: 0 -> 1) */}
-            <motion.div
-              className="inline-flex items-center justify-center opacity-80 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-200"
-              style={{ willChange: "transform, opacity" }}
-            >
-              <ArrowRight size={15} className="text-[#2DD4BF] group-hover:text-white" />
-            </motion.div>
-          </button>
-        </div>
-
-      </div>
-    </motion.div>
+      </SpotlightCard>
+    </TiltCard>
   );
 }

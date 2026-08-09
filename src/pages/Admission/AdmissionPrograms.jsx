@@ -1,11 +1,14 @@
 import React, { useState, useMemo, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer";
 import SEO from "../../components/SEO/SEO";
 import ProgramDetailView from "./ProgramDetailView";
 import graduationHeroImg from "../../assets/images/programs-graduation-hero.jpg";
 import ProgramCard from "../../components/ProgramCard/ProgramCard";
+import CharacterReveal from "../../components/Animated/CharacterReveal";
+import CurtainReveal from "../../components/Animated/CurtainReveal";
+import MagneticButton from "../../components/Animated/MagneticButton";
 import {
   SCHOOLS_LIST,
   ALL_PROGRAMS_DATA
@@ -15,9 +18,7 @@ import {
   X,
   ChevronDown,
   ArrowRight,
-  Clock,
   Sparkles,
-  Layers,
   GraduationCap
 } from "lucide-react";
 
@@ -31,6 +32,16 @@ export default function AdmissionPrograms() {
   const [activeDetailProgram, setActiveDetailProgram] = useState(null);
 
   const discoveryRef = useRef(null);
+  const heroRef = useRef(null);
+
+  // Scroll Progress animation (Category 3: Scroll Animations)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   // Filtered Programs Calculation
   const filteredPrograms = useMemo(() => {
@@ -61,24 +72,24 @@ export default function AdmissionPrograms() {
   };
 
   const levelOptions = [
-    { id: "all", label: "All" },
-    { id: "UG", label: "UG" },
-    { id: "PG", label: "PG" },
+    { id: "all", label: "All Degrees" },
+    { id: "UG", label: "Undergraduate (UG)" },
+    { id: "PG", label: "Postgraduate (PG)" },
     { id: "Diploma", label: "Diploma" },
-    { id: "PhD", label: "PhD" }
+    { id: "PhD", label: "Ph.D." }
   ];
 
   // Colored Degree Level Badge helper
   const getBadgeStyle = (level) => {
     switch (level.toUpperCase()) {
       case "UG":
-        return "bg-blue-50 text-blue-800 border-blue-200";
+        return "bg-red-50 text-[#C8102E] border-red-200";
       case "PG":
-        return "bg-teal-50 text-teal-800 border-teal-200";
+        return "bg-slate-900 text-white border-slate-900";
       case "DIPLOMA":
-        return "bg-purple-50 text-purple-800 border-purple-200";
+        return "bg-amber-50 text-amber-800 border-amber-200";
       case "PHD":
-        return "bg-indigo-50 text-indigo-800 border-indigo-200";
+        return "bg-slate-100 text-slate-800 border-slate-300";
       default:
         return "bg-slate-100 text-slate-800 border-slate-200";
     }
@@ -87,104 +98,83 @@ export default function AdmissionPrograms() {
   return (
     <>
       <SEO
-        title="Programs & Detailed Information | Sandip University"
-        description="Explore academic programs and detailed course information at Sandip University including eligibility criteria, fees, curriculum, and career pathways."
+        title="Academic Programs & Degree Catalog | Sandip University"
+        description="Explore accredited undergraduate, postgraduate, diploma, and Ph.D. programs at Sandip University Nashik with eligibility, fees, and career pathways."
       />
 
       <Header />
 
-      <main className="bg-[#FBFBFA] text-[#0F1B2B] min-h-screen font-sans selection:bg-[#2DD4BF] selection:text-[#0F1B2B]">
+      <main className="bg-[#FAF8F5] text-slate-900 min-h-screen font-sans selection:bg-[#C8102E] selection:text-white">
 
         {/* ==========================================
-            1. HERO SECTION WITH GRADUATION PHOTO
+            1. HERO SECTION (Red / Black / White Shading)
         ========================================== */}
-        <section className="relative w-full bg-gradient-to-b from-[#FBFBFA] via-[#F0F7FF] to-[#FBFBFA] py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 overflow-hidden">
-          {/* Subtle Ambient Background Accent */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-tr from-[#2DD4BF]/10 via-[#0F1B2B]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        <section ref={heroRef} className="relative w-full bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 overflow-hidden">
+          
+          {/* Crimson Ambient Glow */}
+          <div className="absolute top-0 right-1/4 w-[600px] h-[350px] bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] bg-white border border-slate-200/80 text-xs font-medium text-[#0F1B2B] shadow-2xs"
-              >
-                <Sparkles size={14} className="text-[#0D9488]" />
-                <span>Programs & Detailed Information</span>
-              </motion.div>
+            <motion.div style={{ y: heroTextY }} className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C8102E] uppercase tracking-wider shadow-2xs">
+                <Sparkles size={14} className="text-[#C8102E]" />
+                <span>ACADEMIC DISCOVERY CATALOG</span>
+              </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#0F1B2B] tracking-tight leading-tight"
-              >
-                Programs & Detail Information
-              </motion.h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+                Programs & Detailed <span className="text-[#C8102E]">Information</span>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-sm sm:text-base text-[#667085] max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed"
-              >
-                Choose from over 20+ accredited undergraduate, postgraduate, diploma, and Ph.D. degrees designed to empower your career ambitions.
-              </motion.p>
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                Choose from accredited undergraduate, postgraduate, diploma, and Ph.D. degrees designed to empower your career ambitions.
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4"
-              >
-                <button
-                  onClick={scrollToDiscovery}
-                  className="px-6 py-3 rounded-[8px] bg-[#0F1B2B] hover:bg-[#1a2c42] text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm inline-flex items-center gap-2 cursor-pointer"
-                >
-                  <span>Explore Programs</span>
-                  <ArrowRight size={16} className="text-[#2DD4BF]" />
-                </button>
-              </motion.div>
-            </div>
-
-            {/* Right Graduation Hero Image Showcase */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 relative"
-            >
-              <div className="relative mx-auto max-w-md lg:max-w-none rounded-[16px] overflow-hidden border border-slate-200 shadow-xl bg-white group">
-                <img
-                  src={graduationHeroImg}
-                  alt="Graduation Celebration - Sandip University Programs"
-                  className="w-full h-[360px] sm:h-[420px] object-cover object-center group-hover:scale-103 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F1B2B]/70 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-[12px] bg-white/90 backdrop-blur-md border border-white/20 text-[#0F1B2B] shadow-md space-y-1">
-                  <span className="text-[10px] font-bold text-[#0D9488] uppercase tracking-wider block">
-                    Degrees Awarded 2026–27
-                  </span>
-                  <p className="text-xs font-serif font-bold text-[#0F1B2B]">
-                    Transforming Passion into Professional Success
-                  </p>
-                </div>
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <MagneticButton onClick={scrollToDiscovery}>
+                  <button className="px-8 py-4 rounded-xl bg-[#C8102E] hover:bg-red-700 text-white text-sm font-bold shadow-lg shadow-red-600/25 transition-all duration-300 flex items-center gap-2 cursor-pointer">
+                    <span>Explore Programs</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </MagneticButton>
               </div>
             </motion.div>
+
+            {/* Right Graduation Showcase Hero Image */}
+            <div className="lg:col-span-5 relative">
+              <CurtainReveal direction="up">
+                <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden border-2 border-slate-200 shadow-2xl bg-white group">
+                  <motion.img
+                    style={{ scale: heroImageScale }}
+                    src={graduationHeroImg}
+                    alt="Graduation Celebration - Sandip University Programs"
+                    className="w-full h-[380px] sm:h-[440px] object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/20 text-slate-900 shadow-xl space-y-1">
+                    <span className="text-[10px] font-extrabold text-[#C8102E] uppercase tracking-wider block">
+                      DEGREES AWARDED 2026–27
+                    </span>
+                    <p className="text-xs font-bold text-slate-900">
+                      Transforming Passion into Professional Success
+                    </p>
+                  </div>
+                </div>
+              </CurtainReveal>
+            </div>
 
           </div>
         </section>
 
         {/* ==========================================
-            2. SEARCH & FILTER BAR (Sticky)
+            2. SEARCH & FILTER BAR (Sticky Glassmorphism)
         ========================================== */}
-        <section ref={discoveryRef} className="sticky top-0 z-30 bg-[#FBFBFA]/95 backdrop-blur-md py-4 border-b border-slate-200 shadow-2xs">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+        <section ref={discoveryRef} className="sticky top-0 z-30 bg-white/90 backdrop-blur-md py-4 border-b border-slate-200/90 shadow-md">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
             
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               
               {/* Search Bar Input */}
               <div className="relative flex-1 min-w-[280px]">
@@ -192,17 +182,17 @@ export default function AdmissionPrograms() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search programs by name or keyword..."
-                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-[8px] text-xs sm:text-sm text-[#0F1B2B] placeholder-[#667085] focus:outline-none focus:border-[#0D9488] transition-colors shadow-2xs"
+                  placeholder="Search programs by name, specialization, or keyword..."
+                  className="w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#C8102E] focus:bg-white transition-colors shadow-2xs font-medium"
                 />
                 <SearchIcon
-                  size={16}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#667085] pointer-events-none"
+                  size={18}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#667085] hover:text-[#0F1B2B]"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900"
                   >
                     <X size={16} />
                   </button>
@@ -213,17 +203,17 @@ export default function AdmissionPrograms() {
               <div className="flex flex-wrap items-center gap-2">
                 
                 {/* Level Buttons */}
-                <div className="flex items-center gap-1 bg-white p-1 rounded-[8px] border border-slate-200 shadow-2xs">
+                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs overflow-x-auto">
                   {levelOptions.map((lvl) => {
                     const isActive = selectedLevel === lvl.id;
                     return (
                       <button
                         key={lvl.id}
                         onClick={() => setSelectedLevel(lvl.id)}
-                        className={`px-3 py-1.5 rounded-[6px] text-xs font-medium transition-colors cursor-pointer ${
+                        className={`px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                           isActive
-                            ? "bg-[#0F1B2B] text-white shadow-2xs"
-                            : "text-[#667085] hover:text-[#0F1B2B] hover:bg-slate-50"
+                            ? "bg-[#C8102E] text-white shadow-md"
+                            : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
                         }`}
                       >
                         {lvl.label}
@@ -233,11 +223,11 @@ export default function AdmissionPrograms() {
                 </div>
 
                 {/* School Dropdown */}
-                <div className="relative min-w-[200px]">
+                <div className="relative min-w-[210px]">
                   <select
                     value={selectedSchool}
                     onChange={(e) => setSelectedSchool(e.target.value)}
-                    className="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-[8px] text-xs font-medium text-[#0F1B2B] focus:outline-none focus:border-[#0D9488] appearance-none pr-9 cursor-pointer shadow-2xs"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:border-[#C8102E] appearance-none pr-9 cursor-pointer shadow-2xs"
                   >
                     {SCHOOLS_LIST.map((sch) => (
                       <option key={sch.id} value={sch.id}>
@@ -247,7 +237,7 @@ export default function AdmissionPrograms() {
                   </select>
                   <ChevronDown
                     size={14}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#667085] pointer-events-none"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
                   />
                 </div>
 
@@ -255,9 +245,9 @@ export default function AdmissionPrograms() {
             </div>
 
             {/* Results Counter Bar */}
-            <div className="flex items-center justify-between text-xs text-[#667085] pt-1">
-              <span>Dynamic academic program catalog</span>
-              <span className="font-semibold text-[#0F1B2B]">
+            <div className="flex items-center justify-between text-xs text-slate-500 pt-1 font-semibold">
+              <span>National Academic Degree Catalog</span>
+              <span className="font-bold text-slate-900">
                 Showing {filteredPrograms.length} of {ALL_PROGRAMS_DATA.length} programs
               </span>
             </div>
@@ -266,18 +256,18 @@ export default function AdmissionPrograms() {
         </section>
 
         {/* ==========================================
-            3. PROGRAM CARDS (Responsive Grid)
+            3. PROGRAM CARDS GRID (Staggered Layout)
         ========================================== */}
-        <section className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {filteredPrograms.length === 0 ? (
-            <div className="text-center py-16 bg-white rounded-[12px] border border-slate-200 space-y-3">
-              <GraduationCap size={36} className="mx-auto text-slate-400" />
-              <h3 className="text-base font-serif font-bold text-[#0F1B2B]">
+            <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 space-y-4 shadow-sm">
+              <GraduationCap size={44} className="mx-auto text-slate-400" />
+              <h3 className="text-lg font-bold text-slate-900">
                 No matching programs found
               </h3>
-              <p className="text-xs text-[#667085]">
-                Try adjusting your search criteria or clearing filter selections.
+              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                Try adjusting your search query or choosing a different academic school.
               </p>
               <button
                 onClick={() => {
@@ -285,22 +275,35 @@ export default function AdmissionPrograms() {
                   setSelectedLevel("all");
                   setSelectedSchool("all");
                 }}
-                className="px-4 py-2 rounded-[8px] bg-slate-100 hover:bg-slate-200 text-[#0F1B2B] text-xs font-semibold transition-colors"
+                className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors shadow-md"
               >
                 Reset All Filters
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPrograms.map((prog) => (
-                <ProgramCard
-                  key={prog.id}
-                  program={prog}
-                  getBadgeStyle={getBadgeStyle}
-                  onViewDetails={setActiveDetailProgram}
-                />
-              ))}
-            </div>
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              <AnimatePresence>
+                {filteredPrograms.map((prog) => (
+                  <motion.div
+                    key={prog.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ProgramCard
+                      program={prog}
+                      getBadgeStyle={getBadgeStyle}
+                      onViewDetails={setActiveDetailProgram}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           )}
 
         </section>

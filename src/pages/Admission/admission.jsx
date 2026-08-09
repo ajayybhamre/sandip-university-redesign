@@ -36,6 +36,16 @@ import { FaWhatsapp } from "react-icons/fa";
 import applyStudentsImg from "../../assets/images/apply-students.png";
 
 import AnimatedHeroHeading from "../../components/AnimatedHeroHeading";
+import TextReveal from "../../components/Animated/TextReveal";
+import AnimatedSection, { AnimatedItem } from "../../components/Animated/AnimatedSection";
+import TiltCard from "../../components/Animated/TiltCard";
+import MagneticButton from "../../components/Animated/MagneticButton";
+import SpotlightCard from "../../components/Animated/SpotlightCard";
+import CharacterReveal from "../../components/Animated/CharacterReveal";
+import CurtainReveal from "../../components/Animated/CurtainReveal";
+import ScrollTimelineRoadmap from "../../components/Animated/ScrollTimelineRoadmap";
+import Text3D from "../../components/Animated/Text3D";
+import Card3D from "../../components/Animated/Card3D";
 
 const stepsData = [
   {
@@ -278,71 +288,9 @@ function ApplyNow() {
 
 
       {/* ==========================================
-          2. 5-STEP APPLICATION PROCESS (CLEAN CARD DESIGN - NO LINE BEHIND)
+          2. SCROLL-DRIVEN 5-STEP APPLICATION ROADMAP
       ========================================== */}
-      <section className="py-20 md:py-28 bg-[#FAF8F5] dark:bg-[#0b0b0c] relative overflow-hidden">
-
-        {/* Background Dot Grid Pattern (5% Opacity) */}
-        <div className="absolute inset-0 bg-[radial-gradient(#C8102E_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none"></div>
-
-        {/* Soft Red Ambient Gradient Glow Behind Center */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-red-500/10 via-[#C8102E]/15 to-amber-500/10 blur-3xl rounded-full pointer-events-none"></div>
-
-        {/* Floating Ambient Circles */}
-        <div className="absolute top-12 left-10 w-24 h-24 rounded-full bg-red-400/10 blur-xl pointer-events-none animate-pulse"></div>
-        <div className="absolute bottom-12 right-10 w-32 h-32 rounded-full bg-rose-400/10 blur-xl pointer-events-none animate-pulse" style={{ animationDuration: '4s' }}></div>
-
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-
-          {/* Section Heading */}
-          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/50 text-[#C8102E] text-xs font-extrabold uppercase tracking-wider mb-3 border border-red-100 dark:border-red-900/30 shadow-xs">
-              <ClipboardList className="w-3.5 h-3.5" /> Admissions Roadmap
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
-              5-Step Application Process
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-3 font-medium">
-              A transparent, step-by-step roadmap to secure your seat at Sandip University.
-            </p>
-          </div>
-
-          {/* Staggered Motion Cards Grid (NO LINE BEHIND CARDS) */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 relative z-10"
-          >
-            {stepsData.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                className="group relative bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-7 border border-gray-200/80 dark:border-zinc-800 shadow-lg hover:shadow-2xl hover:shadow-red-500/15 hover:border-[#C8102E] hover:-translate-y-2.5 transition-all duration-300 flex flex-col items-center text-center cursor-pointer"
-              >
-
-                {/* Center Top Number Badge Box (Matching Screenshot 2) */}
-                <div className="w-13 h-13 rounded-2xl bg-red-50 dark:bg-red-950/40 text-[#C8102E] dark:text-red-400 font-black text-xl flex items-center justify-center mx-auto mb-5 group-hover:bg-[#C8102E] group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-red-600/30">
-                  {item.step}
-                </div>
-
-                {/* Step Title */}
-                <h3 className="text-base sm:text-lg font-extrabold text-gray-900 dark:text-white mb-2 text-center group-hover:text-[#C8102E] transition-colors">
-                  {item.title}
-                </h3>
-
-                {/* Step Description */}
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed text-center font-medium">
-                  {item.desc}
-                </p>
-
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
-      </section>
+      <ScrollTimelineRoadmap />
 
 
       {/* ==========================================

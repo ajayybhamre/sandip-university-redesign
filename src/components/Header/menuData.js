@@ -21,6 +21,7 @@ import {
   FileEdit,
   Globe,
   Sparkles,
+  Phone,
 } from "lucide-react";
 
 const menuData = [
@@ -73,35 +74,35 @@ const menuData = [
         iconType: "globe",
         links: [
           {
-            title: "Apply Now",
-            path: "/apply",
+            title: "Overview",
+            path: "/international-admission/overview",
+            icon: Globe,
+          },
+          {
+            title: "How to Apply",
+            path: "/international-admission/how-to-apply",
             icon: FileEdit,
             badge: "NEW",
           },
           {
             title: "Programs",
-            path: "/programs",
+            path: "/international-admission/programs",
             icon: BookOpen,
           },
           {
-            title: "Admission Procedure",
-            path: "/admission-process",
-            icon: ClipboardCheck,
+            title: "International Partnerships",
+            path: "/international-admission/partnerships",
+            icon: Users,
           },
           {
-            title: "Visa & Transfer Support",
-            path: "/international",
-            icon: Globe,
-          },
-          {
-            title: "Scholarships",
-            path: "/scholarships",
-            icon: IndianRupee,
-          },
-          {
-            title: "International Help Desk",
-            path: "/contact",
+            title: "FAQs",
+            path: "/international-admission/faqs",
             icon: HelpCircle,
+          },
+          {
+            title: "Contact Us",
+            path: "/international-admission/contact",
+            icon: Phone,
           },
         ],
       },
