@@ -109,7 +109,7 @@ function Navbar() {
               alt="logo"
               className={`transition-all duration-500 w-auto ${scrolled
                   ? "h-8 sm:h-9 md:h-10"
-                  : "h-10 sm:h-12 md:h-14"
+                  : "h-10 sm:h-10 md:h-10"
                 }`}
             />
           </Link>
@@ -121,7 +121,7 @@ function Navbar() {
             className={`
 flex items-center
 transition-all duration-500
-${scrolled ? "gap-6" : "gap-8"}
+${scrolled ? "gap-6" : "gap-6"}
 `}
           >
 

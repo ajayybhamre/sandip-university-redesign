@@ -63,6 +63,7 @@ course:"B.Tech CSE",
 achievement:"Software Engineer",
 company:"Microsoft",
 package:"32 LPA",
+
 image:student1,
 logo:microsoftLogo,
 category:"Placement"
