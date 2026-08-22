@@ -15,6 +15,18 @@ import FloatingAction from "./components/FloatingAction";
 import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
 import CourseDetails from "./schools/SchoolEngenering/CourseDetails";
 import Contact from "./pages/contact/Contact";
+import Admission from "./pages/Admission/Admission";
+import AdmissionPrograms from "./pages/Admission/AdmissionPrograms";
+import DocumentList from "./pages/Admission/DocumentList";
+import Scholarships from "./pages/Admission/Scholarships";
+import Help from "./pages/Admission/Help";
+import InternationalOverviewPage from "./pages/InternationalAdmission/Overview";
+import HowToApplyPage from "./pages/InternationalAdmission/HowToApply";
+import InternationalProgramsPage from "./pages/InternationalAdmission/ProgramsOffered";
+import InternationalPartnershipsPage from "./pages/InternationalAdmission/Partnerships";
+import InternationalFAQPage from "./pages/InternationalAdmission/FAQ";
+import ContactSupportPage from "./pages/InternationalAdmission/ContactSupport";
+import ScrollProgressBar from "./components/Animated/ScrollProgressBar";
 import ScrollToTop from "./ScrollToTop";
 
 
@@ -22,10 +34,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     AOS.init({
-        duration:1000,
-        once:true,
+      duration: 1000,
+      once: true,
     });
-},[]);
+  }, []);
 
   useEffect(() => {
     // Hide preloader after 1.8 seconds
@@ -45,29 +57,51 @@ function App() {
 
 
   return (
-       <> <CursorArrow />
-    <BrowserRouter>
-      <ScrollToTop />
-    <Popup />
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <> <CursorArrow />
+      <BrowserRouter>
+        <ScrollProgressBar />
+        <ScrollToTop />
+        <Popup />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/apply" element={<Admission />} />
+          <Route path="/programs" element={<AdmissionPrograms />} />
+          <Route path="/eligibility" element={<AdmissionPrograms />} />
+          <Route path="/documents" element={<DocumentList />} />
+          <Route path="/brochure" element={<DocumentList />} />
+          <Route path="/scholarships" element={<Scholarships />} />
+          <Route path="/fee-structure" element={<Scholarships />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/international-admission/overview" element={<InternationalOverviewPage />} />
+          <Route path="/international" element={<InternationalOverviewPage />} />
+          <Route path="/international-admission/how-to-apply" element={<HowToApplyPage />} />
+          <Route path="/admission-process" element={<HowToApplyPage />} />
+          <Route path="/international-admission/programs" element={<InternationalProgramsPage />} />
+          <Route path="/programs-offered" element={<InternationalProgramsPage />} />
+          <Route path="/international-admission/partnerships" element={<InternationalPartnershipsPage />} />
+          <Route path="/international-partnerships" element={<InternationalPartnershipsPage />} />
+          <Route path="/international-admission/faqs" element={<InternationalFAQPage />} />
+          <Route path="/international-faqs" element={<InternationalFAQPage />} />
+          <Route path="/international-admission/contact" element={<ContactSupportPage />} />
+          <Route path="/how-to-reach" element={<ContactSupportPage />} />
+          <Route path="/contact" element={<ContactSupportPage />} />
 
-        {/* Future Pages */}
-        <Route path="/about" element={<About/>} />
-        <Route path="/academic" element={<Academics/>} />
-         <Route path="/placement" element={<Placement/>} />
-          <Route path="/gallery" element={<Gallery/>} />
-           <Route path="/schools/engineering" element={<SchoolEngineering/>} />
-           <Route path="/contact" element={<Contact/>} />
-           <Route
-  path="/schools/engineering/:courseSlug"
-  element={<CourseDetails/>}
-/>
-        
-      </Routes>
-      
-            <FloatingAction />
-    </BrowserRouter></>
+          {/* Future Pages */}
+          <Route path="/about" element={<About />} />
+          <Route path="/academic" element={<Academics />} />
+          <Route path="/placement" element={<Placement />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/schools/engineering" element={<SchoolEngineering />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/schools/engineering/:courseSlug"
+            element={<CourseDetails />}
+          />
+
+        </Routes>
+
+        <FloatingAction />
+      </BrowserRouter></>
   );
 }
 

@@ -10,13 +10,13 @@ import {
   FaEnvelopeOpenText,
   FaArrowUp,
   FaAngleRight,
-  
+
 } from "react-icons/fa";
 import logo from "../assets/images/logo-dark.png";
 
 const Footer = () => {
   return (
-   <footer className="bg-black text-gray-300 rounded-t-none md:rounded-t-[60px] lg:rounded-t-[100px] overflow-hidden mt-0">
+    <footer className="bg-black text-gray-300 rounded-t-none md:rounded-t-[60px] lg:rounded-t-[100px] overflow-hidden mt-0">
       {/* Top Section */}
       <div className="max-w-[1600px] mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
@@ -56,90 +56,89 @@ const Footer = () => {
 
           {/* Quick Links */}
           {/* Quick Links */}
-<div>
-  <h3 className="font-semibold text-white mb-4 uppercase text-sm">
-    Quick Links
-  </h3>
+          <div>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm">
+              Quick Links
+            </h3>
 
-  <ul className="space-y-3 text-sm">
-    {[
-      "About Us",
-      "Our Leadership",
-      "Rankings & Awards",
-      "News & Media",
-      "Careers",
-      "Contact Us",
-    ].map((item, index) => (
-      <li key={index}>
-        <a
-          href="/"
-          className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
-        >
-          <FaAngleRight className="text-white-400 text-xs" />
-          {item}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+            <ul className="space-y-3 text-sm">
+              {[
+                "About Us",
+                "Our Leadership",
+                "Rankings & Awards",
+                "News & Media",
+                "Careers",
+                "Contact Us",
+              ].map((item, index) => (
+                <li key={index}>
+                  <a
+                    href="/"
+                    className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
+                  >
+                    <FaAngleRight className="text-white-400 text-xs" />
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Admissions */}
-         {/* Admissions */}
-<div>
-  <h3 className="font-semibold text-white mb-4 uppercase text-sm">
-    Admissions
-  </h3>
+          {/* Admissions */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm">
+              Admissions
+            </h3>
 
-  <ul className="space-y-3 text-sm">
-    {[
-      "Apply Now",
-      "Admission Process",
-      "Eligibility",
-      "Fees & Scholarships",
-      "Downloads",
-      "Important Dates",
-    ].map((item, index) => (
-      <li key={index}>
-        <a
-          href="/"
-          className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
-        >
-          <FaAngleRight className="text-white-400 text-xs" />
-          {item}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+            <ul className="space-y-3 text-sm">
+              {[
+                "Apply Now",
+                "Admission Process",
+                "Scholarships",
+                "Downloads",
+                "Important Dates",
+              ].map((item, index) => (
+                <li key={index}>
+                  <a
+                    href="/"
+                    className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
+                  >
+                    <FaAngleRight className="text-white-400 text-xs" />
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Programs */}
           {/* Programs */}
-<div>
-  <h3 className="font-semibold text-white mb-4 uppercase text-sm">
-    Programs
-  </h3>
+          <div>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm">
+              Programs
+            </h3>
 
-  <ul className="space-y-3 text-sm">
-    {[
-      "Engineering",
-      "Management",
-      "Pharmacy",
-      "Law",
-      "Science",
-      "Agriculture",
-    ].map((item, index) => (
-      <li key={index}>
-        <a
-          href="/"
-          className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
-        >
-          <FaAngleRight className="text-white-400 text-xs" />
-          {item}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
+            <ul className="space-y-3 text-sm">
+              {[
+                "Engineering",
+                "Management",
+                "Pharmacy",
+                "Law",
+                "Science",
+                "Agriculture",
+              ].map((item, index) => (
+                <li key={index}>
+                  <a
+                    href="/"
+                    className="flex items-center gap-2 hover:text-white transition-all duration-300 hover:translate-x-1"
+                  >
+                    <FaAngleRight className="text-white-400 text-xs" />
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Contact */}
           <div>

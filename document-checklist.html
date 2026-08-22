@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title-[#1C1917]">Required Documents Checklist | Sandip University Redesign</title>
+  
+  <!-- Google Fonts: Fraunces (Serif), Inter (Sans), JetBrains Mono (Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS CUSTOM PROPERTIES (Easy Palette Retheming)
+       ========================================================================== */
+    :root {
+      /* Theme Palette: Maroon Accent on Warm Cream Surface */
+      --bg: #FAF8F5;
+      --card-bg: #FFFFFF;
+      --card-hover: #FFFDFC;
+      --border: #E8E3DA;
+      --border-subtle: #F0ECE4;
+      
+      --accent: #C8102E;
+      --accent-hover: #A00D24;
+      --accent-light: #FDF2F4;
+      --accent-border: #F8C8CE;
+      
+      --success: #16A34A;
+      --success-light: #F0FDF4;
+      --success-border: #BBF7D0;
+      
+      --text-primary: #1C1917;
+      --text-secondary: #57534E;
+      --text-muted: #A8A29E;
+      
+      /* Typography */
+      --font-serif: 'Fraunces', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Measurements */
+      --radius-card: 14px;
+      --radius-pill: 9999px;
+      --radius-check: 6px;
+      
+      --shadow-card: 0 4px 20px -2px rgba(28, 25, 23, 0.04);
+      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Global Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px 80px 20px;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       HEADER & OVERALL PROGRESS METER
+       ========================================================================== */
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    /* Progress Meter Box */
+    .meter-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meter-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meter-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--accent-border);
+      transition: var(--transition-smooth);
+    }
+
+    .meter-badge.is-complete {
+      color: var(--success);
+      background: var(--success-light);
+      border-color: var(--success-border);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border-subtle);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent) 0%, #E05263 100%);
+      border-radius: var(--radius-pill);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .progress-bar-fill.is-complete {
+      background: var(--success);
+    }
+
+    .meter-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .btn-action {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-input);
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action:hover {
+      color: var(--text-primary);
+      border-color: var(--text-secondary);
+      background: var(--bg);
+    }
+
+    /* ==========================================================================
+       CARDS GRID (Auto-fit min ~280px)
+       ========================================================================== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+
+      /* Fade and rise entrance animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeRise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Staggered entrance delay per card */
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.26s; }
+
+    @keyframes fadeRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      border-color: #D4CDBF;
+      box-shadow: 0 8px 30px -4px rgba(28, 25, 23, 0.08);
+    }
+
+    /* Completed Card Visual State Shift (Green styling) */
+    .card.is-complete {
+      border-color: var(--success-border);
+      background: var(--card-bg);
+    }
+
+    .card.is-complete .card-header {
+      border-bottom-color: var(--success-border);
+    }
+
+    .card.is-complete .card-icon {
+      background: var(--success-light);
+      color: var(--success);
+      border-color: var(--success-border);
+    }
+
+    .card.is-complete .card-fraction {
+      color: var(--success);
+      background: var(--success-light);
+    }
+
+    .card.is-complete .mini-bar-fill {
+      background: var(--success);
+    }
+
+    /* Card Header */
+    .card-header {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .card-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: var(--transition-smooth);
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .card-fraction {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .mini-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: var(--border-subtle);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .mini-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+      transition: width 0.3s ease;
+    }
+
+    /* Document Item Rows */
+    .rows-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .doc-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .doc-row:hover {
+      background: var(--bg);
+    }
+
+    .doc-row.is-checked {
+      background: var(--bg);
+    }
+
+    .doc-row.is-checked .doc-label {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    /* Custom Checkbox Animation */
+    .checkbox-custom {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--text-muted);
+      border-radius: var(--radius-check);
+      background: var(--card-bg);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .doc-row:hover .checkbox-custom {
+      border-color: var(--accent);
+    }
+
+    .doc-row.is-checked .checkbox-custom {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .card.is-complete .doc-row.is-checked .checkbox-custom {
+      background: var(--success);
+      border-color: var(--success);
+    }
+
+    /* SVG Checkmark Draw Animation */
+    .check-svg {
+      width: 12px;
+      height: 12px;
+      stroke: #FFFFFF;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      transition: stroke-dashoffset 0.25s ease-in-out;
+    }
+
+    .doc-row.is-checked .check-svg {
+      stroke-dashoffset: 0;
+    }
+
+    /* Label & Tag */
+    .doc-info {
+      flex: 1;
+    }
+
+    .doc-label {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.35;
+      transition: var(--transition-smooth);
+    }
+
+    .doc-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--border-subtle);
+      padding: 1px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .doc-tag.tag-mandatory {
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    .doc-tag.tag-conditional {
+      color: #D97706;
+      background: #FEF3C7;
+    }
+
+    /* ==========================================================================
+       QUIET FOOTNOTES SECTION
+       ========================================================================== */
+    .footnotes {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footnotes-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footnotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .footnote-item {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .footnote-item strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .footnote-item p {
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE & PREFERS-REDUCED-MOTION
+       ========================================================================== */
+    @media (max-width: 640px) {
+      body {
+        padding: 24px 16px 60px 16px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .meter-box {
+        padding: 16px;
+      }
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .card {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .progress-bar-fill, .mini-bar-fill, .check-svg, .doc-row, .checkbox-custom {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- PAGE HEADER & OVERALL PROGRESS METER -->
+    <header class="header">
+      <span class="eyebrow">Sandip University · Admission 2026-27</span>
+      <h1 class="title">Required Documents Checklist</h1>
+      <p class="subtitle">Collect and verify all required marksheets, certificates, and identity records before visiting the campus admission desk.</p>
+      
+      <!-- Overall Progress Box -->
+      <div class="meter-box">
+        <div class="meter-header">
+          <div class="meter-title">
+            <span>Overall Collection Progress</span>
+            <span id="meterBadge" class="meter-badge">0 of 15 collected · 0%</span>
+          </div>
+        </div>
+
+        <div class="progress-bar-bg">
+          <div id="meterFill" class="progress-bar-fill"></div>
+        </div>
+
+        <div class="meter-actions">
+          <button class="btn-action" onclick="selectAll()">Select All</button>
+          <button class="btn-action" onclick="resetAll()">Reset All</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- CARDS GRID -->
+    <main className="grid" id="cardsGrid">
+      
+      <!-- CARD 1: To submit in original -->
+      <div class="card" id="card-original">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-title-box">
+              <div class="card-icon">📜</div>
+              <h2 class="card-title">To submit in original</h2>
+            </div>
+            <span class="card-fraction" id="fraction-original">0/3</span>
+          </div>
+          <div class="mini-bar-bg">
+            <div class="mini-bar-fill" id="minibar-original"></div>
+          </div>
+        </div>
+
+        <div class="rows-list">
+          <div class="doc-row" data-card="original" data-id="tc">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">School / College Leaving Certificate (TC)</div>
+              <span class="doc-tag tag-mandatory">original required</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="original" data-id="migration">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Migration Certificate</div>
+              <span class="doc-tag tag-conditional">outside board</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="original" data-id="gap">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Educational Gap Affidavit</div>
+              <span class="doc-tag tag-conditional">if applicable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Attested photocopies -->
+      <div class="card" id="card-photocopies">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-title-box">
+              <div class="card-icon">📑</div>
+              <h2 class="card-title">Attested photocopies</h2>
+            </div>
+            <span class="card-fraction" id="fraction-photocopies">0/5</span>
+          </div>
+          <div class="mini-bar-bg">
+            <div class="mini-bar-fill" id="minibar-photocopies"></div>
+          </div>
+        </div>
+
+        <div class="rows-list">
+          <div class="doc-row" data-card="photocopies" data-id="marksheets">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">10th & 12th Qualifying Marksheets</div>
+              <span class="doc-tag tag-mandatory">2 attested copies</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="photocopies" data-id="degree">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Degree Passing Certificate</div>
+              <span class="doc-tag">attested copy</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="photocopies" data-id="aadhaar">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Aadhaar Identity Card</div>
+              <span class="doc-tag tag-mandatory">both sides</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="photocopies" data-id="domicile">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Age, Nationality & Domicile Certificate</div>
+              <span class="doc-tag tag-mandatory">domicile quota</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="photocopies" data-id="equivalence">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">AIU Equivalence Certificate</div>
+              <span class="doc-tag tag-conditional">foreign / IB board</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Photos & scorecards -->
+      <div class="card" id="card-photos">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-title-box">
+              <div class="card-icon">📸</div>
+              <h2 class="card-title">Photos & scorecards</h2>
+            </div>
+            <span class="card-fraction" id="fraction-photos">0/2</span>
+          </div>
+          <div class="mini-bar-bg">
+            <div class="mini-bar-fill" id="minibar-photos"></div>
+          </div>
+        </div>
+
+        <div class="rows-list">
+          <div class="doc-row" data-card="photos" data-id="passport-photos">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Recent Passport Size Photographs (4 Nos.)</div>
+              <span class="doc-tag tag-mandatory">white background</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="photos" data-id="scorecard">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Entrance Exam Scorecard</div>
+              <span class="doc-tag tag-conditional">CET / JEE / SU-JEE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4: Conditional certificates -->
+      <div class="card" id="card-conditional">
+        <div class="card-header">
+          <div class="card-header-top">
+            <div class="card-title-box">
+              <div class="card-icon">🏷</div>
+              <h2 class="card-title">Conditional certificates</h2>
+            </div>
+            <span class="card-fraction" id="fraction-conditional">0/5</span>
+          </div>
+          <div class="mini-bar-bg">
+            <div class="mini-bar-fill" id="minibar-conditional"></div>
+          </div>
+        </div>
+
+        <div class="rows-list">
+          <div class="doc-row" data-card="conditional" data-id="caste">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Caste Certificate & Validity</div>
+              <span class="doc-tag tag-conditional">scholarship</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="conditional" data-id="pwd">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Differently Abled (PWD) Certificate</div>
+              <span class="doc-tag tag-conditional">pwd quota</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="conditional" data-id="defence">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Defence Personnel Dependent Certificate</div>
+              <span class="doc-tag tag-conditional">defence quota</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="conditional" data-id="gazette">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Government Gazette for Name Change</div>
+              <span class="doc-tag tag-conditional">if applicable</span>
+            </div>
+          </div>
+
+          <div class="doc-row" data-card="conditional" data-id="jk-migrant">
+            <div class="checkbox-custom">
+              <svg class="check-svg" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg>
+            </div>
+            <div class="doc-info">
+              <div class="doc-label">Jammu & Kashmir Migrant Certificate</div>
+              <span class="doc-tag tag-conditional">pmsss quota</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- QUIET FOOTNOTES SECTION -->
+    <footer class="footnotes">
+      <h3 class="footnotes-title">Important Verification Footnotes</h3>
+      
+      <div class="footnotes-grid">
+        <div class="footnote-item">
+          <strong>Original Document Retention</strong>
+          <p>Original Transfer Certificate (TC) and Migration Certificate will be permanently retained after eligibility verification. Keep 5–10 photocopies for your records.</p>
+        </div>
+
+        <div class="footnote-item">
+          <strong>Photocopy Submission</strong>
+          <p>Bring 2 complete sets of crisp, self-attested photocopies of all marksheets alongside the original certificates.</p>
+        </div>
+
+        <div class="footnote-item">
+          <strong>Foreign & NRI Students</strong>
+          <p>AIU Equivalence Certificate, valid Student Visa, and UGC/AICTE compliance certificates are mandatory for international curricula.</p>
+        </div>
+
+        <div class="footnote-item">
+          <strong>Name Mismatch Guidelines</strong>
+          <p>Any discrepancy in candidate name across marksheets and Aadhaar must be supported by an official Government Gazette notification or affidavit.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- VANILLA JS LOGIC -->
+  <script>
+    (function () {
+      const STORAGE_KEY = "sandip_doc_checklist_state";
+      const rows = document.querySelectorAll(".doc-row");
+      const cards = ["original", "photocopies", "photos", "conditional"];
+
+      // Restore saved state from LocalStorage
+      let savedState = {};
+      try {
+        savedState = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (e) {
+        savedState = {};
+      }
+
+      // Attach Click Listeners
+      rows.forEach(row => {
+        const id = row.getAttribute("data-id");
+        
+        // Restore previous state if saved
+        if (savedState[id]) {
+          row.classList.add("is-checked");
+        }
+
+        row.addEventListener("click", () => {
+          row.classList.toggle("is-checked");
+          saveAndUpdate();
+        });
+      });
+
+      // Update state, card counts, progress bars, and success states
+      function saveAndUpdate() {
+        const newState = {};
+        let totalChecked = 0;
+        const totalDocs = rows.length;
+
+        // Calculate card-by-card progress
+        cards.forEach(cardId => {
+          const cardRows = document.querySelectorAll(`.doc-row[data-card="${cardId}"]`);
+          let cardChecked = 0;
+
+          cardRows.forEach(row => {
+            const id = row.getAttribute("data-id");
+            if (row.classList.contains("is-checked")) {
+              newState[id] = true;
+              cardChecked++;
+              totalChecked++;
+            }
+          });
+
+          // Update card fraction & mini progress bar
+          const fractionEl = document.getElementById(`fraction-${cardId}`);
+          const miniBarEl = document.getElementById(`minibar-${cardId}`);
+          const cardEl = document.getElementById(`card-${cardId}`);
+
+          if (fractionEl) fractionEl.textContent = `${cardChecked}/${cardRows.length}`;
+          if (miniBarEl) {
+            const pct = Math.round((cardChecked / cardRows.length) * 100);
+            miniBarEl.style.width = `${pct}%`;
+          }
+
+          // Toggle success state on card when all items in card are checked!
+          if (cardEl) {
+            if (cardChecked === cardRows.length && cardRows.length > 0) {
+              cardEl.classList.add("is-complete");
+            } else {
+              cardEl.classList.remove("is-complete");
+            }
+          }
+        });
+
+        // Update overall top meter
+        const overallPct = Math.round((totalChecked / totalDocs) * 100);
+        const meterFill = document.getElementById("meterFill");
+        const meterBadge = document.getElementById("meterBadge");
+
+        if (meterFill) {
+          meterFill.style.width = `${overallPct}%`;
+          if (totalChecked === totalDocs) {
+            meterFill.classList.add("is-complete");
+          } else {
+            meterFill.classList.remove("is-complete");
+          }
+        }
+
+        if (meterBadge) {
+          meterBadge.textContent = `${totalChecked} of ${totalDocs} collected · ${overallPct}%`;
+          if (totalChecked === totalDocs) {
+            meterBadge.classList.add("is-complete");
+          } else {
+            meterBadge.classList.remove("is-complete");
+          }
+        }
+
+        // Persist to LocalStorage
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(newState));
+        } catch (e) {}
+      }
+
+      // Global Select All action
+      window.selectAll = function () {
+        rows.forEach(row => row.classList.add("is-checked"));
+        saveAndUpdate();
+      };
+
+      // Global Reset All action
+      window.resetAll = function () {
+        rows.forEach(row => row.classList.remove("is-checked"));
+        saveAndUpdate();
+      };
+
+      // Initial calculation on page load
+      saveAndUpdate();
+    })();
+  </script>
+</body>
+</html>
