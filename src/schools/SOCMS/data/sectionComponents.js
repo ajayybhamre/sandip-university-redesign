@@ -1,5 +1,4 @@
-
-import About from "../../SchoolEngenering/sections/About";
+import About from "../../SOCMS/sections/About";
 
 const sectionComponents = { about: About };
 

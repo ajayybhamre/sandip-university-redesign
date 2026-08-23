@@ -48,8 +48,6 @@ function MegaMenu({ sections }) {
             <h3
               className="
                 font-bold
-                text-red-700
-                dark:text-red-400
                 uppercase
                 text-sm
                 tracking-wide
@@ -60,7 +58,13 @@ function MegaMenu({ sections }) {
                 dark:border-red-900
               "
             >
-              {section.heading}
+              {section.heading === "Schools" ? (
+                <Link to="/schools" className="text-gray-900 dark:text-white hover:text-red-600 transition-colors">
+                  {section.heading}
+                </Link>
+              ) : (
+                <span className="text-red-700 dark:text-red-400">{section.heading}</span>
+              )}
             </h3>
 
 

@@ -49,6 +49,23 @@ const seoData = {
     url:
       "https://yourdomain.com/contact",
   },
+
+  schools: {
+    title:
+      "Schools | Sandip University",
+
+    description:
+      "Explore Sandip University's seven schools and discover undergraduate and postgraduate programs for your future.",
+
+    keywords:
+      "Sandip University schools, Engineering, Computer Science, Management, Science, Pharmacy, Law, Design",
+
+    image:
+      "https://yourdomain.com/schools.jpg",
+
+    url:
+      "https://yourdomain.com/schools",
+  },
 };
 
 export default seoData;

@@ -12,8 +12,7 @@ import Academics from "./pages/Academics/Academics";
 import Placement from "./pages/Placement/Placement";
 import Gallery from "./pages/Gallery/Gallery";
 import FloatingAction from "./components/FloatingAction";
-import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
-import CourseDetails from "./schools/SchoolEngenering/CourseDetails";
+import CourseDetails from "./schools/components/CourseDetails";
 import SOET from "./schools/SOET/SOET";
 import SOCSE from "./schools/SOCSE/SOCSE";
 import SOCMS from "./schools/SOCMS/SOCMS";
@@ -23,6 +22,7 @@ import SOL from "./schools/SOL/SOL";
 import SOD from "./schools/SOD/SOD";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./ScrollToTop";
+import Schools from "./schools/Schools";
 
 
 function App() {
@@ -64,7 +64,7 @@ function App() {
         <Route path="/academic" element={<Academics/>} />
          <Route path="/placement" element={<Placement/>} />
           <Route path="/gallery" element={<Gallery/>} />
-           <Route path="/schools/engineering" element={<SchoolEngineering/>} />
+              <Route path="/schools" element={<Schools/>} />
            <Route path="/schools/soet" element={<SOET/>} />
            <Route path="/schools/socse" element={<SOCSE/>} />
            <Route path="/schools/socms" element={<SOCMS/>} />

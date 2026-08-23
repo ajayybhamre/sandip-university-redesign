@@ -131,24 +131,32 @@ ${scrolled ? "gap-6" : "gap-8"}
                 key={index}
                 className="relative group cursor-pointer"
               >
-                <NavLink
-  to={item.path}
-  className={({ isActive }) =>
-    `flex items-center gap-1 font-medium transition ${
-    isActive
-  ? "text-red-600 dark:text-red-400"
-  : "text-gray-800 dark:text-white hover:text-red-600"
-    }`
-  }
->
-  {item.title}
+                {item.path ? (
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex items-center gap-1 font-medium transition ${
+                        isActive
+                          ? "text-red-600 dark:text-red-400"
+                          : "text-gray-800 dark:text-white hover:text-red-600"
+                      }`
+                    }
+                  >
+                    {item.title}
 
-  {item.mega && (
-    <FaChevronDown
-      className="text-xs transition-transform duration-300 group-hover:rotate-180"
-    />
-  )}
-</NavLink>
+                    {item.mega && (
+                      <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />
+                    )}
+                  </NavLink>
+                ) : (
+                  <div className="flex items-center gap-1 font-medium text-gray-800 dark:text-white transition hover:text-red-600">
+                    {item.title}
+
+                    {item.mega && (
+                      <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />
+                    )}
+                  </div>
+                )}
                 {item.mega && (
                   <MegaMenu sections={item.sections} />
                 )}
@@ -217,13 +225,19 @@ Apply Now
             >
              <div className="flex items-center justify-between px-6 py-4">
 
-  <NavLink
-    to={item.path}
-    className="font-medium text-gray-800 dark:text-white hover:text-red-600"
-    onClick={() => setIsOpen(false)}
-  >
-    {item.title}
-  </NavLink>
+  {item.path ? (
+    <NavLink
+      to={item.path}
+      className="font-medium text-gray-800 dark:text-white hover:text-red-600"
+      onClick={() => setIsOpen(false)}
+    >
+      {item.title}
+    </NavLink>
+  ) : (
+    <span className="font-medium text-gray-800 dark:text-white">
+      {item.title}
+    </span>
+  )}
 
   {item.mega && (
     <button onClick={() => toggleDropdown(index)}>
@@ -249,7 +263,13 @@ Apply Now
           className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm"
         >
           <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-            {section.heading}
+            {section.heading === "Schools" ? (
+              <Link to="/schools" className="text-gray-900 dark:text-white hover:text-red-600 transition-colors">
+                {section.heading}
+              </Link>
+            ) : (
+              section.heading
+            )}
           </h4>
 <ul className="space-y-2">
   {section.links.map((link, j) => (

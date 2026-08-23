@@ -14,7 +14,6 @@ import {
   Briefcase,
   Scale,
   Pill,
-  Leaf,
   FlaskConical,
   Microscope,
   
@@ -30,11 +29,6 @@ const menuData = [
       {
         heading: "Admissions",
         links: [
-          {
-            title: "School of Engineering",
-            path: "/schools/engineering",
-            icon: GraduationCap,
-          },
           {
             title: "Postgraduate",
             path: "/postgraduate",
@@ -106,76 +100,47 @@ const menuData = [
   },
 
   {
-    title: "Programs",
+    title: "Schools",
     mega: true,
     sections: [
       {
         heading: "Schools",
         links: [
+          
           {
-            title: "Engineering",
-            path: "/schools/engineering",
-            icon: GraduationCap,
-          },
-          {
-            title: "SOET",
+            title: "School Of Engineering & Technology",
             path: "/schools/soet",
             icon: GraduationCap,
           },
           {
-            title: "CSE",
+            title: "School Of Computer Science & Engineering",
             path: "/schools/socse",
             icon: BookOpen,
           },
           {
-            title: "Commerce",
+            title: "School Of Commerce & Managment Studies",
             path: "/schools/socms",
             icon: Briefcase,
           },
           {
-            title: "Science",
+            title: "School Of Science",
             path: "/schools/sos",
             icon: FlaskConical,
           },
           {
-            title: "Pharmacy",
+            title: "School of Pharmaceutical Sciences ",
             path: "/schools/sops",
             icon: Pill,
           },
           {
-            title: "Law",
+            title: "School Of Law",
             path: "/schools/sol",
             icon: Scale,
           },
           {
-            title: "Design",
+            title: "School Of Design",
             path: "/schools/sod",
             icon: Award,
-          },
-          {
-            title: "Management",
-            path: "/schools/management",
-            icon: Briefcase,
-          },
-          {
-            title: "Law",
-            path: "/schools/law",
-            icon: Scale,
-          },
-          {
-            title: "Pharmacy",
-            path: "/schools/pharmacy",
-            icon: Pill,
-          },
-          {
-            title: "Agriculture",
-            path: "/schools/agriculture",
-            icon: Leaf,
-          },
-          {
-            title: "Science",
-            path: "/schools/science",
-            icon: FlaskConical,
           },
         ],
       },

@@ -4,24 +4,24 @@ import SEO from "../../components/SEO/SEO";
 import seoData from "../../components/SEO/seoData";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import aboutBanner from "../../assets/images/slider2.webp";
+import deanPortrait from "../../assets/images/Dean_SOET.jpg";
 import Programs from "../components/Programs";
 import DeanSection from "../components/DeanSection";
 import CourseTabs from "../components/CourseTabs";
-import CourseHighlights from "../SchoolEngenering/components/CourseHighlights";
+import CourseHighlights from "../components/CourseHighlights";
+import programsData from "./data/programsData";
+import deanData from "./data/deanData";
 
 const SOET = () => {
-  const emptyPrograms = { undergraduate: [], postgraduate: [] };
-  const emptyDean = { name: "", designation: "", message: "", experience: "" };
-
   return (
     <>
       <SEO {...seoData.about} />
       <Header />
       <Breadcrumb badge="SOET" title="School of Engineering and Technology" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={emptyPrograms} schoolName="School of Engineering & Technology" schoolSlug="soet" />
+      <Programs programsData={programsData} schoolName="School of Engineering & Technology" schoolSlug="soet" />
       <CourseTabs />
-      <DeanSection deanData={emptyDean} schoolName="School of Engineering & Technology" />
+      <DeanSection deanData={deanData} deanImage={deanPortrait} schoolName="School of Engineering & Technology" />
       <CourseHighlights />
 
       <Footer />

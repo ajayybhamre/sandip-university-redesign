@@ -7,20 +7,19 @@ import aboutBanner from "../../assets/images/slider2.webp";
 import Programs from "../components/Programs";
 import DeanSection from "../components/DeanSection";
 import CourseTabs from "../components/CourseTabs";
+import programsData from "./data/programsData";
+import deanData from "./data/deanData";
 
 const SOCSE = () => {
-  const emptyPrograms = { undergraduate: [], postgraduate: [] };
-  const emptyDean = { name: "", designation: "", message: "", experience: "" };
-
   return (
     <>
       <SEO {...seoData.about} />
       <Header />
       <Breadcrumb badge="CSE" title="School of Computer Science & Engineering" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={emptyPrograms} schoolName="School of Computer Science & Engineering" schoolSlug="socse" />
+      <Programs programsData={programsData} schoolName="School of Computer Science & Engineering" schoolSlug="socse" />
       <CourseTabs />
-      <DeanSection deanData={emptyDean} schoolName="School of Computer Science & Engineering" />
+      <DeanSection deanData={deanData} schoolName="School of Computer Science & Engineering" />
 
       <Footer />
     </>

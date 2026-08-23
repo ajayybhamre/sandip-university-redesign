@@ -1,10 +1,10 @@
 const deanData = {
   // Basic Information
-  name: "Dr. John A. Smith",
+  name: "Dr. Prakash Burade",
 
-  designation: "Dean, Faculty of Engineering",
+  designation: "Associate Dean, School of Engineering & Technology",
 
-  qualification: "B.E., M.Tech., Ph.D. (Computer Engineering)",
+  qualification: "",
 
   experience: "25",
 

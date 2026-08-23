@@ -1,5 +1,4 @@
-
-import About from "../../SchoolEngenering/sections/About";
+import About from "../../SOL/sections/About";
 
 const sectionComponents = { about: About };
 
