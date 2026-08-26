@@ -1,19 +1,13 @@
 import {
   HiOutlineChartBar,
-  HiOutlineUserGroup,
-  HiOutlineChatBubbleLeftRight,
-  HiOutlinePhoto,
-  HiOutlineShieldCheck,
-  HiOutlineSparkles,
-  HiOutlineBuildingOffice2,
-  HiOutlinePhone,
-  HiOutlineUsers,
   HiOutlineTableCells,
-  HiOutlineArrowPath,
-  HiOutlineHandRaised,
-  HiOutlineQuestionMarkCircle,
+  HiOutlineUserGroup,
   HiOutlineAcademicCap,
-  HiOutlineCalendarDays,
+  HiOutlineBriefcase,
+  HiOutlineHandRaised,
+  HiOutlineClipboardDocumentList,
+  HiOutlineChatBubbleLeftRight,
+  HiOutlineUserCircle,
 } from "react-icons/hi2";
 
 const tabData = [
@@ -23,54 +17,24 @@ const tabData = [
     icon: HiOutlineChartBar,
   },
   {
-    id: "student-placement",
-    title: "Student Placement",
-    icon: HiOutlineUserGroup,
-  },
-  {
-    id: "testimonials",
-    title: "Students Testimonials",
-    icon: HiOutlineChatBubbleLeftRight,
-  },
-  {
-    id: "gallery",
-    title: "Placement Gallery",
-    icon: HiOutlinePhoto,
-  },
-  {
-    id: "policy",
-    title: "Placement Policy",
-    icon: HiOutlineShieldCheck,
-  },
-  {
-    id: "eep",
-    title: "Employability Enhancement Program",
-    icon: HiOutlineSparkles,
-  },
-  {
-    id: "corporate-tieups",
-    title: "Corporate Tie-ups",
-    icon: HiOutlineBuildingOffice2,
-  },
-  {
-    id: "contact-cell",
-    title: "Contact Cell",
-    icon: HiOutlinePhone,
-  },
-  {
-    id: "recruiters",
-    title: "Associated Recruiters",
-    icon: HiOutlineUsers,
-  },
-  {
-    id: "records",
-    title: "Placements Records",
+    id: "stats-records",
+    title: "Placement Statistics & Records",
     icon: HiOutlineTableCells,
   },
   {
-    id: "campus-to-corporate",
-    title: "Campus to Corporate",
-    icon: HiOutlineArrowPath,
+    id: "recruiters-industry",
+    title: "Recruiters & Industry Connect",
+    icon: HiOutlineUserGroup,
+  },
+  {
+    id: "training-employability",
+    title: "Training & Employability",
+    icon: HiOutlineAcademicCap,
+  },
+  {
+    id: "career-dev-cell",
+    title: "Career Development Cell",
+    icon: HiOutlineBriefcase,
   },
   {
     id: "campus-pride",
@@ -78,19 +42,19 @@ const tabData = [
     icon: HiOutlineHandRaised,
   },
   {
-    id: "faqs",
-    title: "Placements FAQs",
-    icon: HiOutlineQuestionMarkCircle,
+    id: "process-guidelines",
+    title: "Placement Process & Guidelines",
+    icon: HiOutlineClipboardDocumentList,
   },
   {
-    id: "career-dev",
-    title: "Career Development Cell",
-    icon: HiOutlineAcademicCap,
+    id: "success-stories",
+    title: "Success Stories & Activities",
+    icon: HiOutlineChatBubbleLeftRight,
   },
   {
-    id: "events",
-    title: "Placement Events",
-    icon: HiOutlineCalendarDays,
+    id: "placement-cell",
+    title: "Placement Cell",
+    icon: HiOutlineUserCircle,
   },
 ];
 

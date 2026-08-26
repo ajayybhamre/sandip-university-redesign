@@ -1,4 +1,4 @@
-import SectionPlaceholder from "./SectionPlaceholder";
+import SectionPlaceholder from "../../SectionPlaceholder";
 
 const PlacementEvents = () => {
   return <SectionPlaceholder title="Placement Events" />;

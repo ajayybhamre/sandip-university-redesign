@@ -1,4 +1,4 @@
-import SectionPlaceholder from "./SectionPlaceholder";
+import SectionPlaceholder from "../../SectionPlaceholder";
 
 const CareerDevelopmentCell = () => {
   return <SectionPlaceholder title="Career Development Cell" />;

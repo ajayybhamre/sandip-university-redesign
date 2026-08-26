@@ -1,4 +1,4 @@
-import SectionPlaceholder from "./SectionPlaceholder";
+import SectionPlaceholder from "../../SectionPlaceholder";
 
 const PlacementPolicy = () => {
   return <SectionPlaceholder title="Placement Policy" />;

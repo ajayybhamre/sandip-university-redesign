@@ -1,4 +1,4 @@
-import SectionPlaceholder from "./SectionPlaceholder";
+import SectionPlaceholder from "../../SectionPlaceholder";
 
 const CampusPrideProgram = () => {
   return <SectionPlaceholder title="Campus Pride Program 2.0" />;

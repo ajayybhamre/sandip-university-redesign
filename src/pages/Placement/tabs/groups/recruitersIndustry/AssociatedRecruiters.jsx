@@ -1,4 +1,4 @@
-import SectionPlaceholder from "./SectionPlaceholder";
+import SectionPlaceholder from "../../SectionPlaceholder";
 
 const AssociatedRecruiters = () => {
   return <SectionPlaceholder title="Associated Recruiters" />;
