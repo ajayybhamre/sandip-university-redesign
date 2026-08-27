@@ -1,0 +1,37 @@
+.career-step-slider .swiper-pagination-bullet,
+.career-list-slider .swiper-pagination-bullet {
+  background: #dc2626;
+  opacity: 0.3;
+}
+
+.career-step-slider .swiper-pagination-bullet-active,
+.career-list-slider .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.career-step-slider .swiper-button-next,
+.career-step-slider .swiper-button-prev,
+.career-list-slider .swiper-button-next,
+.career-list-slider .swiper-button-prev {
+  color: #dc2626;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.career-step-slider .swiper-button-next::after,
+.career-step-slider .swiper-button-prev::after,
+.career-list-slider .swiper-button-next::after,
+.career-list-slider .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dark .career-step-slider .swiper-button-next,
+.dark .career-step-slider .swiper-button-prev,
+.dark .career-list-slider .swiper-button-next,
+.dark .career-list-slider .swiper-button-prev {
+  background: #1e293b;
+}
