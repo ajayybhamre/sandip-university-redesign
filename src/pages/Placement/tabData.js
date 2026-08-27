@@ -43,7 +43,7 @@ const tabData = [
   },
   {
     id: "process-guidelines",
-    title: "Placement Process & Guidelines",
+    title: "Placement Guidelines and FAQs",
     icon: HiOutlineClipboardDocumentList,
   },
   {
