@@ -5,11 +5,12 @@ import seoData from "../../components/SEO/seoData";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import aboutBanner from "../../assets/images/slider2.webp";
 import deanPortrait from "../../assets/images/Dean_SOET.jpg";
-import Programs from "../components/Programs";
 import DeanSection from "../components/DeanSection";
-import CourseTabs from "../components/CourseTabs";
 import CourseHighlights from "../components/CourseHighlights";
-import programsData from "./data/programsData";
+import CourseTabs from "../components/CourseTabs";
+import ProgramsDepartments from "./components/ProgramsDepartments";
+import About from "./AboutSOET";
+import WhySOET from "./WhySOET";
 import deanData from "./data/deanData";
 
 const SOET = () => {
@@ -18,11 +19,12 @@ const SOET = () => {
       <SEO {...seoData.about} />
       <Header />
       <Breadcrumb badge="SOET" title="School of Engineering and Technology" description="" currentPage="About" image={aboutBanner} />
-
-      <Programs programsData={programsData} schoolName="School of Engineering & Technology" schoolSlug="soet" />
       <CourseTabs />
-      <DeanSection deanData={deanData} deanImage={deanPortrait} schoolName="School of Engineering & Technology" />
-      <CourseHighlights />
+      <div id="overview"><ProgramsDepartments /></div>
+      <div id="curriculum"><About /></div>
+      <div id="career"><WhySOET /></div>
+      <div id="faculty"><DeanSection deanData={deanData} deanImage={deanPortrait} schoolName="School of Engineering & Technology" /></div>
+      <div id="placement"><CourseHighlights /></div>
 
       <Footer />
     </>

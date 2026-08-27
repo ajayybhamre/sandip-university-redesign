@@ -38,12 +38,13 @@ const CourseDetails = () => {
       <SEO {...seoData.about} />
       <Header />
       <Breadcrumb badge={schoolSlug ? schoolSlug.toUpperCase() : "School"} title={schoolSlug ? schoolSlug.toUpperCase() : "School"} description="Discover our journey, vision, mission, leadership, innovation and commitment to academic excellence." currentPage="About" image={aboutBanner} />
-      <section className="py-20 bg-white dark:bg-black transition-colors duration-300">
-        <div className="max-w-[1600px] mx-auto px-6">
-          <div className="grid lg:grid-cols-[320px_1fr] gap-10">
+      <section className="bg-[var(--surface)] py-20 transition-colors duration-300 md:py-28">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[300px_1fr] lg:gap-12">
             <Sidebar sidebarData={sidebarData} schoolName={schoolSlug ? schoolSlug.toUpperCase() : "School"} activeSection={activeSection} setActiveSection={setActiveSection} />
-            <div className="bg-white dark:bg-[#111111] border border-red-100 dark:border-red-900 rounded-3xl shadow-xl min-h-[700px] p-10 transition-colors duration-300">
-              <h2 className="text-3xl font-bold text-red-600 capitalize">{activeSection}</h2>
+            <div className="min-h-[700px] rounded-2xl border border-[var(--line)] bg-[var(--surface-raised)] p-6 transition-colors duration-300 md:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-red-600)]">School profile</p>
+              <h2 className="mt-3 font-[var(--font-display)] text-4xl font-bold capitalize text-[var(--ink)]">{activeSection}</h2>
               {ActiveSection && <ActiveSection />}
             </div>
           </div>

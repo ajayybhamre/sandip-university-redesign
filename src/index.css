@@ -2,6 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Schools design tokens
+ * Accent: red-50 #fff5f4, red-100 #ffe3e1, red-600 #c9232b,
+ *         red-700 #a91d25, red-900 #73161c
+ * Navy: #081b3a is the contrast surface used for signature sections.
+ * Light/dark surfaces, ink and borders swap together so components never
+ * rely on a light-only color decision.
+ * Type: display 4.5rem-7rem / 0.98 line-height; body 1rem / 1.75;
+ * labels .7rem / .16em tracking. Spacing follows 4px increments.
+ * Radius: rounded-2xl for cards and controls; no decorative mixed radii.
+ */
+:root {
+  --brand-red-50: #fff5f4;
+  --brand-red-100: #ffe3e1;
+  --brand-red-600: #c9232b;
+  --brand-red-700: #a91d25;
+  --brand-red-900: #73161c;
+  --brand-navy: #081b3a;
+  --surface: #fbfaf8;
+  --surface-raised: #ffffff;
+  --surface-muted: #f1efec;
+  --ink: #15191e;
+  --ink-muted: #58606b;
+  --line: #e4e5e7;
+  --font-display: "Roboto Slab", Georgia, serif;
+}
+
+.dark {
+  --surface: #0b1017;
+  --surface-raised: #111820;
+  --surface-muted: #17202b;
+  --ink: #f5f3ee;
+  --ink-muted: #b2bbc6;
+  --line: #29333f;
+}
+
 body,
 a,
 button {
@@ -13,15 +49,15 @@ scroll-behavior:smooth;
 
 body{
   font-family: "Roboto Slab", serif;
-  background: #fff;
-  color: #ea1f28;
+  background: var(--surface);
+  color: var(--ink);
   transition: background-color 0.3s, color 0.3s;
   font-size: 15px;
 }
 
 .dark body{
-  background: black;
-  color: white;
+  background: var(--surface);
+  color: var(--ink);
 }
 .container-custom{
 max-width:1400px;

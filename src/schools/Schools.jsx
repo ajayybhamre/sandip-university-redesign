@@ -26,42 +26,46 @@ export default function Schools() {
       <Header />
       <SchoolsHero />
 
-      <main id="schools-grid" className="bg-gray-50 py-20 transition-colors duration-300 dark:bg-slate-950">
+      <main id="schools-grid" className="bg-[var(--surface)] py-24 transition-colors duration-300 md:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-12 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+          <div className="mb-14 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-widest text-red-600">Seven ways to grow</span>
-              <h2 className="mt-3 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">Choose your school</h2>
-              <p className="mt-4 max-w-2xl leading-7 text-gray-600 dark:text-gray-300">Find the academic community that matches your interests, strengths, and ambitions.</p>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-red-600)]">Seven ways to grow</span>
+              <h2 className="mt-4 max-w-3xl font-[var(--font-display)] text-4xl font-bold leading-[1.05] text-[var(--ink)] md:text-6xl">Choose the place your next chapter begins.</h2>
+              <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--ink-muted)]">Find the academic community that matches your interests, strengths, and ambitions.</p>
             </div>
-            <div className="relative w-full md:max-w-xs">
-              <Search size={19} className="absolute top-1/2 left-4 -translate-y-1/2 text-red-600" />
+            <div className="w-full lg:w-72">
+              <label htmlFor="school-search" className="mb-3 block text-xs font-bold uppercase tracking-[0.16em] text-[var(--ink-muted)]">Find a school</label>
+              <div className="relative">
+              <Search size={18} className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 text-[var(--brand-red-600)]" />
               <input
+                id="school-search"
                 type="search"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                placeholder="Search schools"
+                placeholder="Search by name or code"
                 aria-label="Search schools"
-                className="w-full rounded-xl border border-red-100 bg-white py-3.5 pr-11 pl-11 text-gray-900 outline-none transition-colors placeholder:text-gray-500 focus:border-red-600 dark:border-red-900 dark:bg-[#111111] dark:text-white"
+                className="w-full border-0 border-b border-[var(--line)] bg-transparent py-3 pr-9 pl-8 text-[var(--ink)] outline-none transition-colors placeholder:text-[var(--ink-muted)] focus:border-[var(--brand-red-600)]"
               />
               {searchTerm && (
-                <button type="button" onClick={() => setSearchTerm("")} aria-label="Clear search" className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-1 text-gray-500 hover:text-red-600">
+                <button type="button" onClick={() => setSearchTerm("")} aria-label="Clear search" className="absolute top-1/2 right-0 -translate-y-1/2 p-1 text-[var(--ink-muted)] transition-colors hover:text-[var(--brand-red-600)]">
                   <X size={17} />
                 </button>
               )}
+              </div>
             </div>
           </div>
 
           {filteredSchools.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-12">
               {filteredSchools.map((school, index) => (
                 <SchoolCard key={school.id} school={school} index={index} />
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-red-100 bg-white px-6 py-14 text-center dark:border-red-900 dark:bg-[#111111]">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">No schools found</h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">Try a different school name or code.</p>
+            <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-14 text-center">
+              <h3 className="text-xl font-bold text-[var(--ink)]">No schools found</h3>
+              <p className="mt-2 text-[var(--ink-muted)]">Try a different school name or code.</p>
             </div>
           )}
         </div>

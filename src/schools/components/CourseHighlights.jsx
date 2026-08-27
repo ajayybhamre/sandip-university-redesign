@@ -2,65 +2,61 @@ import { motion } from "framer-motion";
 import {
   FaClock,
   FaGraduationCap,
-  FaBookOpen,
-  FaLaptopCode,
-  FaBriefcase,
-  FaUsers,
-  FaGlobe,
   FaFlask,
+  FaUsers,
 } from "react-icons/fa";
 
 const highlights = [
-  { icon: <FaClock />, title: "Duration", value: "4 Years", color: "from-red-500 to-red-600" },
-  { icon: <FaGraduationCap />, title: "Degree", value: "B.Tech", color: "from-blue-500 to-blue-600" },
-  { icon: <FaBookOpen />, title: "Semesters", value: "8 Semesters", color: "from-green-500 to-green-600" },
-  { icon: <FaLaptopCode />, title: "Curriculum", value: "Industry Aligned", color: "from-violet-500 to-violet-600" },
-  { icon: <FaFlask />, title: "Laboratories", value: "15+ Modern Labs", color: "from-orange-500 to-orange-600" },
-  { icon: <FaBriefcase />, title: "Internships", value: "Industry Training", color: "from-cyan-500 to-cyan-600" },
-  { icon: <FaUsers />, title: "Placement Support", value: "100% Assistance", color: "from-pink-500 to-pink-600" },
-  { icon: <FaGlobe />, title: "Global Exposure", value: "International Opportunities", color: "from-emerald-500 to-emerald-600" },
+  { icon: <FaClock />, title: "Duration", value: "4 Years" },
+  { icon: <FaGraduationCap />, title: "Degree", value: "B.Tech" },
+  { icon: <FaFlask />, title: "Laboratories", value: "15+ Modern Labs" },
+  { icon: <FaUsers />, title: "Placement Support", value: "100% Assistance" },
 ];
 
 const CourseHighlights = () => {
   return (
-    <section className="relative py-20 bg-gray-50 dark:bg-slate-950 overflow-hidden">
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-red-500/10 blur-3xl rounded-full"></div>
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-500/10 blur-3xl rounded-full"></div>
-
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[var(--surface)] py-20 transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-10"
         >
-          <span className="text-red-600 font-semibold uppercase tracking-widest">Program Overview</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 text-gray-900 dark:text-white">Course Highlights</h2>
-          <p className="mt-5 max-w-3xl mx-auto text-gray-600 dark:text-gray-300 leading-8">
-            Explore the key features of our program designed to provide academic excellence, practical exposure, research opportunities, and outstanding career prospects.
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-red-600)]">
+            Program Overview
+          </span>
+          <h2 className="mt-4 font-[var(--font-display)] text-3xl font-bold text-[var(--ink)] md:text-5xl">
+            Course Highlights
+          </h2>
+          <p className="mt-4 max-w-2xl leading-7 text-[var(--ink-muted)]">
+            Key features of the program — academic structure, practical
+            exposure and career support at a glance.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10, scale: 1.03 }}
-              className="group relative bg-white dark:bg-slate-900 rounded-3xl shadow-lg border border-gray-200 dark:border-slate-800 overflow-hidden"
+              className="flex min-h-48 flex-col justify-between overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-6 transition-colors duration-300 hover:border-[var(--brand-red-600)] hover:bg-[var(--surface-muted)]"
             >
-              <div className={`h-2 bg-gradient-to-r ${item.color}`}></div>
-              <div className="p-8">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${item.color} text-white flex items-center justify-center text-3xl shadow-lg`}>
-                  {item.icon}
-                </div>
-                <h3 className="mt-8 text-xl font-bold text-gray-900 dark:text-white">{item.title}</h3>
-                <p className="mt-3 text-gray-600 dark:text-gray-300 leading-7">{item.value}</p>
-                <div className="mt-8 h-1 w-12 bg-red-600 rounded-full transition-all duration-300 group-hover:w-24"></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-navy)] text-sm text-white">
+                {item.icon}
+              </div>
+
+              <div className="mt-6">
+                <p className="font-[var(--font-display)] text-2xl font-bold leading-none text-[var(--ink)] md:text-3xl">
+                  {item.value}
+                </p>
+                <h3 className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-[var(--ink-muted)]">
+                  {item.title}
+                </h3>
               </div>
             </motion.div>
           ))}

@@ -1,10 +1,8 @@
 import About from "./sections/About";
-import Departments from "./sections/Departments";
-import Labs from "./sections/Departments";
+import Labs from "./sections/Labs";
 
 const sectionComponents = {
   about: About,
-  departments: Departments,
   labs: Labs,
 };
 

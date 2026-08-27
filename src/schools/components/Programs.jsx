@@ -1,39 +1,39 @@
 import { useState } from "react";
-import { GraduationCap } from "lucide-react";
+import { ArrowUpRight, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Programs = ({ programsData = { undergraduate: [], postgraduate: [] }, schoolName = "School", schoolSlug = "school" }) => {
   const [activeTab, setActiveTab] = useState("undergraduate");
 
   return (
-    <section className="py-20 bg-white dark:bg-black transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="text-red-600 font-semibold uppercase tracking-widest">{schoolName}</p>
+    <section className="bg-[var(--surface)] py-24 transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mb-12 max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-red-600)]">{schoolName}</p>
 
-          <h2 className="text-4xl font-bold text-black dark:text-white mt-2 transition-colors">Programs Offered</h2>
+          <h2 className="mt-4 font-[var(--font-display)] text-4xl font-bold leading-tight text-[var(--ink)] md:text-6xl">Programs Offered</h2>
 
-          <p className="text-black/70 dark:text-white/70 max-w-2xl mx-auto mt-4 transition-colors">Choose from our industry-oriented undergraduate and postgraduate programs designed to prepare students for successful careers.</p>
+          <p className="mt-5 max-w-2xl leading-7 text-[var(--ink-muted)]">Choose from our industry-oriented undergraduate and postgraduate programs designed to prepare students for successful careers.</p>
         </div>
 
-        <div className="flex justify-center mb-8 px-4">
-          <div className="flex w-full max-w-fit overflow-x-auto scrollbar-hide rounded-full bg-white dark:bg-[#111111] p-1.5 shadow-lg border border-red-100 dark:border-red-900">
-            <button onClick={() => setActiveTab("undergraduate")} className={`whitespace-nowrap rounded-full px-4 py-2 text-sm sm:px-6 sm:py-2.5 sm:text-base md:px-8 md:py-3 font-semibold transition-all duration-300 ${activeTab === "undergraduate" ? "bg-red-600 text-white" : "text-black dark:text-white hover:bg-red-50 dark:hover:bg-red-900/30"}`}>Undergraduate</button>
+        <div className="mb-10 flex w-fit overflow-x-auto border-b border-[var(--line)]">
+            <button type="button" onClick={() => setActiveTab("undergraduate")} className={`whitespace-nowrap border-b-2 px-1 py-4 pr-8 text-sm font-bold transition-colors ${activeTab === "undergraduate" ? "border-[var(--brand-red-600)] text-[var(--brand-red-600)]" : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>Undergraduate</button>
 
-            <button onClick={() => setActiveTab("postgraduate")} className={`whitespace-nowrap rounded-full px-4 py-2 text-sm sm:px-6 sm:py-2.5 sm:text-base md:px-8 md:py-3 font-semibold transition-all duration-300 ${activeTab === "postgraduate" ? "bg-red-600 text-white" : "text-black dark:text-white hover:bg-red-50 dark:hover:bg-red-900/30"}`}>Postgraduate</button>
-          </div>
+            <button type="button" onClick={() => setActiveTab("postgraduate")} className={`whitespace-nowrap border-b-2 px-8 py-4 text-sm font-bold transition-colors ${activeTab === "postgraduate" ? "border-[var(--brand-red-600)] text-[var(--brand-red-600)]" : "border-transparent text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}>Postgraduate</button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-          {programsData[activeTab]?.map((course) => (
-            <Link key={course.id} to={course.slug ? `/schools/${schoolSlug}/${course.slug}` : "#"} className="group bg-white dark:bg-[#111111] border border-red-100 dark:border-red-900 rounded-xl px-6 py-5 hover:border-red-600 hover:shadow-xl transition-all duration-300 block">
+        <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+          {programsData[activeTab]?.map((course, index) => (
+            <Link key={course.id} to={course.slug ? `/schools/${schoolSlug}/${course.slug}` : "#"} className="group grid gap-4 py-6 transition-colors hover:bg-[var(--surface-muted)] md:grid-cols-[4rem_1fr_auto] md:items-center md:px-4">
+              <span className="text-sm font-bold text-[var(--brand-red-600)]">{String(index + 1).padStart(2, "0")}</span>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/30 flex items-center justify-center group-hover:bg-red-600 transition-all duration-300">
-                  <GraduationCap size={20} className="text-red-600 group-hover:text-white transition-all duration-300" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--brand-red-50)] text-[var(--brand-red-600)] transition-colors group-hover:bg-[var(--brand-red-600)] group-hover:text-white dark:bg-[var(--brand-red-900)]/20">
+                  <GraduationCap size={19} />
                 </div>
 
-                <h3 className="text-lg font-semibold text-black dark:text-white group-hover:text-red-600 transition-colors">{course.title}</h3>
+                <h3 className="font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)] transition-colors group-hover:text-[var(--brand-red-600)]">{course.title}</h3>
               </div>
+              <span className="flex items-center gap-2 text-sm font-bold text-[var(--brand-red-600)] md:justify-self-end">Open programme <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></span>
             </Link>
           ))}
         </div>

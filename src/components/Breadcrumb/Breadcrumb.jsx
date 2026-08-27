@@ -11,35 +11,31 @@ export default function Breadcrumb({
 }) {
   return (
     <section
-      className="relative h-[380px] md:h-[450px] flex items-center overflow-hidden"
+      className="relative flex min-h-[430px] items-end overflow-hidden pb-24 pt-32 md:min-h-[540px] md:pb-28"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#081b3a]/90 via-[#081b3a]/75 to-[#081b3a]/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#081b3a]/95 via-[#081b3a]/72 to-[#081b3a]/30" />
+      <div className="absolute bottom-0 right-0 h-full w-1/3 bg-gradient-to-l from-[var(--brand-red-600)]/20 to-transparent" />
 
-      {/* Decorative Circles */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-red-600/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
+     <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-8">
 
-     <div className="relative max-w-7xl mx-auto px-6 w-full">
-
-        <span className="bg-red-600 text-white px-5 py-2 rounded-full">
+        <span className="border-l-2 border-[var(--brand-red-600)] pl-4 text-xs font-bold uppercase tracking-[0.2em] text-white/80">
           {badge}
         </span>
 
-        <h1 className="text-5xl font-bold text-white mt-6">
+        <h1 className="mt-6 max-w-5xl font-[var(--font-display)] text-5xl font-bold leading-[1.02] text-white md:text-7xl">
           {title}
         </h1>
 
-        <p className="text-white/80 mt-6 max-w-3xl">
+        <p className="mt-6 max-w-2xl text-base leading-7 text-white/75">
           {description}
         </p>
 
-        <div className="flex items-center mt-8 text-white">
+        <div className="mt-8 flex items-center text-sm text-white/70">
 
           <Link to="/">Home</Link>
 
@@ -50,31 +46,7 @@ export default function Breadcrumb({
         </div>
 </div>
 
-      {/* Bottom Curve */}
-     {/* Layer 1 */}
-{/* Layer 1 */}
-<div className="absolute bottom-0 left-0 w-full dark:hidden">
-  <svg
-    viewBox="0 0 1440 220"
-    className="w-full h-36 opacity-20 fill-red-500"
-    preserveAspectRatio="none"
-  >
-    <path d="M0,140C240,220,480,60,720,120C960,180,1200,240,1440,100V220H0Z" />
-  </svg>
-</div>
-
-
-
-{/* Layer 2 */}
-<div className="absolute bottom-0 left-0 w-full dark:hidden">
-  <svg
-    viewBox="0 0 1440 220"
-    className="w-full h-32 fill-white"
-    preserveAspectRatio="none"
-  >
-    <path d="M0,120C220,200,480,40,720,120C980,200,1220,220,1440,80V220H0Z" />
-  </svg>
-</div>
+      <div className="absolute bottom-0 left-0 h-px w-full bg-white/25" />
     </section>
   );
 }
