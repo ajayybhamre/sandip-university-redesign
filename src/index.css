@@ -1,5 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Poppins', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==================================================
@@ -92,14 +107,28 @@
   border-color: var(--border-color) !important;
 }
 
-/* Global Transitions for Theme Switching */
+/* Global Transitions & Typography Setup */
 html {
   scroll-behavior: smooth;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+*,
+::before,
+::after {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body,
+html,
+button,
+input,
+textarea,
+select {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -109,8 +138,13 @@ body {
 
 /* Custom Selection */
 ::selection {
-  background-color: var(--brand-primary);
-  color: #FFFFFF;
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
+}
+
+::-moz-selection {
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
 }
 
 /* Container Custom */

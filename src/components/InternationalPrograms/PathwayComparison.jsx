@@ -23,7 +23,7 @@ export default function PathwayComparison() {
           {/* Card 1: Direct Entry */}
           <div className="p-7 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs font-bold text-slate-500 uppercase bg-slate-100 px-3 py-1 rounded-md mb-3 inline-block">
+              <span className="font-sans text-xs font-bold text-slate-500 uppercase bg-slate-100 px-3 py-1 rounded-md mb-3 inline-block">
                 PATHWAY A
               </span>
               <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Direct Entry</h3>
@@ -51,7 +51,7 @@ export default function PathwayComparison() {
             </span>
 
             <div>
-              <span className="font-mono text-xs font-bold text-orange-600 uppercase bg-orange-50 px-3 py-1 rounded-md mb-3 inline-block">
+              <span className="font-sans text-xs font-bold text-orange-600 uppercase bg-orange-50 px-3 py-1 rounded-md mb-3 inline-block">
                 PATHWAY B
               </span>
               <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Foundation Pathway</h3>

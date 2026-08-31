@@ -12,7 +12,7 @@ export default function VisaHighlightCard() {
         </div>
 
         <div className="space-y-1">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-orange-400">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-orange-400">
             DEDICATED VISA IMMIGRATION ASSISTANCE
           </span>
           <h3 className="text-xl font-extrabold text-white">

@@ -38,25 +38,25 @@ export default function FoundationPathway() {
         {/* Pathway Visual Flow */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16 relative">
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-            <span className="font-mono text-xs font-bold text-orange-400">STAGE 01</span>
+            <span className="font-sans text-xs font-bold text-orange-400">STAGE 01</span>
             <h3 className="font-bold text-white text-base mt-1">Foundation Program</h3>
             <p className="text-xs text-slate-400 mt-1">1-Year Preparatory Course</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-            <span className="font-mono text-xs font-bold text-orange-400">STAGE 02</span>
+            <span className="font-sans text-xs font-bold text-orange-400">STAGE 02</span>
             <h3 className="font-bold text-white text-base mt-1">Academic Preparation</h3>
             <p className="text-xs text-slate-400 mt-1">English & Core Prerequisites</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-            <span className="font-mono text-xs font-bold text-orange-400">STAGE 03</span>
+            <span className="font-sans text-xs font-bold text-orange-400">STAGE 03</span>
             <h3 className="font-bold text-white text-base mt-1">Degree Entry</h3>
             <p className="text-xs text-slate-400 mt-1">Direct Progression into B.Tech/BBA</p>
           </div>
 
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-center">
-            <span className="font-mono text-xs font-bold text-orange-400">STAGE 04</span>
+            <span className="font-sans text-xs font-bold text-orange-400">STAGE 04</span>
             <h3 className="font-bold text-white text-base mt-1">Career Pathway</h3>
             <p className="text-xs text-slate-400 mt-1">Global Employment Opportunities</p>
           </div>
@@ -67,7 +67,7 @@ export default function FoundationPathway() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-6 border-b border-white/10 gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs font-mono font-bold uppercase mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs font-sans font-bold uppercase mb-2">
                 <span>International Student Pathway</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -88,15 +88,15 @@ export default function FoundationPathway() {
           {/* Quick Details Badges */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-xs font-mono text-slate-400 uppercase">ELIGIBILITY</div>
+              <div className="text-xs font-sans text-slate-400 uppercase">ELIGIBILITY</div>
               <div className="text-sm font-bold text-white mt-0.5">High School Pass (Grade 11/12)</div>
             </div>
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-xs font-mono text-slate-400 uppercase">PROGRESSION</div>
+              <div className="text-xs font-sans text-slate-400 uppercase">PROGRESSION</div>
               <div className="text-sm font-bold text-white mt-0.5">Direct 1st Year Degree Entry</div>
             </div>
             <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-xs font-mono text-slate-400 uppercase">ASSISTANCE</div>
+              <div className="text-xs font-sans text-slate-400 uppercase">ASSISTANCE</div>
               <div className="text-sm font-bold text-white mt-0.5">Dedicated Academic Tutors</div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function FoundationPathway() {
                 transition={{ duration: 0.4 }}
                 className="mt-6 space-y-3 pt-4 border-t border-white/10"
               >
-                <h4 className="text-xs font-mono font-bold text-orange-400 uppercase tracking-widest mb-3">FOUNDATION COURSE MODULES</h4>
+                <h4 className="text-xs font-sans font-bold text-orange-400 uppercase tracking-widest mb-3">FOUNDATION COURSE MODULES</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {foundationModules.map((mod, mIdx) => (
                     <div key={mIdx} className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs">

@@ -74,10 +74,10 @@ export default function WireTransferDetails() {
                     className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between gap-3 group hover:border-[#C8102E] transition-colors"
                   >
                     <div>
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold mb-0.5">
+                      <div className="text-[10px] font-sans uppercase tracking-wider text-slate-400 font-bold mb-0.5">
                         {item.label}
                       </div>
-                      <div className="text-sm font-black text-white font-mono">
+                      <div className="text-sm font-black text-white font-sans">
                         {item.value}
                       </div>
                     </div>

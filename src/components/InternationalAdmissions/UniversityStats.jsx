@@ -126,7 +126,7 @@ export default function UniversityStats() {
                   </div>
 
                   <div>
-                    <div className="text-3xl sm:text-4xl font-black text-white font-serif mb-1 tracking-tight">
+                    <div className="text-3xl sm:text-4xl font-black text-white font-sans mb-1 tracking-tight">
                       <SafeCounter targetValue={stat.value} suffix={stat.suffix} />
                     </div>
 

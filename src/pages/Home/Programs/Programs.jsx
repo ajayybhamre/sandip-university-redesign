@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 import { FaArrowRight, FaGraduationCap } from "react-icons/fa";
 
-// Import your images
+// Import images
 import engineering from "../../../assets/images/ashwini.webp";
 import management from "../../../assets/images/pawan.png";
 import pharmacy from "../../../assets/images/gayatri.png";
@@ -61,28 +61,24 @@ export default function Programs() {
   ];
 
   return (
-<section className="relative overflow-hidden py-28 bg-gray-100">
-
-  {/* Top Curve */}
-  <div className="absolute top-0 left-0 w-full h-20 bg-[linear-gradient(to_right,#dc2626_50%,#000000_50%)] rounded-b-[100px]"></div>
-
-  {/* Bottom Curve */}
- 
-      <div className="max-w-[1600px] mx-auto px-5">
-
+    <section className="relative overflow-hidden py-24 lg:py-32 bg-slate-50 dark:bg-zinc-950 transition-colors">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-           <h2 className="text-4xl font-bold text-black dark:text-white transition-colors">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-xs font-bold text-[#C8102E] uppercase tracking-[3px] mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#C8102E]"></span>
+              <span>ACADEMIC PROGRAMS</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Explore Our Programs
             </h2>
-
-            <div className="w-20 h-1 bg-red-400 rounded-full mt-2"></div>
           </div>
 
-          <button className="hidden md:flex items-center gap-2 text-red-700 dark:text-red-400 font-semibold hover:text-red-900 dark:hover:text-red-300 transition">
-            View All Programs
-            <FaArrowRight />
+          <button className="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs font-bold text-slate-900 dark:text-white hover:border-[#C8102E] hover:text-[#C8102E] transition-all duration-300 shadow-sm cursor-pointer">
+            <span>View All Programs</span>
+            <FaArrowRight className="text-xs" />
           </button>
         </div>
 
@@ -91,77 +87,61 @@ export default function Programs() {
           modules={[Navigation, Autoplay]}
           navigation
           autoplay={{
-            delay: 2500,
+            delay: 3500,
             disableOnInteraction: false,
           }}
           loop={true}
-          spaceBetween={20}
+          spaceBetween={24}
           breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-            576: {
-              slidesPerView: 2,
-            },
-            768: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-            1280: {
-              slidesPerView: 5,
-            },
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1280: { slidesPerView: 4 },
           }}
+          className="pb-6"
         >
           {programs.map((program) => (
-            <SwiperSlide key={program.id}>
-              <div className="bg-white dark:bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 group h-full">
-
-                {/* Image */}
-                <div className="overflow-hidden h-60">
-                  <img
-                    src={program.image}
-                    alt={program.title}
-                    className="w-full h-full object-contain group-hover:scale-110 transition duration-500"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-5">
-
-                  <div className="flex gap-3">
-
-                    <div className="w-10 h-10 rounded-lg bg-red-200 dark:bg-red-900 flex items-center justify-center">
-                      <FaGraduationCap className="text-red-700" />
-                    </div>
-
-                  <h3 className="font-bold text-[#0B2346] dark:text-red leading-6 transition-colors">
-                      {program.title}
-                    </h3>
-
+            <SwiperSlide key={program.id} className="h-auto">
+              <div className="bg-white dark:bg-zinc-900 rounded-[28px] border border-slate-200/80 dark:border-zinc-800 p-6 shadow-xl hover:shadow-2xl hover:border-[#C8102E] transition-all duration-500 group flex flex-col justify-between h-full hover:-translate-y-2">
+                <div>
+                  {/* Image Container */}
+                  <div className="overflow-hidden h-48 rounded-2xl bg-slate-100 dark:bg-zinc-800 mb-5 p-2 flex items-center justify-center">
+                    <img
+                      src={program.image}
+                      alt={program.title}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
 
-                 <p className="text-gray-600 dark:text-black mt-4 text-sm transition-colors">
+                  {/* Header info */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/30 flex items-center justify-center shrink-0">
+                      <FaGraduationCap className="text-[#C8102E] text-lg" />
+                    </div>
+
+                    <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-[#C8102E] transition-colors leading-snug">
+                      {program.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm font-semibold text-[#C8102E] dark:text-red-400">
                     {program.degree}
                   </p>
 
-                 <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors">
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">
                     {program.duration}
                   </p>
-
-                 <button className="mt-5 flex items-center gap-2 text-red-700 dark:text-red-400 font-semibold hover:gap-3 transition-all">
-                    Explore
-                    <FaArrowRight size={12} />
-                  </button>
-
                 </div>
 
+                {/* Button */}
+                <button className="mt-6 w-full py-3 rounded-full bg-[#C8102E] hover:bg-red-700 text-white text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md cursor-pointer">
+                  <span>Explore</span>
+                  <FaArrowRight className="text-xs" />
+                </button>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
     </section>
   );

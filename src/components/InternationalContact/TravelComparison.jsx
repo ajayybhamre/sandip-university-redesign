@@ -35,7 +35,7 @@ export default function TravelComparison() {
                 <tr key={idx} className="hover:bg-orange-50/40 transition-colors">
                   <td className="p-4 font-bold text-slate-900">{row.route}</td>
                   <td className="p-4 text-slate-600 font-medium">{row.bestFor}</td>
-                  <td className="p-4 font-mono font-bold text-orange-600">{row.distance}</td>
+                  <td className="p-4 font-sans font-bold text-orange-600">{row.distance}</td>
                   <td className="p-4 text-slate-700">{row.options}</td>
                 </tr>
               ))}
@@ -49,7 +49,7 @@ export default function TravelComparison() {
             <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
               <div className="flex items-center justify-between font-bold text-slate-900 text-sm">
                 <span>{row.route}</span>
-                <span className="text-orange-600 font-mono">{row.distance}</span>
+                <span className="text-orange-600 font-sans">{row.distance}</span>
               </div>
               <div className="text-slate-500 font-medium">{row.bestFor}</div>
               <div className="text-slate-700 font-semibold pt-1 border-t border-slate-200">{row.options}</div>

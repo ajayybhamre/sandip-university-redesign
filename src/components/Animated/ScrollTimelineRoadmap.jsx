@@ -124,7 +124,7 @@ export default function ScrollTimelineRoadmap() {
                     <TiltCard>
                       <SpotlightCard className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-gray-200/90 dark:border-zinc-800 shadow-xl hover:shadow-2xl hover:border-[#C8102E]/60 transition-all duration-300">
                         <div className="flex items-center justify-between mb-4">
-                          <span className="font-mono text-xs font-black text-[#C8102E] bg-red-50 dark:bg-red-950/40 px-3 py-1 rounded-full border border-red-100 dark:border-red-900/30">
+                          <span className="font-sans text-xs font-black text-[#C8102E] bg-red-50 dark:bg-red-950/40 px-3 py-1 rounded-full border border-red-100 dark:border-red-900/30">
                             {item.badge}
                           </span>
                           <span className="text-2xl font-black text-slate-300 dark:text-zinc-700">

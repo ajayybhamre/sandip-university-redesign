@@ -24,7 +24,7 @@ export default function InternationalArrivalGuide() {
             <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3">
               <Plane className="w-5 h-5" />
             </div>
-            <span className="text-xs font-mono font-bold text-orange-400">STEP 01</span>
+            <span className="text-xs font-sans font-bold text-orange-400">STEP 01</span>
             <h3 className="font-bold text-white text-base">Arrive in India</h3>
             <p className="text-xs text-slate-300 leading-relaxed">Land at Mumbai CSIA (BOM) or Shirdi Airport with your valid Indian Student Visa.</p>
           </div>
@@ -33,7 +33,7 @@ export default function InternationalArrivalGuide() {
             <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3">
               <Compass className="w-5 h-5" />
             </div>
-            <span className="text-xs font-mono font-bold text-orange-400">STEP 02</span>
+            <span className="text-xs font-sans font-bold text-orange-400">STEP 02</span>
             <h3 className="font-bold text-white text-base">Reach Nashik Hub</h3>
             <p className="text-xs text-slate-300 leading-relaxed">Take express highway cab or express train to Nashik Road Railway Station.</p>
           </div>
@@ -42,7 +42,7 @@ export default function InternationalArrivalGuide() {
             <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3">
               <Building2 className="w-5 h-5" />
             </div>
-            <span className="text-xs font-mono font-bold text-orange-400">STEP 03</span>
+            <span className="text-xs font-sans font-bold text-orange-400">STEP 03</span>
             <h3 className="font-bold text-white text-base">Travel to Campus</h3>
             <p className="text-xs text-slate-300 leading-relaxed">Proceed to Trimbak Road campus. Campus gates are open 24/7 for student arrivals.</p>
           </div>
@@ -51,7 +51,7 @@ export default function InternationalArrivalGuide() {
             <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3">
               <PhoneCall className="w-5 h-5" />
             </div>
-            <span className="text-xs font-mono font-bold text-orange-400">STEP 04</span>
+            <span className="text-xs font-sans font-bold text-orange-400">STEP 04</span>
             <h3 className="font-bold text-white text-base">Report to Support Desk</h3>
             <p className="text-xs text-slate-300 leading-relaxed">Connect with the 24/7 International Desk for hostel check-in and FRRO registration.</p>
           </div>

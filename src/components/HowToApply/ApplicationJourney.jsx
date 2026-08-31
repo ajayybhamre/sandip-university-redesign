@@ -103,7 +103,7 @@ export default function ApplicationJourney() {
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className={`text-[10px] font-mono font-black ${isActive ? "text-white/80" : "text-[#C8102E]"}`}>
+                    <span className={`text-[10px] font-sans font-black ${isActive ? "text-white/80" : "text-[#C8102E]"}`}>
                       {step.num}
                     </span>
                     <StepIcon size={16} className={isActive ? "text-white" : "text-slate-400"} />

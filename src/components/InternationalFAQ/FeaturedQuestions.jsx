@@ -29,7 +29,7 @@ export default function FeaturedQuestions({ onSelectQuestion }) {
               className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-orange-500 hover:shadow-md transition-all text-left flex flex-col justify-between group cursor-pointer"
             >
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded border border-orange-200/60 mb-3 inline-block">
+                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded border border-orange-200/60 mb-3 inline-block">
                   {item.categoryLabel}
                 </span>
 

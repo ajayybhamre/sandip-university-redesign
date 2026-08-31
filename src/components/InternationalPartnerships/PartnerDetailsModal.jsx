@@ -58,7 +58,7 @@ export default function PartnerDetailsModal({ partner, onClose }) {
             {/* MOU Title */}
             {partner.mouTitle && (
               <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200/80">
-                <div className="text-xs font-mono font-bold text-orange-600 uppercase mb-1">OFFICIAL AGREEMENT</div>
+                <div className="text-xs font-sans font-bold text-orange-600 uppercase mb-1">OFFICIAL AGREEMENT</div>
                 <div className="text-sm font-extrabold text-slate-900">{partner.mouTitle}</div>
               </div>
             )}

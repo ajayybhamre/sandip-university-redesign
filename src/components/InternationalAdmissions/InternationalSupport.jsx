@@ -40,8 +40,8 @@ export default function InternationalSupport() {
             <div>
               <h3 className="font-bold text-slate-900 text-base mb-1">Admission Helpline</h3>
               <p className="text-xs text-slate-500 mb-2">Toll Free & International Cell</p>
-              <div className="text-sm font-extrabold text-orange-600 font-mono">1800-212-2714</div>
-              <div className="text-xs text-slate-600 font-mono">+91 2594-222551</div>
+              <div className="text-sm font-extrabold text-orange-600 font-sans">1800-212-2714</div>
+              <div className="text-xs text-slate-600 font-sans">+91 2594-222551</div>
             </div>
           </div>
 

@@ -29,7 +29,7 @@ export default function FeePayment() {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs font-black text-orange-600 uppercase bg-orange-100/80 px-3 py-1 rounded-md">
+                <span className="font-sans text-xs font-black text-orange-600 uppercase bg-orange-100/80 px-3 py-1 rounded-md">
                   OPTION 01
                 </span>
                 <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center">
@@ -72,7 +72,7 @@ export default function FeePayment() {
 
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs font-black text-orange-400 uppercase bg-orange-500/20 px-3 py-1 rounded-md border border-orange-500/30">
+                <span className="font-sans text-xs font-black text-orange-400 uppercase bg-orange-500/20 px-3 py-1 rounded-md border border-orange-500/30">
                   OPTION 02 — RECOMMENDED FOR TUITION
                 </span>
                 <div className="w-12 h-12 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center">

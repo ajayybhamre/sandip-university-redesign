@@ -85,7 +85,7 @@ export default function PartnershipsHero() {
             <TiltCard>
               <SpotlightCard className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[360px]">
                 <div className="relative z-10 flex items-center justify-between">
-                  <div className="text-xs font-mono text-[#D4A72C] font-bold uppercase tracking-widest">
+                  <div className="text-xs font-sans text-[#D4A72C] font-bold uppercase tracking-widest">
                     GLOBAL NETWORK NODE
                   </div>
                   <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />

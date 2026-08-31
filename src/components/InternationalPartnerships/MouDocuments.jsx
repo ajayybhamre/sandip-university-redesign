@@ -36,7 +36,7 @@ export default function MouDocuments({ onViewDetails }) {
                     <span className="text-base">{item.flag}</span>
                     <h3 className="text-sm font-bold text-slate-900 leading-snug">{item.name}</h3>
                   </div>
-                  <div className="text-xs text-slate-500 font-mono line-clamp-1">{item.mouTitle}</div>
+                  <div className="text-xs text-slate-500 font-sans line-clamp-1">{item.mouTitle}</div>
                 </div>
               </div>
 

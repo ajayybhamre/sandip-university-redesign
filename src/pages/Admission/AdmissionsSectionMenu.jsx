@@ -100,7 +100,7 @@ export default function AdmissionsSectionMenu({ className = "" }) {
               ADMISSIONS 2026–27
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0B0B0D] tracking-tight font-serif">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0B0B0D] tracking-tight font-sans">
             Admissions
           </h2>
           <p className="text-xs sm:text-sm text-[#6B6B73] font-medium">

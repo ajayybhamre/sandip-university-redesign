@@ -59,7 +59,7 @@ export default function ProgramDetailView({ program, onClose }) {
               </span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
+            <h2 className="text-xl sm:text-2xl font-sans font-bold text-white leading-tight">
               {program.title}
             </h2>
 
@@ -116,7 +116,7 @@ export default function ProgramDetailView({ program, onClose }) {
               className="space-y-5"
             >
               <div className="space-y-2">
-                <h3 className="text-sm font-serif font-bold text-[#0F1B2B]">
+                <h3 className="text-sm font-sans font-bold text-[#0F1B2B]">
                   Full Program Description
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
@@ -166,7 +166,7 @@ export default function ProgramDetailView({ program, onClose }) {
               className="space-y-4"
             >
               <div className="space-y-1">
-                <h3 className="text-sm font-serif font-bold text-[#0F1B2B]">
+                <h3 className="text-sm font-sans font-bold text-[#0F1B2B]">
                   Admission Eligibility Requirements
                 </h3>
                 <p className="text-xs text-[#667085]">
@@ -329,7 +329,7 @@ export default function ProgramDetailView({ program, onClose }) {
               {program.careerDetails ? (
                 <>
                   <div className="space-y-1">
-                    <h3 className="text-sm font-serif font-bold text-[#0F1B2B]">
+                    <h3 className="text-sm font-sans font-bold text-[#0F1B2B]">
                       Career Opportunities Overview
                     </h3>
                     <p className="text-xs text-slate-600">

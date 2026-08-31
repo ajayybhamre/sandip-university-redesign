@@ -51,7 +51,7 @@ export default function CountryExplorer({ onSelectCountry }) {
               >
                 <span className="text-base">{flag}</span>
                 <span>{c}</span>
-                <span className="font-mono text-[10px] text-orange-600 bg-orange-100/80 px-2 py-0.5 rounded-full">
+                <span className="font-sans text-[10px] text-orange-600 bg-orange-100/80 px-2 py-0.5 rounded-full">
                   {count}
                 </span>
                 <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-orange-600 group-hover:translate-x-0.5 transition-all" />
