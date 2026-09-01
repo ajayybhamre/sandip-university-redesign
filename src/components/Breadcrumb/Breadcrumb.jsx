@@ -11,14 +11,18 @@ export default function Breadcrumb({
 }) {
   return (
     <section
-      className="relative flex min-h-[430px] items-end overflow-hidden pb-24 pt-32 md:min-h-[540px] md:pb-28"
+      className="relative flex min-h-[90vh] items-end overflow-hidden pb-24 pt-36 md:min-h-screen md:pt-40 md:pb-28"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-[#081b3a]/95 via-[#081b3a]/72 to-[#081b3a]/30" />
+      {/* Uniform dark wash across the whole image */}
+      <div className="absolute inset-0 bg-[#081b3a]/45" />
+      {/* Bottom-heavy scrim so the text stays readable, like the reference */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#081b3a]/95 via-[#081b3a]/40 to-transparent" />
       <div className="absolute bottom-0 right-0 h-full w-1/3 bg-gradient-to-l from-[var(--brand-red-600)]/20 to-transparent" />
 
      <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-8">

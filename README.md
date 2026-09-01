@@ -15,6 +15,8 @@ The React Compiler is not enabled on this template because of its impact on dev 
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
+
+
 ```
 sandip-university-redesign
 ├─ AGENTS.md
@@ -37,6 +39,7 @@ sandip-university-redesign
 │  │  │  ├─ about.jpg
 │  │  │  ├─ accenture.png
 │  │  │  ├─ ashwini.webp
+│  │  │  ├─ Banner.webp
 │  │  │  ├─ campus-1.jpg
 │  │  │  ├─ campus-2.png
 │  │  │  ├─ campus-3.png
@@ -49,12 +52,31 @@ sandip-university-redesign
 │  │  │  ├─ gallery3.jpg
 │  │  │  ├─ gallery4.jpg
 │  │  │  ├─ gayatri.png
+│  │  │  ├─ IMG_0862.HEIC
+│  │  │  ├─ IMG_0862.webp
+│  │  │  ├─ journey
+│  │  │  │  └─ soet
+│  │  │  │     ├─ capstone.jpg
+│  │  │  │     ├─ foundation.jpg
+│  │  │  │     ├─ internship.jpg
+│  │  │  │     ├─ placement.jpg
+│  │  │  │     └─ specialization.jpg
 │  │  │  ├─ kotak.png
 │  │  │  ├─ logo-dark.png
 │  │  │  ├─ pawan.png
+│  │  │  ├─ programs
+│  │  │  │  └─ aerospace-engineering.webp
+│  │  │  ├─ schools
+│  │  │  │  ├─ socms.webp
+│  │  │  │  ├─ socse.webp
+│  │  │  │  └─ sops.webp
 │  │  │  ├─ slider1.jpg
 │  │  │  ├─ slider2.webp
-│  │  │  └─ slier3.webp
+│  │  │  ├─ slier3.webp
+│  │  │  ├─ soet1.webp
+│  │  │  ├─ soet2.webp
+│  │  │  ├─ soet3.webp
+│  │  │  └─ SU-NAAC-white.png
 │  │  ├─ react.svg
 │  │  └─ vite.svg
 │  ├─ components
@@ -164,8 +186,15 @@ sandip-university-redesign
 │  │  │  ├─ CourseTabs.jsx
 │  │  │  ├─ DeanSection.jsx
 │  │  │  ├─ Programs.jsx
+│  │  │  ├─ SchoolCard.jsx
 │  │  │  ├─ SchoolContent.jsx
+│  │  │  ├─ SchoolsCTA.jsx
+│  │  │  ├─ SchoolsHero.jsx
 │  │  │  └─ Sidebar.jsx
+│  │  ├─ data
+│  │  │  ├─ courseDetailsData.js
+│  │  │  └─ schoolsData.js
+│  │  ├─ Schools.jsx
 │  │  ├─ SOCMS
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
@@ -197,11 +226,17 @@ sandip-university-redesign
 │  │  │  │  └─ About.jsx
 │  │  │  └─ SOD.jsx
 │  │  ├─ SOET
+│  │  │  ├─ AboutSOET.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ departmentsData.js
+│  │  │  │  ├─ journeyData.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  ├─ About.jsx

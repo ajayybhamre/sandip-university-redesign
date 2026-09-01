@@ -8,6 +8,29 @@ const TABS = [
   { id: "postgraduate", label: "Postgraduate" },
 ];
 
+// Auto-discovers every image in assets/images/programs at build time.
+// Adjust the relative path below to match where that folder sits from this file.
+const imageModules = import.meta.glob(
+  "../../../assets/images/programs/*.{webp,jpg,jpeg,png}",
+  { eager: true, import: "default" }
+);
+
+// Map: slug -> image URL, built from filenames (e.g. "aerospace-engineering.webp" -> "aerospace-engineering")
+const programImages = {};
+let defaultProgramImage = null;
+for (const path in imageModules) {
+  const filename = path.split("/").pop().replace(/\.[^/.]+$/, "");
+  if (filename === "default") {
+    defaultProgramImage = imageModules[path];
+  } else {
+    programImages[filename] = imageModules[path];
+  }
+}
+
+function getProgramImage(slug) {
+  return programImages[slug] || defaultProgramImage;
+}
+
 export default function ProgramsDepartments() {
   const [activeTab, setActiveTab] = useState("undergraduate");
   const programs = programsData[activeTab] || [];
@@ -48,16 +71,35 @@ export default function ProgramsDepartments() {
         {/* Program cards */}
         <div className="grid gap-5 md:grid-cols-2">
           {programs.map((program) => {
+            const bgImage = getProgramImage(program.slug);
             return (
               <Link
                 key={program.id}
-                to={`/schools/soet/${program.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-5 transition-colors duration-300 hover:border-[var(--brand-red-600)] hover:bg-[var(--surface-muted)]"
+                to={`/schools/engineering-technology/${program.slug}`}
+                className="group relative flex items-center gap-4 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-5 transition-colors duration-300 hover:border-[var(--brand-red-600)]"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-red-50)] text-[var(--brand-red-600)] transition-colors group-hover:bg-[var(--brand-red-600)] group-hover:text-white dark:bg-[var(--brand-red-900)]/20">
+                {/* Background photo — fades in on hover */}
+                {bgImage && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                    style={{ backgroundImage: `url(${bgImage})` }}
+                  />
+                )}
+
+                {/* Red tint overlay — fades in on top of the photo */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[#0F253C] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-70"
+                />
+
+                {/* Content sits above both layers */}
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-red-50)] text-[var(--brand-red-600)] transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white dark:bg-[var(--brand-red-900)]/20">
                   <GraduationCap size={20} />
                 </div>
-                <h3 className="font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)] transition-colors group-hover:text-[var(--brand-red-600)]">{program.title}</h3>
+                <h3 className="relative z-10 font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)] transition-colors duration-300 group-hover:text-white">
+                  {program.title}
+                </h3>
               </Link>
             );
           })}
@@ -65,4 +107,4 @@ export default function ProgramsDepartments() {
       </div>
     </section>
   );
-} 
+}

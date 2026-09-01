@@ -65,13 +65,13 @@ function App() {
          <Route path="/placement" element={<Placement/>} />
           <Route path="/gallery" element={<Gallery/>} />
               <Route path="/schools" element={<Schools/>} />
-           <Route path="/schools/soet" element={<SOET/>} />
-           <Route path="/schools/socse" element={<SOCSE/>} />
-           <Route path="/schools/socms" element={<SOCMS/>} />
-           <Route path="/schools/sos" element={<SOS/>} />
-           <Route path="/schools/sops" element={<SOPS/>} />
-           <Route path="/schools/sol" element={<SOL/>} />
-           <Route path="/schools/sod" element={<SOD/>} />
+           <Route path="/schools/engineering-technology" element={<SOET/>} />
+           <Route path="/schools/computer-science" element={<SOCSE/>} />
+           <Route path="/schools/management" element={<SOCMS/>} />
+           <Route path="/schools/science" element={<SOS/>} />
+           <Route path="/schools/pharma" element={<SOPS/>} />
+           <Route path="/schools/law" element={<SOL/>} />
+           <Route path="/schools/fashion-beauty" element={<SOD/>} />
            <Route path="/contact" element={<Contact/>} />
           <Route path="/schools/:schoolSlug/:courseSlug" element={<CourseDetails/>} />
         

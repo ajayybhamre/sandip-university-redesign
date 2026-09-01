@@ -17,7 +17,7 @@ const SOD = () => {
       <Header />
       <Breadcrumb badge="SOD" title="School of Design" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={programsData} schoolName="School of Design" schoolSlug="sod" />
+      <Programs programsData={programsData} schoolName="School of Design" schoolSlug="fashion-beauty" />
       <CourseTabs />
       <DeanSection deanData={deanData} schoolName="School of Design" />
 

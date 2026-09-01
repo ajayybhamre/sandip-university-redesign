@@ -3,7 +3,7 @@ import Departments from "../../SOET/sections/Departments";
 
 const sectionComponents = {
   about: About,
-  departments: Departments,
+  departments: Departments, 
 };
 
 export default sectionComponents;

@@ -16,7 +16,7 @@ const SOL = () => {
       <SEO {...seoData.about} />
       <Header />
       <Breadcrumb badge="SOL" title="School of Law" description="" currentPage="About" image={aboutBanner} />
-      <Programs programsData={programsData} schoolName="School of Law" schoolSlug="sol" />
+      <Programs programsData={programsData} schoolName="School of Law" schoolSlug="law" />
       <CourseTabs />
       <DeanSection deanData={deanData} schoolName="School of Law" />
 

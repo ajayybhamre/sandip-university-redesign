@@ -17,7 +17,7 @@ const SOCMS = () => {
       <Header />
       <Breadcrumb badge="CMS" title="School of Commerce & Management Studies" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={programsData} schoolName="School of Commerce & Management Studies" schoolSlug="socms" />
+      <Programs programsData={programsData} schoolName="School of Commerce & Management Studies" schoolSlug="management" />
       <CourseTabs />
       <DeanSection deanData={deanData} schoolName="School of Commerce & Management Studies" />
 

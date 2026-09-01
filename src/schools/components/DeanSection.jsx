@@ -27,7 +27,7 @@ const DeanSection = ({ deanData = {}, deanImage, schoolName = "School" }) => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} viewport={{ once: true }} className="lg:col-span-7">
-            <div className="border-t-2 border-[var(--brand-red-600)] pt-8">
+            <div className="pt-8">
               <FaQuoteLeft className="mb-7 text-3xl text-[var(--brand-red-600)]" />
 
               <h3 className="font-[var(--font-display)] text-3xl font-bold text-[var(--ink)]">{deanData.name || schoolName}</h3>

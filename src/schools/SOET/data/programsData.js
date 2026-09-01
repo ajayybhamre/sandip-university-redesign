@@ -26,7 +26,7 @@ const programsData = {
     },
     {
       id: 5,
-      title: "B.Tech. (Electronics & Telecommunication) (Starting from A.Y 2026)",
+      title: "B.Tech. (Electronics & Telecommunication)",
       slug: "electronics-telecommunication",
       departmentSlug: "electronics-telecom",
     },
@@ -77,13 +77,13 @@ const programsData = {
     },
     {
       id: 5,
-      title: "M.Tech. Valuation (Land-Building) (Starting from A.Y 2026)",
+      title: "M.Tech. Valuation (Land-Building)",
       slug: "mtech-valuation-land-building",
       departmentSlug: "civil",
     },
     {
       id: 6,
-      title: "Master of Planning (Town and Country Planning) (Starting from A.Y 2026)",
+      title: "Master of Planning (Town and Country Planning)",
       slug: "master-of-planning-town-country-planning",
       departmentSlug: "planning",
     },

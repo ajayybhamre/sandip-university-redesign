@@ -17,7 +17,7 @@ const SOCSE = () => {
       <Header />
       <Breadcrumb badge="CSE" title="School of Computer Science & Engineering" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={programsData} schoolName="School of Computer Science & Engineering" schoolSlug="socse" />
+      <Programs programsData={programsData} schoolName="School of Computer Science & Engineering" schoolSlug="computer-science" />
       <CourseTabs />
       <DeanSection deanData={deanData} schoolName="School of Computer Science & Engineering" />
 

@@ -17,7 +17,7 @@ const SOPS = () => {
       <Header />
       <Breadcrumb badge="SOPS" title="School of Pharmacy & Paramedical Sciences" description="" currentPage="About" image={aboutBanner} />
 
-      <Programs programsData={programsData} schoolName="School of Pharmacy & Paramedical Sciences" schoolSlug="sops" />
+      <Programs programsData={programsData} schoolName="School of Pharmacy & Paramedical Sciences" schoolSlug="pharma" />
       <CourseTabs />
       <DeanSection deanData={deanData} schoolName="School of Pharmacy & Paramedical Sciences" />
 

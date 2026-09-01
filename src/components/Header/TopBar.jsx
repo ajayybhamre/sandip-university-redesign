@@ -9,9 +9,19 @@ import {
  
 } from "react-icons/fa";
 
-function TopBar() {
+function TopBar({ overlay = false, scrolled = false }) {
+  // On overlay pages, TopBar disappears entirely once scrolled — only the
+  // floating Navbar pill remains. Non-overlay pages are unaffected.
+  if (overlay && scrolled) return null;
+
+  const isTransparent = overlay && !scrolled;
+
   return (
-    <div className="hidden xl:block bg-[#000] text-white text-sm">
+    <div
+      className={`hidden xl:block border-b border-white/20 text-white text-sm transition-colors duration-500 ${
+        isTransparent ? "bg-transparent" : "bg-[#000]"
+      }`}
+    >
       <div className="max-w-[1600px] mx-auto flex justify-between items-center px-6 py-2">
 
         {/* Left Side */}

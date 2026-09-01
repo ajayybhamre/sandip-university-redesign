@@ -109,37 +109,37 @@ const menuData = [
           
           {
             title: "School Of Engineering & Technology",
-            path: "/schools/soet",
+            path: "/schools/engineering-technology",
             icon: GraduationCap,
           },
           {
             title: "School Of Computer Science & Engineering",
-            path: "/schools/socse",
+            path: "/schools/computer-science",
             icon: BookOpen,
           },
           {
             title: "School Of Commerce & Managment Studies",
-            path: "/schools/socms",
+            path: "/schools/management",
             icon: Briefcase,
           },
           {
             title: "School Of Science",
-            path: "/schools/sos",
+            path: "/schools/science",
             icon: FlaskConical,
           },
           {
             title: "School of Pharmaceutical Sciences ",
-            path: "/schools/sops",
+            path: "/schools/pharma",
             icon: Pill,
           },
           {
             title: "School Of Law",
-            path: "/schools/sol",
+            path: "/schools/law",
             icon: Scale,
           },
           {
             title: "School Of Design",
-            path: "/schools/sod",
+            path: "/schools/fashion-beauty",
             icon: Award,
           },
         ],
