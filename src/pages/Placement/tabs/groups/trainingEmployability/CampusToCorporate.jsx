@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { HiOutlineArrowPath, HiOutlineCheckCircle } from "react-icons/hi2";
 
 import { lifeDifference, placementCellBenefits } from "./data/campusToCorporateData";
+import campusToCorporateImg from "../../../../../assets/images/campus-pride/cpp2.jpg";
 
 const BulletPanel = ({ title, items, delay }) => (
 
@@ -91,73 +92,105 @@ const CampusToCorporate = () => {
 
         viewport={{ once: true }}
 
-        className="mb-10"
+        className="
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+          gap-10
+          items-center
+          mb-10
+        "
       >
 
-        <div className="
-          flex
-          items-center
-          gap-3
-          mb-4
-        ">
+        <div>
 
           <div className="
-            w-11
-            h-11
-            rounded-full
-            bg-red-100
-            dark:bg-red-900/30
             flex
             items-center
-            justify-center
-            shrink-0
+            gap-3
+            mb-4
           ">
-            <HiOutlineArrowPath className="text-red-600 w-5 h-5" />
+
+            <div className="
+              w-11
+              h-11
+              rounded-full
+              bg-red-100
+              dark:bg-red-900/30
+              flex
+              items-center
+              justify-center
+              shrink-0
+            ">
+              <HiOutlineArrowPath className="text-red-600 w-5 h-5" />
+            </div>
+
+            <span className="
+              text-red-600
+              font-semibold
+              uppercase
+              tracking-[3px]
+              text-sm
+            ">
+              Campus Placements
+            </span>
+
           </div>
 
-          <span className="
-            text-red-600
-            font-semibold
-            uppercase
-            tracking-[3px]
-            text-sm
+          <h3 className="
+            text-2xl
+            md:text-4xl
+            font-bold
+            text-gray-900
+            dark:text-white
           ">
-            Campus Placements
-          </span>
+            Campus to Corporate
+          </h3>
+
+          <p className="
+            mt-5
+            text-gray-600
+            dark:text-gray-300
+            leading-8
+            text-justify
+          ">
+            Students are assisted through each and every round of the
+            actual campus placements. Over 150 empanelled recruitment
+            partners participate in Sandip University's annual placement
+            drive to recruit skilled and well-trained young professionals.
+            Sandip University's unique Campus to Corporate program is
+            designed to help students make a seamless shift from college
+            campus to a corporate environment — preparing them to switch
+            from being students to dynamic professionals and assets to
+            the industry. Additional efforts are made to ensure students
+            are able to emulate behaviours and develop their personality
+            in a manner that befits their role in the industry, with tips
+            and tricks for group discussions and multiple mock interviews
+            to build confidence answering complex questions with ease.
+          </p>
 
         </div>
 
-        <h3 className="
-          text-2xl
-          md:text-4xl
-          font-bold
-          text-gray-900
-          dark:text-white
+        <div className="
+          rounded-2xl
+          overflow-hidden
+          shadow-lg
+          border
+          border-gray-100
+          dark:border-slate-700
         ">
-          Campus to Corporate
-        </h3>
 
-        <p className="
-          mt-5
-          text-gray-600
-          dark:text-gray-300
-          leading-8
-          max-w-4xl
-        ">
-          Students are assisted through each and every round of the
-          actual campus placements. Over 150 empanelled recruitment
-          partners participate in Sandip University's annual placement
-          drive to recruit skilled and well-trained young professionals.
-          Sandip University's unique Campus to Corporate program is
-          designed to help students make a seamless shift from college
-          campus to a corporate environment — preparing them to switch
-          from being students to dynamic professionals and assets to
-          the industry. Additional efforts are made to ensure students
-          are able to emulate behaviours and develop their personality
-          in a manner that befits their role in the industry, with tips
-          and tricks for group discussions and multiple mock interviews
-          to build confidence answering complex questions with ease.
-        </p>
+          <img
+            src={campusToCorporateImg}
+            alt="Campus to Corporate"
+            className="
+              w-full
+              h-full
+              object-cover
+            "
+          />
+
+        </div>
 
       </motion.div>
 

@@ -59,6 +59,7 @@ const SuperDreamCareers = () => {
           dark:text-gray-300
           leading-8
           max-w-4xl
+          text-justify
         ">
           Students at Sandip University are offered unique opportunities
           to train above the rest and aim for a "Super Dream" career.

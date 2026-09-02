@@ -58,6 +58,7 @@ const CombinedSkills = () => {
           dark:text-gray-300
           leading-8
           max-w-4xl
+          text-justify
         ">
           A well-rounded professional needs more than academic
           expertise — Sandip University builds communication ability,
@@ -139,6 +140,7 @@ const CombinedSkills = () => {
                   dark:text-gray-300
                   leading-7
                   mb-5
+                  text-justify
                 ">
                   {area.description}
                 </p>

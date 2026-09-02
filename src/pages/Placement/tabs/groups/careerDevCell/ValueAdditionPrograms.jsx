@@ -154,6 +154,7 @@ const ValueAdditionPrograms = () => {
           dark:text-gray-300
           leading-8
           max-w-4xl
+          text-justify
         ">
           Sandip University offers globally recognised certification
           programs to add value to each student's resume at no

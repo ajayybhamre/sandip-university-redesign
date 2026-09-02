@@ -100,6 +100,7 @@ const Internships = () => {
             text-gray-600
             dark:text-gray-300
             leading-6
+            text-justify
           ">
             Sandip University's unique industry-synced curriculum
             inculcates compulsory internships as part of the course
@@ -163,6 +164,7 @@ const Internships = () => {
             text-gray-600
             dark:text-gray-300
             leading-6
+            text-justify
           ">
             Students can also apply for international internships, which
             have the potential to transform into lucrative job offers

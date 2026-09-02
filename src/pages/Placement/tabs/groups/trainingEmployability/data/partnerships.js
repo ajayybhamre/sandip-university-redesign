@@ -1,5 +1,11 @@
 const partnerships = [
   {
+    name: "PEEP — Persistent Engagement for Enhanced Partnership",
+    icon: "peep",
+    description:
+      "Sandip University's foundational placement-readiness framework, built on three pillars: focused Students Training to build core and industry-relevant skills, structured Campus Placements support connecting students directly with recruiting partners, and regular Industrial Visits that give students first-hand exposure to real working environments before they graduate.",
+  },
+  {
     name: "Association with Capgemini",
     icon: "building",
     description:

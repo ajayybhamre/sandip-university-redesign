@@ -121,6 +121,7 @@ const TopAchievers = () => {
                 text-gray-500
                 dark:text-gray-400
                 leading-5
+                text-justify
               ">
                 {student.company}
               </p>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import {
+  HiOutlinePuzzlePiece,
   HiOutlineBuildingOffice2,
   HiOutlineAcademicCap,
   HiOutlineRocketLaunch,
@@ -10,6 +11,7 @@ import {
 import partnerships from "./data/partnerships";
 
 const iconMap = {
+  peep: HiOutlinePuzzlePiece,
   building: HiOutlineBuildingOffice2,
   academic: HiOutlineAcademicCap,
   rocket: HiOutlineRocketLaunch,
@@ -41,7 +43,7 @@ const EmployabilityEnhancement = () => {
           tracking-[3px]
           text-sm
         ">
-          PEEP — Persistent Engagement for Enhanced Partnership
+          Industry-Ready Skills
         </span>
 
         <h3 className="
@@ -54,22 +56,6 @@ const EmployabilityEnhancement = () => {
         ">
           Employability Enhancement Program
         </h3>
-
-        <p className="
-          mt-5
-          text-gray-600
-          dark:text-gray-300
-          leading-8
-          max-w-4xl
-        ">
-          The PEEP program is designed to help students gain necessary
-          training to prepare for their role in the industry. Students
-          undergo placement training through industry visits, organised
-          to build real industry experience and help students engage
-          with the ins and outs of working in the industry. This program
-          also helps students gain campus placements with our industry
-          partners.
-        </p>
 
       </motion.div>
 
@@ -143,6 +129,7 @@ const EmployabilityEnhancement = () => {
                   text-gray-600
                   dark:text-gray-400
                   leading-6
+                  text-justify
                 ">
                   {partner.description}
                 </p>

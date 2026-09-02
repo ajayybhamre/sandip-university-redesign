@@ -38,9 +38,8 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
           flex
           items-center
           justify-between
-          gap-4
-          p-5
-          md:p-6
+          gap-3
+          p-4
           text-left
         "
       >
@@ -49,8 +48,8 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
           font-bold
           text-gray-900
           dark:text-white
-          text-sm
-          md:text-base
+          text-xs
+          md:text-sm
         ">
           {question}
         </h5>
@@ -62,8 +61,8 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
           transition={{ duration: 0.25 }}
 
           className="
-            w-8
-            h-8
+            w-6
+            h-6
             rounded-full
             bg-white
             dark:bg-slate-800
@@ -76,7 +75,7 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
             shrink-0
           "
         >
-          <HiOutlineChevronDown className="w-4 h-4 text-red-600" />
+          <HiOutlineChevronDown className="w-3.5 h-3.5 text-red-600" />
         </motion.div>
 
       </button>
@@ -100,16 +99,16 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
             >
 
               <div className="
-                px-5
-                md:px-6
-                pb-6
+                px-4
+                pb-4
               ">
 
                 <p className="
-                  text-sm
+                  text-xs
                   text-gray-600
                   dark:text-gray-300
-                  leading-6
+                  leading-5
+                  text-justify
                 ">
                   {answer}
                 </p>
@@ -118,10 +117,10 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
                   showRecruiters && (
 
                     <div className="
-                      mt-5
+                      mt-4
                       flex
                       flex-wrap
-                      gap-2
+                      gap-1.5
                     ">
 
                       {
@@ -130,7 +129,7 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
                           <span
                             key={name}
                             className="
-                              text-xs
+                              text-[10px]
                               font-medium
                               bg-white
                               dark:bg-slate-800
@@ -139,8 +138,8 @@ const FAQItem = ({ question, answer, showRecruiters, index }) => {
                               dark:border-slate-700
                               text-gray-700
                               dark:text-gray-300
-                              px-3
-                              py-1.5
+                              px-2.5
+                              py-1
                               rounded-full
                             "
                           >

@@ -69,6 +69,7 @@ const TrendsAwareness = () => {
           dark:text-gray-300
           leading-8
           max-w-4xl
+          text-justify
         ">
           Awareness of recently developing technology in one's
           specialisation and allied fields is essential, even beyond
@@ -140,6 +141,7 @@ const TrendsAwareness = () => {
                 dark:text-gray-300
                 leading-6
                 pt-1.5
+                text-justify
               ">
                 {item.text}
               </p>

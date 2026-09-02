@@ -111,6 +111,7 @@ const PlacementPolicy = () => {
           leading-7
           text-sm
           md:text-base
+          text-justify
         ">
           Dear Students, greetings from Central T&P Department, Sandip
           Group of Institutes! This is the most significant phase of
@@ -220,6 +221,7 @@ const PlacementPolicy = () => {
                   text-gray-600
                   dark:text-gray-400
                   leading-5
+                  text-justify
                 ">
                   {item.text}
                 </p>
