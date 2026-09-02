@@ -8,7 +8,7 @@ import "./PartnershipsHero.css";
 
 export default function PartnershipsHero() {
   return (
-    <section className="partnerships-hero pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 text-slate-900 overflow-hidden relative border-b border-slate-200/80">
+    <section className="partnerships-hero pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 dark:from-[#0B0B0D] dark:via-[#121216] dark:to-[#18181F] text-slate-900 dark:text-white overflow-hidden relative border-b border-slate-200/80 dark:border-zinc-800 transition-colors duration-300">
       
       {/* Soft Glow Crimson Background Accents */}
       <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
@@ -20,7 +20,7 @@ export default function PartnershipsHero() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-2 text-xs font-bold text-slate-500 mb-6"
+          className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 mb-6"
           aria-label="Breadcrumb"
         >
           <Link to="/" className="hover:text-[#C8102E] transition-colors">Home</Link>
@@ -40,19 +40,19 @@ export default function PartnershipsHero() {
             className="lg:col-span-7 flex flex-col items-start space-y-6"
           >
             {/* Label */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-[#D4A72C] font-extrabold text-xs tracking-wider uppercase shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/40 text-[#D4A72C] font-extrabold text-xs tracking-wider uppercase shadow-2xs">
               <Globe className="w-3.5 h-3.5 text-[#D4A72C]" />
               <span>GLOBAL INSTITUTIONAL NETWORK</span>
               <Sparkles className="w-3 h-3 text-[#D4A72C]" />
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               Building Bridges <span className="text-[#C8102E]">Across Borders</span>
             </h1>
 
             {/* Supporting Text */}
-            <p className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-2xl">
               Connecting Sandip University with leading global institutions and academic networks around the world for collaborative research, faculty exchanges, and student mobility.
             </p>
 
@@ -71,7 +71,7 @@ export default function PartnershipsHero() {
               <MagneticButton>
                 <a
                   href="#collaboration-opportunities"
-                  className="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base shadow-md transition-all duration-300 text-center flex items-center justify-center gap-2"
+                  className="px-8 py-4 rounded-xl bg-slate-900 dark:bg-zinc-800 hover:bg-slate-800 dark:hover:bg-zinc-700 text-white font-bold text-base shadow-md transition-all duration-300 text-center flex items-center justify-center gap-2"
                 >
                   <Landmark className="w-4 h-4 text-[#D4A72C]" />
                   <span>Partnership MOUs</span>

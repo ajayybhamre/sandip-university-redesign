@@ -20,7 +20,7 @@ export default function StudentSuccessStories() {
   };
 
   return (
-    <section id="student-success" className="relative py-20 lg:py-28 bg-[#FDFBF7] text-slate-900 overflow-hidden border-t border-slate-200/70 transition-colors duration-300">
+    <section id="student-success" className="relative py-20 lg:py-28 bg-[#FDFBF7] dark:bg-[#0c0c0d] text-slate-900 dark:text-white overflow-hidden border-t border-slate-200/70 dark:border-zinc-800 transition-colors duration-300">
       
       {/* 1. SOFT RED GRADIENT AMBIENT GLOW BEHIND FEATURED STUDENT */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C8102E]/10 blur-[130px] rounded-full pointer-events-none z-0"></div>

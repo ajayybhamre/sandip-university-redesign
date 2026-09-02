@@ -125,27 +125,27 @@ export default function DocumentList() {
 
       <Header />
 
-      <main className="bg-[#FAF8F5] text-slate-900 min-h-screen font-sans selection:bg-[#C8102E] selection:text-white pt-20">
+      <main className="bg-[#FAF8F5] dark:bg-[#0c0c0d] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-[#C8102E] selection:text-white pt-20">
 
         {/* ==========================================
             1. HERO SECTION (Red / Black / White Theme)
         ========================================== */}
-        <section className="relative w-full bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 overflow-hidden">
+        <section className="relative w-full bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 dark:from-[#0c0c0d] dark:via-[#121215] dark:to-[#0c0c0d] py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 dark:border-zinc-800 overflow-hidden">
           
           {/* Ambient Crimson Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-7xl mx-auto text-center relative z-10 space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C8102E] uppercase tracking-wider shadow-2xs">
-              <Sparkles size={14} className="text-[#C8102E]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/40 text-xs font-bold text-[#C8102E] dark:text-red-400 uppercase tracking-wider shadow-2xs">
+              <Sparkles size={14} className="text-[#C8102E] dark:text-red-400" />
               <span>ADMISSION DOCUMENT TRACKER 2026–27</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
               Required Documents <span className="text-[#C8102E]">Checklist</span>
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-gray-300 max-w-2xl mx-auto font-medium leading-relaxed">
               Complete interactive checklist of all documents needed for your admission process. Track, verify, and prepare everything in one place.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function DocumentList() {
         {/* ==========================================
             2. PROGRESS & CONTROLS SECTION (Sticky)
         ========================================== */}
-        <section className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-md py-5 px-4 sm:px-6 lg:px-8">
+        <section className="sticky top-0 z-30 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-slate-200 dark:border-zinc-800 shadow-md py-5 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-4">
             
             {/* Overall Completion Box with Glassmorphism */}
@@ -193,7 +193,7 @@ export default function DocumentList() {
             {/* Controls Row */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-1">
               
-              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm font-bold text-slate-900 select-none">
+              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs sm:text-sm font-bold text-slate-900 dark:text-white select-none">
                 <input
                   type="checkbox"
                   checked={showOnlyRequired}
@@ -205,7 +205,7 @@ export default function DocumentList() {
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <MagneticButton onClick={handleDownloadChecklist}>
-                  <button className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-900 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors cursor-pointer shadow-xs">
+                  <button className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 border border-slate-300 dark:border-zinc-700 transition-colors cursor-pointer shadow-xs">
                     <Download size={14} />
                     <span>Download Checklist</span>
                   </button>
@@ -240,31 +240,31 @@ export default function DocumentList() {
 
             return (
               <TiltCard key={cat.id} className="w-full">
-                <div className="rounded-3xl border border-slate-200/90 overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow">
+                <div className="rounded-3xl border border-slate-200/90 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-900 shadow-md hover:shadow-xl transition-shadow">
                   
                   {/* Category Header */}
                   <div
                     onClick={() => toggleCategoryExpand(cat.id)}
-                    className="p-6 bg-slate-50 hover:bg-red-50/40 border-b border-slate-200 cursor-pointer flex items-center justify-between gap-4 select-none transition-colors"
+                    className="p-6 bg-slate-50 dark:bg-zinc-800/80 hover:bg-red-50/40 dark:hover:bg-red-950/20 border-b border-slate-200 dark:border-zinc-700 cursor-pointer flex items-center justify-between gap-4 select-none transition-colors"
                   >
                     <div className="space-y-1">
-                      <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                      <h2 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
                         <span>{cat.name}</span>
                       </h2>
-                      <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-gray-300 font-medium">
                         {cat.description}
                       </p>
                     </div>
 
                     <div className="flex items-center gap-4 flex-shrink-0">
                       <div className="text-right hidden sm:block">
-                        <span className="text-xs sm:text-sm font-black text-slate-900">
+                        <span className="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
                           {categoryCheckedCount}/{categoryTotalCount}
                         </span>
-                        <span className="text-xs text-slate-500 font-bold block">verified</span>
+                        <span className="text-xs text-slate-500 dark:text-gray-400 font-bold block">verified</span>
                       </div>
 
-                      <div className={`p-2 rounded-full bg-white text-slate-900 border border-slate-200 transition-transform duration-200 ${isExpanded ? "rotate-90 text-[#C8102E]" : ""}`}>
+                      <div className={`p-2 rounded-full bg-white dark:bg-zinc-900 text-slate-900 dark:text-white border border-slate-200 dark:border-zinc-700 transition-transform duration-200 ${isExpanded ? "rotate-90 text-[#C8102E] dark:text-red-400" : ""}`}>
                         <ChevronRight size={18} />
                       </div>
                     </div>
@@ -278,9 +278,9 @@ export default function DocumentList() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="border-t border-slate-100"
+                        className="border-t border-slate-100 dark:border-zinc-800"
                       >
-                        <div className="p-6 space-y-4 bg-white">
+                        <div className="p-6 space-y-4 bg-white dark:bg-zinc-900">
                           
                           {categoryDocs.map((doc) => {
                             const isChecked = checkedDocIds.has(doc.id);
@@ -299,12 +299,12 @@ export default function DocumentList() {
                           })}
 
                           {/* Category Progress Bar */}
-                          <div className="pt-3 mt-4 border-t border-slate-100">
-                            <div className="flex items-center justify-between text-xs font-bold text-slate-900 mb-1.5">
+                          <div className="pt-3 mt-4 border-t border-slate-100 dark:border-zinc-800">
+                            <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white mb-1.5">
                               <span>Category Progress</span>
-                              <span className="text-[#C8102E]">{catPercentage}%</span>
+                              <span className="text-[#C8102E] dark:text-red-400">{catPercentage}%</span>
                             </div>
-                            <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div className="w-full h-2.5 bg-slate-100 dark:bg-zinc-800 rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-gradient-to-r from-[#C8102E] to-amber-500 rounded-full transition-all duration-300"
                                 style={{ width: `${catPercentage}%` }}
@@ -327,39 +327,39 @@ export default function DocumentList() {
         {/* ==========================================
             4. FAQ SECTION
         ========================================== */}
-        <section className="py-16 bg-white border-t border-slate-200">
+        <section className="py-16 bg-white dark:bg-zinc-900 border-t border-slate-200 dark:border-zinc-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             
             <div className="text-center space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#C8102E]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#C8102E] dark:text-red-400">
                 DOCUMENT VERIFICATION HELP
               </span>
-              <h2 className="text-3xl font-black text-slate-900">
+              <h2 className="text-3xl font-black text-slate-900 dark:text-white">
                 Frequently Asked Questions
               </h2>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl border border-slate-200/90 divide-y divide-slate-200 overflow-hidden">
+            <div className="bg-slate-50 dark:bg-zinc-800/50 rounded-2xl border border-slate-200/90 dark:border-zinc-700 divide-y divide-slate-200 dark:divide-zinc-700 overflow-hidden">
               {DOCUMENT_FAQS.map((faq, idx) => {
                 const isOpen = expandedFaq === idx;
                 return (
                   <div key={idx} className="p-5 sm:p-6">
                     <button
                       onClick={() => setExpandedFaq(isOpen ? null : idx)}
-                      className="w-full text-left flex items-center justify-between gap-4 text-xs sm:text-sm font-bold text-slate-900 hover:text-[#C8102E] transition-colors cursor-pointer"
+                      className="w-full text-left flex items-center justify-between gap-4 text-xs sm:text-sm font-bold text-slate-900 dark:text-white hover:text-[#C8102E] dark:hover:text-red-400 transition-colors cursor-pointer"
                     >
                       <span className="flex items-center gap-2.5">
-                        <HelpCircle size={18} className="text-[#C8102E] flex-shrink-0" />
+                        <HelpCircle size={18} className="text-[#C8102E] dark:text-red-400 flex-shrink-0" />
                         <span>{faq.question}</span>
                       </span>
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180 text-[#C8102E]" : ""}`}
+                        className={`transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180 text-[#C8102E] dark:text-red-400" : ""}`}
                       />
                     </button>
 
                     {isOpen && (
-                      <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed pl-7 font-medium">
+                      <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed pl-7 font-medium">
                         {faq.answer}
                       </p>
                     )}

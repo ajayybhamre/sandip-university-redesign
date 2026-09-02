@@ -20,7 +20,7 @@ import "./Overview.css";
 
 export default function InternationalOverviewPage() {
   return (
-    <div className="intl-overview-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="intl-overview-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-orange-500 selection:text-white">
       <SEO {...seoData.international} />
       <Header />
 

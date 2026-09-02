@@ -13,7 +13,7 @@ export default function CampusTour() {
   ];
 
   return (
-    <section id="campus-tour" className="relative py-20 lg:py-28 bg-[#FAF6EE] text-slate-900 overflow-hidden transition-colors duration-300 border-t border-slate-200/60">
+    <section id="campus-tour" className="relative py-20 lg:py-28 bg-[#FAF6EE] dark:bg-zinc-950 text-slate-900 dark:text-white overflow-hidden transition-colors duration-300 border-t border-slate-200/60 dark:border-zinc-800">
       
       {/* 1. SOFT BLURRED CRIMSON AMBIENT GLOW BEHIND VIDEO */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-[#C8102E]/12 blur-[140px] rounded-full pointer-events-none z-0"></div>

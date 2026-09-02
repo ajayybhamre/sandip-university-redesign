@@ -104,35 +104,35 @@ export default function AdmissionPrograms() {
 
       <Header />
 
-      <main className="bg-[#FAF8F5] text-slate-900 min-h-screen font-sans selection:bg-[#C8102E] selection:text-white">
+      <main className="bg-[#FAF8F5] dark:bg-[#0c0c0d] text-slate-900 dark:text-white min-h-screen font-sans selection:bg-[#C8102E] selection:text-white">
 
         {/* ==========================================
             1. HERO SECTION (Red / Black / White Shading)
         ========================================== */}
-        <section ref={heroRef} className="relative w-full bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 overflow-hidden">
+        <section ref={heroRef} className="relative w-full bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 dark:from-[#0c0c0d] dark:via-[#121215] dark:to-[#0c0c0d] py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200/80 dark:border-zinc-800 overflow-hidden">
           
           {/* Crimson Ambient Glow */}
           <div className="absolute top-0 right-1/4 w-[600px] h-[350px] bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="max-w-5xl mx-auto relative z-10 text-center space-y-8">
             
-            {/* Left Content */}
-            <motion.div style={{ y: heroTextY }} className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            {/* Centered Header Block */}
+            <motion.div style={{ y: heroTextY }} className="space-y-5 flex flex-col items-center">
               
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C8102E] uppercase tracking-wider shadow-2xs">
-                <Sparkles size={14} className="text-[#C8102E]" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/40 text-xs font-bold text-[#C8102E] dark:text-red-400 uppercase tracking-wider shadow-2xs mx-auto">
+                <Sparkles size={14} className="text-[#C8102E] dark:text-red-400" />
                 <span>ACADEMIC DISCOVERY CATALOG</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight text-center whitespace-normal sm:whitespace-nowrap">
                 Programs & Detailed <span className="text-[#C8102E]">Information</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto text-center font-medium leading-relaxed">
                 Choose from accredited undergraduate, postgraduate, diploma, and Ph.D. degrees designed to empower your career ambitions.
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
                 <MagneticButton onClick={scrollToDiscovery}>
                   <button className="px-8 py-4 rounded-xl bg-[#C8102E] hover:bg-red-700 text-white text-sm font-bold shadow-lg shadow-red-600/25 transition-all duration-300 flex items-center gap-2 cursor-pointer">
                     <span>Explore Programs</span>
@@ -142,36 +142,13 @@ export default function AdmissionPrograms() {
               </div>
             </motion.div>
 
-            {/* Right Graduation Showcase Hero Image */}
-            <div className="lg:col-span-5 relative">
-              <CurtainReveal direction="up">
-                <div className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden border-2 border-slate-200 shadow-2xl bg-white group">
-                  <motion.img
-                    style={{ scale: heroImageScale }}
-                    src={graduationHeroImg}
-                    alt="Graduation Celebration - Sandip University Programs"
-                    className="w-full h-[380px] sm:h-[440px] object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/20 text-slate-900 shadow-xl space-y-1">
-                    <span className="text-[10px] font-extrabold text-[#C8102E] uppercase tracking-wider block">
-                      DEGREES AWARDED 2026–27
-                    </span>
-                    <p className="text-xs font-bold text-slate-900">
-                      Transforming Passion into Professional Success
-                    </p>
-                  </div>
-                </div>
-              </CurtainReveal>
-            </div>
-
           </div>
         </section>
 
         {/* ==========================================
             2. SEARCH & FILTER BAR (Sticky Glassmorphism)
         ========================================== */}
-        <section ref={discoveryRef} className="sticky top-0 z-30 bg-white/90 backdrop-blur-md py-4 border-b border-slate-200/90 shadow-md">
+        <section ref={discoveryRef} className="sticky top-0 z-30 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md py-4 border-b border-slate-200/90 dark:border-zinc-800 shadow-md">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
             
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
@@ -183,16 +160,16 @@ export default function AdmissionPrograms() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search programs by name, specialization, or keyword..."
-                  className="w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#C8102E] focus:bg-white transition-colors shadow-2xs font-medium"
+                  className="w-full pl-11 pr-10 py-3 bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-400 focus:outline-none focus:border-[#C8102E] focus:bg-white dark:focus:bg-zinc-800 transition-colors shadow-2xs font-medium"
                 />
                 <SearchIcon
                   size={18}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400 pointer-events-none"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   >
                     <X size={16} />
                   </button>
@@ -203,7 +180,7 @@ export default function AdmissionPrograms() {
               <div className="flex flex-wrap items-center gap-2">
                 
                 {/* Level Buttons */}
-                <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs overflow-x-auto">
+                <div className="flex items-center gap-1 bg-slate-100 dark:bg-zinc-800 p-1 rounded-xl border border-slate-200 dark:border-zinc-700 shadow-2xs overflow-x-auto">
                   {levelOptions.map((lvl) => {
                     const isActive = selectedLevel === lvl.id;
                     return (
@@ -213,7 +190,7 @@ export default function AdmissionPrograms() {
                         className={`px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                           isActive
                             ? "bg-[#C8102E] text-white shadow-md"
-                            : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+                            : "text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-zinc-700/60"
                         }`}
                       >
                         {lvl.label}
@@ -227,17 +204,17 @@ export default function AdmissionPrograms() {
                   <select
                     value={selectedSchool}
                     onChange={(e) => setSelectedSchool(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:border-[#C8102E] appearance-none pr-9 cursor-pointer shadow-2xs"
+                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-xl text-xs font-bold text-slate-900 dark:text-white focus:outline-none focus:border-[#C8102E] appearance-none pr-9 cursor-pointer shadow-2xs"
                   >
                     {SCHOOLS_LIST.map((sch) => (
-                      <option key={sch.id} value={sch.id}>
+                      <option key={sch.id} value={sch.id} className="bg-white dark:bg-zinc-900 text-slate-900 dark:text-white">
                         {sch.name}
                       </option>
                     ))}
                   </select>
                   <ChevronDown
                     size={14}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-400 pointer-events-none"
                   />
                 </div>
 
@@ -245,9 +222,9 @@ export default function AdmissionPrograms() {
             </div>
 
             {/* Results Counter Bar */}
-            <div className="flex items-center justify-between text-xs text-slate-500 pt-1 font-semibold">
+            <div className="flex items-center justify-between text-xs text-slate-500 dark:text-gray-400 pt-1 font-semibold">
               <span>National Academic Degree Catalog</span>
-              <span className="font-bold text-slate-900">
+              <span className="font-bold text-slate-900 dark:text-white">
                 Showing {filteredPrograms.length} of {ALL_PROGRAMS_DATA.length} programs
               </span>
             </div>

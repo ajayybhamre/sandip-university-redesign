@@ -16,7 +16,7 @@ export default function DocumentItemRow({
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative rounded-[8px] border border-[#E2E8F0] overflow-hidden bg-white group transition-colors duration-200"
+      className="relative rounded-[8px] border border-[#E2E8F0] dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-900 group transition-colors duration-200"
       style={{ willChange: "background-color" }}
     >
       {/* Thin Gold Accent Bar Sliding from Left Edge (width: 0 -> 4px) */}
@@ -26,7 +26,7 @@ export default function DocumentItemRow({
       />
 
       {/* Row Background Subtle Tint Wipe (Navy at 4-5% Opacity on Hover) */}
-      <div className="absolute inset-0 bg-[#0F1B2B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#0F1B2B]/5 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Row Content */}
       <div className="relative z-10 p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
@@ -38,7 +38,7 @@ export default function DocumentItemRow({
           className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border flex items-center justify-center transition-all duration-150 flex-shrink-0 mt-0.5 cursor-pointer ${
             isChecked
               ? "bg-[#C8102E] border-[#C8102E] text-white"
-              : "border-slate-300 bg-white group-hover:border-[#C8102E]"
+              : "border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 group-hover:border-[#C8102E]"
           }`}
         >
           {isChecked && <Check size={14} strokeWidth={3} />}
@@ -57,7 +57,7 @@ export default function DocumentItemRow({
               <motion.div
                 whileHover={shouldReduceMotion ? {} : { rotate: 6 }}
                 transition={{ duration: 0.2 }}
-                className="text-[#0F1B2B] group-hover:text-[#C8102E] transition-colors duration-200 flex-shrink-0"
+                className="text-[#0F1B2B] dark:text-red-400 group-hover:text-[#C8102E] dark:group-hover:text-red-400 transition-colors duration-200 flex-shrink-0"
                 style={{ willChange: "transform, color" }}
               >
                 <div className="w-2 h-2 rounded-full bg-current" />
@@ -66,8 +66,8 @@ export default function DocumentItemRow({
               <h3
                 className={`text-xs sm:text-sm font-semibold transition-colors duration-200 ${
                   isChecked
-                    ? "line-through text-[#64748B]"
-                    : "text-[#0C0C0D] group-hover:text-[#C8102E]"
+                    ? "line-through text-[#64748B] dark:text-gray-500"
+                    : "text-[#0C0C0D] dark:text-white group-hover:text-[#C8102E] dark:group-hover:text-red-400"
                 }`}
               >
                 {doc.name}
@@ -78,8 +78,8 @@ export default function DocumentItemRow({
             <span
               className={`px-2.5 py-0.5 rounded-[6px] text-[11px] font-bold ${
                 doc.required
-                  ? "bg-red-100 text-red-700 border border-red-200"
-                  : "bg-slate-100 text-slate-700 border border-slate-200"
+                  ? "bg-red-100 dark:bg-red-950/60 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-900/50"
+                  : "bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-zinc-700"
               }`}
             >
               {doc.required ? "Required" : "Optional"}
@@ -87,7 +87,7 @@ export default function DocumentItemRow({
           </div>
 
           {/* Description */}
-          <p className={`text-xs sm:text-sm leading-relaxed ${isChecked ? "text-slate-400" : "text-[#64748B]"}`}>
+          <p className={`text-xs sm:text-sm leading-relaxed ${isChecked ? "text-slate-400 dark:text-gray-500" : "text-[#64748B] dark:text-gray-300"}`}>
             {doc.description}
           </p>
 
@@ -97,15 +97,15 @@ export default function DocumentItemRow({
               <button
                 type="button"
                 onClick={() => onToggleNote(doc.id)}
-                className="text-[11px] font-semibold text-[#C8102E] hover:underline inline-flex items-center gap-1 cursor-pointer"
+                className="text-[11px] font-semibold text-[#C8102E] dark:text-red-400 hover:underline inline-flex items-center gap-1 cursor-pointer"
               >
                 <span>{isNoteExpanded ? "Hide Requirements Note" : "View Requirements Note"}</span>
                 <ChevronDown size={12} className={`transition-transform duration-200 ${isNoteExpanded ? "rotate-180" : ""}`} />
               </button>
 
               {isNoteExpanded && (
-                <div className="mt-2 p-3 rounded-[6px] bg-slate-50 border border-slate-200 text-xs text-[#0C0C0D] flex items-start gap-2">
-                  <AlertCircle size={14} className="text-[#C8102E] flex-shrink-0 mt-0.5" />
+                <div className="mt-2 p-3 rounded-[6px] bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 text-xs text-[#0C0C0D] dark:text-white flex items-start gap-2">
+                  <AlertCircle size={14} className="text-[#C8102E] dark:text-red-400 flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed">{doc.notes}</span>
                 </div>
               )}

@@ -5,7 +5,6 @@ import QuickLinks from "./QuickLink/QuickLinks";
 import Footer from "../../components/Footer";
 import AboutSandipUniversity from "./AboutSandipUniversity";
 import StudentStories from "./StudentStories/StudentStories";
-import FindProgram from "./FindProgram";
 
 import WhySandipAndLegacy from "./WhySandipAndLegacy";
 import CampusTour from "./CampusView/CampusTour";
@@ -21,7 +20,7 @@ import Header from "../../components/Header/Header";
 
 export default function Home() {
   return (
-    <div className="homepage-wrapper font-sans antialiased text-[#2A080C] bg-[#FAF6EE] selection:bg-[#C8102E] selection:text-white transition-colors">
+    <div className="homepage-wrapper font-sans antialiased text-[#2A080C] dark:text-white bg-[#FAF6EE] dark:bg-[#0B0B0D] selection:bg-[#C8102E] selection:text-white transition-colors">
       <Popup />
       <SEO {...seoData.home} />
 
@@ -30,7 +29,6 @@ export default function Home() {
         <Hero />
         <QuickLinks />
         <AboutSandipUniversity />
-        <FindProgram />
         <WhySandipAndLegacy />
         <StudentStories />
         <CampusTour />

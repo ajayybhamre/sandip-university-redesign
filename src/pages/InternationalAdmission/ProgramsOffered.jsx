@@ -93,7 +93,7 @@ export default function InternationalProgramsPage() {
   }, [searchQuery, selectedLevel, selectedSchool]);
 
   return (
-    <div className="intl-programs-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="intl-programs-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-orange-500 selection:text-white">
       <SEO
         title="International Academic Programs & Foundation Pathway | Sandip University"
         description="Explore Sandip University undergraduate, postgraduate, and foundation degree programs for international applicants."
