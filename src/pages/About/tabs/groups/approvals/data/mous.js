@@ -1,0 +1,31 @@
+export const nationalMOUs = [
+  "Giggle Galaxy (ImaginXP)", "Electro Mech (SAP)", "RVS College of Engg & Tech",
+  "ACCA ISDC", "Magnets Ltd / MMG India", "Xebia IT Architects",
+  "ESDS Software", "C-DAC Pune", "CDSL Ventures (National Academic Depository)",
+  "Bhavani Shankar Impex", "Apras Polymer", "Mechatol Engineering",
+  "Access CADD", "Rubicon Skill Development", "EvolvingX Services",
+  "Wasan E-Mobility", "Gaurav Enterprises", "Maharashtra Plumbing Association",
+  "Harvard Business Publishing", "ICAI", "Rise (KPMG partner)",
+  "Sansoftech (Business Analytics)", "NSE Financial Trading Lab",
+  "Microsoft (Tally certification)", "IIM Bangalore", "ICSI",
+  "Bioera Organics", "HCG Manavata Cancer Centre",
+  "Supreme Diagnostic Pathology Centre",
+];
+
+export const internationalMOUs = [
+  "Belarusian National Technical University", "National School of Business Management (Sri Lanka)",
+  "Synergy University (Moscow)", "Yanaka Kupala State University (Grodno)",
+  "Bangladesh Institute of Forensic Psychology & Graphology",
+  "St. Petersburg State University of Telecommunications", "Lincoln College (Malaysia)",
+  "SRH University Heidelberg", "Altium Upverter Education (USA)",
+  "Belarussian State Economic University", "PSB Academy (Singapore)",
+  "Daffodil International University", "University of Economics & Human Sciences Warsaw",
+  "Southern Institute of Technology (NZ)",
+  "Belarussian State University of Informatics & Radio Electronics",
+  "Charles Sturt University (Australia)", "Pokhara University (Nepal)",
+  "EUGEN (Italy)", "Fairfax University of America", "Keystone College (USA)",
+  "Dept. of Measurements & Instruments BNTU", "Università del Piemonte Orientale",
+  "BA ISAGO University (Botswana)", "Kwangwoon University (Korea)",
+  "Nha Trang University (Vietnam)", "Study of Australian Technology & Healthcare Education",
+  "Griffith College (Ireland)",
+];
