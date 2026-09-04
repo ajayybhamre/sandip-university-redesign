@@ -1,4 +1,4 @@
-import About from "../../SOS/sections/About";
+import About from "../sections/About";
 
 const sectionComponents = { about: About };
 

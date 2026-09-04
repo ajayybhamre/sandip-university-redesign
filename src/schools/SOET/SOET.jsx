@@ -5,7 +5,7 @@ import seoData from "../../components/SEO/seoData";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import aboutBanner from "../../assets/images/Banner.webp";
 import deanPortrait from "../../assets/images/Dean_SOET.jpg";
-import { JourneyTimeline } from "./JourneyTimeline"
+import { JourneyTimeline } from "./JourneyTimeline";
 import DeanSection from "../components/DeanSection";
 import CourseHighlights from "../components/CourseHighlights";
 import CourseTabs from "../components/CourseTabs";
@@ -22,12 +22,21 @@ const SOET = () => {
       <SEO {...seoData.about} />
       <Header overlay />
       <Breadcrumb badge="SOET" title="School of Engineering and Technology" description="" currentPage="About" image={aboutBanner} />
-      <div ><ProgramsDepartments /></div>
+      <div><ProgramsDepartments /></div>
       <CourseTabs />
       <div><DeanSection deanData={deanData} deanImage={deanPortrait} schoolName="School of Engineering & Technology" /></div>
-      <div><About images={[soet1, soet2, soet3]} badgeLabel="Y Building"/></div>
+      <div><About images={[soet1, soet2, soet3]} badgeLabel="Y Building" /></div>
       <JourneyTimeline slug="soet" />
-      <div><CourseHighlights /></div>
+      <div>
+        <CourseHighlights
+          highlights={[
+            { icon: "clock", title: "Duration", value: "4 Years" },
+            { icon: "graduation", title: "Degree", value: "B.Tech" },
+            { icon: "flask", title: "Laboratories", value: "15+ Modern Labs" },
+            { icon: "users", title: "Placement Support", value: "100% Assistance" },
+          ]}
+        />
+      </div>
       <Footer />
     </>
   );

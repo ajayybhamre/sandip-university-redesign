@@ -6,14 +6,24 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-const highlights = [
-  { icon: <FaClock />, title: "Duration", value: "4 Years" },
-  { icon: <FaGraduationCap />, title: "Degree", value: "B.Tech" },
-  { icon: <FaFlask />, title: "Laboratories", value: "15+ Modern Labs" },
-  { icon: <FaUsers />, title: "Placement Support", value: "100% Assistance" },
+// Same 4 highlights every school shows, but each school now passes its own
+// values via the `highlights` prop (duration, degree name, lab count,
+// placement support) instead of this component hardcoding SOET's numbers.
+const ICONS = {
+  clock: <FaClock />,
+  graduation: <FaGraduationCap />,
+  flask: <FaFlask />,
+  users: <FaUsers />,
+};
+
+const DEFAULT_HIGHLIGHTS = [
+  { icon: "clock", title: "Duration", value: "4 Years" },
+  { icon: "graduation", title: "Degree", value: "B.Tech" },
+  { icon: "flask", title: "Laboratories", value: "15+ Modern Labs" },
+  { icon: "users", title: "Placement Support", value: "100% Assistance" },
 ];
 
-const CourseHighlights = () => {
+const CourseHighlights = ({ highlights = DEFAULT_HIGHLIGHTS }) => {
   return (
     <section className="bg-[var(--surface)] py-20 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -47,7 +57,7 @@ const CourseHighlights = () => {
               className="flex min-h-48 flex-col justify-between overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-6 transition-colors duration-300 hover:border-[var(--brand-red-600)] hover:bg-[var(--surface-muted)]"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-navy)] text-sm text-white">
-                {item.icon}
+                {ICONS[item.icon] || ICONS.clock}
               </div>
 
               <div className="mt-6">

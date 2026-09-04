@@ -1,5 +1,5 @@
-import About from "../../SOET/sections/About";
-import Departments from "../../SOET/sections/Departments";
+import About from "../sections/About";
+import Departments from "../sections/Departments";
 
 const sectionComponents = {
   about: About,
