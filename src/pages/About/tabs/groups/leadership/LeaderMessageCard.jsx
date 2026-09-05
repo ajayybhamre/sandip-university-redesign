@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 
-import ImagePlaceholder from "../../shared/ImagePlaceholder";
-
 const LeaderMessageCard = ({ leader, reverse, delay }) => (
 
   <motion.div
@@ -17,7 +15,7 @@ const LeaderMessageCard = ({ leader, reverse, delay }) => (
     className="
       grid
       grid-cols-1
-      lg:grid-cols-[320px_1fr]
+      lg:grid-cols-[340px_1fr]
       gap-8
       items-start
     "
@@ -25,10 +23,29 @@ const LeaderMessageCard = ({ leader, reverse, delay }) => (
 
     <div className={`flex justify-center lg:justify-start ${reverse ? "lg:order-2" : "lg:order-1"}`}>
 
-      <ImagePlaceholder
-        label={`${leader.name} — photo`}
-        className="w-64 h-64 sm:w-72 sm:h-72"
-      />
+      <div className="
+        w-72
+        sm:w-80
+        aspect-[3/4]
+        rounded-2xl
+        overflow-hidden
+        shadow-lg
+        border
+        border-gray-100
+        dark:border-slate-700
+      ">
+
+        <img
+          src={leader.image}
+          alt={leader.name}
+          className="
+            w-full
+            h-full
+            object-cover
+          "
+        />
+
+      </div>
 
     </div>
 

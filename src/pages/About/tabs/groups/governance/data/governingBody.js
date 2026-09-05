@@ -1,5 +1,6 @@
 const governingBody = [
   { role: "President", names: "Shri. Nityanand S. Jha" },
+  { role: "Chairman", names: "Dr. Sandip N. Jha" },
   { role: "Vice Chancellor", names: "Prof. (Dr.) Pawan Bhaladhare" },
   {
     role: "Nominees of the sponsoring body (incl. 2 eminent educationists)",

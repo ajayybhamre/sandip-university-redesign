@@ -1,9 +1,14 @@
+import presidentPhoto from "../../../../../../assets/images/leadership/president.jpg";
+import chairmanPhoto from "../../../../../../assets/images/leadership/chairman.jpg";
+import vcPhoto from "../../../../../../assets/images/leadership/vc.jpg";
+
 const leaders = [
   {
     id: "president",
     name: "Shri. Nityanand Jha",
     title: "President, Sandip University",
     tagline: "Each student of Sandip University will be its brand ambassador",
+    image: presidentPhoto,
     paragraphs: [
       "Welcome to the dawn of a new era in world-class, futuristic education. Quality education is the master key through which we can unlock development for the larger good.",
       "Sandip University is much more than just a group of institutions offering world-class education. It is a mass movement.",
@@ -16,6 +21,7 @@ const leaders = [
     name: "Dr. Sandip N. Jha",
     title: "Chairman, Sandip University",
     tagline: null,
+    image: chairmanPhoto,
     paragraphs: [
       "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.",
       "We take immense pride in grooming and providing future leaders to India and the world.",
@@ -28,6 +34,7 @@ const leaders = [
     name: "Prof. (Dr.) Pawan Bhaladhare",
     title: "Vice Chancellor, Sandip University",
     tagline: null,
+    image: vcPhoto,
     paragraphs: [
       "Sandip University commenced its academia from June 2016, following the requirements of the Washington Accord in the form of Outcome Based Education (OBE).",
       "We are deeply committed to developing rational and divergent thinkers.",

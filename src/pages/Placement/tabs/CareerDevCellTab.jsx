@@ -1,11 +1,5 @@
 import CareerDevelopmentCell from "./groups/careerDevCell/CareerDevelopmentCell";
 
-const CareerDevCellTab = () => (
-  <div className="space-y-16">
-
-    <CareerDevelopmentCell />
-
-  </div>
-);
+const CareerDevCellTab = () => <CareerDevelopmentCell />;
 
 export default CareerDevCellTab;

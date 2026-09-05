@@ -7,16 +7,114 @@ import extractYouTubeId from "./utils/extractYouTubeId";
 import VideoCard from "./components/VideoCard";
 import VideoModal from "./components/VideoModal";
 
-const JOURNEYS_INITIAL_COUNT = 8;
+const INITIAL_COUNT = 9;
+
+const VideoSection = ({ title, videos, activeCount, onToggle, showAll, onVideoClick }) => {
+
+  const visible = showAll ? videos : videos.slice(0, activeCount);
+
+  return (
+    <div>
+
+      <h4 className="
+        font-bold
+        text-lg
+        text-gray-900
+        dark:text-white
+        mb-6
+      ">
+        {title}
+      </h4>
+
+      <div className="
+        grid
+        grid-cols-1
+        sm:grid-cols-2
+        lg:grid-cols-3
+        gap-6
+      ">
+
+        {
+          visible.map((video, index) => {
+
+            const videoId = extractYouTubeId(video.url);
+            if (!videoId) return null;
+
+            return (
+              <VideoCard
+                key={video.url}
+                videoId={videoId}
+                title={video.title}
+                delay={(index % 6) * 0.06}
+                onClick={() => onVideoClick(videoId)}
+              />
+            );
+
+          })
+        }
+
+      </div>
+
+      {
+        videos.length > activeCount && (
+
+          <div className="
+            flex
+            justify-center
+            mt-8
+          ">
+
+            <button
+              onClick={onToggle}
+              className="
+                flex
+                items-center
+                gap-2
+                px-6
+                py-3
+                rounded-full
+                bg-red-50
+                dark:bg-red-900/20
+                text-red-600
+                font-semibold
+                text-sm
+                hover:bg-red-100
+                dark:hover:bg-red-900/30
+                transition-colors
+              "
+            >
+
+              {
+                showAll
+                ? "Show Less"
+                : `Show ${videos.length - activeCount} More`
+              }
+
+              <motion.span
+                animate={{ rotate: showAll ? 180 : 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <HiOutlineChevronDown className="w-4 h-4" />
+              </motion.span>
+
+            </button>
+
+          </div>
+
+        )
+      }
+
+    </div>
+  );
+
+};
+
 
 const StudentTestimonials = () => {
 
   const [activeVideoId, setActiveVideoId] = useState(null);
+  const [showAllFeatured, setShowAllFeatured] = useState(false);
   const [showAllJourneys, setShowAllJourneys] = useState(false);
-
-  const visibleJourneys = showAllJourneys
-    ? studentJourneys
-    : studentJourneys.slice(0, JOURNEYS_INITIAL_COUNT);
 
   return (
     <div>
@@ -79,142 +177,29 @@ const StudentTestimonials = () => {
 
       </motion.div>
 
-      {/* Featured Placement Highlights */}
-
       <div className="mb-14">
 
-        <h4 className="
-          font-bold
-          text-lg
-          text-gray-900
-          dark:text-white
-          mb-6
-        ">
-          Placement & Career Highlights
-        </h4>
-
-        <div className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
-          gap-6
-        ">
-
-          {
-            featuredTestimonials.map((video, index) => {
-
-              const videoId = extractYouTubeId(video.url);
-              if (!videoId) return null;
-
-              return (
-                <VideoCard
-                  key={video.url}
-                  videoId={videoId}
-                  title={video.title}
-                  delay={(index % 6) * 0.06}
-                  onClick={() => setActiveVideoId(videoId)}
-                />
-              );
-
-            })
-          }
-
-        </div>
+        <VideoSection
+          title="Placement & Career Highlights"
+          videos={featuredTestimonials}
+          activeCount={INITIAL_COUNT}
+          showAll={showAllFeatured}
+          onToggle={() => setShowAllFeatured(!showAllFeatured)}
+          onVideoClick={setActiveVideoId}
+        />
 
       </div>
 
-      {/* Student Journeys */}
-
       <div>
 
-        <h4 className="
-          font-bold
-          text-lg
-          text-gray-900
-          dark:text-white
-          mb-6
-        ">
-          Student Journeys
-        </h4>
-
-        <div className="
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          lg:grid-cols-3
-          gap-6
-        ">
-
-          {
-            visibleJourneys.map((video, index) => {
-
-              const videoId = extractYouTubeId(video.url);
-              if (!videoId) return null;
-
-              return (
-                <VideoCard
-                  key={video.url}
-                  videoId={videoId}
-                  title={video.title}
-                  delay={(index % 6) * 0.06}
-                  onClick={() => setActiveVideoId(videoId)}
-                />
-              );
-
-            })
-          }
-
-        </div>
-
-        {
-          studentJourneys.length > JOURNEYS_INITIAL_COUNT && (
-
-            <div className="
-              flex
-              justify-center
-              mt-8
-            ">
-
-              <button
-                onClick={() => setShowAllJourneys(!showAllJourneys)}
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  px-6
-                  py-3
-                  rounded-full
-                  bg-red-50
-                  dark:bg-red-900/20
-                  text-red-600
-                  font-semibold
-                  text-sm
-                  hover:bg-red-100
-                  dark:hover:bg-red-900/30
-                  transition-colors
-                "
-              >
-
-                {
-                  showAllJourneys
-                  ? "Show Less"
-                  : `Show ${studentJourneys.length - JOURNEYS_INITIAL_COUNT} More Journeys`
-                }
-
-                <motion.span
-                  animate={{ rotate: showAllJourneys ? 180 : 0 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <HiOutlineChevronDown className="w-4 h-4" />
-                </motion.span>
-
-              </button>
-
-            </div>
-
-          )
-        }
+        <VideoSection
+          title="Student Journeys"
+          videos={studentJourneys}
+          activeCount={INITIAL_COUNT}
+          showAll={showAllJourneys}
+          onToggle={() => setShowAllJourneys(!showAllJourneys)}
+          onVideoClick={setActiveVideoId}
+        />
 
       </div>
 

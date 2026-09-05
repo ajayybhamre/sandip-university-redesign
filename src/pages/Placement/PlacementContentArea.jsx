@@ -1,6 +1,5 @@
 import PlacementOverview from "./tabs/PlacementOverview";
 import StatsRecordsGroup from "./tabs/StatsRecordsGroup";
-import RecruitersIndustryGroup from "./tabs/RecruitersIndustryGroup";
 import TrainingEmployabilityGroup from "./tabs/TrainingEmployabilityGroup";
 import CareerDevCellTab from "./tabs/CareerDevCellTab";
 import CampusPrideTab from "./tabs/CampusPrideTab";
@@ -30,8 +29,6 @@ export default function PlacementContentArea({ activeTab }) {
       {activeTab === "overview" && <PlacementOverview />}
 
       {activeTab === "stats-records" && <StatsRecordsGroup />}
-
-      {activeTab === "recruiters-industry" && <RecruitersIndustryGroup />}
 
       {activeTab === "training-employability" && <TrainingEmployabilityGroup />}
 

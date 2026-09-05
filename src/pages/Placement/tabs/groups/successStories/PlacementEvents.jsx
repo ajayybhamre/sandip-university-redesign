@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { HiOutlineCalendarDays } from "react-icons/hi2";
+import { HiOutlineCalendarDays, HiOutlineChevronDown } from "react-icons/hi2";
 
 import placementEventImages from "./data/placementEventImages";
 import Lightbox from "../../shared/Lightbox";
 
+const INITIAL_COUNT = 9;
+
 const PlacementEvents = () => {
 
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleImages = showAll
+    ? placementEventImages
+    : placementEventImages.slice(0, INITIAL_COUNT);
 
   return (
     <div>
@@ -72,7 +79,7 @@ const PlacementEvents = () => {
       ">
 
         {
-          placementEventImages.map((img, index) => (
+          visibleImages.map((img, index) => (
 
             <motion.button
 
@@ -125,8 +132,57 @@ const PlacementEvents = () => {
 
       </div>
 
+      {
+        placementEventImages.length > INITIAL_COUNT && (
+
+          <div className="
+            flex
+            justify-center
+            mt-8
+          ">
+
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="
+                flex
+                items-center
+                gap-2
+                px-6
+                py-3
+                rounded-full
+                bg-red-50
+                dark:bg-red-900/20
+                text-red-600
+                font-semibold
+                text-sm
+                hover:bg-red-100
+                dark:hover:bg-red-900/30
+                transition-colors
+              "
+            >
+
+              {
+                showAll
+                ? "Show Less"
+                : `Show ${placementEventImages.length - INITIAL_COUNT} More`
+              }
+
+              <motion.span
+                animate={{ rotate: showAll ? 180 : 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <HiOutlineChevronDown className="w-4 h-4" />
+              </motion.span>
+
+            </button>
+
+          </div>
+
+        )
+      }
+
       <Lightbox
-        images={placementEventImages}
+        images={visibleImages}
         activeIndex={activeIndex}
         onClose={() => setActiveIndex(null)}
         onNavigate={setActiveIndex}

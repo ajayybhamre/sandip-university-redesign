@@ -1,7 +1,6 @@
 import {
   HiOutlineChartBar,
   HiOutlineTableCells,
-  HiOutlineUserGroup,
   HiOutlineAcademicCap,
   HiOutlineBriefcase,
   HiOutlineHandRaised,
@@ -20,11 +19,6 @@ const tabData = [
     id: "stats-records",
     title: "Placement Statistics & Records",
     icon: HiOutlineTableCells,
-  },
-  {
-    id: "recruiters-industry",
-    title: "Recruiters & Industry Connect",
-    icon: HiOutlineUserGroup,
   },
   {
     id: "training-employability",

@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
-import { HiOutlineSparkles } from "react-icons/hi2";
 
 import TileGrid from "./aboutUs/TileGrid";
-import ImagePlaceholder from "./shared/ImagePlaceholder";
+import aboutHeroImg from "../../../assets/images/about-hero/about-hero.jpg";
+import TopRecruitersSlider from "./aboutUs/TopRecruitersSlider";
 
 import futuristicCurriculum from "./aboutUs/data/futuristicCurriculum";
 import globalExposure from "./aboutUs/data/globalExposure";
 import beyondClassroom from "./aboutUs/data/beyondClassroom";
-import topRecruiters from "./aboutUs/data/topRecruiters";
 
 const AboutUsTab = () => {
   return (
@@ -105,10 +104,26 @@ const AboutUsTab = () => {
 
           </div>
 
-          <ImagePlaceholder
-            label="Campus hero image"
-            className="aspect-[4/3] w-full"
-          />
+          <div className="
+            rounded-2xl
+            overflow-hidden
+            shadow-lg
+            border
+            border-gray-100
+            dark:border-slate-700
+          ">
+
+            <img
+              src={aboutHeroImg}
+              alt="Sandip University Campus"
+              className="
+                w-full
+                h-full
+                object-cover
+              "
+            />
+
+          </div>
 
         </motion.div>
 
@@ -168,81 +183,9 @@ const AboutUsTab = () => {
 
       </div>
 
-      {/* Top Recruiters teaser */}
+      {/* Top Recruiters slider */}
 
-      <div>
-
-        <div className="
-          flex
-          items-center
-          gap-3
-          mb-6
-        ">
-
-          <div className="
-            w-10
-            h-10
-            rounded-full
-            bg-red-100
-            dark:bg-red-900/30
-            flex
-            items-center
-            justify-center
-            shrink-0
-          ">
-            <HiOutlineSparkles className="text-red-600 w-5 h-5" />
-          </div>
-
-          <h4 className="
-            font-bold
-            text-lg
-            text-gray-900
-            dark:text-white
-          ">
-            Top Recruiters & Placements
-          </h4>
-
-        </div>
-
-        <div className="
-          grid
-          grid-cols-2
-          sm:grid-cols-3
-          lg:grid-cols-5
-          gap-4
-        ">
-
-          {
-            topRecruiters.map((name) => (
-
-              <div key={name}>
-
-                <ImagePlaceholder
-                  label={name}
-                  className="aspect-[3/2] w-full"
-                  rounded="rounded-xl"
-                />
-
-              </div>
-
-            ))
-          }
-
-        </div>
-
-        <p className="
-          mt-5
-          text-sm
-          text-gray-500
-          dark:text-gray-400
-          text-center
-        ">
-          See the full recruiter list and placement statistics on the{" "}
-          <span className="text-red-600 font-semibold">Placements</span>{" "}
-          page.
-        </p>
-
-      </div>
+      <TopRecruitersSlider />
 
     </div>
   );

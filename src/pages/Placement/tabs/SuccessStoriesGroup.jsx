@@ -1,15 +1,15 @@
-import PlacementGallery from "./groups/successStories/PlacementGallery";
-import PlacementEvents from "./groups/successStories/PlacementEvents";
 import StudentTestimonials from "./groups/successStories/StudentTestimonials";
+import PlacementEvents from "./groups/successStories/PlacementEvents";
+import PlacementGallery from "./groups/successStories/PlacementGallery";
 
 const SuccessStoriesGroup = () => (
   <div className="space-y-16">
 
-    <PlacementGallery />
+    <StudentTestimonials />
 
     <PlacementEvents />
 
-    <StudentTestimonials />
+    <PlacementGallery />
 
   </div>
 );

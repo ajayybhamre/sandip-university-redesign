@@ -16,7 +16,9 @@ const rows = approvalsData.map((item, index) => ({
   date: item.date,
   link: (
     <a
-      href="#"
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
       className="
         inline-flex
         items-center
