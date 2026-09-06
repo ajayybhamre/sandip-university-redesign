@@ -15,7 +15,7 @@ import About from "./AboutSOCSE";
 // import photo2 from "../../assets/images/computer-science2.webp";
 // import photo3 from "../../assets/images/computer-science3.webp";
 // TODO: import a real dean portrait, e.g.:
-// import deanPortrait from "../../assets/images/Dean_SOCSE.jpg";
+import deanPortrait from "../../assets/images/dean_socse.jpg";
 import deanData from "./data/deanData";
 
 const SOCSE = () => {
@@ -27,14 +27,14 @@ const SOCSE = () => {
 
       <div><ProgramsDepartments /></div>
       <CourseTabs />
-      <div><DeanSection deanData={deanData} schoolName="School of Computer Science & Engineering" /* deanImage={deanPortrait} */ /></div>
+      <div><DeanSection deanData={deanData} schoolName="School of Computer Science & Engineering" deanImage={deanPortrait} /></div>
       <div><About images={[/* photo1, photo2, photo3 */]} badgeLabel="CSE" /></div>
       <JourneyTimeline slug="computer-science" />
       <div><CourseHighlights highlights={[
-        { icon: "clock", title: "Duration", value: "TODO" },
+        { icon: "clock", title: "Duration", value: "4 Years" },
         { icon: "graduation", title: "Degree", value: "B.Tech" },
-        { icon: "flask", title: "Laboratories", value: "TODO" },
-        { icon: "users", title: "Placement Support", value: "TODO" },
+        { icon: "flask", title: "Laboratories", value: "40+" },
+        { icon: "users", title: "Placement Support", value: "100%" },
       ]} /></div>
       <Footer />
     </>

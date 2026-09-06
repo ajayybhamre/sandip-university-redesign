@@ -32,9 +32,50 @@ function getProgramImage(slug) {
   return programImages[slug] || defaultProgramImage;
 }
 
+// Shared card used for both top-level programmes and specialisations.
+function ProgramCard({ id, title, slug }) {
+  const bgImage = getProgramImage(slug);
+
+  return (
+    <Link
+      key={id}
+      to={`/schools/computer-science/${slug}`}
+      className="group relative flex items-center gap-4 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-5 transition-colors duration-300 hover:border-[var(--brand-red-600)]"
+    >
+      {/* Background photo — fades in on hover */}
+      {bgImage && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+          style={{ backgroundImage: `url(${bgImage})` }}
+        />
+      )}
+
+      {/* Navy tint overlay — fades in on top of the photo */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[#0F253C] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-70"
+      />
+
+      {/* Content sits above both layers */}
+      <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-red-50)] text-[var(--brand-red-600)] transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white dark:bg-[var(--brand-red-900)]/20">
+        <GraduationCap size={20} />
+      </div>
+      <h3 className="relative z-10 font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)] transition-colors duration-300 group-hover:text-white">
+        {title}
+      </h3>
+    </Link>
+  );
+}
+
 export default function ProgramsDepartments() {
   const [activeTab, setActiveTab] = useState("undergraduate");
   const programs = programsData[activeTab] || [];
+
+  // Programmes that carry their own specialisations (currently only B.Tech CSE).
+  const programsWithSpecializations = programs.filter(
+    (program) => Array.isArray(program.specializations) && program.specializations.length > 0
+  );
 
   return (
     <section className="py-20 transition-colors duration-300">
@@ -69,42 +110,26 @@ export default function ProgramsDepartments() {
           ))}
         </div>
 
-        {/* Program cards */}
+        {/* Top-level programme cards */}
         <div className="grid gap-5 md:grid-cols-2">
-          {programs.map((program) => {
-            const bgImage = getProgramImage(program.slug);
-            return (
-              <Link
-                key={program.id}
-                to={`/schools/computer-science/${program.slug}`}
-                className="group relative flex items-center gap-4 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-6 py-5 transition-colors duration-300 hover:border-[var(--brand-red-600)]"
-              >
-                {/* Background photo — fades in on hover */}
-                {bgImage && (
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
-                    style={{ backgroundImage: `url(${bgImage})` }}
-                  />
-                )}
-
-                {/* Navy tint overlay — fades in on top of the photo */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[#0F253C] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-70"
-                />
-
-                {/* Content sits above both layers */}
-                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-red-50)] text-[var(--brand-red-600)] transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white dark:bg-[var(--brand-red-900)]/20">
-                  <GraduationCap size={20} />
-                </div>
-                <h3 className="relative z-10 font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)] transition-colors duration-300 group-hover:text-white">
-                  {program.title}
-                </h3>
-              </Link>
-            );
-          })}
+          {programs.map((program) => (
+            <ProgramCard key={program.id} id={program.id} title={program.title} slug={program.slug} />
+          ))}
         </div>
+
+        {/* Specialisation sections (e.g. B.Tech CSE) */}
+        {programsWithSpecializations.map((program) => (
+          <div key={`${program.id}-specializations`} className="mt-16">
+            <h3 className="font-[var(--font-display)] text-2xl font-bold leading-tight text-[var(--ink)] md:text-3xl">
+              {program.title} — Specialisation in
+            </h3>
+            <div className="mt-8 grid gap-5 md:grid-cols-2">
+              {program.specializations.map((spec) => (
+                <ProgramCard key={spec.id} id={spec.id} title={spec.title} slug={spec.slug} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

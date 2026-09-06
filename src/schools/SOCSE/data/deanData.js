@@ -1,10 +1,10 @@
 const deanData = {
-  name: "Dr. A. K. Verma",
-  designation: "Dean, School of Computer Science & Engineering",
+  name: "Dr. Pawan Ravikesh Bhaladhare",
+  designation: "Associate Dean, CSE - SOCSE",
   qualification: "Ph.D. Computer Science",
   experience: "18",
-  email: "dean-cse@youruniversity.edu.in",
-  phone: "+91 9876501234",
+  email: "associate.deancse@sandipuniversity.edu.in",
+  phone: "+91 94200 87835",
   message: "Welcome to the School of Computer Science & Engineering. We focus on research and innovation.",
 };
 
