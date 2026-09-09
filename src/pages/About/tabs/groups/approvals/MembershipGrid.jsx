@@ -5,10 +5,10 @@ import memberships from "./data/memberships";
 const MembershipGrid = () => (
   <div className="
     grid
-    grid-cols-2
-    sm:grid-cols-3
-    lg:grid-cols-4
-    gap-4
+    grid-cols-3
+    sm:grid-cols-4
+    lg:grid-cols-5
+    gap-3
   ">
 
     {
@@ -29,6 +29,8 @@ const MembershipGrid = () => (
           whileHover={{ y: -4 }}
 
           className="
+            h-56
+            sm:h-60
             bg-white
             dark:bg-slate-900
             border
@@ -43,8 +45,9 @@ const MembershipGrid = () => (
         >
 
           <div className="
+            flex-1
+            min-h-0
             w-full
-            aspect-[3/2]
             bg-white
             flex
             items-center
@@ -66,12 +69,13 @@ const MembershipGrid = () => (
           </div>
 
           <span className="
-            text-xs
+            text-[11px]
             font-semibold
             text-gray-700
             dark:text-gray-200
-            leading-5
-            p-3
+            leading-4
+            p-2
+            shrink-0
           ">
             {item.name}
           </span>

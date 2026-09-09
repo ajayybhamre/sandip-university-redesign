@@ -8,6 +8,7 @@ const TileGrid = ({ items }) => (
     sm:grid-cols-3
     lg:grid-cols-5
     gap-4
+    items-start
   ">
 
     {
@@ -60,8 +61,8 @@ const TileGrid = ({ items }) => (
             <div className="
               relative
               w-full
-              h-28
-              sm:h-32
+              h-36
+              sm:h-40
               overflow-hidden
             ">
 

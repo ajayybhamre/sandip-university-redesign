@@ -12,27 +12,34 @@ const LeaderMessageCard = ({ leader, reverse, delay }) => (
 
     viewport={{ once: true }}
 
-    className="
-      grid
-      grid-cols-1
-      lg:grid-cols-[340px_1fr]
+    className={`
+      flex
+      flex-col
+      ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}
       gap-8
       items-start
-    "
+    `}
   >
 
-    <div className={`flex justify-center lg:justify-start ${reverse ? "lg:order-2" : "lg:order-1"}`}>
+    <div className="
+      w-full
+      sm:w-80
+      lg:w-72
+      xl:w-80
+      shrink-0
+      mx-auto
+      lg:mx-0
+    ">
 
       <div className="
-        w-72
-        sm:w-80
-        aspect-[3/4]
         rounded-2xl
         overflow-hidden
         shadow-lg
         border
         border-gray-100
         dark:border-slate-700
+        bg-gray-50
+        dark:bg-slate-900
       ">
 
         <img
@@ -40,8 +47,8 @@ const LeaderMessageCard = ({ leader, reverse, delay }) => (
           alt={leader.name}
           className="
             w-full
-            h-full
-            object-cover
+            h-auto
+            object-contain
           "
         />
 
@@ -49,7 +56,7 @@ const LeaderMessageCard = ({ leader, reverse, delay }) => (
 
     </div>
 
-    <div className={reverse ? "lg:order-1" : "lg:order-2"}>
+    <div className="flex-1 w-full">
 
       <h4 className="
         text-xl

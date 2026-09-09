@@ -135,7 +135,7 @@ const TopRecruitersSlider = () => (
     ">
       See the full recruiter list and placement statistics on the{" "}
       <Link
-        to="/placement"
+        to="/placement#recruiters"
         className="
           text-red-600
           font-semibold
