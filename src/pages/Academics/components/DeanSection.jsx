@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Quote, ArrowRight, X } from "lucide-react";
 
 // Root-relative path into /public, same convention as the hero image.
@@ -13,6 +13,50 @@ const credentialRows = (data) => [
 
 export default function DeanSection({ deanData }) {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const triggerRef = useRef(null);
+  const dialogRef = useRef(null);
+  const wasMessageOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!isMessageOpen) {
+      if (wasMessageOpenRef.current) triggerRef.current?.focus();
+      wasMessageOpenRef.current = false;
+      return undefined;
+    }
+
+    wasMessageOpenRef.current = true;
+    const dialog = dialogRef.current;
+    if (!dialog) return undefined;
+
+    const focusableElements = dialog.querySelectorAll(
+      'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    const firstFocusableElement = focusableElements[0] || dialog;
+    const lastFocusableElement = focusableElements[focusableElements.length - 1] || dialog;
+
+    firstFocusableElement.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key !== "Tab") return;
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstFocusableElement) {
+        event.preventDefault();
+        lastFocusableElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastFocusableElement) {
+        event.preventDefault();
+        firstFocusableElement.focus();
+      }
+    };
+
+    dialog.addEventListener("keydown", handleKeyDown);
+    return () => dialog.removeEventListener("keydown", handleKeyDown);
+  }, [isMessageOpen]);
 
   return (
     <section className="bg-gray-50 px-5 pb-16 pt-10 dark:bg-slate-950 sm:px-8 sm:pb-20 sm:pt-12 lg:px-12">
@@ -63,6 +107,7 @@ export default function DeanSection({ deanData }) {
 
             <button
               type="button"
+              ref={triggerRef}
               onClick={() => setIsMessageOpen(true)}
               className="group mt-8 inline-flex items-center gap-3 rounded-xl bg-[#081b3a] px-6 py-3.5 font-semibold text-white transition-colors hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
             >
@@ -75,12 +120,16 @@ export default function DeanSection({ deanData }) {
 
       {isMessageOpen && (
         <div
+          ref={dialogRef}
           className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 p-5 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-labelledby="dean-message-title"
         >
-          <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-7 text-gray-900 dark:bg-[#111111] dark:text-white md:p-10">
+          <div
+            className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-7 text-gray-900 dark:bg-[#111111] dark:text-white md:p-10"
+            tabIndex="-1"
+          >
             <button
               type="button"
               onClick={() => setIsMessageOpen(false)}
