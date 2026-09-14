@@ -8,7 +8,6 @@ import "aos/dist/aos.css";
 import CursorArrow from "./components/CursorArrow";
 import Popup from "./components/Popup";
 import About from "./pages/About/About";
-import Academics from "./pages/Academics/Academics";
 import Placement from "./pages/Placement/Placement";
 import Gallery from "./pages/Gallery/Gallery";
 import FloatingAction from "./components/FloatingAction";
@@ -23,6 +22,10 @@ import SOD from "./schools/SOD/SOD";
 import Contact from "./pages/contact/Contact";
 import ScrollToTop from "./ScrollToTop";
 import Schools from "./schools/Schools";
+import AcademicsPage from "./pages/Academics/AcademicsPage";
+import RegulationsPage from "./pages/Academics/pages/RegulationsPage";
+import EvaluationPage from "./pages/Academics/pages/EvaluationPage";
+import CalendarPage from "./pages/Academics/pages/CalendarPage";
 
 
 function App() {
@@ -61,7 +64,8 @@ function App() {
 
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />
-        <Route path="/academic" element={<Academics/>} />
+        <Route path="/academic" element={<AcademicsPage/>} />
+        <Route path="/academics" element={<AcademicsPage/>} />
          <Route path="/placement" element={<Placement/>} />
           <Route path="/gallery" element={<Gallery/>} />
               <Route path="/schools" element={<Schools/>} />
@@ -74,6 +78,9 @@ function App() {
            <Route path="/schools/fashion-beauty" element={<SOD/>} />
            <Route path="/contact" element={<Contact/>} />
           <Route path="/schools/:schoolSlug/:courseSlug" element={<CourseDetails/>} />
+          <Route path="/academics/regulations" element={<RegulationsPage/>} />
+          <Route path="/academics/evaluation" element={<EvaluationPage/>} />
+          <Route path="/academics/calendar" element={<CalendarPage/>} />
         
       </Routes>
       

@@ -99,6 +99,8 @@ const menuData = [
     ],
   },
 
+  
+
   {
     title: "Schools",
     mega: true,
@@ -197,7 +199,7 @@ const menuData = [
   },
 
   {
-    title: "Academic",
+    title: "Academics",
     path: "/academic",
     mega: false,
   },
