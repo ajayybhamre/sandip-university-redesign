@@ -33,6 +33,23 @@ const seoData = {
       "https://yourdomain.com/about",
   },
 
+  campusLife: {
+    title:
+      "Campus Life | Sandip University",
+
+    description:
+      "Discover life at Sandip University — SUN Clubs, professional bodies, student welfare, achievements, sports and campus gallery.",
+
+    keywords:
+      "Sandip University Campus Life, SUN Clubs, Student Welfare, Sports, Achievements, Gallery",
+
+    image:
+      "https://yourdomain.com/campus-life.jpg",
+
+    url:
+      "https://yourdomain.com/campus-life",
+  },
+
   contact: {
     title:
       "Contact Us | Sandip University",

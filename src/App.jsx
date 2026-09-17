@@ -10,6 +10,7 @@ import Popup from "./components/Popup";
 import About from "./pages/About/About";
 import Academics from "./pages/Academics/Academics";
 import Placement from "./pages/Placement/Placement";
+import CampusLife from "./pages/CampusLife/CampusLife";
 import Gallery from "./pages/Gallery/Gallery";
 import FloatingAction from "./components/FloatingAction";
 import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
@@ -56,6 +57,7 @@ function App() {
         <Route path="/about" element={<About/>} />
         <Route path="/academic" element={<Academics/>} />
          <Route path="/placement" element={<Placement/>} />
+          <Route path="/campus-life" element={<CampusLife/>} />
           <Route path="/gallery" element={<Gallery/>} />
            <Route path="/schools/engineering" element={<SchoolEngineering/>} />
            <Route path="/contact" element={<Contact/>} />
