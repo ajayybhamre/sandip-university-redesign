@@ -9,54 +9,56 @@ export const councilPositions = [
   "Executive Member (per school)",
 ];
 
-export const eligibilityCriteria = [
-  "Must be a current Class Representative (CR)",
-  "Must show active involvement in clubs/forums",
-  "No disciplinary record",
-  "Female candidates eligible for Ladies Representative post",
-  "Voters: all CRs and club governing-body members",
+export const candidateEligibility = [
+  "Must be a current Class Representative (CR).",
+  "Must have demonstrated active involvement in student clubs and forums",
+  "Should not have any disciplinary",
+  "Female candidates are eligible to contest for the Ladies Representative post",
+];
+
+export const voterEligibility = [
+  "All Class Representatives and club governing body members are eligible to vote for council positions.",
 ];
 
 export const selectionCommittee = [
-  "DSW (Presiding Officer)",
-  "DSW coordinators from each of 7 schools",
-  "Administration representatives",
-  "Non-contesting CRs (assist)",
+  "DSW coordinators (From each of the 7 schools).",
+  "Administration representatives.",
+  "Non-contesting CRs (for assistance).",
 ];
 
 export const selectionPhases = [
-  "Notification of Students' Council",
-  "Expression of Interest (EOI)",
-  "Scrutiny and shortlisting",
-  "Candidate Presentations",
-  "Voting Process",
-  "Counting and Declaration of Results",
+  "Phase 1: Notification of Students' Council",
+  "Phase 2: Expression of Interest (EOI)",
+  "Phase 3: Scrutiny and shortlisting",
+  "Phase 4: Candidate Presentations",
+  "Phase 5: Voting Process",
+  "Phase 6: Counting and Declaration of Results",
 ];
 
 export const councilObjectives = [
-  "Represent student interests",
-  "Promote leadership/teamwork",
-  "Organize extracurricular programs",
-  "Support academic/career growth",
-  "Foster inclusivity/cultural awareness",
-  "Encourage ethical values/citizenship",
-  "Strengthen communication",
+  { lead: "Represent student interests", rest: "to the administration, acting as a bridge for grievances and policy feedback." },
+  { lead: "Promote leadership and teamwork", rest: "through clubs, cultural events, and sports activities, fostering skills like self-confidence and discipline." },
+  { lead: "Organize extracurricular programs", rest: "(cultural festivals, technical events, sports competitions) to enhance holistic development." },
+  { lead: "Support academic and career growth", rest: "by collaborating with placement cells and industry-aligned initiatives." },
+  { lead: "Foster inclusivity and cultural awareness", rest: "through events that highlight global diversity and social responsibility." },
+  { lead: "Encourage ethical values and citizenship", rest: ", aligning with the university's mission to nurture responsible leaders." },
+  { lead: "Strengthen communication", rest: "between students, faculty, and administration via structured forums and grievance mechanisms." },
 ];
 
 export const missionStatements = [
-  { code: "DM1", text: "Ensure holistic student development through well-being initiatives, leadership opportunities, and inclusive engagement." },
-  { code: "DM2", text: "Nurture innovation, ethical responsibility, and global competence across disciplines." },
-  { code: "DM3", text: "Strengthen collaborations with faculty, industry, and families for academic success and growth." },
+  { code: "DM1", text: "To Ensure holistic student development through well-being initiatives, leadership opportunities, and inclusive engagement." },
+  { code: "DM2", text: "To Nurture a culture of innovation, ethical responsibility, and global competence across all the disciplines." },
+  { code: "DM3", text: "To Strengthen collaborations with faculty, industry, and families to support academic success and personal growth." },
 ];
 
 export const institutionalDevelopment = [
   "Academic Excellence",
   "Infrastructure Development",
-  "Student Support & Holistic Development",
-  "Faculty/Staff Development",
-  "Governance & Administration",
-  "Community Engagement & Partnerships",
-  "Quality Assurance & Accreditation",
+  "Student Support and Holistic Development",
+  "Faculty and Staff Development",
+  "Governance and Administration",
+  "Community Engagement and Partnerships",
+  "Quality Assurance and Accreditation",
 ];
 
 export const studentDevelopment = [
@@ -64,13 +66,13 @@ export const studentDevelopment = [
   "Emotional Development",
   "Social Skills",
   "Physical Well-being",
-  "Personal/Ethical Development",
-  "Autonomy & Self-Management",
+  "Personal and Ethical Development",
+  "Autonomy and Self-Management",
   "Mature Interpersonal Relationships",
-  "Community/Parental Involvement",
-  "Mental Health & Well-being",
+  "Community and Parental Involvement",
+  "Mental Health and Well-being",
   "Integration of Technology",
-  "Purpose & Lifelong Learning",
+  "Developing Purpose and Lifelong Learning",
 ];
 
 export const councilMemberYears = [
@@ -101,10 +103,9 @@ export const flagshipCompetitions = [
 ];
 
 export const quickLinks = [
-  { title: "Committees", href: "#" },
-  { title: "Student Council Handbook (PDF)", href: "#" },
-  { title: "Grievance Redressal Mechanism", href: "#" },
+  { title: "Committees", href: "/committees" },
+  { title: "Student Council Handbook (PDF)", href: "/student-council/SU-Handbook.pdf", external: true },
+  { title: "Grievance Redressal Mechanism", href: "/grievance-redressal-mechanism" },
   { title: "SUNCLUBS", href: "/campus-life?tab=sun-clubs" },
-  { title: "Calendar of Events A.Y 2025-26 (PDF)", href: "#" },
-  { title: "Contact Us", href: "/contact" },
+  { title: "Calendar of Events A.Y 2025-26 (PDF)", href: "/student-welfare/event-calendar-2025-26.pdf", external: true },
 ];

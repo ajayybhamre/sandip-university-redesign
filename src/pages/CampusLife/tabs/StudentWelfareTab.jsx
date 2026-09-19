@@ -1,32 +1,27 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   HiOutlineHomeModern,
-  HiOutlineHeart,
   HiOutlineUserGroup,
   HiOutlineUsers,
-  HiOutlineFlag,
-  HiOutlineIdentification,
   HiOutlineClipboardDocumentList,
   HiOutlineArrowTopRightOnSquare,
+  HiOutlineDocumentArrowDown,
+  HiOutlineEnvelope,
 } from "react-icons/hi2";
 
 import OverviewSection from "./studentWelfare/OverviewSection";
 import VisionMissionSection from "./studentWelfare/VisionMissionSection";
 import DswBodyMembersSection from "./studentWelfare/DswBodyMembersSection";
-import StudentsCouncilSection from "./studentWelfare/StudentsCouncilSection";
-import ObjectivesSection from "./studentWelfare/ObjectivesSection";
-import CouncilMembersSection from "./studentWelfare/CouncilMembersSection";
+import StudentCouncilFullSection from "./studentWelfare/StudentCouncilFullSection";
 import KeyRolesSection from "./studentWelfare/KeyRolesSection";
 import { quickLinks } from "./studentWelfare/data/lists";
 
 const innerTabs = [
-  { id: "overview", title: "Overview", icon: HiOutlineHomeModern },
-  { id: "vision-mission", title: "Vision & Mission", icon: HiOutlineHeart },
+  { id: "overview", title: "Overview & Vision", icon: HiOutlineHomeModern },
   { id: "dsw-body", title: "DSW Body Members", icon: HiOutlineUserGroup },
   { id: "students-council", title: "Students Council", icon: HiOutlineUsers },
-  { id: "objectives", title: "Objectives", icon: HiOutlineFlag },
-  { id: "council-members", title: "Student Council Members", icon: HiOutlineIdentification },
   { id: "key-roles", title: "Key Roles & Responsibilities", icon: HiOutlineClipboardDocumentList },
 ];
 
@@ -52,29 +47,54 @@ const StudentWelfareTab = () => {
         </h3>
       </motion.div>
 
-      {/* Quick links */}
+      {/* Quick links — deliberately plain underlined links, not pill buttons,
+          so they read as a resource list rather than more tabs. */}
 
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="
+        flex flex-wrap
+        gap-x-6 gap-y-2
+        mb-10
+        pb-6
+        border-b border-gray-200 dark:border-slate-700
+      ">
         {
-          quickLinks.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="
-                flex items-center gap-1.5
-                px-4 py-2 rounded-full
-                text-xs sm:text-sm font-semibold
-                bg-gray-100 dark:bg-slate-800
-                text-gray-600 dark:text-gray-300
-                hover:bg-red-50 dark:hover:bg-red-900/20
-                hover:text-red-600
-                transition-all
-              "
-            >
-              {link.title}
-              <HiOutlineArrowTopRightOnSquare className="w-3.5 h-3.5" />
-            </a>
-          ))
+          quickLinks.map((link) => {
+
+            const Icon = link.external ? HiOutlineDocumentArrowDown : HiOutlineArrowTopRightOnSquare;
+
+            const linkClasses = `
+              inline-flex items-center gap-1.5
+              text-sm font-semibold
+              text-red-600 dark:text-red-400
+              underline-offset-4
+              decoration-red-300 dark:decoration-red-700
+              hover:underline hover:text-red-700 dark:hover:text-red-300
+              transition-colors
+            `;
+
+            if (link.external) {
+              return (
+                <a
+                  key={link.title}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClasses}
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  {link.title}
+                </a>
+              );
+            }
+
+            return (
+              <Link key={link.title} to={link.href} className={linkClasses}>
+                <Icon className="w-4 h-4 shrink-0" />
+                {link.title}
+              </Link>
+            );
+
+          })
         }
       </div>
 
@@ -114,12 +134,39 @@ const StudentWelfareTab = () => {
         }
       </div>
 
-      {innerTab === "overview" && <OverviewSection />}
-      {innerTab === "vision-mission" && <VisionMissionSection />}
+      {
+        innerTab === "overview" && (
+          <div className="space-y-14">
+            <OverviewSection />
+            <VisionMissionSection />
+
+            <div className="
+              flex items-center gap-3
+              bg-red-50 dark:bg-red-900/20
+              border border-red-100 dark:border-red-900
+              rounded-2xl p-6
+            ">
+              <HiOutlineEnvelope className="text-red-600 w-6 h-6 shrink-0" />
+              <div>
+                <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
+                  Darshan Ahire, Director Students' Welfare
+                </p>
+                <a
+                  href="mailto:dirsw@sandipuniversity.edu.in"
+                  className="text-sm text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors"
+                >
+                  dirsw@sandipuniversity.edu.in
+                </a>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
       {innerTab === "dsw-body" && <DswBodyMembersSection />}
-      {innerTab === "students-council" && <StudentsCouncilSection />}
-      {innerTab === "objectives" && <ObjectivesSection />}
-      {innerTab === "council-members" && <CouncilMembersSection />}
+
+      {innerTab === "students-council" && <StudentCouncilFullSection />}
+
       {innerTab === "key-roles" && <KeyRolesSection />}
 
     </div>

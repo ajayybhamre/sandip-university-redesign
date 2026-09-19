@@ -33,11 +33,9 @@ export const clubCategories = [
   },
 ];
 
-// Reuses the real "Life @ Sandip University" campus photos (the only
-// photo set supplied that fits club/student-life imagery) instead of
-// any separate placeholder pool.
+// Real SUN Clubs event photos supplied by the client.
 const modules = import.meta.glob(
-  "../../../../../assets/images/campus-life/campus/structure*.{jpg,jpeg,png}",
+  "../../../../../assets/images/campus-life/sun-clubs/gallery/*.{jpg,jpeg,png}",
   { eager: true, import: "default" }
 );
 

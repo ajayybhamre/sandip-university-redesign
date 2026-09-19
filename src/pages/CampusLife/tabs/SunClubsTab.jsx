@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { HiOutlineCheckCircle, HiOutlineEnvelope, HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 
-import sunClubsHero from "../../../assets/images/campus-life/campus/structure1.png";
+import sunClubsLogo from "../../../assets/images/campus-life/sun-clubs/sunclub-logo.jpg";
+import darshanPhoto from "../../../assets/images/campus-life/sun-clubs/darshan.png";
 import PhotoGrid from "./galleryMedia/shared/PhotoGrid";
 
 import { objectives, clubCategories, clubGalleryImages } from "./sunClubs/data/sunClubsData";
@@ -29,7 +30,7 @@ const SunClubsTab = () => {
             grid-cols-1
             lg:grid-cols-2
             gap-10
-            items-center
+            items-stretch
           "
         >
 
@@ -79,41 +80,54 @@ const SunClubsTab = () => {
             ">
               Students at Sandip University gain a massive boost from
               participating in SUNCLUBS which are designed keeping in mind
-              the varied interests of students. The club members come
-              together to identify & develop skills through practical based
-              learning, activity based learning, communication skills,
-              competency & confidence building, team work, social awareness
-              camps etc.
+              the varied interests of students. The clubs vary from being
+              technical in nature, while also addressing social issues and
+              ensuring that students have a voice in their overall
+              development.
             </p>
 
             <p className="
-              mt-6
-              text-sm
-              font-semibold
-              text-gray-800
-              dark:text-gray-200
+              mt-4
+              text-gray-600
+              dark:text-gray-300
+              leading-8
+              text-justify
             ">
-              — Mr. Darshan Ahire, Director, Student Welfare, Sandip University, Nashik
+              The club members come together to identify & develop skills
+              through practical based learning, activity based learning,
+              communication skills, competency & confidence building, team
+              work, social awareness camps etc. The purpose of formation of
+              SUNCLUBS is to increase students' awareness of technical or
+              non-technical education and their uses in daily life, with a
+              view to prepare citizens of tomorrow who are better suited to
+              deal with current technological trends.
             </p>
 
           </div>
 
           <div className="
+            flex
+            items-center
+            justify-center
+            h-full
             rounded-2xl
             overflow-hidden
             shadow-lg
             border
             border-gray-100
             dark:border-slate-700
+            bg-white
+            p-10
           ">
 
             <img
-              src={sunClubsHero}
-              alt="SUN Clubs at Sandip University"
+              src={sunClubsLogo}
+              alt="SUN Clubs — By the Students, For the Students"
               className="
                 w-full
                 h-full
-                object-cover
+                max-w-[220px]
+                object-contain
               "
             />
 
@@ -122,6 +136,74 @@ const SunClubsTab = () => {
         </motion.div>
 
       </div>
+
+      {/* Director's message */}
+
+      <motion.div
+
+        initial={{ opacity: 0, y: 20 }}
+
+        whileInView={{ opacity: 1, y: 0 }}
+
+        transition={{ duration: 0.5 }}
+
+        viewport={{ once: true }}
+
+        className="
+          flex
+          flex-col
+          items-center
+          text-center
+          gap-6
+          bg-gray-50
+          dark:bg-slate-900
+          border
+          border-gray-200
+          dark:border-slate-700
+          rounded-2xl
+          p-8
+          md:p-10
+        "
+      >
+
+        <img
+          src={darshanPhoto}
+          alt="Mr. Darshan Ahire, Director, Student Welfare"
+          className="
+            w-full
+            max-w-[240px]
+            h-auto
+            object-contain
+            rounded-2xl
+            border-4
+            border-white
+            dark:border-slate-800
+            shadow-md
+          "
+        />
+
+        <div>
+
+          <p className="
+            font-bold
+            text-lg
+            text-gray-900
+            dark:text-white
+          ">
+            Mr. Darshan Ahire
+          </p>
+
+          <p className="
+            text-sm
+            text-gray-500
+            dark:text-gray-400
+          ">
+            Director, Student Welfare, Sandip University, Nashik
+          </p>
+
+        </div>
+
+      </motion.div>
 
       {/* Objectives */}
 
@@ -315,44 +397,6 @@ const SunClubsTab = () => {
         </h4>
 
         <PhotoGrid images={clubGalleryImages} />
-
-      </div>
-
-      {/* Club Governing Body */}
-
-      <div>
-
-        <h4 className="
-          font-bold
-          text-lg
-          text-gray-900
-          dark:text-white
-          mb-4
-        ">
-          Club Governing Body
-        </h4>
-
-        <div className="
-          bg-gray-50
-          dark:bg-slate-900
-          border
-          border-dashed
-          border-gray-300
-          dark:border-slate-700
-          rounded-2xl
-          p-8
-          text-center
-        ">
-
-          <p className="
-            text-sm
-            text-gray-500
-            dark:text-gray-400
-          ">
-            Governing body details will be published here soon.
-          </p>
-
-        </div>
 
       </div>
 
