@@ -12,7 +12,7 @@ import { GraduationCap, Sparkles } from "lucide-react";
 
 import menuData from "./menuData";
 import MegaMenu from "./MegaMenu";
-import logo from "../../assets/images/logo-dark.png";
+import logo from "../../assets/images/logo-dark.webp";
 import { useTheme } from "../../context/ThemeContext";
 
 function Navbar() {
@@ -222,89 +222,117 @@ ${scrolled
 
               {item.mega && activeMenu === index && (
                 <div className="bg-gray-100 dark:bg-gray-800 p-4">
-                  {item.header && (
-                    <div className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 mb-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-red-50 dark:bg-red-950/40 flex items-center justify-center text-[#bd1e2d] flex-shrink-0">
-                          <GraduationCap size={20} className="text-[#bd1e2d]" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[#bd1e2d] dark:text-red-400 text-lg">
-                            {item.header.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
-                            {item.header.subtitle}
-                          </p>
-                        </div>
+                  {item.customType === "iqac" ? (
+                    <div className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {item.sections.flatMap((s) => s.links).map((link, j) => (
+                          <NavLink
+                            key={j}
+                            to={link.path}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center justify-between p-2 text-gray-700 dark:text-gray-300 hover:text-[#bd1e2d] dark:hover:text-red-400 transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20 text-xs sm:text-sm font-medium"
+                          >
+                            <span>{link.title}</span>
+                          </NavLink>
+                        ))}
                       </div>
-                      {item.header.badgeText && (
-                        <span className="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff1f2] dark:bg-red-950/50 text-[#bd1e2d] dark:text-red-400 border border-red-200 dark:border-red-800 text-xs font-semibold">
-                          <Sparkles size={12} />
-                          {item.header.badgeText}
-                        </span>
-                      )}
                     </div>
-                  )}
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                    {item.sections.map((section, i) => (
-                      <div
-                        key={i}
-                        className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm"
-                      >
-                        <div className="flex items-center justify-between border-b border-red-200 dark:border-red-900 pb-2 mb-3">
-                          <div className="flex items-center gap-2">
-                            {section.iconType === "cap" && <span>🎓</span>}
-                            {section.iconType === "globe" && <span>🌐</span>}
-                            <h4 className="font-extrabold text-[#bd1e2d] dark:text-red-400 text-xs uppercase tracking-wide">
-                              {section.heading}
-                            </h4>
+                  ) : (
+                    <>
+                      {item.header && (
+                        <div className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 mb-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-red-50 dark:bg-red-950/40 flex items-center justify-center text-[#bd1e2d] flex-shrink-0">
+                              <GraduationCap size={20} className="text-[#bd1e2d]" />
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-[#bd1e2d] dark:text-red-400 text-lg">
+                                {item.header.title}
+                              </h4>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">
+                                {item.header.subtitle}
+                              </p>
+                            </div>
                           </div>
-                          {section.badge && (
-                            <span className="bg-[#ffe4e6] dark:bg-red-950 text-[#e11d48] dark:text-red-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
-                              {section.badge}
+                          {item.header.badgeText && (
+                            <span className="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff1f2] dark:bg-red-950/50 text-[#bd1e2d] dark:text-red-400 border border-red-200 dark:border-red-800 text-xs font-semibold">
+                              <Sparkles size={12} />
+                              {item.header.badgeText}
                             </span>
                           )}
                         </div>
-                        <ul className="space-y-2">
-                          {section.links.map((link, j) => (
-                            <li key={j}>
-                              {typeof link === "string" ? (
-                                <span className="text-gray-600 dark:text-gray-300 hover:text-[#bd1e2d] cursor-pointer">
-                                  {link}
-                                </span>
-                              ) : (
-                                <NavLink
-                                  to={link.path}
-                                  onClick={() => setIsOpen(false)}
-                                  className="flex items-center justify-between p-1.5 text-gray-700 dark:text-gray-300 hover:text-[#bd1e2d] transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20"
-                                >
-                                  <div className="flex items-center gap-3">
-                                    {link.icon && (
-                                      <div className="w-7 h-7 rounded-md bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300">
-                                        <link.icon size={15} />
-                                      </div>
+                      )}
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                        {item.sections.map((section, i) => (
+                          <div
+                            key={i}
+                            className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm"
+                          >
+                            {section.heading && (
+                              <div className="flex items-center justify-between border-b border-red-200 dark:border-red-900 pb-2 mb-3">
+                                <div className="flex items-center gap-2">
+                                  {section.iconType === "cap" && <span>🎓</span>}
+                                  {section.iconType === "globe" && <span>🌐</span>}
+                                  <div className="flex flex-col">
+                                    {section.moduleNumber && (
+                                      <span className="text-[10px] font-bold text-[#bd1e2d] dark:text-red-400 uppercase tracking-widest block font-mono">
+                                        MODULE {section.moduleNumber}
+                                      </span>
                                     )}
-                                    <span className="text-xs sm:text-sm font-semibold">
-                                      {link.title}
-                                    </span>
+                                    <h4 className="font-extrabold text-[#bd1e2d] dark:text-red-400 text-xs uppercase tracking-wide">
+                                      {section.heading}
+                                    </h4>
                                   </div>
-
-                                  {link.badge && (
-                                    <span className="bg-[#ffe4e6] dark:bg-red-950 text-[#e11d48] dark:text-red-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                                      {link.badge}
+                                </div>
+                                {section.badge && (
+                                  <span className="bg-[#ffe4e6] dark:bg-red-950 text-[#e11d48] dark:text-red-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                                    {section.badge}
+                                  </span>
+                                )}
+                              </div>
+                            )}
+                            <ul className="space-y-2">
+                              {section.links.map((link, j) => (
+                                <li key={j}>
+                                  {typeof link === "string" ? (
+                                    <span className="text-gray-600 dark:text-gray-300 hover:text-[#bd1e2d] cursor-pointer">
+                                      {link}
                                     </span>
-                                  )}
-                                </NavLink>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                                  ) : (
+                                    <NavLink
+                                      to={link.path}
+                                      onClick={() => setIsOpen(false)}
+                                      className="flex items-center justify-between p-1.5 text-gray-700 dark:text-gray-300 hover:text-[#bd1e2d] transition-colors rounded-lg hover:bg-red-50 dark:hover:bg-red-950/20"
+                                    >
+                                      <div className="flex items-center gap-3">
+                                        {link.icon && (
+                                          <div className="w-7 h-7 rounded-md bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300">
+                                            <link.icon size={15} />
+                                          </div>
+                                        )}
+                                        <span className="text-xs sm:text-sm font-semibold">
+                                          {link.title}
+                                        </span>
+                                      </div>
 
-                  </div>
+                                      {link.badge && (
+                                        <span className="bg-[#ffe4e6] dark:bg-red-950 text-[#e11d48] dark:text-red-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+                                          {link.badge}
+                                        </span>
+                                      )}
+                                    </NavLink>
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </li>

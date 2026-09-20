@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Globe, ArrowRight, Sparkles, ShieldCheck, GraduationCap } from "lucide-react";
-import heroImg from "../../assets/images/apply-students.png";
+import heroImg from "../../assets/images/apply-students.webp";
 import CharacterReveal from "../Animated/CharacterReveal";
 import MagneticButton from "../Animated/MagneticButton";
 import TiltCard from "../Animated/TiltCard";

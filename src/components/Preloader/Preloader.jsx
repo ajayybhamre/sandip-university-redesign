@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../assets/images/logo-dark.png";
+import logo from "../../assets/images/logo-dark.webp";
 
 export default function Preloader({ loading }) {
   return (

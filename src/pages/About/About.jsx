@@ -1,33 +1,54 @@
-import Footer from "../../components/Footer";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer";
 import SEO from "../../components/SEO/SEO";
 import seoData from "../../components/SEO/seoData";
-import AboutOverview from "./AboutOverview";
 
-import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-
-import aboutBanner from "../../assets/images/slider2.webp";
-import WhoWeAre from "./WhoWeAre";
+import AboutHero from "./components/AboutHero";
+import WhoWeAreEditorial from "./components/WhoWeAreEditorial";
+import VisionMissionSection from "./components/VisionMissionSection";
+import LeadershipSection from "./components/LeadershipSection";
+import GovernanceSection from "./components/GovernanceSection";
+import RecognitionsSection from "./components/RecognitionsSection";
+import GroupInstitutionsSection from "./components/GroupInstitutionsSection";
+import OurJourneySection from "./components/OurJourneySection";
+import AboutCTA from "./components/AboutCTA";
 
 export default function About() {
   return (
     <>
       <SEO {...seoData.about} />
-<Header/>
-       <Breadcrumb
-        badge="About University"
-        title="About Sandip University"
-        description="Discover our journey, vision, mission, leadership, innovation and commitment to academic excellence."
-        currentPage="About"
-        image={aboutBanner}
-      />
+      <Header />
 
+      <main className="min-h-screen bg-[#FAF7F2] dark:bg-[#161411] font-sans antialiased selection:bg-[#C8102E] selection:text-white">
+        {/* 01 — Hero */}
+        <AboutHero />
 
-      <AboutOverview/>
-      <WhoWeAre/>
-      <Footer/>
+        {/* 02 — Who We Are */}
+        <WhoWeAreEditorial />
 
-      {/* Next Section Here */}
+        {/* 03 — Vision & Mission */}
+        <VisionMissionSection />
+
+        {/* 04 — Leadership */}
+        <LeadershipSection />
+
+        {/* 05 — Governance */}
+        <GovernanceSection />
+
+        {/* 06 — Recognition & Collaborations */}
+        <RecognitionsSection />
+
+        {/* 07 — Group Institutions */}
+        <GroupInstitutionsSection />
+
+        {/* 08 — Our Journey / Milestones */}
+        <OurJourneySection />
+
+        {/* 09 — Closing CTA */}
+        <AboutCTA />
+      </main>
+
+      <Footer />
     </>
   );
 }

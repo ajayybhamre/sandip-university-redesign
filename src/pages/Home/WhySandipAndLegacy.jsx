@@ -6,7 +6,7 @@ import handsOnImage from "../../assets/images/hands-on-training.jpg";
 import researchImage from "../../assets/images/research-grants.jpg";
 import whySandipGraduation from "../../assets/images/why-sandip-graduation.jpg";
 import campus1Image from "../../assets/images/campus-1.jpg";
-import campus2Image from "../../assets/images/campus-2.png";
+import campus2Image from "../../assets/images/campus-2.webp";
 import campus3Image from "../../assets/images/campus-3.png";
 import aboutEntrance from "../../assets/images/about-entrance.jpg";
 

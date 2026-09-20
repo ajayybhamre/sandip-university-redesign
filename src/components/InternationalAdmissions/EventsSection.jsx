@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, ArrowUpRight } from "lucide-react";
-import imgOrientation from "../../assets/images/intl_orientation.png";
-import imgVaccination from "../../assets/images/intl_vaccination.png";
-import imgCancer from "../../assets/images/intl_cancer_awareness.png";
-import imgForum from "../../assets/images/intl_forum.png";
+import imgOrientation from "../../assets/images/intl_orientation.webp";
+import imgVaccination from "../../assets/images/intl_vaccination.webp";
+import imgCancer from "../../assets/images/intl_cancer_awareness.webp";
+import imgForum from "../../assets/images/intl_forum.webp";
 import "./EventsSection.css";
 
 const events = [

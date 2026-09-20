@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, X } from "lucide-react";
 import campus1 from "../../assets/images/campus-1.jpg";
-import campus2 from "../../assets/images/campus-2.png";
+import campus2 from "../../assets/images/campus-2.webp";
 import campus3 from "../../assets/images/campus-3.png";
 import gallery1 from "../../assets/images/gallery1.jpg";
 import gallery2 from "../../assets/images/gallery2.jpg";

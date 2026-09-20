@@ -26,9 +26,26 @@ import InternationalProgramsPage from "./pages/InternationalAdmission/ProgramsOf
 import InternationalPartnershipsPage from "./pages/InternationalAdmission/Partnerships";
 import InternationalFAQPage from "./pages/InternationalAdmission/FAQ";
 import ContactSupportPage from "./pages/InternationalAdmission/ContactSupport";
+
+// IQAC Main Page & Sub-Pages
+import IQAC from "./pages/IQAC/IQAC";
+import IQACAboutPage from "./pages/IQAC/subpages/IQACAboutPage";
+import IQACAimsObjectivesPage from "./pages/IQAC/subpages/IQACAimsObjectivesPage";
+import IQACMembersPage from "./pages/IQAC/subpages/IQACMembersPage";
+import IQACSustainabilityPage from "./pages/IQAC/subpages/IQACSustainabilityPage";
+import IQACStrategicPlanPage from "./pages/IQAC/subpages/IQACStrategicPlanPage";
+import IQACCommitteesPage from "./pages/IQAC/subpages/IQACCommitteesPage";
+import IQACMinutesPage from "./pages/IQAC/subpages/IQACMinutesPage";
+import IQACIIQADisclosurePage from "./pages/IQAC/subpages/IQACIIQADisclosurePage";
+import IQACPublicDisclosurePage from "./pages/IQAC/subpages/IQACPublicDisclosurePage";
+import IQACAcademicPolicyPage from "./pages/IQAC/subpages/IQACAcademicPolicyPage";
+import IQACFeedbackSystemPage from "./pages/IQAC/subpages/IQACFeedbackSystemPage";
+import IQACInstitutionalDistinctivenessPage from "./pages/IQAC/subpages/IQACInstitutionalDistinctivenessPage";
+import IQACNAACPage from "./pages/IQAC/subpages/IQACNAACPage";
+import CentralLibraryPage from "./pages/Library/CentralLibraryPage";
+
 import ScrollProgressBar from "./components/Animated/ScrollProgressBar";
 import ScrollToTop from "./ScrollToTop";
-
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,7 +57,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Hide preloader after 1.8 seconds
+    // Hide preloader after 1 second
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -52,12 +69,9 @@ function App() {
     return <Preloader loading={loading} />;
   }
 
-
-
-
-
   return (
-    <> <CursorArrow />
+    <>
+      <CursorArrow />
       <BrowserRouter>
         <ScrollProgressBar />
         <ScrollToTop />
@@ -86,22 +100,40 @@ function App() {
           <Route path="/how-to-reach" element={<ContactSupportPage />} />
           <Route path="/contact" element={<ContactSupportPage />} />
 
-          {/* Future Pages */}
+          {/* About University & Governance Pages */}
           <Route path="/about" element={<About />} />
+          <Route path="/about/*" element={<About />} />
           <Route path="/academic" element={<Academics />} />
+
+          {/* IQAC Landing Page & Sub-Pages */}
+          <Route path="/iqac" element={<IQAC />} />
+          <Route path="/iqac/about" element={<IQACAboutPage />} />
+          <Route path="/iqac/aims-objectives" element={<IQACAimsObjectivesPage />} />
+          <Route path="/iqac/members" element={<IQACMembersPage />} />
+          <Route path="/iqac/sustainability" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/strategic-plan" element={<IQACStrategicPlanPage />} />
+          <Route path="/iqac/committees" element={<IQACCommitteesPage />} />
+          <Route path="/iqac/minutes" element={<IQACMinutesPage />} />
+          <Route path="/iqac/iiqa-disclosure" element={<IQACIIQADisclosurePage />} />
+          <Route path="/iqac/self-disclosure" element={<IQACIIQADisclosurePage />} />
+          <Route path="/iqac/public-disclosure" element={<IQACPublicDisclosurePage />} />
+          <Route path="/iqac/naac" element={<IQACNAACPage />} />
+          <Route path="/iqac/academic-policy" element={<IQACAcademicPolicyPage />} />
+          <Route path="/iqac/feedback-system" element={<IQACFeedbackSystemPage />} />
+          <Route path="/iqac/institutional-distinctiveness" element={<IQACInstitutionalDistinctivenessPage />} />
+
+          {/* Library Page */}
+          <Route path="/central-library" element={<CentralLibraryPage />} />
+
           <Route path="/placement" element={<Placement />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/schools/engineering" element={<SchoolEngineering />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/schools/engineering/:courseSlug"
-            element={<CourseDetails />}
-          />
-
+          <Route path="/schools/engineering/:courseSlug" element={<CourseDetails />} />
         </Routes>
 
         <FloatingAction />
-      </BrowserRouter></>
+      </BrowserRouter>
+    </>
   );
 }
 

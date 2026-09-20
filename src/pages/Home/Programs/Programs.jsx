@@ -8,10 +8,10 @@ import { FaArrowRight, FaGraduationCap } from "react-icons/fa";
 
 // Import images
 import engineering from "../../../assets/images/ashwini.webp";
-import management from "../../../assets/images/pawan.png";
-import pharmacy from "../../../assets/images/gayatri.png";
-import law from "../../../assets/images/pawan.png";
-import science from "../../../assets/images/gayatri.png";
+import management from "../../../assets/images/pawan.webp";
+import pharmacy from "../../../assets/images/gayatri.webp";
+import law from "../../../assets/images/pawan.webp";
+import science from "../../../assets/images/gayatri.webp";
 import agriculture from "../../../assets/images/ashwini.webp";
 
 export default function Programs() {

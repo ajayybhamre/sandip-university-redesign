@@ -1,6 +1,6 @@
 import student1 from "../../../assets/images/ashwini.webp";
-import student2 from "../../../assets/images/gayatri.png";
-import student3 from "../../../assets/images/pawan.png";
+import student2 from "../../../assets/images/gayatri.webp";
+import student3 from "../../../assets/images/pawan.webp";
 
 const reviews = [
   {

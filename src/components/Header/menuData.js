@@ -22,6 +22,14 @@ import {
   Globe,
   Sparkles,
   Phone,
+  Library,
+  ShieldCheck,
+  Target,
+  Compass,
+  Landmark,
+  FileSpreadsheet,
+  MessageSquare,
+  Info,
 } from "lucide-react";
 
 const menuData = [
@@ -204,6 +212,55 @@ const menuData = [
     title: "Academic",
     path: "/academic",
     mega: false,
+  },
+
+  {
+    title: "IQAC",
+    path: "/iqac",
+    mega: true,
+    customType: "iqac",
+    sections: [
+      {
+        links: [
+          {
+            title: "Internal Quality Assurance Cell (IQAC)",
+            path: "/iqac",
+          },
+          {
+            title: "IIQA Self Disclosure",
+            path: "/iqac/self-disclosure",
+          },
+          {
+            title: "Central Library",
+            path: "/central-library",
+          },
+          {
+            title: "Feedback System",
+            path: "/iqac/feedback-system",
+          },
+        ],
+      },
+      {
+        links: [
+          {
+            title: "Committees",
+            path: "/iqac/committees",
+          },
+          {
+            title: "Sustainability",
+            path: "/iqac/sustainability",
+          },
+          {
+            title: "Academic Policy",
+            path: "/iqac/academic-policy",
+          },
+          {
+            title: "NAAC",
+            path: "/iqac/naac",
+          },
+        ],
+      },
+    ],
   },
 
   {

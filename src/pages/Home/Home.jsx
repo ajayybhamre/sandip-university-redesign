@@ -5,6 +5,7 @@ import QuickLinks from "./QuickLink/QuickLinks";
 import Footer from "../../components/Footer";
 import AboutSandipUniversity from "./AboutSandipUniversity";
 import StudentStories from "./StudentStories/StudentStories";
+import StudentAchievements from "./StudentAchievements/StudentAchievements";
 
 import WhySandipAndLegacy from "./WhySandipAndLegacy";
 import CampusTour from "./CampusView/CampusTour";
@@ -31,6 +32,7 @@ export default function Home() {
         <AboutSandipUniversity />
         <WhySandipAndLegacy />
         <StudentStories />
+        <StudentAchievements />
         <CampusTour />
         <ConnectCampus />
         <Recruiters />

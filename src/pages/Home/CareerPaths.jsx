@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Compass, Sparkles } from "lucide-react";
 
 import handsOnTraining from "../../assets/images/hands-on-training.jpg";
-import campus2 from "../../assets/images/campus-2.png";
-import pawanImg from "../../assets/images/pawan.png";
-import gayatriImg from "../../assets/images/gayatri.png";
+import campus2 from "../../assets/images/campus-2.webp";
+import pawanImg from "../../assets/images/pawan.webp";
+import gayatriImg from "../../assets/images/gayatri.webp";
 import researchGrants from "../../assets/images/research-grants.jpg";
 import programsHeroEntrance from "../../assets/images/programs-hero-entrance.jpg";
 

@@ -1,10 +1,10 @@
 import student1 from "../../../assets/images/ashwini.webp";
-import student2 from "../../../assets/images/gayatri.png";
-import student3 from "../../../assets/images/pawan.png";
-import student4 from "../../../assets/images/riya.png";
+import student2 from "../../../assets/images/gayatri.webp";
+import student3 from "../../../assets/images/pawan.webp";
+import student4 from "../../../assets/images/riya.webp";
 
-import microsoftLogo from "../../../assets/images/accenture.png";
-import amazonLogo from "../../../assets/images/deloite.png";
+import microsoftLogo from "../../../assets/images/accenture.webp";
+import amazonLogo from "../../../assets/images/deloite.webp";
 import mitLogo from "../../../assets/images/kotak.png";
 
 const students = [

@@ -4,7 +4,7 @@ import hero3 from "../../../assets/images/slier3.webp";
 
 
 import academic from "../../../assets/images/campus-1.jpg";
-import hostel from "../../../assets/images/campus-2.png";
+import hostel from "../../../assets/images/campus-2.webp";
 import library from "../../../assets/images/campus-3.png";
 
 const heroData = [
