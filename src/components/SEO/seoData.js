@@ -66,6 +66,8 @@ const seoData = {
     url:
       "https://yourdomain.com/schools",
   },
+  // components/SEO/seoData.js — add alongside home/about/schools
+coe: { title: "...", description: "...", keywords: "...", image: "...", url: "/coe" },
 };
 
 export default seoData;

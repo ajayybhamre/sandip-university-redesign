@@ -26,6 +26,11 @@ import AcademicsPage from "./pages/Academics/AcademicsPage";
 import RegulationsPage from "./pages/Academics/pages/RegulationsPage";
 import EvaluationPage from "./pages/Academics/pages/EvaluationPage";
 import CalendarPage from "./pages/Academics/pages/CalendarPage";
+import COE from "./pages/COE/COE";
+import COENotices from "./pages/COE/Notices";
+import COEResults from "./pages/COE/Results";
+import COETimetables from "./pages/COE/Timetables";
+import COEHowToApply from "./pages/COE/HowToApply";
 
 
 function App() {
@@ -81,6 +86,12 @@ function App() {
           <Route path="/academics/regulations" element={<RegulationsPage/>} />
           <Route path="/academics/evaluation" element={<EvaluationPage/>} />
           <Route path="/academics/calendar" element={<CalendarPage/>} />
+          <Route path="/coe" element={<COE/>} />
+          <Route path="/coe/notices" element={<COENotices/>} />
+          <Route path="/coe/results" element={<COEResults/>} />
+          <Route path="/coe/timetables" element={<COETimetables/>} />
+          <Route path="/coe/how-to-apply" element={<COEHowToApply/>} />
+
         
       </Routes>
       

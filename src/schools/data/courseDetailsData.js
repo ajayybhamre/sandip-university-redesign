@@ -1,4 +1,8 @@
-import { BookOpen, BriefcaseBusiness, CircleDollarSign, FlaskConical, Landmark, Target, Trophy } from "lucide-react";
+// Finds a programme and returns everything the programme page needs.
+//
+// This file holds NO page copy. Programme text lives only in the programme's own
+// content file (schools/<SCHOOL>/data/programmeContent/<slug>.js). Whatever is not
+// in that file is simply not shown.
 
 import socsePrograms from "../SOCSE/data/programsData";
 import socmsPrograms from "../SOCMS/data/programsData";
@@ -9,58 +13,62 @@ import solPrograms from "../SOL/data/programsData";
 import sopsPrograms from "../SOPS/data/programsData";
 import sosPrograms from "../SOS/data/programsData";
 
-export const programmeSections = [
-  { id: "overview", title: "Overview", icon: BookOpen },
-  { id: "syllabus", title: "Syllabus", icon: BookOpen, heading: "A curriculum built for application.", body: "The syllabus connects core concepts with practical learning, project work and the evolving needs of professional practice.", items: ["Discipline-specific foundations", "Practical and laboratory-led learning", "Project work and professional development"] },
-  { id: "outcomes", title: "PEO, PO, PSO, CO", icon: Target, heading: "What students are prepared to do.", body: "This section contains the programme's PEO, PO, PSO and CO documentation.", cards: ["PEO · Educational objectives", "PO · Graduate outcomes", "PSO · Programme outcomes", "CO · Course outcomes"] },
-  { id: "fees", title: "Fees", icon: CircleDollarSign, heading: "Plan your investment in the programme.", body: "Approved fee details can be added here through the programme data configuration.", cta: "Ask admissions about fees" },
-  { id: "labs", title: "Labs / Lab Facility", icon: FlaskConical, heading: "Learn by making, testing and improving.", body: "The programme supports practical learning through laboratory work, projects and applied exploration.", items: ["Practical work connected to classroom learning", "Facilities for testing, simulation and project development", "A foundation for applied research and innovation"] },
-  { id: "achievement", title: "Achievement", icon: Trophy, heading: "A place to turn work into progress.", body: "Programme-specific student, faculty and department achievements can be listed here through the programme data configuration." },
-  { id: "career", title: "Career", icon: BriefcaseBusiness, heading: "Build a direction for what comes next.", body: "The programme develops the academic foundation and transferable skills students need to explore opportunities across their field and related industries.", items: ["Technical and problem-solving capability", "Project and teamwork experience", "Preparation for further study and professional roles"] },
-  { id: "board", title: "Board of Studies", icon: Landmark, heading: "Academic direction with industry perspective.", body: "Board of Studies information can be added here through the programme data configuration." },
-];
+import soetContent from "../SOET/data/programmeContent/index.js";
+import socseContent from "../SOCSE/data/programmeContent/index.js";
+import socmsContent from "../SOCMS/data/programmeContent/index.js";
+import sosContent from "../SOS/data/programmeContent/index.js";
+import sopsContent from "../SOPS/data/programmeContent/index.js";
+import solContent from "../SOL/data/programmeContent/index.js";
+import sodContent from "../SOD/data/programmeContent/index.js";
 
+// One entry per school, keyed by the slug used in the URL.
+// `departments` is optional (only SOET has a departments list today).
 const schools = {
-  "engineering-technology": { name: "School of Engineering & Technology", programs: soetPrograms },
-  "computer-science": { name: "School of Computer Science & Engineering", programs: socsePrograms },
-  management: { name: "School of Commerce & Management Studies", programs: socmsPrograms },
-  science: { name: "School of Sciences", programs: sosPrograms },
-  pharma: { name: "School of Pharmacy & Paramedical Sciences", programs: sopsPrograms },
-  law: { name: "School of Law", programs: solPrograms },
-  "fashion-beauty": { name: "School of Design", programs: sodPrograms },
+  "engineering-technology": { name: "School of Engineering & Technology", programs: soetPrograms, content: soetContent, departments: soetDepartments },
+  "computer-science": { name: "School of Computer Science & Engineering", programs: socsePrograms, content: socseContent },
+  management: { name: "School of Commerce & Management Studies", programs: socmsPrograms, content: socmsContent },
+  science: { name: "School of Sciences", programs: sosPrograms, content: sosContent },
+  pharma: { name: "School of Pharmacy & Paramedical Sciences", programs: sopsPrograms, content: sopsContent },
+  law: { name: "School of Law", programs: solPrograms, content: solContent },
+  "fashion-beauty": { name: "School of Design", programs: sodPrograms, content: sodContent },
 };
 
-// Add slug-specific content here as approved programme information becomes available.
-export const programmeContent = {
-  // "engineering-technology/civil-engineering": {
-  //   syllabus: { body: "Programme-specific syllabus content...", items: ["..."] },
-  //   fees: { body: "Approved Civil Engineering fee structure..." },
-  // },
-};
+const LEVEL_LABELS = { undergraduate: "Undergraduate", postgraduate: "Postgraduate" };
+const levelLabel = (key) => LEVEL_LABELS[key] || key.charAt(0).toUpperCase() + key.slice(1);
 
-const findDepartment = (slug) => soetDepartments.find((department) => department.slug === slug);
+// Looks through every level for a programme, or a specialisation of one, with this slug.
+function findProgramme(programs, courseSlug) {
+  for (const [levelKey, list] of Object.entries(programs)) {
+    for (const program of list) {
+      if (program.slug === courseSlug) return { program, levelKey };
+
+      const specialisation = program.specializations?.find((item) => item.slug === courseSlug);
+      if (specialisation) return { program: specialisation, parent: program, levelKey };
+    }
+  }
+  return null;
+}
 
 export function getProgramDetails(schoolSlug, courseSlug) {
   const school = schools[schoolSlug];
   if (!school) return null;
 
-  for (const [level, programs] of Object.entries(school.programs)) {
-    const program = programs.find((item) => item.slug === courseSlug);
-    if (program) {
-      const department = schoolSlug === "engineering-technology" ? findDepartment(program.departmentSlug) : undefined;
-      const key = `${schoolSlug}/${courseSlug}`;
-      const overrides = programmeContent[key] || {};
+  const found = findProgramme(school.programs, courseSlug);
+  if (!found) return null;
 
-      return {
-        ...program,
-        level: level === "undergraduate" ? "Undergraduate" : "Postgraduate",
-        schoolName: school.name,
-        departmentName: department?.name,
-        departmentDescription: department?.description,
-        sections: programmeSections.map((section) => ({ ...section, ...(overrides[section.id] || {}) })),
-      };
-    }
-  }
+  const { program, parent, levelKey } = found;
+  const departmentSlug = program.departmentSlug ?? parent?.departmentSlug;
+  const department = school.departments?.find((item) => item.slug === departmentSlug);
 
-  return null;
+  return {
+    ...program,
+    schoolSlug,
+    schoolName: school.name,
+    level: levelLabel(levelKey),
+    parentTitle: parent?.title,
+    departmentName: department?.name,
+    departmentDescription: department?.description,
+    // The programme's own content file, exactly as written. null when none exists yet.
+    content: school.content?.[courseSlug] || null,
+  };
 }

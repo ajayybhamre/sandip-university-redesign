@@ -44,6 +44,8 @@ sandip-university-redesign
 │  │  │  ├─ campus-2.png
 │  │  │  ├─ campus-3.png
 │  │  │  ├─ campus.png
+│  │  │  ├─ dean_academics_photo.webp
+│  │  │  ├─ dean_socse.jpg
 │  │  │  ├─ Dean_SOET.jpg
 │  │  │  ├─ deloite.png
 │  │  │  ├─ drone.png
@@ -54,6 +56,7 @@ sandip-university-redesign
 │  │  │  ├─ gayatri.png
 │  │  │  ├─ IMG_0862.HEIC
 │  │  │  ├─ IMG_0862.webp
+│  │  │  ├─ IMG_0868.webp
 │  │  │  ├─ journey
 │  │  │  │  └─ soet
 │  │  │  │     ├─ capstone.jpg
@@ -110,17 +113,28 @@ sandip-university-redesign
 │  │  │  ├─ AboutUniversity.jsx
 │  │  │  └─ WhoWeAre.jsx
 │  │  ├─ Academics
-│  │  │  ├─ Academics.jsx
-│  │  │  ├─ ContentArea.jsx
-│  │  │  ├─ Sidebar.jsx
-│  │  │  ├─ tabData.js
-│  │  │  └─ tabs
-│  │  │     ├─ AcademicCalendar.jsx
-│  │  │     ├─ AcademicRegulations.jsx
-│  │  │     ├─ AcademicsOverview.jsx
-│  │  │     ├─ CIKS.jsx
-│  │  │     ├─ ICTTools.jsx
-│  │  │     └─ SystemEvaluation.jsx
+│  │  │  ├─ AcademicsPage.jsx
+│  │  │  ├─ components
+│  │  │  │  ├─ AcademicsBreadcrumb.jsx
+│  │  │  │  ├─ AcademicsHero.jsx
+│  │  │  │  ├─ AccordionSection.jsx
+│  │  │  │  ├─ DataTable.jsx
+│  │  │  │  ├─ DeanSection.jsx
+│  │  │  │  ├─ DocumentCard.jsx
+│  │  │  │  ├─ DownloadRow.jsx
+│  │  │  │  ├─ GradeScaleBar.jsx
+│  │  │  │  ├─ PlaceholderNote.jsx
+│  │  │  │  ├─ SectionCard.jsx
+│  │  │  │  └─ SubPageHeader.jsx
+│  │  │  ├─ data
+│  │  │  │  ├─ calendarData.js
+│  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ evaluationData.js
+│  │  │  │  └─ regulationsData.js
+│  │  │  └─ pages
+│  │  │     ├─ CalendarPage.jsx
+│  │  │     ├─ EvaluationPage.jsx
+│  │  │     └─ RegulationsPage.jsx
 │  │  ├─ contact
 │  │  │  ├─ Contact.jsx
 │  │  │  └─ ContactSection.jsx
@@ -196,31 +210,52 @@ sandip-university-redesign
 │  │  │  └─ schoolsData.js
 │  │  ├─ Schools.jsx
 │  │  ├─ SOCMS
+│  │  │  ├─ AboutSOCMS.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  └─ About.jsx
 │  │  │  └─ SOCMS.jsx
 │  │  ├─ SOCSE
+│  │  │  ├─ AboutSOCSE.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  └─ About.jsx
 │  │  │  └─ SOCSE.jsx
 │  │  ├─ SOD
+│  │  │  ├─ AboutSOD.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  └─ About.jsx
@@ -233,6 +268,9 @@ sandip-university-redesign
 │  │  │  │  ├─ deanData.js
 │  │  │  │  ├─ departmentsData.js
 │  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  ├─ aerospace-engineering.js
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
@@ -244,31 +282,52 @@ sandip-university-redesign
 │  │  │  │  └─ Labs.jsx
 │  │  │  └─ SOET.jsx
 │  │  ├─ SOL
+│  │  │  ├─ AboutSOL.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  └─ About.jsx
 │  │  │  └─ SOL.jsx
 │  │  ├─ SOPS
+│  │  │  ├─ AboutSOPS.jsx
+│  │  │  ├─ components
+│  │  │  │  └─ ProgramsDepartments.jsx
 │  │  │  ├─ data
 │  │  │  │  ├─ deanData.js
+│  │  │  │  ├─ journeyData.js
+│  │  │  │  ├─ programmeContent
+│  │  │  │  │  └─ index.js
 │  │  │  │  ├─ programsData.js
 │  │  │  │  ├─ sectionComponents.js
 │  │  │  │  └─ sidebarData.js
+│  │  │  ├─ JourneyTimeline.jsx
 │  │  │  ├─ sectionComponents.js
 │  │  │  ├─ sections
 │  │  │  │  └─ About.jsx
 │  │  │  └─ SOPS.jsx
 │  │  └─ SOS
+│  │     ├─ AboutSOS.jsx
+│  │     ├─ components
+│  │     │  └─ ProgramsDepartments.jsx
 │  │     ├─ data
 │  │     │  ├─ deanData.js
+│  │     │  ├─ journeyData.js
+│  │     │  ├─ programmeContent
+│  │     │  │  └─ index.js
 │  │     │  ├─ programsData.js
 │  │     │  ├─ sectionComponents.js
 │  │     │  └─ sidebarData.js
+│  │     ├─ JourneyTimeline.jsx
 │  │     ├─ sectionComponents.js
 │  │     ├─ sections
 │  │     │  └─ About.jsx
