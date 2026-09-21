@@ -62,7 +62,7 @@ export default function PaymentInstructions() {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xl font-black text-orange-600 bg-orange-100/80 px-2.5 py-0.5 rounded-lg">
+                  <span className="font-sans text-xl font-black text-orange-600 bg-orange-100/80 px-2.5 py-0.5 rounded-lg">
                     {step.num}
                   </span>
                   <CheckCircle2 className="w-5 h-5 text-emerald-600" />

@@ -39,7 +39,7 @@ export default function RegionExplorer({ onSelectRegion }) {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <Globe className="w-5 h-5 text-orange-600" />
-                    <span className="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                    <span className="text-xs font-sans font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
                       {count} Partner{count > 1 ? "s" : ""}
                     </span>
                   </div>

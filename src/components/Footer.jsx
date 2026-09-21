@@ -12,7 +12,7 @@ import {
   FaAngleRight,
 
 } from "react-icons/fa";
-import logo from "../assets/images/logo-dark.png";
+import logo from "../assets/images/logo-dark.webp";
 
 const Footer = () => {
   return (

@@ -30,7 +30,7 @@ export default function FAQAccordion({
             <h2 className="text-2xl font-extrabold text-slate-900">Find Your Answer</h2>
           </div>
 
-          <div className="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-3.5 py-1 rounded-full">
+          <div className="text-xs font-sans font-bold text-slate-500 bg-slate-100 px-3.5 py-1 rounded-full">
             {faqs.length} {faqs.length === 1 ? "Question Found" : "Questions Found"}
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function FAQAccordion({
           
           {/* LEFT: Sticky Category Sidebar (Desktop) */}
           <div className="hidden lg:block lg:col-span-4 sticky top-36 p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
-            <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest px-3 mb-2">
+            <div className="text-xs font-sans font-bold text-slate-400 uppercase tracking-widest px-3 mb-2">
               CATEGORIES
             </div>
             {INTL_FAQ_CATEGORIES.map((cat) => {
@@ -92,11 +92,11 @@ export default function FAQAccordion({
                       className="w-full p-5 text-left flex items-start justify-between gap-4 cursor-pointer"
                     >
                       <div className="flex items-start gap-3.5">
-                        <span className={`font-mono text-xs font-black mt-1 ${isOpen ? "text-orange-600" : "text-slate-400"}`}>
+                        <span className={`font-sans text-xs font-black mt-1 ${isOpen ? "text-orange-600" : "text-slate-400"}`}>
                           {numStr}
                         </span>
                         <div>
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200/60 mb-1 inline-block">
+                          <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200/60 mb-1 inline-block">
                             {item.categoryLabel}
                           </span>
                           <h3 className="text-base font-bold text-slate-900 leading-snug">

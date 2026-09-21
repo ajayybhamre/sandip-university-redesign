@@ -33,7 +33,7 @@ export default function TravelJourneyVisual() {
                 <div className="w-12 h-12 rounded-2xl bg-slate-900 text-orange-400 flex items-center justify-center mb-3 shadow-sm">
                   <IconComp className="w-6 h-6" />
                 </div>
-                <span className="font-mono text-xs font-black text-orange-600 uppercase mb-1">STAGE {item.step}</span>
+                <span className="font-sans text-xs font-black text-orange-600 uppercase mb-1">STAGE {item.step}</span>
                 <h3 className="font-bold text-slate-900 text-base mb-1">{item.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
               </div>

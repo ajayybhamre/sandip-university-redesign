@@ -10,7 +10,7 @@ import "./ProgramsHero.css";
 
 export default function ProgramsHero() {
   return (
-    <section className="programs-hero pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 text-slate-900 overflow-hidden relative border-b border-slate-200/80">
+    <section className="programs-hero pt-28 pb-16 lg:pt-36 lg:pb-24 bg-gradient-to-b from-[#FAF8F5] via-white to-slate-100 dark:from-[#0B0B0D] dark:via-[#121216] dark:to-[#18181F] text-slate-900 dark:text-white overflow-hidden relative border-b border-slate-200/80 dark:border-zinc-800 transition-colors duration-300">
       
       {/* Background Ambient Crimson Glow */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
@@ -22,7 +22,7 @@ export default function ProgramsHero() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-2 text-xs font-bold text-slate-500 mb-6"
+          className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 mb-6"
           aria-label="Breadcrumb"
         >
           <Link to="/" className="hover:text-[#C8102E] transition-colors">Home</Link>
@@ -42,19 +42,19 @@ export default function ProgramsHero() {
             className="lg:col-span-7 flex flex-col items-start space-y-6"
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-[#C8102E] font-extrabold text-xs tracking-wider uppercase shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-[#C8102E] font-extrabold text-xs tracking-wider uppercase shadow-2xs">
               <Globe className="w-3.5 h-3.5 text-[#C8102E]" />
               <span>INTERNATIONAL DEGREE CATALOG</span>
               <Sparkles className="w-3 h-3 text-[#C8102E]" />
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               Explore Programs at <span className="text-[#C8102E]">Sandip University</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 font-medium leading-relaxed max-w-2xl">
               Discover undergraduate, postgraduate, and foundation pathways designed to help international students build a successful global career.
             </p>
 
@@ -73,7 +73,7 @@ export default function ProgramsHero() {
               <MagneticButton>
                 <Link
                   to="/international-admission/contact"
-                  className="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base shadow-md transition-all duration-300 text-center flex items-center justify-center gap-2"
+                  className="px-8 py-4 rounded-xl bg-slate-900 dark:bg-zinc-800 hover:bg-slate-800 dark:hover:bg-zinc-700 text-white font-bold text-base shadow-md transition-all duration-300 text-center flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 text-[#C8102E]" />
                   <span>Talk to Admissions Desk</span>
@@ -86,19 +86,19 @@ export default function ProgramsHero() {
           <div className="lg:col-span-5 relative">
             <CurtainReveal direction="up">
               <TiltCard>
-                <SpotlightCard className="p-4 rounded-3xl bg-white border border-slate-200 shadow-2xl relative">
+                <SpotlightCard className="p-4 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-2xl relative">
                   <img
                     src={heroImg}
                     alt="Sandip University International Programs"
                     className="w-full h-[360px] sm:h-[420px] object-cover rounded-2xl"
                   />
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/20 text-slate-900 shadow-xl flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-red-50 text-[#C8102E] flex items-center justify-center flex-shrink-0 font-black">
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border border-white/20 dark:border-zinc-700 text-slate-900 dark:text-white shadow-xl flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-950/50 text-[#C8102E] flex items-center justify-center flex-shrink-0 font-black">
                       <BookOpen className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-sm font-black text-slate-900">50+ Degree Specializations</div>
-                      <div className="text-xs text-slate-500 font-bold">UG, PG & Foundation Pathways</div>
+                      <div className="text-sm font-black text-slate-900 dark:text-white">50+ Degree Specializations</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-bold">UG, PG & Foundation Pathways</div>
                     </div>
                   </div>
                 </SpotlightCard>

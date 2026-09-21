@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import applyStudentsImg from "../../assets/images/apply-students.png";
+import applyStudentsImg from "../../assets/images/apply-students.webp";
 
 import AnimatedHeroHeading from "../../components/AnimatedHeroHeading";
 import TextReveal from "../../components/Animated/TextReveal";

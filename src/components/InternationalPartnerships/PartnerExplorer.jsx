@@ -34,7 +34,7 @@ export default function PartnerExplorer({
             </h2>
           </div>
 
-          <div className="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-3.5 py-1.5 rounded-full self-start md:self-auto">
+          <div className="text-xs font-sans font-bold text-slate-500 bg-slate-100 px-3.5 py-1.5 rounded-full self-start md:self-auto">
             {partners.length} {partners.length === 1 ? "Partner Found" : "Partners Found"}
           </div>
         </div>

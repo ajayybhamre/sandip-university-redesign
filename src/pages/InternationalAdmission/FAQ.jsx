@@ -59,7 +59,7 @@ export default function InternationalFAQPage() {
   }, [searchQuery, selectedCategory]);
 
   return (
-    <div className="intl-faq-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="intl-faq-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-orange-500 selection:text-white">
       <SEO
         title="International Student FAQs | Sandip University"
         description="Find answers to common questions about international applications, visa processing, fees, wire transfers, hostels, and student support at Sandip University."

@@ -18,7 +18,7 @@ export default function PartnerCard({ partner, onViewDetails }) {
             </span>
           </div>
 
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200/60">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-200/60">
             {partner.type}
           </span>
         </div>

@@ -38,7 +38,7 @@ export default function ApplicationProgress() {
                   <IconComp className="w-6 h-6" />
                 </div>
 
-                <span className="font-mono text-xs font-black text-orange-600 uppercase mb-1">STAGE {item.step}</span>
+                <span className="font-sans text-xs font-black text-orange-600 uppercase mb-1">STAGE {item.step}</span>
                 <h3 className="font-extrabold text-slate-900 text-base mb-1">{item.name}</h3>
                 <p className="text-xs text-slate-500 leading-snug">{item.desc}</p>
               </div>

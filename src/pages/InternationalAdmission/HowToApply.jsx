@@ -21,7 +21,7 @@ import "./HowToApply.css";
 
 export default function HowToApplyPage() {
   return (
-    <div className="how-to-apply-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="how-to-apply-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-orange-500 selection:text-white">
       <SEO
         title="How to Apply & International Wire Transfer | Sandip University"
         description="Complete step-by-step application guide and official international wire transfer bank details for Sandip University foreign applicants."

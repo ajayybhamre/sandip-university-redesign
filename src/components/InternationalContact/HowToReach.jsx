@@ -41,7 +41,7 @@ export default function HowToReach() {
                   <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200 text-xs">
                     <div className="flex items-center justify-between font-bold text-slate-900 mb-1">
                       <span>{air.name}</span>
-                      <span className="text-orange-600 font-mono">{air.distance}</span>
+                      <span className="text-orange-600 font-sans">{air.distance}</span>
                     </div>
                     <p className="text-slate-600 leading-relaxed mb-2">{air.desc}</p>
                     <div className="text-[11px] font-semibold text-slate-500">Approx. Travel Time: {air.time}</div>
@@ -71,7 +71,7 @@ export default function HowToReach() {
                       <div className="font-bold text-slate-900 text-sm">{rd.city} to Campus</div>
                       <div className="text-slate-500 text-[11px]">{rd.via} ({rd.time})</div>
                     </div>
-                    <span className="font-mono font-extrabold text-orange-600">{rd.distance}</span>
+                    <span className="font-sans font-extrabold text-orange-600">{rd.distance}</span>
                   </div>
                 ))}
               </div>
@@ -94,7 +94,7 @@ export default function HowToReach() {
               <div className="space-y-2.5 pt-2">
                 {TRAVEL_ROUTES.busSteps.map((bStep, idx) => (
                   <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200 flex items-start gap-3 text-xs">
-                    <span className="font-mono text-xs font-black text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
+                    <span className="font-sans text-xs font-black text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
                       {bStep.step}
                     </span>
                     <div>
@@ -123,7 +123,7 @@ export default function HowToReach() {
               <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 text-xs">
                 <div className="flex items-center justify-between font-bold text-slate-900 text-sm">
                   <span>{TRAVEL_ROUTES.railway.station}</span>
-                  <span className="text-orange-600 font-mono">{TRAVEL_ROUTES.railway.distance}</span>
+                  <span className="text-orange-600 font-sans">{TRAVEL_ROUTES.railway.distance}</span>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
                   {TRAVEL_ROUTES.railway.desc}

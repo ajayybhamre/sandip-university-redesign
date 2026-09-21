@@ -84,7 +84,7 @@ export default function ContactSupportHero() {
           >
             <SpotlightCard className="p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[340px]">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 font-mono text-xs font-bold uppercase">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 font-sans text-xs font-bold uppercase">
                   <span>CAMPUS LOCATION</span>
                 </div>
 

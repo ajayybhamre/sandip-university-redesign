@@ -1,5 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==================================================
@@ -7,6 +22,7 @@
    Official Sandip University Visual Identity
    ================================================== */
 
+:root,
 [data-theme="light"] {
   --bg-primary: #FFFFFF;
   --bg-secondary: #FAF8F5;
@@ -24,7 +40,8 @@
   --shadow-main: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="dark"] {
+[data-theme="dark"],
+html.dark {
   --bg-primary: #0B0B0D;
   --bg-secondary: #121216;
   --bg-elevated: #1D1D22;
@@ -58,41 +75,116 @@
   --shadow-main: 0 8px 24px -10px rgba(0, 0, 0, 0.8);
 }
 
-/* Specific Night Mode Theme Overrides */
+/* Specific Dark Mode & Night Mode Theme Overrides */
+html.dark body,
+[data-theme="dark"] body,
 [data-theme="night"] body {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
 }
 
-[data-theme="night"] .bg-white,
-[data-theme="night"] .bg-\[\#FAF8F5\],
-[data-theme="night"] .bg-slate-50 {
-  background-color: var(--bg-surface) !important;
-}
-
-[data-theme="night"] .dark\:bg-\[\#0c0c0d\],
-[data-theme="night"] .dark\:bg-black,
-[data-theme="night"] .dark\:bg-slate-900,
-[data-theme="night"] .dark\:bg-zinc-900 {
+html.dark .homepage-wrapper,
+html.dark .how-to-apply-page,
+html.dark .intl-overview-page,
+html.dark .intl-programs-page,
+html.dark .intl-partnerships-page,
+html.dark .intl-faq-page,
+html.dark .intl-contact-page {
   background-color: var(--bg-primary) !important;
-}
-
-[data-theme="night"] .text-slate-900,
-[data-theme="night"] .text-gray-900 {
   color: var(--text-primary) !important;
 }
 
-[data-theme="night"] .text-slate-600,
-[data-theme="night"] .text-gray-600 {
+/* Hero Section Gradients in Dark Mode */
+html.dark .how-to-apply-hero,
+html.dark .intl-hero-wrapper,
+html.dark .programs-hero,
+html.dark .partnerships-hero,
+html.dark .contact-hero,
+html.dark .faq-hero {
+  background-image: linear-gradient(to bottom, #0B0B0D, #121216, #18181F) !important;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Light Background Surfaces in Dark Mode */
+html.dark .bg-white:not(.bg-white-keep),
+html.dark .bg-\[\#FAF6EE\],
+html.dark .bg-\[\#FAF8F5\],
+html.dark .bg-\[\#FDFBF7\],
+html.dark .bg-\[\#F5F2EC\],
+html.dark .bg-\[\#F5F2EC\]\/70,
+html.dark .bg-\[\#FAF5EF\],
+html.dark .bg-\[\#FAF4EB\],
+html.dark .bg-\[\#FDF8F0\],
+html.dark .bg-slate-50,
+html.dark .bg-gray-50,
+html.dark .bg-zinc-50 {
+  background-color: var(--bg-surface) !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-gray-100,
+html.dark .bg-zinc-100,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80 {
+  background-color: var(--bg-elevated) !important;
+}
+
+/* Text Colors in Dark Mode */
+html.dark .text-slate-900,
+html.dark .text-gray-900,
+html.dark .text-black,
+html.dark .text-\[\#0C0C0D\],
+html.dark .text-\[\#0B0B0D\],
+html.dark .text-\[\#2A080C\],
+html.dark .text-\[\#1E293B\],
+html.dark .text-\[\#0F172A\],
+html.dark .text-\[\#0F1B2B\] {
+  color: var(--text-primary) !important;
+}
+
+html.dark .text-slate-600,
+html.dark .text-slate-700,
+html.dark .text-gray-600,
+html.dark .text-gray-700,
+html.dark .text-\[\#64748B\] {
   color: var(--text-secondary) !important;
 }
 
-[data-theme="night"] .border-slate-200,
-[data-theme="night"] .border-gray-200 {
+html.dark .text-slate-500,
+html.dark .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+/* Border Colors in Dark Mode */
+html.dark .border-slate-200,
+html.dark .border-gray-200,
+html.dark .border-slate-100,
+html.dark .border-gray-100,
+html.dark .border-\[\#E2E8F0\],
+html.dark .border-\[\#E7E7E9\],
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/60 {
   border-color: var(--border-color) !important;
 }
 
-/* Global Transitions for Theme Switching */
+/* Input & Form Control dark mode overrides */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+html.dark option {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Global Transitions & Typography Setup */
 html {
   scroll-behavior: smooth;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -103,19 +195,44 @@ html.dark body {
     color: #ffffff;
 }
 
+*,
+::before,
+::after {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body,
+html,
+button,
+input,
+textarea,
+select {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   font-size: 15px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
   overflow-x: hidden;
 }
 
 /* Custom Selection */
 ::selection {
+<<<<<<< HEAD
     background-color: #bd1e2d;
     color: #ffffff;
+=======
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
+}
+
+::-moz-selection {
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
+>>>>>>> origin/utkarsha
 }
 
 html.dark ::selection {
@@ -162,4 +279,11 @@ html.dark ::selection {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Clean Paragraph Text Alignment for Long Editorial Content */
+article p,
+.prose p {
+  text-align: justify;
+  text-justify: inter-word;
 }

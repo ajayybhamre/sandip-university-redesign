@@ -55,7 +55,7 @@ export default function QuickContactCards() {
                 <Phone className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-slate-900 text-base mb-1">Call Us Directly</h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-4 font-mono font-bold text-slate-900">
+              <p className="text-xs text-slate-600 leading-relaxed mb-4 font-sans font-bold text-slate-900">
                 Toll-Free: {OFFICIAL_CONTACT_INFO.tollFree}<br />
                 Direct: {OFFICIAL_CONTACT_INFO.admissionsPhone1}
               </p>
@@ -76,7 +76,7 @@ export default function QuickContactCards() {
                 <Mail className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-slate-900 text-base mb-1">Email Support</h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-4 font-mono">
+              <p className="text-xs text-slate-600 leading-relaxed mb-4 font-sans">
                 {OFFICIAL_CONTACT_INFO.internationalEmail}
               </p>
             </div>

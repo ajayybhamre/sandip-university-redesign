@@ -84,7 +84,7 @@ export default function InternationalPartnershipsPage() {
   }, [searchQuery, selectedRegion, selectedCountry, selectedType]);
 
   return (
-    <div className="intl-partnerships-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="intl-partnerships-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-[#bd1e2d] selection:text-white">
       <SEO
         title="International Partnerships & MOUs | Sandip University"
         description="Explore Sandip University's global academic partner institutions, MOUs, student exchanges, and joint research collaborations."

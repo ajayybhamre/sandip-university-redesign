@@ -57,7 +57,7 @@ export default function ProgramDetailsModal({ program, onClose }) {
             {/* Specializations */}
             {program.specializations && program.specializations.length > 0 && (
               <div>
-                <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest mb-2">Available Specializations</h4>
+                <h4 className="text-xs font-sans font-bold text-slate-500 uppercase tracking-widest mb-2">Available Specializations</h4>
                 <div className="flex flex-wrap gap-2">
                   {program.specializations.map((spec, sIdx) => (
                     <span key={sIdx} className="px-3 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200/80 text-xs font-bold">

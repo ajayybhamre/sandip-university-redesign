@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Globe, Heart, Shield, Users, CheckCircle2 } from "lucide-react";
-import communityImg from "../../assets/images/intl_forum.png";
+import communityImg from "../../assets/images/intl_forum.webp";
 import "./InternationalCommunity.css";
 
 export default function InternationalCommunity() {

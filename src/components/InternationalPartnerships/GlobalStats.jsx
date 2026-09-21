@@ -24,7 +24,7 @@ export default function GlobalStats() {
                 <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mx-auto mb-3">
                   <IconComp className="w-5 h-5" />
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono tracking-tight mb-1">
+                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-sans tracking-tight mb-1">
                   {st.value}
                 </div>
                 <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">

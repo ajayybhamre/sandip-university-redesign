@@ -125,7 +125,7 @@ export default function AdmissionProcedure() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className={`font-mono text-xs font-black ${isSelected ? "text-orange-400" : "text-orange-600"}`}>
+                    <span className={`font-sans text-xs font-black ${isSelected ? "text-orange-400" : "text-orange-600"}`}>
                       {step.step}
                     </span>
                     <span className="text-sm font-bold leading-tight">
@@ -150,7 +150,7 @@ export default function AdmissionProcedure() {
                 transition={{ duration: 0.3 }}
                 className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-sm relative overflow-hidden"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 text-orange-700 text-xs font-mono font-bold uppercase mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 text-orange-700 text-xs font-sans font-bold uppercase mb-4">
                   <span>STEP {current.step} DETAILS</span>
                 </div>
 

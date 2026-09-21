@@ -71,7 +71,7 @@ export default function StudentJourney() {
                   <div>
                     {/* Step Number Badge + Icon */}
                     <div className="flex items-center justify-between mb-6">
-                      <span className="font-mono text-2xl font-black text-[#C8102E] bg-red-50 px-3 py-1 rounded-xl border border-red-100">
+                      <span className="font-sans text-2xl font-black text-[#C8102E] bg-red-50 px-3 py-1 rounded-xl border border-red-100">
                         {step.num}
                       </span>
                       <div className="w-10 h-10 rounded-xl bg-slate-900 text-white group-hover:bg-[#C8102E] flex items-center justify-center transition-colors shadow-sm">

@@ -20,7 +20,7 @@ import "./ContactSupport.css";
 
 export default function ContactSupportPage() {
   return (
-    <div className="intl-contact-page min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="intl-contact-page min-h-screen bg-white dark:bg-[#0c0c0d] text-slate-900 dark:text-white font-sans selection:bg-orange-500 selection:text-white">
       <SEO
         title="Contact Us & How to Reach Sandip University Campus | International Support"
         description="Official contact details, international admissions desk helpline, campus location, Google Maps directions, and complete travel guide by air, road, bus, or rail."

@@ -40,14 +40,14 @@ export default function ContactTeamCards() {
                 <div className="space-y-2.5 pt-4 border-t border-slate-100 text-xs font-semibold text-slate-700">
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                    <a href={`tel:${team.phone.replace(/[^0-9+]/g, "")}`} className="hover:text-orange-600 font-mono">
+                    <a href={`tel:${team.phone.replace(/[^0-9+]/g, "")}`} className="hover:text-orange-600 font-sans">
                       {team.phone}
                     </a>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <Mail className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                    <a href={`mailto:${team.email}`} className="hover:text-orange-600 font-mono truncate">
+                    <a href={`mailto:${team.email}`} className="hover:text-orange-600 font-sans truncate">
                       {team.email}
                     </a>
                   </div>
