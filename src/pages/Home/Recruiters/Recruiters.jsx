@@ -36,7 +36,7 @@ export default function Recruiters() {
               <img
                 src={logo}
                 alt="Recruiter"
-                className="h-12 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className="h-12 object-contain opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
           ))}

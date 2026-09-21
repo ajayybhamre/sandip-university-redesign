@@ -7,7 +7,7 @@ const LinkRow = ({ href, label, icon: Icon }) => (
     href={href}
     target="_blank"
     rel="noreferrer"
-    className="flex items-center gap-1.5 text-xs font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
+    className="flex items-center gap-1.5 font-medium font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-500 transition-colors"
   >
     <Icon size={12} />
     {label}
@@ -25,8 +25,8 @@ const HowToApplyCard = ({ item }) => {
         </span>
       )}
 
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{title}</h3>
-      <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+      <h3 className="font-medium font-semibold text-gray-900 dark:text-white">{title}</h3>
+      <p className="mt-1.5 font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
         {description}
       </p>
 
@@ -41,7 +41,7 @@ const HowToApplyCard = ({ item }) => {
           <LinkRow href={onlineLink} label="Apply Online" icon={ExternalLink} />
         )}
         {note && (
-          <span className="flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-gray-400">
+          <span className="flex items-center gap-1.5 font-medium font-medium text-gray-500 dark:text-gray-400">
             <Info size={12} />
             {note}
           </span>

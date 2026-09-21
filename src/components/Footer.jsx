@@ -26,7 +26,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Sandip University"
-              className="w-52 mb-4 bg-white p-4"
+              className="w-50 mb-4 bg-white p-2 ml-5"
             />
 
             <p className="text-sm leading-6 text-gray-400">

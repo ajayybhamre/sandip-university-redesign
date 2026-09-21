@@ -36,7 +36,6 @@ import InternationalPartnershipsPage from "./pages/InternationalAdmission/Partne
 import InternationalFAQPage from "./pages/InternationalAdmission/FAQ";
 import ContactSupportPage from "./pages/InternationalAdmission/ContactSupport";
 
-import ScrollToTop from "./ScrollToTop";
 import Schools from "./schools/Schools";
 import AcademicsPage from "./pages/Academics/AcademicsPage";
 import RegulationsPage from "./pages/Academics/pages/RegulationsPage";
@@ -150,7 +149,7 @@ function App() {
         
           <Route path="/about" element={<About />} />
           <Route path="/about/*" element={<About />} />
-          <Route path="/academic" element={<Academics />} />
+          {/* <Route path="/academic" element={<Academics />} /> */}
 
           {/* IQAC Landing Page & Sub-Pages */}
           <Route path="/iqac" element={<IQAC />} />
@@ -174,7 +173,7 @@ function App() {
 
           <Route path="/placement" element={<Placement />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/schools/engineering" element={<SchoolEngineering />} />
+          {/* <Route path="/schools/engineering" element={<SchoolEngineering />} /> */}
           <Route path="/schools/engineering/:courseSlug" element={<CourseDetails />} />
 
         </Routes>

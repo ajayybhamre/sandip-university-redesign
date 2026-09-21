@@ -339,4 +339,7 @@ article p,
   text-align: justify;
   text-justify: inter-word;
 }
+p{
+  font-size: 16px;
+}
 }

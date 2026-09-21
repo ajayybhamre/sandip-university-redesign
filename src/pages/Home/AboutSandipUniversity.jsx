@@ -157,7 +157,7 @@ export default function AboutSandipUniversity() {
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
                 transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 220ms",
               }}
-              className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-6"
+              className="text-base text-justify text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-6"
             >
               Study at a state of the art campus located in the lap of nature. Sandip University’s 250+ acre campus is a global hub of cutting-edge education and dynamic student development. Since its inception in 2017, Sandip University has created a positive and futuristic hub of education. Our values are steeped in providing various industries with top-notch talent in terms of academic knowledge and hands-on skills.
             </p>
@@ -169,7 +169,7 @@ export default function AboutSandipUniversity() {
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
                 transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 340ms",
               }}
-              className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-6"
+              className="text-base text-justify text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-6"
             >
               Our students are trained to become global leaders rather than followers. Sandip University’s educational programmes are designed to be in sync with Education 4.0 and Industry 4.0, while paving the way for Education 5.0 and Industry 5.0.
             </p>
@@ -181,7 +181,7 @@ export default function AboutSandipUniversity() {
                 transform: isVisible ? "translateY(0)" : "translateY(20px)",
                 transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 460ms",
               }}
-              className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed"
+              className="text-base text-justify text-slate-600 dark:text-slate-300 font-medium leading-relaxed"
             >
               Sandip University’s faculty members are pioneers and groundbreaking seekers of innovative ideas, constantly pushing for invigorating excellence from our students. They are well-read and well-qualified professors holding qualifications from IITs, NITs and IIMs across India. Their extensive experience in the teaching industry has honed their skills to the hilt, making them talented academic researchers in their respective industries.
             </p>

@@ -36,11 +36,11 @@ const COEListItemCard = ({ item }) => {
               New
             </span>
           )}
-          <span className="text-xs text-gray-500 dark:text-gray-400">
+          <span className="font-medium text-gray-500 dark:text-gray-400">
             {formatDate(publishedAt)}
           </span>
         </div>
-        <h3 className="mt-1.5 text-sm font-medium text-gray-900 dark:text-white break-words">
+        <h3 className="mt-1.5 font-medium font-medium text-gray-900 dark:text-white break-words">
           {title}
         </h3>
       </div>
@@ -50,7 +50,7 @@ const COEListItemCard = ({ item }) => {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-800 px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-200 hover:border-red-600 hover:text-red-600 transition-colors"
+          className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-gray-200 dark:border-gray-800 px-3 py-2 font-medium font-medium text-gray-700 dark:text-gray-200 hover:border-red-600 hover:text-red-600 transition-colors"
         >
           <LinkIcon size={13} />
           {linkLabel}

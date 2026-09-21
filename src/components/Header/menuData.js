@@ -29,7 +29,8 @@ import {
   Landmark,
   FileSpreadsheet,
   MessageSquare,
-  Info,
+  Info,  Images,UsersRound,
+  HeartHandshake,Dumbbell,Trophy
 
 } from "lucide-react";
 
@@ -57,8 +58,8 @@ const menuData = [
             badge: "NEW",
           },
           {
-            title: "Programs",
-            path: "/programs",
+            // title: "Programs",
+            // path: "/programs",
 
             title: "Postgraduate",
             path: "/postgraduate",
@@ -215,10 +216,10 @@ const menuData = [
     ],
   },
 
-  {
-    title: "International",
-    mega: false,
-  },
+  // {
+  //   title: "International",
+  //   mega: false,
+  // },
 
   {
     title: "Placements",
@@ -270,11 +271,11 @@ const menuData = [
     ],
   },
 
-  {
-    title: "Academic",
-    path: "/academic",
-    mega: false,
-  },
+  // {
+  //   title: "Academic",
+  //   path: "/academic",
+  //   mega: false,
+  // },
 
 
   {
@@ -326,11 +327,11 @@ const menuData = [
     ],
   },
 
-  {
-    title: "Contact",
-    path: "/contact",
-    mega: false,
-  },
+  // {
+  //   title: "Contact",
+  //   path: "/contact",
+  //   mega: false,
+  // },
 ];
 
 export default menuData;

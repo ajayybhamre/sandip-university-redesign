@@ -22,13 +22,9 @@ export default function StudentSuccessStories() {
   return (
 
     <section
-      className="
-relative py-34 
-bg-gradient-to-br bg-[linear-gradient(to_right,#dc2626_50%,#000000_50%)]
-text-white
-" id="scholarships"
+     
     >
-<div class="absolute top-0 left-0 w-full h-20 bg-white dark:bg-black rounded-b-[100px]"></div>
+{/* <div class="absolute top-0 left-0 w-full h-20 bg-white dark:bg-black rounded-b-[100px]"></div> */}
 
     <section id="student-success" className="relative py-20 lg:py-28 bg-[#FDFBF7] dark:bg-[#0c0c0d] text-slate-900 dark:text-white overflow-hidden border-t border-slate-200/70 dark:border-zinc-800 transition-colors duration-300">
       
