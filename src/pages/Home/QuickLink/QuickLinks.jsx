@@ -1,13 +1,21 @@
+import { Link } from "react-router-dom";
 import quickLinks from "./quickLinksData";
 
 export default function QuickLinks() {
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  const handleAnchorClick = (e, targetPath) => {
+    if (targetPath.startsWith("#")) {
+      e.preventDefault();
+      const sectionId = targetPath.replace("#", "");
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        window.history.pushState(null, "", targetPath);
+      } else {
+        window.location.href = `/${targetPath}`;
+      }
     }
   };
 
@@ -18,20 +26,22 @@ export default function QuickLinks() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-zinc-800/80">
           {quickLinks.map((item, index) => {
             const Icon = item.icon;
+            const linkProps = {
+              key: item.id,
+              style: {
+                animationName: "fadeInUpQuickLink",
+                animationDuration: "0.6s",
+                animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                animationFillMode: "both",
+                animationDelay: `${index * 90}ms`,
+              },
+              className:
+                "group relative pt-4 pb-3 sm:py-4 px-3 flex flex-col items-center justify-center cursor-pointer bg-transparent border border-transparent transition-all duration-300 ease-out hover:-translate-y-1.5 sm:hover:-translate-y-2 focus:outline-hidden focus:ring-2 focus:ring-[#C8102E]/40 rounded-2xl",
+              "aria-label": `${item.title} - ${item.subtitle}`,
+            };
 
-            return (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.target)}
-                style={{
-                  animationName: "fadeInUpQuickLink",
-                  animationDuration: "0.6s",
-                  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                  animationFillMode: "both",
-                  animationDelay: `${index * 90}ms`,
-                }}
-                className="group relative pt-4 pb-3 sm:py-4 px-3 flex flex-col items-center justify-center cursor-pointer bg-transparent border border-transparent transition-all duration-300 ease-out hover:-translate-y-1.5 sm:hover:-translate-y-2"
-              >
+            const content = (
+              <>
                 {/* Light Red Icon Container */}
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/30 text-[#C8102E] flex items-center justify-center mb-3 transition-all duration-300 ease-out group-hover:bg-[#C8102E]/10 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-red-500/15 shrink-0">
                   <Icon className="text-2xl sm:text-3xl transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6" />
@@ -49,7 +59,25 @@ export default function QuickLinks() {
 
                 {/* Animated Underline */}
                 <span className="h-0.5 w-0 group-hover:w-7 bg-[#C8102E] rounded-full transition-all duration-300 ease-out mt-2 opacity-0 group-hover:opacity-100"></span>
-              </button>
+              </>
+            );
+
+            if (item.isAnchor) {
+              return (
+                <a
+                  {...linkProps}
+                  href={item.path}
+                  onClick={(e) => handleAnchorClick(e, item.path)}
+                >
+                  {content}
+                </a>
+              );
+            }
+
+            return (
+              <Link {...linkProps} to={item.path}>
+                {content}
+              </Link>
             );
           })}
         </div>

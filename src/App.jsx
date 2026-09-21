@@ -125,7 +125,9 @@ function App() {
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />
         <Route path="/academics" element={<AcademicsPage/>} />
-         <Route path="/placement" element={<Placement/>} />
+        <Route path="/placement" element={<Placement/>} />
+          <Route path="/campus-life" element={<CampusLife />} />
+          <Route path="/events" element={<CampusLife />} />
           <Route path="/gallery" element={<Gallery/>} />
               <Route path="/schools" element={<Schools/>} />
            <Route path="/schools/engineering-technology" element={<SOET/>} />

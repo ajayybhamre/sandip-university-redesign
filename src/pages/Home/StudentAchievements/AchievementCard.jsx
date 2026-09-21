@@ -63,15 +63,22 @@ export default function AchievementCard({ achievement, onSelect, index = 0 }) {
       data-aos-delay={100 + (index % 3) * 100}
     >
       {/* CARD MEDIA / IMAGE HEADER */}
-      <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-zinc-900 shrink-0">
+      <div className="relative w-full h-56 sm:h-60 overflow-hidden bg-slate-900 shrink-0 flex items-center justify-center">
+        {/* Ambient Blur Layer for Natural Depth */}
+        <img
+          src={achievement.image}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover blur-md opacity-30 scale-110 pointer-events-none"
+          aria-hidden="true"
+        />
         <img
           src={achievement.image}
           alt={achievement.title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+          className={`relative z-10 w-full h-full object-cover ${achievement.imagePositionCard || achievement.imagePosition || "object-[center_0%]"} transition-transform duration-700 ease-out group-hover:scale-104`}
           loading="lazy"
         />
         {/* Soft Edge Overlay Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent z-10 pointer-events-none"></div>
 
         {/* TOP-LEFT CATEGORY BADGE */}
         <div className="absolute top-3.5 left-3.5 z-10">
