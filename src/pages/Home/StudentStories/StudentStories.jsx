@@ -31,7 +31,7 @@ bg-gradient-to-br bg-[linear-gradient(to_right,#dc2626_50%,#000000_50%)]
 text-white
 " id="scholarships"
     >
-        <div className="absolute top-0 left-0 w-full h-20 bg-white rounded-b-[100px]"></div>
+<div class="absolute top-0 left-0 w-full h-20 bg-white dark:bg-black rounded-b-[100px]"></div>
         
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">

@@ -97,6 +97,11 @@ html {
   scroll-behavior: smooth;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+html.dark,
+html.dark body {
+    background-color: #000000;
+    color: #ffffff;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -109,10 +114,14 @@ body {
 
 /* Custom Selection */
 ::selection {
-  background-color: var(--brand-primary);
-  color: #FFFFFF;
+    background-color: #bd1e2d;
+    color: #ffffff;
 }
 
+html.dark ::selection {
+    background-color: #ffffff;
+    color: #000000;
+}
 /* Container Custom */
 .container-custom {
   max-width: 1400px;
