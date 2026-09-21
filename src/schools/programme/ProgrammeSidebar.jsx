@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 // Left-hand list of sections. On small screens it becomes a horizontal, scrollable strip.
 export default function ProgrammeSidebar({ sections, activeId, onSelect, title = "Programme", subtitle = "Programme sections" }) {
   return (
-    <aside className="sticky top-24 self-start overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-raised)] transition-colors duration-300">
+    <aside className="sticky top-24 self-start overflow-hidden rounded-2xl ... border border-[var(--line)] bg-[var(--surface-raised)] transition-colors duration-300">
       <div className="border-b border-[var(--line)] px-5 py-6">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--brand-red-600)]">Explore</p>
         <h2 className="mt-2 font-[var(--font-display)] text-2xl font-bold text-[var(--ink)]">{title}</h2>

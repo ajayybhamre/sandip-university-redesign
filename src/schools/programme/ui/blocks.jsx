@@ -3,10 +3,15 @@
 // so a pharmacy or design school can reuse them in a different layout.
 
 import { Link } from "react-router-dom";
-import { ArrowRight, FileDown } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 const isPlaceholderUrl = (url) => !url || url === "#";
 const isInternalUrl = (url) => typeof url === "string" && url.startsWith("/");
+
+// A link to a file (PDF etc.) is a download, not a page of the site, even when it starts with "/".
+const FILE_URL = /\.(pdf|docx?|xlsx?|pptx?|zip)(?:[?#].*)?$/i;
+const isFileUrl = (url) => typeof url === "string" && FILE_URL.test(url);
+const fileTypeLabel = (link) => (link.type || link.url.match(FILE_URL)?.[1] || "pdf").toUpperCase();
 
 const cardClass = "rounded-2xl border border-[var(--line)] bg-[var(--surface-muted)]";
 const buttonClass =
@@ -32,7 +37,7 @@ export function Body({ children }) {
 /** Intro paragraph inside a soft panel (used by Overview). */
 export function Callout({ children }) {
   if (!children) return null;
-  return <div className={`mt-6 max-w-3xl p-6 leading-8 text-[var(--ink-muted)] ${cardClass}`}>{children}</div>;
+  return <div className={`mt-6 p-6 leading-8 text-[var(--ink-muted)] ${cardClass}`}>{children}</div>;
 }
 
 function SubHeading({ children }) {
@@ -40,13 +45,19 @@ function SubHeading({ children }) {
   return <h3 className="mt-8 font-[var(--font-display)] text-lg font-bold text-[var(--ink)]">{children}</h3>;
 }
 
-/** Red-dot bullet list. */
-export function BulletList({ items, heading, compact = false }) {
+/** Red-dot bullet list. Pass columns={2} to lay it out in two columns on medium screens and up. */
+export function BulletList({ items, heading, compact = false, columns = 1 }) {
   if (!items?.length) return null;
+  const listClass =
+    columns === 2
+      ? "mt-8 grid gap-x-10 gap-y-4 md:grid-cols-2"
+      : compact
+        ? "mt-4 space-y-3"
+        : "mt-8 space-y-4";
   return (
     <>
       <SubHeading>{heading}</SubHeading>
-      <ul className={compact ? "mt-4 space-y-3" : "mt-8 space-y-4"}>
+      <ul className={listClass}>
         {items.map((item, index) => (
           <li key={`${index}-${item}`} className="flex items-start gap-3 text-[var(--ink)]">
             <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--brand-red-600)]" />
@@ -97,30 +108,64 @@ export function CardGrid({ cards, heading }) {
   );
 }
 
-/** Download / external links. A link with no real URL yet is shown as "Coming soon" instead of a dead link. */
+const tileClass = `flex items-center justify-between gap-4 p-5 font-semibold text-[var(--ink)] ${cardClass}`;
+const tileHoverClass = "transition-colors hover:border-[var(--brand-red-600)]";
+
+/**
+ * One link tile: { label, url, type? }
+ *   url: "/syllabus/aero-sem3.pdf"   file in /public   -> downloads
+ *   url: "https://..."               external file     -> opens in a new tab
+ *   url: "/contact"                  page on the site  -> normal link
+ *   url: "#"                         not ready yet     -> shown as "Coming soon"
+ * The badge on the right ("PDF") comes from the file extension; set `type: "DOC"` to override it.
+ */
+function LinkTile({ link }) {
+  if (isPlaceholderUrl(link.url)) {
+    return (
+      <div aria-disabled="true" className={`${tileClass} opacity-60`}>
+        {link.label}
+        <span className="shrink-0 text-xs font-medium text-[var(--ink-muted)]">Coming soon</span>
+      </div>
+    );
+  }
+
+  // Page inside the site (not a file): normal router link.
+  if (isInternalUrl(link.url) && !isFileUrl(link.url)) {
+    return (
+      <Link to={link.url} className={`${tileClass} ${tileHoverClass}`}>
+        {link.label}
+        <ArrowRight size={18} className="shrink-0 text-[var(--brand-red-600)]" />
+      </Link>
+    );
+  }
+
+  // File: label on the left, "PDF" + download icon on the right.
+  return (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noreferrer"
+      download={isFileUrl(link.url) ? "" : undefined}
+      aria-label={`Download ${link.label} (${fileTypeLabel(link)})`}
+      className={`${tileClass} ${tileHoverClass}`}
+    >
+      {link.label}
+      <span className="flex shrink-0 items-center gap-3 text-sm font-bold tracking-wider text-[var(--brand-red-600)]">
+        {fileTypeLabel(link)}
+        <Download size={20} />
+      </span>
+    </a>
+  );
+}
+
+/** Grid of link tiles, e.g. the syllabus PDFs. */
 export function LinkGrid({ links }) {
   if (!links?.length) return null;
-  const tileClass = `flex items-center justify-between gap-3 p-5 font-semibold text-[var(--ink)] ${cardClass}`;
   return (
     <div className="mt-8 grid gap-4 sm:grid-cols-2">
-      {links.map((link, index) => {
-        const key = `${index}-${link.label}`;
-        if (isPlaceholderUrl(link.url)) {
-          return (
-            <div key={key} aria-disabled="true" className={`${tileClass} opacity-60`}>
-              {link.label}
-              <span className="shrink-0 text-xs font-medium text-[var(--ink-muted)]">Coming soon</span>
-            </div>
-          );
-        }
-        const hoverClass = "transition-colors hover:border-[var(--brand-red-600)]";
-        const icon = <FileDown size={18} className="shrink-0 text-[var(--brand-red-600)]" />;
-        return isInternalUrl(link.url) ? (
-          <Link key={key} to={link.url} className={`${tileClass} ${hoverClass}`}>{link.label}{icon}</Link>
-        ) : (
-          <a key={key} href={link.url} target="_blank" rel="noreferrer" className={`${tileClass} ${hoverClass}`}>{link.label}{icon}</a>
-        );
-      })}
+      {links.map((link, index) => (
+        <LinkTile key={`${index}-${link.label}`} link={link} />
+      ))}
     </div>
   );
 }
@@ -153,9 +198,11 @@ export function DataTable({ table }) {
 }
 
 /**
- * Call-to-action button.
- *   "Ask admissions"                      -> button that opens /contact
- *   { label, url }                        -> external / internal link, or a disabled button while url is "#"
+ * Call-to-action.
+ *   "Ask admissions"      -> button that opens /contact
+ *   { label, url }        -> a download / external link is shown as the same tile as the syllabus links
+ *                            (PDF badge + download icon, or "Coming soon" while url is "#");
+ *                            a page on the site (url starting with "/") is a normal button
  */
 export function CtaButton({ cta }) {
   if (!cta) return null;
@@ -168,17 +215,18 @@ export function CtaButton({ cta }) {
     );
   }
 
-  if (isPlaceholderUrl(cta.url)) {
+  const isPage = isInternalUrl(cta.url) && !isFileUrl(cta.url);
+  if (!isPage) {
     return (
-      <span aria-disabled="true" className={`${buttonClass} cursor-not-allowed opacity-60 hover:bg-[var(--brand-navy)]`}>
-        {cta.label} <span className="text-xs font-medium">Coming soon</span>
-      </span>
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <LinkTile link={cta} />
+      </div>
     );
   }
 
-  return isInternalUrl(cta.url) ? (
-    <Link to={cta.url} className={buttonClass}>{cta.label} <FileDown size={17} /></Link>
-  ) : (
-    <a href={cta.url} target="_blank" rel="noreferrer" className={buttonClass}>{cta.label} <FileDown size={17} /></a>
+  return (
+    <Link to={cta.url} className={buttonClass}>
+      {cta.label} <ArrowRight size={17} />
+    </Link>
   );
 }

@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Preloader from "./components/Preloader/Preloader";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import CursorArrow from "./components/CursorArrow";
+  import CursorArrow from "./components/CursorArrow";
 import Popup from "./components/Popup";
 import About from "./pages/About/About";
 import Placement from "./pages/Placement/Placement";
@@ -69,7 +69,6 @@ function App() {
 
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />
-        <Route path="/academic" element={<AcademicsPage/>} />
         <Route path="/academics" element={<AcademicsPage/>} />
          <Route path="/placement" element={<Placement/>} />
           <Route path="/gallery" element={<Gallery/>} />

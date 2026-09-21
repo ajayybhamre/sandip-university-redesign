@@ -32,7 +32,7 @@ export default function ProgrammeHero({ programme }) {
         badge={`${programme.schoolName} · PROGRAMME`}
         title={programme.title}
         description={description}
-        currentPage="Programme"
+        currentPage={programme.title}
         image={hero.image || defaultBanner}
         showBadge={false}
         showTrail={false}
@@ -41,9 +41,9 @@ export default function ProgrammeHero({ programme }) {
       {facts.length > 0 && (
         <section className="bg-[var(--surface)] pt-12 transition-colors duration-300 md:pt-16">
           <div className="mx-auto max-w-[1600px] px-6 lg:px-8">
-            <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <dl className="flex flex-wrap gap-4">
               {facts.map((fact, index) => (
-                <div key={`${index}-${fact.label}`} className="rounded-2xl border border-[var(--line)] bg-[var(--surface-muted)] p-5">
+                <div key={`${index}-${fact.label}`} className="grow basis-[220px] rounded-2xl border border-[var(--line)] bg-[var(--surface-muted)] p-5">
                   <dt className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--ink-muted)]">{fact.label}</dt>
                   <dd className="mt-2 font-[var(--font-display)] text-lg font-bold leading-snug text-[var(--ink)]">{fact.value}</dd>
                 </div>

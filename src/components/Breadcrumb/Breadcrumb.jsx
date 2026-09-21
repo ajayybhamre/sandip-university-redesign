@@ -22,8 +22,7 @@ export default function Breadcrumb({
       {/* Uniform dark wash across the whole image */}
       <div className="absolute inset-0 bg-[#081b3a]/45" />
       {/* Bottom-heavy scrim so the text stays readable, like the reference */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#081b3a]/95 via-[#081b3a]/40 to-transparent" />
-      <div className="absolute bottom-0 right-0 h-full w-1/3 bg-gradient-to-l from-[var(--brand-red-600)]/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
 
      <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-8">
 
@@ -41,7 +40,7 @@ export default function Breadcrumb({
 
         <div className="mt-8 flex items-center text-sm text-white/70">
 
-          <Link to="/">Home</Link>
+          <Link to="/#">Home</Link>
 
           <HiChevronRight className="mx-2" />
 

@@ -4,7 +4,7 @@ export default function OverviewSection({ data, programme }) {
   return (
     <SectionShell eyebrow="Overview" heading={data.heading || programme.title}>
       <Callout>{data.body}</Callout>
-      <BulletList items={data.items} />
+      <BulletList items={data.items} columns={2} />
       <CardGrid cards={data.cards} />
     </SectionShell>
   );

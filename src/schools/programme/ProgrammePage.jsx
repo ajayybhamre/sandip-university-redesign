@@ -20,7 +20,7 @@ export default function ProgrammePage({ programme }) {
     <>
       {/* TODO: pass programme-specific title/description once SEO's props are confirmed. */}
       <SEO {...seoData.about} />
-      <Header />
+      <Header overlay />
       <Hero programme={programme} />
       <ProgrammeLayout
         programme={programme}

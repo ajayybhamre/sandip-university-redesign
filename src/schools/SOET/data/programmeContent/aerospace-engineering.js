@@ -1,8 +1,10 @@
 // Course-specific content for: /schools/engineering-technology/aerospace-engineering
 // Only include the sections/fields you want to override — anything left out
 // falls back to the generic template in schools/data/courseDetailsData.js.
+import aerospaceBanner from "../../../../assets/images/aero-hero.webp";
 
 export default {
+  hero: { image: aerospaceBanner },
   overview: {
     body: "Sandip University's B.Tech in Aerospace Engineering is a four-year undergraduate programme focused on the design, development, testing and manufacturing of aircraft, spacecraft, propulsion systems, control systems and related aerospace technologies. The curriculum blends engineering fundamentals with aerospace-focused theory, laboratory work, projects, internships and industry-oriented training — covering aerodynamics, propulsion, aerospace systems, flight-related technologies, aerospace instruments and aircraft design.",
     items: [
@@ -18,9 +20,12 @@ export default {
   syllabus: {
     body: "Semester-wise curriculum and syllabus documents, published according to the applicable pattern for each year.",
     links: [
-      { label: "Semester III – 2026 Pattern", url: "#" },
-      { label: "Semester V – 2024 Pattern", url: "#" },
-      { label: "Semester VII – 2023 Pattern", url: "#" },
+      { label: "Semester III – 2026 Pattern", url: "https://www.sandipuniversity.edu.in/engineering-technology/pdf/III%20Aerospace%20Syllabus.pdf" },
+      { label: "Semester IV – 2026 Pattern", url: "#" },
+      { label: "Semester V – 2024 Pattern", url: "https://www.sandipuniversity.edu.in/engineering-technology/pdf/V%20Aerospace%20Syllabus.pdf" },
+      { label: "Semester VI – 2026 Pattern", url: "#" },
+      { label: "Semester VII – 2023 Pattern", url: "https://www.sandipuniversity.edu.in/engineering-technology/pdf/VII%20Aerospace%20Syllabus.pdf" },
+      { label: "Semester VIII – 2026 Pattern", url: "#" },
     ],
   },
   outcomes: {
@@ -62,7 +67,7 @@ export default {
         ],
       },
     ],
-    cta: { label: "Download Course Outcomes (COs)", url: "#" },
+    cta: { label: "Download Course Outcomes (COs)", url: "https://www.sandipuniversity.edu.in/engineering-technology/pdf/co/Course_Outcomes-Aerospace%20Engineering.pdf" },
   },
   fees: {
     cta: "Contact Admissions for Fee Details",

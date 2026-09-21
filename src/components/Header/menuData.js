@@ -101,7 +101,7 @@ const menuData = [
 
 {
     title: "Academics",
-    path: "/academic",
+    path: "/academics",
     mega: false,
   },
 
@@ -153,6 +153,12 @@ const menuData = [
     ],
   },
 
+
+  {
+    title: "Examinations",
+    path: "/coe",
+    mega: false,
+  },
   {
     title: "Research",
     mega: true,

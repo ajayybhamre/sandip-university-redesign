@@ -4,7 +4,9 @@
 //   2. Import it below and add it to the exported object with its slug as the key.
 
 import aerospaceEngineering from "./aerospace-engineering.js";
+import civilEngineering from "./civil-engineering.js";
 
 export default {
   "aerospace-engineering": aerospaceEngineering,
+  "civil-engineering": civilEngineering,
 };

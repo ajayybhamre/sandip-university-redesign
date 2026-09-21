@@ -7,7 +7,7 @@ const TOPBAR_LINKS = [
   },
   {
     label: "Examination",
-    href: null, // placeholder — link TBD
+    href: "/coe", // placeholder — link TBD
   },
   {
     label: "SUN Clubs",
