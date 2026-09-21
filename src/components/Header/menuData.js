@@ -10,143 +10,180 @@ import {
   ClipboardCheck,
   Building2,
   Home,
-  
   Briefcase,
   Scale,
   Pill,
-  Leaf,
   FlaskConical,
   Microscope,
-  
   Award,
   FolderKanban,
+
+  FileEdit,
+  Globe,
+  Sparkles,
+  Phone,
+  Library,
+  ShieldCheck,
+  Target,
+  Compass,
+  Landmark,
+  FileSpreadsheet,
+  MessageSquare,
+  Info,  Images,UsersRound,
+  HeartHandshake,Dumbbell,Trophy
+
 } from "lucide-react";
 
 const menuData = [
   {
     title: "Admissions",
     mega: true,
+    customType: "admissions",
+    header: {
+      title: "ADMISSIONS",
+      subtitle: "Explore National & International admission pathways for 2026-27",
+      badgeText: "Admissions Open 2026-27",
+    },
     sections: [
       {
-        heading: "Admissions",
+        heading: "NATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "cap",
         links: [
           {
-            title: "School of Engineering",
-            path: "/schools/engineering",
-            icon: GraduationCap,
+
+            title: "Apply Now",
+            path: "/apply",
+            icon: FileEdit,
+            badge: "NEW",
           },
           {
+            // title: "Programs",
+            // path: "/programs",
+
             title: "Postgraduate",
             path: "/postgraduate",
+
             icon: BookOpen,
           },
           {
-            title: "PhD Admissions",
-            path: "/phd",
-            icon: Users,
+            title: "Document List",
+            path: "/documents",
+            icon: FileText,
           },
-        ],
-      },
-      {
-        heading: "Resources",
-        links: [
           {
-            title: "Fee Structure",
-            path: "/fee-structure",
+            title: "Scholarships",
+            path: "/scholarships",
             icon: IndianRupee,
           },
           {
-            title: "Admission Process",
-            path: "/admission-process",
-            icon: ClipboardCheck,
-          },
-          {
-            title: "Eligibility",
-            path: "/eligibility",
-            icon: BadgeCheck,
-          },
-          {
-            title: "Brochure",
-            path: "/brochure",
-            icon: Download,
-          },
-          {
-            title: "FAQ",
-            path: "/faq",
+            title: "Help Centre",
+            path: "/help",
             icon: HelpCircle,
           },
         ],
       },
       {
-        heading: "Quick Links",
+        heading: "INTERNATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "globe",
         links: [
           {
-            title: "Apply Now",
-            path: "/apply",
-            icon: FileText,
+            title: "Overview",
+            path: "/international-admission/overview",
+            icon: Globe,
           },
           {
-            title: "Download Form",
-            path: "/download-form",
-            icon: Download,
+            title: "How to Apply",
+            path: "/international-admission/how-to-apply",
+            icon: FileEdit,
+            badge: "NEW",
           },
           {
-            title: "Campus Tour",
-            path: "/campus-tour",
-            icon: Building2,
+            title: "Programs",
+            path: "/international-admission/programs",
+            icon: BookOpen,
           },
           {
-            title: "Hostel",
-            path: "/hostel",
-            icon: Home,
+            title: "International Partnerships",
+            path: "/international-admission/partnerships",
+            icon: Users,
+          },
+          {
+            title: "FAQs",
+            path: "/international-admission/faqs",
+            icon: HelpCircle,
+          },
+          {
+            title: "Contact Us",
+            path: "/international-admission/contact",
+            icon: Phone,
           },
         ],
       },
     ],
   },
 
+{
+    title: "Academics",
+    path: "/academics",
+    mega: false,
+  },
+
   {
-    title: "Programs",
+    title: "Schools",
     mega: true,
     sections: [
       {
         heading: "Schools",
         links: [
+          
           {
-            title: "Engineering",
-            path: "/schools/engineering",
+            title: "School Of Engineering & Technology",
+            path: "/schools/engineering-technology",
             icon: GraduationCap,
           },
           {
-            title: "Management",
+            title: "School Of Computer Science & Engineering",
+            path: "/schools/computer-science",
+            icon: BookOpen,
+          },
+          {
+            title: "School Of Commerce & Managment Studies",
             path: "/schools/management",
             icon: Briefcase,
           },
           {
-            title: "Law",
+            title: "School Of Science",
+            path: "/schools/science",
+            icon: FlaskConical,
+          },
+          {
+            title: "School of Pharmaceutical Sciences ",
+            path: "/schools/pharma",
+            icon: Pill,
+          },
+          {
+            title: "School Of Law",
             path: "/schools/law",
             icon: Scale,
           },
           {
-            title: "Pharmacy",
-            path: "/schools/pharmacy",
-            icon: Pill,
-          },
-          {
-            title: "Agriculture",
-            path: "/schools/agriculture",
-            icon: Leaf,
-          },
-          {
-            title: "Science",
-            path: "/schools/science",
-            icon: FlaskConical,
+            title: "School Of Design",
+            path: "/schools/fashion-beauty",
+            icon: Award,
           },
         ],
       },
     ],
   },
 
+
+  {
+    title: "Examinations",
+    path: "/coe",
+    mega: false,
+  },
   {
     title: "Research",
     mega: true,
@@ -179,10 +216,10 @@ const menuData = [
     ],
   },
 
-  {
-    title: "International",
-    mega: false,
-  },
+  // {
+  //   title: "International",
+  //   mega: false,
+  // },
 
   {
     title: "Placements",
@@ -196,17 +233,105 @@ const menuData = [
     mega: false,
   },
 
-  {
-    title: "Academic",
-    path: "/academic",
-    mega: false,
-  },
 
   {
-    title: "Contact",
-    path: "/contact",
-    mega: false,
+    title: "Campus Life",
+    mega: true,
+    sections: [
+      {
+        heading: "Campus Life",
+        links: [
+          {
+            title: "Gallery & Media",
+            path: "/campus-life?tab=gallery-media",
+            icon: Images,
+          },
+          {
+            title: "SUN Clubs",
+            path: "/campus-life?tab=sun-clubs",
+            icon: UsersRound,
+          },
+          {
+            title: "Student Welfare",
+            path: "/campus-life?tab=student-welfare",
+            icon: HeartHandshake,
+          },
+          {
+            title: "Achievement",
+            path: "/campus-life?tab=achievement",
+            icon: Trophy,
+          },
+          {
+            title: "Sports",
+            path: "/campus-life?tab=sports",
+            icon: Dumbbell,
+          },
+        ],
+      },
+    ],
   },
+
+  // {
+  //   title: "Academic",
+  //   path: "/academic",
+  //   mega: false,
+  // },
+
+
+  {
+    title: "IQAC",
+    path: "/iqac",
+    mega: true,
+    customType: "iqac",
+    sections: [
+      {
+        links: [
+          {
+            title: "Internal Quality Assurance Cell (IQAC)",
+            path: "/iqac",
+          },
+          {
+            title: "IIQA Self Disclosure",
+            path: "/iqac/self-disclosure",
+          },
+          {
+            title: "Central Library",
+            path: "/central-library",
+          },
+          {
+            title: "Feedback System",
+            path: "/iqac/feedback-system",
+          },
+        ],
+      },
+      {
+        links: [
+          {
+            title: "Committees",
+            path: "/iqac/committees",
+          },
+          {
+            title: "Sustainability",
+            path: "/iqac/sustainability",
+          },
+          {
+            title: "Academic Policy",
+            path: "/iqac/academic-policy",
+          },
+          {
+            title: "NAAC",
+            path: "/iqac/naac",
+          },
+        ],
+      },
+    ],
+  },
+
+  // {
+  //   title: "Contact",
+  //   path: "/contact",
+  //   mega: false,
+  // },
 ];
 
 export default menuData;

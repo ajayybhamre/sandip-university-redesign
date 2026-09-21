@@ -1,0 +1,94 @@
+import {
+  FileEdit,
+  BookOpen,
+  FileText,
+  BadgeCheck,
+  IndianRupee,
+  HelpCircle,
+  ClipboardCheck,
+  Globe,
+  Users,
+  Phone,
+} from "lucide-react";
+
+export const admissionsMenuData = {
+  title: "Admissions",
+  header: {
+    title: "ADMISSIONS",
+    subtitle: "Explore National & International admission pathways for 2026-27",
+    badgeText: "Admissions Open 2026-27",
+  },
+  sections: [
+    {
+      heading: "NATIONAL ADMISSION MENU",
+      badge: "NEW",
+      iconType: "cap",
+      links: [
+        {
+          title: "Apply Now",
+          path: "/apply",
+          icon: FileEdit,
+          badge: "NEW",
+        },
+        {
+          title: "Programs",
+          path: "/programs",
+          icon: BookOpen,
+        },
+        {
+          title: "Document List",
+          path: "/documents",
+          icon: FileText,
+        },
+        {
+          title: "Scholarships",
+          path: "/scholarships",
+          icon: IndianRupee,
+        },
+        {
+          title: "Help Centre",
+          path: "/help",
+          icon: HelpCircle,
+        },
+      ],
+    },
+    {
+      heading: "INTERNATIONAL ADMISSION MENU",
+      badge: "NEW",
+      iconType: "globe",
+      links: [
+        {
+          title: "Overview",
+          path: "/international-admission/overview",
+          icon: Globe,
+        },
+        {
+          title: "How to Apply",
+          path: "/international-admission/how-to-apply",
+          icon: FileEdit,
+          badge: "NEW",
+        },
+        {
+          title: "Programs",
+          path: "/international-admission/programs",
+          icon: BookOpen,
+        },
+        {
+          title: "International Partnerships",
+          path: "/international-admission/partnerships",
+          icon: Users,
+        },
+        {
+          title: "FAQs",
+          path: "/international-admission/faqs",
+          icon: HelpCircle,
+        },
+        {
+          title: "Contact Us",
+          path: "/international-admission/contact",
+          icon: Phone,
+        },
+      ],
+    },
+  ],
+};

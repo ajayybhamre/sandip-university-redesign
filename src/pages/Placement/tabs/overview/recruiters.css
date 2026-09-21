@@ -1,0 +1,38 @@
+.placement-recruiter-slider {
+  overflow: hidden;
+  position: relative;
+  height: 128px;
+  padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .placement-recruiter-slider {
+    height: 144px;
+  }
+}
+
+.placement-recruiter-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: placementScrollRecruiters 30s linear infinite;
+}
+
+.placement-recruiter-track.reverse {
+  animation-direction: reverse;
+  animation-duration: 34s;
+}
+
+.placement-recruiter-slider:hover .placement-recruiter-track {
+  animation-play-state: paused;
+}
+
+@keyframes placementScrollRecruiters {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

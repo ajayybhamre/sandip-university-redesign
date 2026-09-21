@@ -1,0 +1,33 @@
+.about-recruiter-slider {
+  overflow: hidden;
+  position: relative;
+  height: 128px;
+  padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .about-recruiter-slider {
+    height: 144px;
+  }
+}
+
+.about-recruiter-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: aboutScrollRecruiters 26s linear infinite;
+}
+
+.about-recruiter-slider:hover .about-recruiter-track {
+  animation-play-state: paused;
+}
+
+@keyframes aboutScrollRecruiters {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

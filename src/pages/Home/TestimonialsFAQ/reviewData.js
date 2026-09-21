@@ -1,11 +1,11 @@
 import student1 from "../../../assets/images/ashwini.webp";
-import student2 from "../../../assets/images/gayatri.png";
-import student3 from "../../../assets/images/pawan.png";
+import student2 from "../../../assets/images/gayatri.webp";
+import student3 from "../../../assets/images/pawan.webp";
 
 const reviews = [
   {
     id: 1,
-    name: "Rahul Patel",
+    name: "Ashwini Shinde",
     designation: "Software Engineer",
     company: "Accenture",
     image: student1,
@@ -13,7 +13,6 @@ const reviews = [
     review:
       "Sandip University gave me excellent technical knowledge, placement training, and confidence that helped me secure my dream job.",
   },
-
   {
     id: 2,
     name: "Sneha Kulkarni",
@@ -24,7 +23,6 @@ const reviews = [
     review:
       "The faculty, industry exposure, and internship opportunities helped me develop both technical and leadership skills.",
   },
-
   {
     id: 3,
     name: "Amit Sharma",

@@ -1,15 +1,19 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header/Header";
+
 import SEO from "../../components/SEO/SEO";
 import seoData from "../../components/SEO/seoData";
-import AboutOverview from "./AboutOverview";
+// import AboutOverview from "./AboutOverview";
 
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 import aboutBanner from "../../assets/images/slider2.webp";
-import WhoWeAre from "./WhoWeAre";
+import WhoWeAre from "../../pages/About/components/WhoWeAreEditorial";
 
 export default function About() {
+
+  const [activeTab, setActiveTab] = useState("about-us");
+
   return (
     <>
       <SEO {...seoData.about} />
@@ -23,7 +27,7 @@ export default function About() {
       />
 
 
-      <AboutOverview/>
+      {/* <AboutOverview/> */}
       <WhoWeAre/>
       <Footer/>
 
