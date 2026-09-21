@@ -135,7 +135,7 @@ const LogoLane = ({ label, Icon, items, reverse }) => (
 
 const RecruitersSliders = () => {
   return (
-    <div>
+    <div id="recruiters">
 
       <motion.div
 

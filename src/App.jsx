@@ -10,6 +10,9 @@ import Popup from "./components/Popup";
 import About from "./pages/About/About";
 import Academics from "./pages/Academics/Academics";
 import Placement from "./pages/Placement/Placement";
+import CampusLife from "./pages/CampusLife/CampusLife";
+import Committees from "./pages/Committees/Committees";
+import GrievanceRedressal from "./pages/GrievanceRedressal/GrievanceRedressal";
 import Gallery from "./pages/Gallery/Gallery";
 import FloatingAction from "./components/FloatingAction";
 import SchoolEngineering from "./schools/SchoolEngenering/SchoolEngineering";
@@ -86,22 +89,22 @@ function App() {
           <Route path="/how-to-reach" element={<ContactSupportPage />} />
           <Route path="/contact" element={<ContactSupportPage />} />
 
-          {/* Future Pages */}
-          <Route path="/about" element={<About />} />
-          <Route path="/academic" element={<Academics />} />
-          <Route path="/placement" element={<Placement />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/schools/engineering" element={<SchoolEngineering />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/schools/engineering/:courseSlug"
-            element={<CourseDetails />}
-          />
-
-        </Routes>
-
-        <FloatingAction />
-      </BrowserRouter></>
+        {/* Future Pages */}
+        <Route path="/about" element={<About/>} />
+        <Route path="/academic" element={<Academics/>} />
+         <Route path="/placement" element={<Placement/>} />
+          <Route path="/gallery" element={<Gallery/>} />
+           <Route path="/schools/engineering" element={<SchoolEngineering/>} />
+           <Route path="/contact" element={<Contact/>} />
+           <Route
+  path="/schools/engineering/:courseSlug"
+  element={<CourseDetails/>}
+/>
+        
+      </Routes>
+      
+            <FloatingAction />
+    </BrowserRouter></>
   );
 }
 

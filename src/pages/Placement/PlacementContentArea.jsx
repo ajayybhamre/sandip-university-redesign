@@ -1,18 +1,11 @@
 import PlacementOverview from "./tabs/PlacementOverview";
-import StudentPlacement from "./tabs/StudentPlacement";
-import StudentsTestimonials from "./tabs/StudentsTestimonials";
-import PlacementGalleryTab from "./tabs/PlacementGalleryTab";
-import PlacementPolicy from "./tabs/PlacementPolicy";
-import EmployabilityEnhancementProgram from "./tabs/EmployabilityEnhancementProgram";
-import CorporateTieups from "./tabs/CorporateTieups";
-import ContactCell from "./tabs/ContactCell";
-import AssociatedRecruiters from "./tabs/AssociatedRecruiters";
-import PlacementsRecords from "./tabs/PlacementsRecords";
-import CampusToCorporate from "./tabs/CampusToCorporate";
-import CampusPrideProgram from "./tabs/CampusPrideProgram";
-import PlacementsFAQs from "./tabs/PlacementsFAQs";
-import CareerDevelopmentCell from "./tabs/CareerDevelopmentCell";
-import PlacementEvents from "./tabs/PlacementEvents";
+import StatsRecordsGroup from "./tabs/StatsRecordsGroup";
+import TrainingEmployabilityGroup from "./tabs/TrainingEmployabilityGroup";
+import CareerDevCellTab from "./tabs/CareerDevCellTab";
+import CampusPrideTab from "./tabs/CampusPrideTab";
+import ProcessGuidelinesGroup from "./tabs/ProcessGuidelinesGroup";
+import SuccessStoriesGroup from "./tabs/SuccessStoriesGroup";
+import PlacementCellGroup from "./tabs/PlacementCellGroup";
 
 export default function PlacementContentArea({ activeTab }) {
   return (
@@ -35,33 +28,19 @@ export default function PlacementContentArea({ activeTab }) {
 
       {activeTab === "overview" && <PlacementOverview />}
 
-      {activeTab === "student-placement" && <StudentPlacement />}
+      {activeTab === "stats-records" && <StatsRecordsGroup />}
 
-      {activeTab === "testimonials" && <StudentsTestimonials />}
+      {activeTab === "training-employability" && <TrainingEmployabilityGroup />}
 
-      {activeTab === "gallery" && <PlacementGalleryTab />}
+      {activeTab === "career-dev-cell" && <CareerDevCellTab />}
 
-      {activeTab === "policy" && <PlacementPolicy />}
+      {activeTab === "campus-pride" && <CampusPrideTab />}
 
-      {activeTab === "eep" && <EmployabilityEnhancementProgram />}
+      {activeTab === "process-guidelines" && <ProcessGuidelinesGroup />}
 
-      {activeTab === "corporate-tieups" && <CorporateTieups />}
+      {activeTab === "success-stories" && <SuccessStoriesGroup />}
 
-      {activeTab === "contact-cell" && <ContactCell />}
-
-      {activeTab === "recruiters" && <AssociatedRecruiters />}
-
-      {activeTab === "records" && <PlacementsRecords />}
-
-      {activeTab === "campus-to-corporate" && <CampusToCorporate />}
-
-      {activeTab === "campus-pride" && <CampusPrideProgram />}
-
-      {activeTab === "faqs" && <PlacementsFAQs />}
-
-      {activeTab === "career-dev" && <CareerDevelopmentCell />}
-
-      {activeTab === "events" && <PlacementEvents />}
+      {activeTab === "placement-cell" && <PlacementCellGroup />}
 
     </div>
   );

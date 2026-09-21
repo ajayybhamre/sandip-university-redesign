@@ -65,6 +65,7 @@ const HighlightsBanner = () => {
           leading-6
           text-sm
           flex-1
+          text-justify
         ">
           Over <span className="text-white font-semibold">200+ companies</span> like
           KPIT, LTI, Atos Syntel, Mphasis, Jaro, HFFC, IndiaMART, Amazon, Flipkart,
@@ -109,6 +110,7 @@ const HighlightsBanner = () => {
             italic
             leading-5
             max-w-[220px]
+            text-justify
           ">
             "Extremely proud of our students"
             <span className="block not-italic text-red-400 font-semibold mt-0.5">

@@ -33,6 +33,57 @@ const seoData = {
       "https://yourdomain.com/about",
   },
 
+  campusLife: {
+    title:
+      "Campus Life | Sandip University",
+
+    description:
+      "Discover life at Sandip University — SUN Clubs, professional bodies, student welfare, achievements, sports and campus gallery.",
+
+    keywords:
+      "Sandip University Campus Life, SUN Clubs, Student Welfare, Sports, Achievements, Gallery",
+
+    image:
+      "https://yourdomain.com/campus-life.jpg",
+
+    url:
+      "https://yourdomain.com/campus-life",
+  },
+
+  committees: {
+    title:
+      "Committees | Sandip University",
+
+    description:
+      "Statutory committees and cells at Sandip University — SC/ST Committee, Minority Cell, Student Grievance Redressal Committee, ICC, OBC Cell, Staff Grievance, Women's Grievance Redressal, Anti-Ragging Committee and Squad, and the Socio-Economically Disadvantaged Groups Cell.",
+
+    keywords:
+      "Sandip University Committees, SC ST Committee, ICC, Anti Ragging, Women Grievance, OBC Cell",
+
+    image:
+      "https://yourdomain.com/committees.jpg",
+
+    url:
+      "https://yourdomain.com/committees",
+  },
+
+  grievanceRedressal: {
+    title:
+      "Grievances Redressal Mechanism | Sandip University",
+
+    description:
+      "How Sandip University addresses general grievances, ragging issues, women's issues, and SC/ST issues on campus, per UGC guidelines.",
+
+    keywords:
+      "Sandip University Grievance Redressal, GRM, Anti Ragging, Women Complaints, SC ST Complaints",
+
+    image:
+      "https://yourdomain.com/grievance-redressal.jpg",
+
+    url:
+      "https://yourdomain.com/grievance-redressal-mechanism",
+  },
+
   contact: {
     title:
       "Contact Us | Sandip University",

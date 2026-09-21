@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
-import aboutBanner from "../../assets/images/slider2.webp";
+import placementBanner from "../../assets/images/placement-gallery/pg1.jpg";
 
 import PlacementTabs from "./PlacementTabs";
 import PlacementContentArea from "./PlacementContentArea";
@@ -19,11 +19,11 @@ export default function Placement() {
       <Header />
 
       <Breadcrumb
-        badge="Placement University"
-        title="Placement Sandip University"
-        description="Discover our journey, vision, mission, leadership, innovation and commitment to academic excellence."
-        currentPage="Academic"
-        image={aboutBanner}
+        badge="Careers & Placements"
+        title="Placements at Sandip University"
+        description="From industry-ready training and 200+ recruiting partners to real student success stories — explore everything that powers our placement record."
+        currentPage="Placements"
+        image={placementBanner}
       />
 
       <section className="
