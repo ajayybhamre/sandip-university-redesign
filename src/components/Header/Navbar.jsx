@@ -12,13 +12,27 @@ import { GraduationCap, Sparkles } from "lucide-react";
 
 import menuData from "./menuData";
 import MegaMenu from "./MegaMenu";
+<<<<<<< HEAD
 import logo from "../../assets/images/logo-dark.webp";
 import { useTheme } from "../../context/ThemeContext";
+=======
+import logo from "../../assets/images/logo-dark.png";
+import whiteLogo from "../../assets/images/SU-NAAC-white.png";
+>>>>>>> origin/sai
 
-function Navbar() {
+function Navbar({ overlay = false, scrolled = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+<<<<<<< HEAD
   const { isDark, toggleTheme } = useTheme();
+=======
+  const [darkMode, setDarkMode] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    return storedTheme === "dark" || (!storedTheme && prefersDark);
+  });
+>>>>>>> origin/sai
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -32,6 +46,7 @@ function Navbar() {
     }
   };
 
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -44,12 +59,36 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleTheme = () => {
+    setDarkMode((prevDarkMode) => {
+      const nextDarkMode = !prevDarkMode;
+      document.documentElement.classList.toggle("dark", nextDarkMode);
+      localStorage.theme = nextDarkMode ? "dark" : "light";
+      return nextDarkMode;
+    });
+  };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+
+    if (darkMode) {
+      localStorage.theme = "dark";
+    } else {
+      localStorage.theme = "light";
+    }
+  }, [darkMode]);
+
+  // Only goes transparent when explicitly opted in via `overlay`, and only
+  // before the user scrolls. Every existing usage (`<Navbar />`) is unaffected.
+  const isTransparent = overlay && !scrolled;
+
+
   return (
     <header
       className={`
      max-w-[1500px]
         mx-auto
-    sticky top-0 z-50
+    z-50
     transition-all duration-500
     ${scrolled ? "pt-3" : ""}
   `}
@@ -72,7 +111,18 @@ function Navbar() {
         shadow-2xl
         
       `
+
             : `
+
+        : isTransparent
+        ? `
+        max-w-[1600px]
+        h-20
+        px-6
+        bg-transparent
+        `
+        : `
+
         max-w-[1600px]
         h-20
         px-6
@@ -84,6 +134,7 @@ function Navbar() {
       >
 
         {/* Logo */}
+
         <div className="flex-shrink-0">
           <Link to="/" aria-label="Go to Home">
             <img
@@ -96,6 +147,36 @@ function Navbar() {
             />
           </Link>
         </div>
+
+        <div className="relative flex-shrink-0">
+            <Link to="/" aria-label="Go to Home">
+  <img
+   src={logo}
+   alt={!isTransparent ? "Sandip University" : ""}
+   aria-hidden={isTransparent}
+   className={`w-auto transition-opacity duration-500 ease-in-out ${
+     isTransparent ? "opacity-0" : "opacity-100"
+   } ${
+     scrolled
+       ? "h-8 sm:h-9 md:h-10"
+       : "h-10 sm:h-12 md:h-14"
+   }`}
+ />
+  <img
+   src={whiteLogo}
+   alt={isTransparent ? "Sandip University" : ""}
+   aria-hidden={!isTransparent}
+   className={`absolute inset-0 w-auto transition-opacity duration-500 ease-in-out ${
+     isTransparent ? "opacity-100" : "opacity-0"
+   } ${
+     scrolled
+       ? "h-8 sm:h-9 md:h-10"
+       : "h-10 sm:h-12 md:h-14"
+   }`}
+ />
+  </Link>
+</div>
+
 
         {/* Desktop Menu */}
         <nav className="hidden min-[1320px]:block">
@@ -112,6 +193,7 @@ ${scrolled ? "gap-6" : "gap-6"}
                 key={index}
                 className="relative group cursor-pointer"
               >
+
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
@@ -129,6 +211,44 @@ ${scrolled ? "gap-6" : "gap-6"}
                     />
                   )}
                 </NavLink>
+
+                {item.path ? (
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `flex items-center gap-1 font-medium transition ${
+                        isActive
+                          ? isTransparent
+                            ? "text-white"
+                            : "text-red-600 dark:text-red-400"
+                          : isTransparent
+                          ? "text-white hover:text-red-300"
+                          : "text-gray-800 dark:text-white hover:text-red-600"
+                      }`
+                    }
+                  >
+                    {item.title}
+
+                    {item.mega && (
+                      <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />
+                    )}
+                  </NavLink>
+                ) : (
+                  <div
+                    className={`flex items-center gap-1 font-medium transition ${
+                      isTransparent
+                        ? "text-white hover:text-red-300"
+                        : "text-gray-800 dark:text-white hover:text-red-600"
+                    }`}
+                  >
+                    {item.title}
+
+                    {item.mega && (
+                      <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />
+                    )}
+                  </div>
+                )}
+
                 {item.mega && (
                   <MegaMenu item={item} sections={item.sections} />
                 )}
@@ -141,7 +261,17 @@ ${scrolled ? "gap-6" : "gap-6"}
         {/* Desktop Right */}
         <div className="hidden min-[1320px]:flex items-center gap-5">
 
+
           <button className="text-gray-700 dark:text-white hover:text-red-600 transition">
+=======
+         <button
+  className={`transition ${
+    isTransparent
+      ? "text-white hover:text-red-300"
+      : "text-gray-700 dark:text-white hover:text-red-600"
+  }`}
+>
+
             <FaSearch size={18} />
           </button>
 
@@ -159,6 +289,7 @@ ${scrolled
                 : "px-6 py-3"
               }
 `}
+
           >
             Apply Now
           </button>
@@ -171,14 +302,38 @@ ${scrolled
             {isDark ? <FaSun size={18} className="text-yellow-400" /> : <FaMoon size={18} className="text-gray-700" />}
           </button>
 
+>
+Apply Now
+</button>
+         <button
+  onClick={toggleTheme}
+  className={`w-10 h-10 rounded-full flex items-center justify-center transition ${
+    isTransparent
+      ? "bg-white/15 backdrop-blur-sm text-white"
+      : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-yellow-300"
+  }`}
+>
+  {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+</button>
+
+
         </div>
 
         {/* Mobile Toggle */}
+
         <button
           onClick={toggleMenu}
           aria-label="Toggle Navigation Menu"
           className="min-[1320px]:hidden text-2xl text-gray-800 dark:text-white"
         >
+
+       <button
+  onClick={toggleMenu}
+  className={`min-[1320px]:hidden text-2xl ${
+    isTransparent ? "text-white" : "text-gray-800 dark:text-white"
+  }`}
+>
+
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
@@ -199,6 +354,7 @@ ${scrolled
             >
               <div className="flex items-center justify-between px-6 py-4">
 
+
                 <NavLink
                   to={item.path}
                   className="font-medium text-gray-800 dark:text-white hover:text-red-600"
@@ -206,6 +362,21 @@ ${scrolled
                 >
                   {item.title}
                 </NavLink>
+
+  {item.path ? (
+    <NavLink
+      to={item.path}
+      className="font-medium text-gray-800 dark:text-white hover:text-red-600"
+      onClick={() => setIsOpen(false)}
+    >
+      {item.title}
+    </NavLink>
+  ) : (
+    <span className="font-medium text-gray-800 dark:text-white">
+      {item.title}
+    </span>
+  )}
+
 
                 {item.mega && (
                   <button onClick={() => toggleDropdown(index)}>
@@ -263,7 +434,45 @@ ${scrolled
                         </div>
                       )}
 
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+      {item.sections.map((section, i) => (
+        <div
+          key={i}
+          className="bg-white dark:bg-black rounded-lg border border-gray-200 dark:border-gray-700 p-4 shadow-sm"
+        >
+          <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
+            {section.heading === "Schools" ? (
+              <Link to="/schools" className="text-gray-900 dark:text-white hover:text-red-600 transition-colors">
+                {section.heading}
+              </Link>
+            ) : (
+              section.heading
+            )}
+          </h4>
+<ul className="space-y-2">
+  {section.links.map((link, j) => (
+    <li key={j}>
+      {typeof link === "string" ? (
+        <span className="text-gray-600 dark:text-gray-300 hover:text-red-600 cursor-pointer">
+          {link}
+        </span>
+      ) : (
+        <NavLink
+          to={link.path}
+          onClick={() => setIsOpen(false)}
+          className="text-gray-600 dark:text-gray-300 hover:text-red-600 transition-colors"
+        >
+          {link.title}
+        </NavLink>
+      )}
+    </li>
+  ))}
+</ul>
+        </div>
+      ))}
+
 
                         {item.sections.map((section, i) => (
                           <div

@@ -17,6 +17,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+
 /* ==================================================
    CENTRALIZED THEME DESIGN TOKENS
    Official Sandip University Visual Identity
@@ -199,6 +200,42 @@ html.dark body {
 ::before,
 ::after {
   font-family: 'Poppins', sans-serif !important;
+
+/* Schools design tokens
+ * Accent: red-50 #fff5f4, red-100 #ffe3e1, red-600 #c9232b,
+ *         red-700 #a91d25, red-900 #73161c
+ * Navy: #081b3a is the contrast surface used for signature sections.
+ * Light/dark surfaces, ink and borders swap together so components never
+ * rely on a light-only color decision.
+ * Type: display 4.5rem-7rem / 0.98 line-height; body 1rem / 1.75;
+ * labels .7rem / .16em tracking. Spacing follows 4px increments.
+ * Radius: rounded-2xl for cards and controls; no decorative mixed radii.
+ */
+}
+:root {
+  --brand-red-50: #fff5f4;
+  --brand-red-100: #ffe3e1;
+  --brand-red-600: #c9232b;
+  --brand-red-700: #a91d25;
+  --brand-red-900: #73161c;
+  --brand-navy: #081b3a;
+  --surface: #fbfaf8;
+  --surface-raised: #ffffff;
+  --surface-muted: #f1efec;
+  --ink: #15191e;
+  --ink-muted: #58606b;
+  --line: #e4e5e7;
+  --font-display: "Roboto Slab", Georgia, serif;
+}
+
+.dark {
+  --surface: #0b1017;
+  --surface-raised: #111820;
+  --surface-muted: #17202b;
+  --ink: #f5f3ee;
+  --ink-muted: #b2bbc6;
+  --line: #29333f;
+
 }
 
 body,
@@ -210,29 +247,43 @@ select {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
 }
 
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+body{
+  font-family: "Roboto Slab", serif;
+  background: var(--surface);
+  color: var(--ink);
+  transition: background-color 0.3s, color 0.3s;
+
   font-size: 15px;
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
   overflow-x: hidden;
 }
 
+
 /* Custom Selection */
 ::selection {
-<<<<<<< HEAD
+
     background-color: #bd1e2d;
     color: #ffffff;
-=======
+
   background-color: #C8102E !important;
   color: #FFFFFF !important;
+
+.dark body{
+  background: var(--surface);
+  color: var(--ink);
+
 }
 
 ::-moz-selection {
   background-color: #C8102E !important;
   color: #FFFFFF !important;
->>>>>>> origin/utkarsha
+
 }
 
 html.dark ::selection {
@@ -281,9 +332,11 @@ html.dark ::selection {
   animation-play-state: paused;
 }
 
+
 /* Clean Paragraph Text Alignment for Long Editorial Content */
 article p,
 .prose p {
   text-align: justify;
   text-justify: inter-word;
+}
 }

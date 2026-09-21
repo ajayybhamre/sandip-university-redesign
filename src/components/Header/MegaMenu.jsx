@@ -7,7 +7,7 @@ function MegaMenu({ item, sections }) {
   const isIQAC = item?.customType === "iqac";
 
   return (
-    <div
+   <> <div
       className="
         absolute 
         left-1/2 
@@ -60,12 +60,144 @@ function MegaMenu({ item, sections }) {
               </div>
             </div>
 
+
             {item.header.badgeText && (
               <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#fff1f2] dark:bg-red-950/50 text-[#C8102E] dark:text-red-400 border border-red-200/80 dark:border-red-900/50 text-xs font-extrabold whitespace-nowrap shadow-2xs">
                 <Sparkles size={13} className="text-[#C8102E] dark:text-red-400 animate-pulse" />
                 <span>{item.header.badgeText}</span>
               </div>
             )}
+
+        {sections.map((section, index) => (
+
+          <div key={index}>
+
+            {/* Heading */}
+
+            <h3
+              className="
+                font-bold
+                uppercase
+                text-sm
+                tracking-wide
+                pb-3
+                mb-3
+                border-b
+                border-red-200
+                dark:border-red-900
+              "
+            >
+              {section.heading === "Schools" ? (
+                <Link to="/schools" className="text-gray-900 dark:text-white hover:text-red-600 transition-colors">
+                  {section.heading}
+                </Link>
+              ) : (
+                <span className="text-red-700 dark:text-red-400">{section.heading}</span>
+              )}
+            </h3>
+
+
+            {/* Links */}
+
+            <ul className="space-y-1">
+
+              {section.links.map((link, i) => (
+
+                <li key={i}>
+
+                  {
+                    typeof link === "string" ? (
+
+                      <span
+                        className="
+                          flex
+                          items-center
+                          gap-3
+                          py-3
+                          px-3
+                          text-gray-600
+                          dark:text-gray-300
+                          border-b
+                          border-gray-100
+                          dark:border-gray-800
+                          hover:text-red-600
+                          hover:bg-red-50
+                          dark:hover:bg-red-900/20
+                          rounded-lg
+                          cursor-pointer
+                          transition-all
+                        "
+                      >
+
+                        <span
+                          className="
+                            w-2
+                            h-2
+                            rounded-full
+                            bg-red-600
+                          "
+                        ></span>
+
+                        {link}
+
+                      </span>
+
+
+                    ) : (
+
+
+                      <Link
+                        to={link.path}
+                        className="
+                          flex
+                          items-center
+                          gap-3
+                          py-3
+                          px-3
+                          text-gray-600
+                          dark:text-gray-300
+                          border-b
+                          border-gray-100
+                          dark:border-gray-800
+                          hover:text-red-600
+                          hover:bg-red-50
+                          dark:hover:bg-red-900/20
+                          rounded-lg
+                          transition-all
+                        "
+                      >
+
+                        {
+                          link.icon && (
+                            <link.icon
+                              size={18}
+                              className="
+                                text-red-600
+                              "
+                            />
+                          )
+                        }
+
+
+                        <span>
+                          {link.title}
+                        </span>
+
+
+                      </Link>
+
+
+                    )
+                  }
+
+                </li>
+
+              ))}
+
+            </ul>
+
+
+
           </div>
         )}
 
@@ -301,7 +433,11 @@ function MegaMenu({ item, sections }) {
           </div>
         )}
       </div>
-    </div>
+      </div>
+      </div>
+      
+</>
+  
   );
 }
 

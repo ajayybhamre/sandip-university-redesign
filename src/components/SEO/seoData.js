@@ -179,6 +179,25 @@ const seoData = {
     keywords: "Central Library Sandip University, E-Journals, DELNET, IEEE Xplore, OPAC Catalogue",
     url: "https://yourdomain.com/central-library",
   },
+
+  schools: {
+    title:
+      "Schools | Sandip University",
+
+    description:
+      "Explore Sandip University's seven schools and discover undergraduate and postgraduate programs for your future.",
+
+    keywords:
+      "Sandip University schools, Engineering, Computer Science, Management, Science, Pharmacy, Law, Design",
+
+    image:
+      "https://yourdomain.com/schools.jpg",
+
+    url:
+      "https://yourdomain.com/schools",
+  },
+  // components/SEO/seoData.js — add alongside home/about/schools
+coe: { title: "...", description: "...", keywords: "...", image: "...", url: "/coe" },
 };
 
 export default seoData;
