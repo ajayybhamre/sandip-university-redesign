@@ -32,12 +32,12 @@ export default function Home() {
         <AboutSandipUniversity />
         <WhySandipAndLegacy />
         <StudentStories />
+        <SocialMedia />
         <StudentAchievements />
         <CampusTour />
         <ConnectCampus />
         <Recruiters />
         <TestimonialsFAQ />
-        <SocialMedia />
       </main>
       <Footer />
       <FloatingAction />
