@@ -14,7 +14,6 @@ import {
   Briefcase,
   Scale,
   Pill,
-  Leaf,
   FlaskConical,
   Microscope,
   
@@ -36,11 +35,6 @@ const menuData = [
       {
         heading: "Admissions",
         links: [
-          {
-            title: "School of Engineering",
-            path: "/schools/engineering",
-            icon: GraduationCap,
-          },
           {
             title: "Postgraduate",
             path: "/postgraduate",
@@ -111,48 +105,66 @@ const menuData = [
     ],
   },
 
+{
+    title: "Academics",
+    path: "/academics",
+    mega: false,
+  },
+
   {
-    title: "Programs",
+    title: "Schools",
     mega: true,
     sections: [
       {
         heading: "Schools",
         links: [
+          
           {
-            title: "Engineering",
-            path: "/schools/engineering",
+            title: "School Of Engineering & Technology",
+            path: "/schools/engineering-technology",
             icon: GraduationCap,
           },
           {
-            title: "Management",
+            title: "School Of Computer Science & Engineering",
+            path: "/schools/computer-science",
+            icon: BookOpen,
+          },
+          {
+            title: "School Of Commerce & Managment Studies",
             path: "/schools/management",
             icon: Briefcase,
           },
           {
-            title: "Law",
+            title: "School Of Science",
+            path: "/schools/science",
+            icon: FlaskConical,
+          },
+          {
+            title: "School of Pharmaceutical Sciences ",
+            path: "/schools/pharma",
+            icon: Pill,
+          },
+          {
+            title: "School Of Law",
             path: "/schools/law",
             icon: Scale,
           },
           {
-            title: "Pharmacy",
-            path: "/schools/pharmacy",
-            icon: Pill,
-          },
-          {
-            title: "Agriculture",
-            path: "/schools/agriculture",
-            icon: Leaf,
-          },
-          {
-            title: "Science",
-            path: "/schools/science",
-            icon: FlaskConical,
+            title: "School Of Design",
+            path: "/schools/fashion-beauty",
+            icon: Award,
           },
         ],
       },
     ],
   },
 
+
+  {
+    title: "Examinations",
+    path: "/coe",
+    mega: false,
+  },
   {
     title: "Research",
     mega: true,
@@ -202,6 +214,7 @@ const menuData = [
     mega: false,
   },
 
+<<<<<<< HEAD
   {
     title: "Campus Life",
     mega: true,
@@ -244,6 +257,9 @@ const menuData = [
     path: "/academic",
     mega: false,
   },
+=======
+  
+>>>>>>> origin/sai
 
   {
     title: "Contact",
