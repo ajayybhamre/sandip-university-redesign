@@ -12,6 +12,10 @@ const FloatingAction = () => {
     <div className="bg-[#ea1f28] border border-gray-400 rounded-l-xl shadow-xl overflow-hidden">
         <a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.reload();
+          }}
           className="flex flex-col items-center justify-center w-20 py-4 border-b border-red-800 text-white hover:bg-red-700 transition"
         >
           <FaEdit className="text-xl mb-2" />
@@ -34,6 +38,10 @@ const FloatingAction = () => {
 
         <a
           href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.reload();
+          }}
           className="flex flex-col items-center justify-center w-20 py-4 border-b border-red-800 text-white hover:bg-red-700 transition"
         >
           <FaEnvelopeOpenText className="text-xl mb-2" />
@@ -43,7 +51,7 @@ const FloatingAction = () => {
         </a>
 
         <a
-          href="tel:18002122714"
+          href="#"
           className="flex flex-col items-center justify-center w-20 py-4 text-white hover:bg-red-700 transition"
         >
           <FaPhoneAlt className="text-xl mb-2" />

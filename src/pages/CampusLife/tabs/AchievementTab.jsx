@@ -135,13 +135,22 @@ const AchievementTab = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {
                 rankingImages.map((img, index) => (
-                  <img
+                  <div
                     key={index}
-                    src={img}
-                    alt="Sandip University ranking award"
-                    loading="lazy"
-                    className="w-full h-32 sm:h-40 object-cover rounded-2xl border border-gray-200 dark:border-slate-700"
-                  />
+                    className="
+                      w-full h-48 sm:h-56
+                      bg-white dark:bg-slate-950
+                      flex items-center justify-center p-2
+                      rounded-2xl border border-gray-200 dark:border-slate-700
+                    "
+                  >
+                    <img
+                      src={img}
+                      alt="Sandip University ranking award"
+                      loading="lazy"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
                 ))
               }
             </div>

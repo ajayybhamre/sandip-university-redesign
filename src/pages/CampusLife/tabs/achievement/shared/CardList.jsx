@@ -19,7 +19,7 @@ const CardList = ({ items }) => (
 
           {
             item.image && (
-              <div className="w-full h-40 bg-white dark:bg-slate-950 flex items-center justify-center p-3">
+              <div className="w-full h-64 bg-white dark:bg-slate-950 flex items-center justify-center p-2">
                 <img
                   src={item.image}
                   alt={item.title}
