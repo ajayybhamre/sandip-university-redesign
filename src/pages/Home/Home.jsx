@@ -1,17 +1,15 @@
-
 import Hero from "./Hero/Hero";
 import FloatingAction from "../../components/FloatingAction";
 import QuickLinks from "./QuickLink/QuickLinks";
 
 import Footer from "../../components/Footer";
-import About from "./About";
+import AboutSandipUniversity from "./AboutSandipUniversity";
 import StudentStories from "./StudentStories/StudentStories";
-import FindProgram from "./FindProgram";
+import StudentAchievements from "./StudentAchievements/StudentAchievements";
 
-import Programs from "./Programs/Programs";
-import StickySection from "./StickySection";
-import CounterSection from "./CounterSection";
+import WhySandipAndLegacy from "./WhySandipAndLegacy";
 import CampusTour from "./CampusView/CampusTour";
+import ConnectCampus from "./ConnectCampus";
 
 import Recruiters from "./Recruiters/Recruiters";
 import TestimonialsFAQ from "./TestimonialsFAQ/TestimonialsFAQ";
@@ -21,34 +19,28 @@ import seoData from "../../components/SEO/seoData";
 import Popup from "../../components/Popup";
 import Header from "../../components/Header/Header";
 
-
 export default function Home() {
   return (
-    <>
-     <Popup />
-     <SEO {...seoData.home} />
-          
- 
-    <Header/>
-      <Hero />
-     
-<QuickLinks/>
-     
+    <div className="homepage-wrapper font-sans antialiased text-[#2A080C] dark:text-white bg-[#FAF6EE] dark:bg-[#0B0B0D] selection:bg-[#C8102E] selection:text-white transition-colors">
+      <Popup />
+      <SEO {...seoData.home} />
 
-    <About />
-    
-<StudentStories/>
-<FindProgram/>
-<Programs/>
-<StickySection/>
-<CounterSection/>
-<CampusTour/>
-<Recruiters/>
-<TestimonialsFAQ/>
-<SocialMedia/>
-
+      <Header />
+      <main>
+        <Hero />
+        <QuickLinks />
+        <AboutSandipUniversity />
+        <WhySandipAndLegacy />
+        <StudentStories />
+        <SocialMedia />
+        <StudentAchievements />
+        <CampusTour />
+        <ConnectCampus />
+        <Recruiters />
+        <TestimonialsFAQ />
+      </main>
       <Footer />
       <FloatingAction />
-    </>
+    </div>
   );
 }

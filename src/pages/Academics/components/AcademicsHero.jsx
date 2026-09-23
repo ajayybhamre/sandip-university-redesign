@@ -35,7 +35,7 @@ export default function AcademicsHero() {
         </p>
       </div>
 
-      <div className="relative px-5 pb-12 sm:px-8 sm:pb-16 lg:pb-20">
+      {/* <div className="relative px-5 pb-12 sm:px-8 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-[900px]">
           <dl className="grid grid-cols-2 gap-y-6 sm:grid-cols-4 sm:gap-x-4">
             {facts.map(({ icon: Icon, value, label }) => (
@@ -48,7 +48,7 @@ export default function AcademicsHero() {
             ))}
           </dl>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -43,7 +43,7 @@ export default function ProgramsDepartments() {
             Programmes & Departments
           </span>
           <h2 className="mt-4 font-[var(--font-display)] text-4xl font-bold leading-tight text-[var(--ink)] md:text-6xl">
-            Pick your programme.
+            Pick your programme
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-[var(--ink-muted)]">
             Explore industry-oriented undergraduate and postgraduate programmes designed to prepare students for successful careers.
@@ -83,7 +83,7 @@ export default function ProgramsDepartments() {
                   <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
-                    style={{ backgroundImage: `url(${bgImage})` }}
+                  
                   />
                 )}
 

@@ -7,8 +7,8 @@ const ContactItem = ({ icon: Icon, label, value, href, external }) => {
   const content = (
     <div className="rounded-2xl bg-red-600 p-6 h-full">
       <Icon size={18} className="text-white/90" />
-      <p className="mt-3 text-xs uppercase tracking-wide text-white/70">{label}</p>
-      <p className="mt-1 text-sm font-medium">{value}</p>
+      <p className="mt-3 font-medium uppercase tracking-wide text-white/70">{label}</p>
+      <p className="mt-1 font-medium font-medium">{value}</p>
     </div>
   );
 
@@ -30,7 +30,7 @@ const COEContact = () => {
   return (
     <section className="py-16 bg-[#081b3a] text-white">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-white/60">
+        <span className="font-medium font-semibold uppercase tracking-wider text-white/60">
           Get in Touch
         </span>
         <h2 className="mt-2 mb-8 text-2xl md:text-3xl font-bold">

@@ -8,7 +8,7 @@ const COEQuickLinks = () => {
   return (
     <section id="coe-links" className="py-16 bg-gray-50 dark:bg-slate-950">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+        <span className="font-medium font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
           Explore
         </span>
         <h2 className="mt-2 mb-8 text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
@@ -26,14 +26,14 @@ const COEQuickLinks = () => {
                 <Icon size={18} />
               </span>
 
-              <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+              <h3 className="mt-4 font-medium font-semibold text-gray-900 dark:text-white">
                 {title}
               </h3>
-              <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+              <p className="mt-1.5 font-medium text-gray-500 dark:text-gray-400 leading-relaxed">
                 {description}
               </p>
 
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+              <span className="mt-4 inline-flex items-center gap-1 font-medium font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                 View
                 <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
               </span>

@@ -1,4 +1,5 @@
 import bgImage from "../../assets/images/slider1.jpg";
+import { HiArrowRight } from "react-icons/hi2";
 
 export default function WhyChooseUs() {
   const features = [
@@ -29,145 +30,66 @@ export default function WhyChooseUs() {
   ];
 
   return (
-<section
-  className="relative overflow-hidden rounded-b-[80px] bg-fixed bg-center bg-cover"
-  style={{
-    backgroundImage: `url(${bgImage})`,
-  }}
->
+    <section
+      className="relative overflow-hidden rounded-[36px] lg:rounded-[56px] bg-fixed bg-center bg-cover my-12 py-24 lg:py-32 shadow-2xl"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+      }}
+    >
       {/* Dark Overlay */}
-     <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-900/95 to-slate-950"></div>
 
       {/* Content */}
-      <div className="relative z-10 py-28">
-        <div className="max-w-7xl mx-auto px-6">
-
-          {/* Heading */}
-
-          <div className="text-center text-white mb-20">
-
-            <p className="uppercase tracking-[6px] text-white-400">
-              WHY CHOOSE US
-            </p>
-
-            <h2 className="text-5xl font-bold mt-5">
-              Shape Your Future With Us
-            </h2>
-
-            <p className="mt-6 max-w-3xl mx-auto text-gray-200">
-              Discover an inspiring learning environment that empowers students
-              through innovation, research, industry exposure, and global
-              opportunities.
-            </p>
-
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center text-white mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold text-red-400 uppercase tracking-[4px] mb-4">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            <span>WHY CHOOSE US</span>
           </div>
 
-          {/* Cards */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+            Shape Your Future With Us
+          </h2>
 
-        {/* Cards */}
+          <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg text-slate-300 font-medium leading-relaxed">
+            Discover an inspiring learning environment that empowers students
+            through innovation, research, industry exposure, and global
+            opportunities.
+          </p>
+        </div>
 
-<div className="
-  grid 
-  grid-cols-1 
-  sm:grid-cols-2 
-  lg:grid-cols-4 
-  gap-5 
-  md:gap-8
-">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {features.map((item) => (
+            <div
+              key={item.number}
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-6 sm:p-8 hover:bg-white/10 hover:border-[#C8102E]/60 transition-all duration-500 flex flex-col justify-between group h-full hover:-translate-y-2 shadow-xl"
+            >
+              {/* Number */}
+              <div>
+                <span className="text-4xl lg:text-5xl font-black text-red-500/90 group-hover:text-red-500 group-hover:scale-110 transition-all duration-300 block mb-4">
+                  {item.number}
+                </span>
 
-  {features.map((item) => (
+                {/* Title */}
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors">
+                  {item.title}
+                </h3>
 
-    <div
-      key={item.number}
-      className="
-        bg-white/10 
-        backdrop-blur-lg 
-        border 
-        border-white/20 
-        rounded-2xl 
-        p-5 
-        sm:p-6 
-        lg:p-8
-        hover:bg-white/20 
-        transition-all 
-        duration-500
-        flex
-        flex-col
-        h-full
-      "
-    >
+                {/* Description */}
+                <p className="text-sm text-slate-300 font-medium leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
 
-      {/* Number */}
-      <span 
-        className="
-          text-5xl 
-          sm:text-6xl 
-          font-bold 
-          text-white
-          opacity-90
-        "
-      >
-        {item.number}
-      </span>
-
-
-      {/* Title */}
-      <h3 
-        className="
-          text-xl 
-          sm:text-2xl 
-          font-bold 
-          text-white 
-          mt-3
-        "
-      >
-        {item.title}
-      </h3>
-
-
-      {/* Description */}
-      <p 
-        className="
-          text-sm 
-          sm:text-base 
-          text-gray-200 
-          mt-4 
-          leading-6 
-          sm:leading-7
-          flex-grow
-        "
-      >
-        {item.description}
-      </p>
-
-
-      {/* Button */}
-      <button 
-        className="
-          mt-6
-          w-full
-          sm:w-fit
-          px-5 
-          py-2.5
-          rounded-full 
-          bg-red-600 
-          text-white
-          font-semibold 
-          text-sm
-          sm:text-base
-          hover:bg-white 
-          transition
-        "
-      >
-        Learn More
-      </button>
-
-    </div>
-
-  ))}
-
-</div>
-
+              {/* Button */}
+              <button className="mt-8 w-full py-3 rounded-full bg-[#C8102E] hover:bg-red-700 text-white text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+                <span>Learn More</span>
+                <HiArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </section>

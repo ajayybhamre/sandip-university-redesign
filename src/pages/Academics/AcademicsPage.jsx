@@ -49,7 +49,7 @@ export default function AcademicsPage() {
           <div className="mx-auto max-w-[1400px]">
             <div>
               <h2 className="text-2xl font-bold sm:text-3xl">A connected academic framework</h2>
-              <p className="mt-4 max-w-4xl text-base leading-7 text-gray-600 dark:text-gray-400">
+              <p className="mt-4 max-w text-base leading-7 text-gray-600 dark:text-gray-400">
                 Sandip University runs outcome-based education under a Choice
                 Based Credit System across its seven schools. Since aligning
                 with NEP 2020, that framework has grown to include

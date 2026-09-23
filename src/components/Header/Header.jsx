@@ -19,7 +19,7 @@ function Header({ overlay = false }) {
         className={`${
           overlay ? "fixed" : "sticky"
         } top-0 left-0 w-full z-50 ${
-          overlay ? "" : "min-h-20 xl:min-h-[128.8px]"
+          overlay ? "" : "min-h-20"
         }`}
       >
         {!scrolled && <TopBar overlay={overlay} scrolled={scrolled} />}

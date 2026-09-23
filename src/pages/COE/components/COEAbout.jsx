@@ -10,17 +10,17 @@ const COEAbout = () => {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <span className="font-medium font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
               About the Office
             </span>
             <h2 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
               Controller of Examinations
             </h2>
 
-            <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p className="mt-4 font-medium text-justify leading-relaxed text-gray-600 dark:text-gray-300">
               {coeAbout.intro}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p className="mt-4 font-medium text-justify leading-relaxed text-gray-600 dark:text-gray-300">
               {coeAbout.verification}
             </p>
           </div>
@@ -36,7 +36,7 @@ const COEAbout = () => {
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#081b3a]/10 text-[#081b3a] dark:bg-[#081b3a]/30 dark:text-white">
                 <ShieldCheck size={18} />
               </span>
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+              <h3 className="font-medium font-semibold text-gray-900 dark:text-white">
                 What the office handles
               </h3>
             </div>
@@ -45,7 +45,7 @@ const COEAbout = () => {
               {coeResponsibilities.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300"
+                  className="flex items-start gap-2 font-medium text-gray-600 dark:text-gray-300"
                 >
                   <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-gray-400 dark:bg-gray-600" />
                   {item}

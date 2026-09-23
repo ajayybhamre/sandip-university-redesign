@@ -1,7 +1,205 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+
+/* ==================================================
+   CENTRALIZED THEME DESIGN TOKENS
+   Official Sandip University Visual Identity
+   ================================================== */
+
+:root,
+[data-theme="light"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAF8F5;
+  --bg-elevated: #F8F8F6;
+  --bg-surface: #FFFFFF;
+  --text-primary: #0B0B0D;
+  --text-secondary: #333339;
+  --text-muted: #6B6B73;
+  --brand-primary: #C8102E;
+  --brand-dark: #9F0D24;
+  --brand-light: #FFF1F3;
+  --border-color: #E7E7E9;
+  --card-bg: #FFFFFF;
+  --card-border: #E7E7E9;
+  --shadow-main: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"],
+html.dark {
+  --bg-primary: #0B0B0D;
+  --bg-secondary: #121216;
+  --bg-elevated: #1D1D22;
+  --bg-surface: #15151A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D1D6;
+  --text-muted: #8E8E93;
+  --brand-primary: #C8102E;
+  --brand-dark: #9F0D24;
+  --brand-light: rgba(200, 16, 46, 0.2);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --card-bg: #15151A;
+  --card-border: rgba(255, 255, 255, 0.12);
+  --shadow-main: 0 10px 35px -10px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="night"] {
+  --bg-primary: #070708;
+  --bg-secondary: #0D0D10;
+  --bg-elevated: #16161C;
+  --bg-surface: #101014;
+  --text-primary: #F2F2F4;
+  --text-secondary: #A0A0A8;
+  --text-muted: #72727A;
+  --brand-primary: #C8102E;
+  --brand-dark: #8F0A20;
+  --brand-light: rgba(200, 16, 46, 0.12);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-bg: #101014;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --shadow-main: 0 8px 24px -10px rgba(0, 0, 0, 0.8);
+}
+
+/* Specific Dark Mode & Night Mode Theme Overrides */
+html.dark body,
+[data-theme="dark"] body,
+[data-theme="night"] body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark .homepage-wrapper,
+html.dark .how-to-apply-page,
+html.dark .intl-overview-page,
+html.dark .intl-programs-page,
+html.dark .intl-partnerships-page,
+html.dark .intl-faq-page,
+html.dark .intl-contact-page {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Hero Section Gradients in Dark Mode */
+html.dark .how-to-apply-hero,
+html.dark .intl-hero-wrapper,
+html.dark .programs-hero,
+html.dark .partnerships-hero,
+html.dark .contact-hero,
+html.dark .faq-hero {
+  background-image: linear-gradient(to bottom, #0B0B0D, #121216, #18181F) !important;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Light Background Surfaces in Dark Mode */
+html.dark .bg-white:not(.bg-white-keep),
+html.dark .bg-\[\#FAF6EE\],
+html.dark .bg-\[\#FAF8F5\],
+html.dark .bg-\[\#FDFBF7\],
+html.dark .bg-\[\#F5F2EC\],
+html.dark .bg-\[\#F5F2EC\]\/70,
+html.dark .bg-\[\#FAF5EF\],
+html.dark .bg-\[\#FAF4EB\],
+html.dark .bg-\[\#FDF8F0\],
+html.dark .bg-slate-50,
+html.dark .bg-gray-50,
+html.dark .bg-zinc-50 {
+  background-color: var(--bg-surface) !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-gray-100,
+html.dark .bg-zinc-100,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80 {
+  background-color: var(--bg-elevated) !important;
+}
+
+/* Text Colors in Dark Mode */
+html.dark .text-slate-900,
+html.dark .text-gray-900,
+html.dark .text-black,
+html.dark .text-\[\#0C0C0D\],
+html.dark .text-\[\#0B0B0D\],
+html.dark .text-\[\#2A080C\],
+html.dark .text-\[\#1E293B\],
+html.dark .text-\[\#0F172A\],
+html.dark .text-\[\#0F1B2B\] {
+  color: var(--text-primary) !important;
+}
+
+html.dark .text-slate-600,
+html.dark .text-slate-700,
+html.dark .text-gray-600,
+html.dark .text-gray-700,
+html.dark .text-\[\#64748B\] {
+  color: var(--text-secondary) !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+/* Border Colors in Dark Mode */
+html.dark .border-slate-200,
+html.dark .border-gray-200,
+html.dark .border-slate-100,
+html.dark .border-gray-100,
+html.dark .border-\[\#E2E8F0\],
+html.dark .border-\[\#E7E7E9\],
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/60 {
+  border-color: var(--border-color) !important;
+}
+
+/* Input & Form Control dark mode overrides */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+html.dark option {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Global Transitions & Typography Setup */
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+html.dark,
+html.dark body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+*,
+::before,
+::after {
+  font-family: 'Poppins', sans-serif !important;
 
 /* Schools design tokens
  * Accent: red-50 #fff5f4, red-100 #ffe3e1, red-600 #c9232b,
@@ -13,6 +211,7 @@
  * labels .7rem / .16em tracking. Spacing follows 4px increments.
  * Radius: rounded-2xl for cards and controls; no decorative mixed radii.
  */
+}
 :root {
   --brand-red-50: #fff5f4;
   --brand-red-100: #ffe3e1;
@@ -36,86 +235,87 @@
   --ink: #f5f3ee;
   --ink-muted: #b2bbc6;
   --line: #29333f;
+
 }
 
 body,
-a,
-button {
-  cursor: none;
-}
-html{
-scroll-behavior:smooth;
+html,
+button,
+input,
+textarea,
+select {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
 }
 
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 body{
   font-family: "Roboto Slab", serif;
   background: var(--surface);
   color: var(--ink);
   transition: background-color 0.3s, color 0.3s;
+
   font-size: 15px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  overflow-x: hidden;
 }
 
-.dark body{
+
+/* Custom Selection */
+::selection {
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
+}
+
+.dark body {
   background: var(--surface);
   color: var(--ink);
 }
-.container-custom{
-max-width:1400px;
-margin:auto;
-padding:0 20px;
+
+::-moz-selection {
+  background-color: #C8102E !important;
+  color: #FFFFFF !important;
+
 }
-.swiper-button-next, .swiper-button-prev {
-    color: black !important;
+
+html.dark ::selection {
+    background-color: #ffffff;
+    color: #000000;
 }
+/* Container Custom */
+.container-custom {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Animations */
 @keyframes floatSlow {
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-18px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
 }
 
-@keyframes floatMedium{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(20px);
-  }
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
 }
 
-@keyframes floatFast{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-28px);
-  }
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-28px); }
 }
 
-.animate-floatSlow{
-  animation:floatSlow 6s ease-in-out infinite;
-}
+.animate-floatSlow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-floatMedium { animation: floatMedium 5s ease-in-out infinite; }
+.animate-floatFast { animation: floatFast 4s ease-in-out infinite; }
 
-.animate-floatMedium{
-  animation:floatMedium 5s ease-in-out infinite;
-}
-
-.animate-floatFast{
-  animation:floatFast 4s ease-in-out infinite;
-}
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-marquee {
@@ -126,4 +326,71 @@ padding:0 20px;
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+
+/* Clean Paragraph Text Alignment for Long Editorial Content */
+article p,
+.prose p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+p{
+  font-size: 16px;
+}
+
+/* ==================================================
+   SUBTLE PREMIUM CRIMSON GLOW HORIZONTAL SCROLLBARS
+   Official Sandip University Visual Identity
+   ================================================== */
+
+/* Webkit Horizontal Scrollbars (Chrome, Safari, Edge) */
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background-color: #FAF6EE;
+  border-radius: 9999px;
+  margin: 0 4px;
+}
+
+html.dark ::-webkit-scrollbar-track:horizontal,
+[data-theme="dark"] ::-webkit-scrollbar-track:horizontal {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: #C8102E;
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(200, 16, 46, 0.45);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background-color: #A00C24;
+  box-shadow: 0 0 14px rgba(200, 16, 46, 0.8);
+}
+
+/* Firefox Horizontal Scrollbars */
+* {
+  scrollbar-color: #C8102E #FAF6EE;
+  scrollbar-width: thin;
+}
+
+html.dark * {
+  scrollbar-color: #C8102E rgba(255, 255, 255, 0.08);
+}
+
+/* Explicit Horizontal Scrollbar Utility Class for Custom Containers */
+.crimson-scroll,
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #C8102E #FAF6EE;
+}
+
+html.dark .crimson-scroll,
+html.dark .overflow-x-auto {
+  scrollbar-color: #C8102E rgba(255, 255, 255, 0.08);
 }
