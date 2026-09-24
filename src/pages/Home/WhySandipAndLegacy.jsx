@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, CheckCircle2, ChevronLeft, ChevronRight, ArrowRight, Pause, Play } from "lucide-react";
-import SandipExperience from "./SandipExperience";
 
 import handsOnImage from "../../assets/images/hands-on-training.jpg";
 import researchImage from "../../assets/images/research-grants.jpg";
@@ -105,15 +104,6 @@ export default function WhySandipAndLegacy() {
   const [direction, setDirection] = useState(1);
   const sliderRef = useRef(null);
 
-  // Auto-slide effect (changes slide every 6.5s unless hovered/paused)
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      handleNextSlide();
-    }, 6500);
-    return () => clearInterval(interval);
-  }, [activeSlide, isPaused]);
-
   const handleNextSlide = () => {
     setDirection(1);
     setActiveSlide((prev) => (prev + 1) % featureSlides.length);
@@ -123,6 +113,15 @@ export default function WhySandipAndLegacy() {
     setDirection(-1);
     setActiveSlide((prev) => (prev === 0 ? featureSlides.length - 1 : prev - 1));
   };
+
+  // Auto-slide effect (changes slide every 6.5s unless hovered/paused)
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      handleNextSlide();
+    }, 6500);
+    return () => clearInterval(interval);
+  }, [activeSlide, isPaused]);
 
   const currentStory = featureSlides[activeSlide];
   const isEvenSlide = activeSlide % 2 === 0;
@@ -170,7 +169,7 @@ export default function WhySandipAndLegacy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-xs font-bold text-[#C8102E] tracking-wider uppercase mb-4"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-[10px] sm:text-[11px] font-bold text-[#C8102E] tracking-wider uppercase mb-3"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#C8102E]" />
                 <span>WHY SANDIP UNIVERSITY?</span>
@@ -181,7 +180,7 @@ export default function WhySandipAndLegacy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight"
+                className="text-2xl sm:text-3xl lg:text-[36px] font-black text-slate-900 dark:text-white tracking-tight leading-tight"
               >
                 Empowering Future Leaders With <span className="text-[#C8102E]">Excellence.</span>
               </motion.h2>
@@ -285,21 +284,21 @@ export default function WhySandipAndLegacy() {
                 <div className={`lg:col-span-6 flex flex-col justify-center ${isEvenSlide ? "lg:order-2" : "lg:order-1"}`}>
                   {/* Badge */}
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-4xl sm:text-5xl font-black text-[#C8102E] tracking-tight">
+                    <span className="text-3xl sm:text-4xl font-black text-[#C8102E] tracking-tight">
                       {currentStory.num}
                     </span>
-                    <span className="px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-[11px] font-extrabold uppercase text-[#C8102E] tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-[10px] sm:text-[11px] font-extrabold uppercase text-[#C8102E] tracking-wider">
                       {currentStory.badge}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-snug mb-4">
+                  <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-slate-900 dark:text-white tracking-tight leading-snug mb-3">
                     {currentStory.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed mb-6">
+                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm lg:text-[15px] font-normal leading-relaxed max-w-[540px] mb-5">
                     {currentStory.desc}
                   </p>
 
@@ -314,33 +313,28 @@ export default function WhySandipAndLegacy() {
             </AnimatePresence>
           </div>
 
-          {/* Bottom Pagination Dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {featureSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setDirection(idx > activeSlide ? 1 : -1);
-                  setActiveSlide(idx);
-                }}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  activeSlide === idx
-                    ? "w-8 bg-[#C8102E] shadow-sm"
-                    : "w-2.5 bg-slate-300 dark:bg-zinc-700 hover:bg-slate-400"
-                }`}
-              />
-            ))}
+            {/* Bottom Pagination Dots */}
+            <div className="flex items-center justify-center gap-2 mt-8">
+              {featureSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setDirection(idx > activeSlide ? 1 : -1);
+                    setActiveSlide(idx);
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeSlide === idx
+                      ? "w-8 bg-[#C8102E] shadow-sm"
+                      : "w-2.5 bg-slate-300 dark:bg-zinc-700 hover:bg-slate-400"
+                  }`}
+                />
+              ))}
+            </div>
+
           </div>
+        </section>
 
-        </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 2: THE SANDIP EXPERIENCE — MORE THAN A UNIVERSITY
-         ========================================================================= */}
-      <SandipExperience />
-
-    </div>
-  );
-}
+      </div>
+    );
+  }
