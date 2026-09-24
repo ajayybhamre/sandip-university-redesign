@@ -56,7 +56,7 @@ export default function CampusTour() {
               {/* Main Heading */}
               <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.08] mb-4">
                 Step Inside <br />
-                <span className="text-[#C8102E]">Sandip University.</span>
+                <span className="text-[#C8102E]">Sandip University</span>
               </h2>
 
               {/* Concise Supporting Description */}

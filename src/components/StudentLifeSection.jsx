@@ -1,200 +1,320 @@
-import { motion } from "framer-motion";
-import { Users, Award, Trophy, Rocket, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import {
+  Users,
+  Award,
+  Trophy,
+  Rocket,
+  ArrowRight,
+  Sparkles,
+  Pause,
+} from "lucide-react";
 import campusMainImg from "../assets/images/campus-3.png";
 import galleryImg from "../assets/images/gallery1.jpg";
 import handsOnImg from "../assets/images/hands-on-training.jpg";
 
-const studentLifeHighlights = [
+const AUTO_MS = 6000;
+
+const pillars = [
   {
     icon: Users,
     title: "SUN Clubs & Societies",
     desc: "20+ student-led clubs in robotics, coding, drama, photography, and cultural arts.",
+    image: galleryImg,
+    alt: "Students at a cultural event on campus",
+    caption: "Cultural Fests",
+    stat: "50+",
+    statLabel: "active clubs",
   },
   {
     icon: Rocket,
     title: "Workshops & Hackathons",
     desc: "Hands-on tech bootcamps, industry guest lectures, and live hackathons.",
+    image: handsOnImg,
+    alt: "Students in a hands-on training workshop",
+    caption: "Tech Labs",
+    stat: "24h",
+    statLabel: "build-a-thon format",
   },
   {
     icon: Trophy,
     title: "Sports Competitions",
     desc: "Olympic-grade sports complexes, annual inter-collegiate tournaments, and athletics.",
+    image: campusMainImg,
+    alt: "Sandip University sports and campus grounds",
+    caption: "Sports Complex",
+    stat: "250+",
+    statLabel: "acre eco-campus",
   },
   {
     icon: Award,
     title: "Student Development",
     desc: "Leadership summits, soft skills training, and community welfare programs.",
+    image: galleryImg,
+    alt: "Students at a leadership summit",
+    caption: "Leadership Summits",
+    stat: "100%",
+    statLabel: "student participation",
   },
 ];
 
+const ticker = [
+  "Robotics Club",
+  "Drama Society",
+  "Photography",
+  "Coding Circle",
+  "SUN Fest",
+  "Inter-collegiate Cup",
+  "Hackathons",
+  "Guest Lectures",
+  "Cultural Arts",
+  "Community Welfare",
+];
+
 export default function StudentLifeSection() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduce = useReducedMotion();
+  const current = pillars[active];
+
+  // Auto-advance through the four pillars; pauses on hover/focus or reduced motion
+  useEffect(() => {
+    if (paused || reduce) return;
+    const id = setTimeout(
+      () => setActive((i) => (i + 1) % pillars.length),
+      AUTO_MS
+    );
+    return () => clearTimeout(id);
+  }, [active, paused, reduce]);
+
   return (
-    <section 
+    <section
       id="student-life"
       aria-label="Student Life - More Than a University"
-      className="relative py-20 lg:py-32 bg-[#FAF8F5] dark:bg-zinc-950 transition-colors duration-300 overflow-hidden"
+      className="relative overflow-hidden bg-[#14060A] text-white py-20 lg:py-28"
     >
-      {/* Subtle Background Glow Accent */}
-      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#C8102E]/5 dark:bg-[#C8102E]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/5 dark:bg-amber-500/8 rounded-full blur-3xl pointer-events-none" />
+      <style>{`
+        @keyframes sun-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes sun-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @media (prefers-reduced-motion: reduce) {
+          .sun-marquee-track, .sun-progress-bar { animation: none !important; }
+        }
+      `}</style>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      {/* ---------- BACKGROUND LAYERS ---------- */}
+      <img
+        src={campusMainImg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.16] mix-blend-luminosity"
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#14060A] via-[#14060A]/85 to-[#3A0712]/90" />
+      {/* Fine dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage:
+            "radial-gradient(ellipse at 70% 40%, black 10%, transparent 70%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at 70% 40%, black 10%, transparent 70%)",
+        }}
+      />
+      {/* Red glow behind the image */}
+      <div className="absolute -right-24 top-10 w-[520px] h-[520px] rounded-full bg-[#C8102E]/30 blur-[120px] pointer-events-none" />
 
-          {/* =========================================================================
-              LEFT COLUMN — CONTENT & HIGHLIGHTS
-             ========================================================================= */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex flex-col justify-center"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* ---------- HEADER ---------- */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="grid lg:grid-cols-12 gap-6 items-end mb-12 lg:mb-16"
+        >
+          <h2 className="lg:col-span-7 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.02]">
+            The classroom is
+            <br />
+            <span className="font-serif italic font-normal text-[#FF5A70]">
+              only half the campus.
+            </span>
+          </h2>
+          <p className="lg:col-span-5 text-sm sm:text-[15px] text-white/70 leading-relaxed max-w-md lg:ml-auto">
+            At Sandip University, learning continues in clubs, labs, hackathons,
+            and on the sports field. Pick a pillar below to see what a week
+            outside the lecture hall looks like.
+          </p>
+        </motion.div>
+
+        {/* ---------- INTERACTIVE SHOWCASE ---------- */}
+        <div
+          className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
+          {/* Left: pillar selector */}
+          <div
+            role="tablist"
+            aria-label="Student life pillars"
+            className="lg:col-span-5 flex flex-col gap-3"
           >
-            {/* Small Red Eyebrow Label */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/40 text-[10px] sm:text-[11px] font-bold text-[#C8102E] dark:text-red-400 uppercase tracking-widest mb-3 w-fit shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E] animate-pulse"></span>
-              <span>STUDENT LIFE</span>
-            </div>
+            {pillars.map((p, i) => {
+              const Icon = p.icon;
+              const isActive = i === active;
+              return (
+                <button
+                  key={p.title}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActive(i)}
+                  className={`relative text-left rounded-2xl border px-5 py-4 transition-colors duration-300 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A70] ${
+                    isActive
+                      ? "bg-white/[0.08] border-[#C8102E]/70"
+                      : "bg-white/[0.02] border-white/10 hover:bg-white/[0.05]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                        isActive
+                          ? "bg-[#C8102E] text-white"
+                          : "bg-white/10 text-white/70"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </span>
+                    <span
+                      className={`font-bold text-[15px] lg:text-base tracking-tight ${
+                        isActive ? "text-white" : "text-white/70"
+                      }`}
+                    >
+                      {p.title}
+                    </span>
+                  </div>
 
-            {/* Large Bold Heading */}
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-black text-slate-900 dark:text-white tracking-tight leading-[1.12] mb-4">
-              More Than a <br className="hidden sm:block" />
-              <span className="text-[#C8102E] font-serif italic font-normal">University.</span>
-            </h2>
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.p
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-[13px] text-white/65 leading-relaxed pl-[52px] pt-2 overflow-hidden"
+                      >
+                        {p.desc}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
 
-            {/* Subtitle / Description */}
-            <p className="text-xs sm:text-sm lg:text-[15px] max-w-[560px] text-slate-600 dark:text-slate-300 font-normal leading-relaxed mb-6">
-              At Sandip University, education extends far beyond traditional classrooms. We nurture holistic growth through vibrant campus experiences, active student clubs, national hackathons, state-of-the-art sports facilities, and empowering leadership initiatives.
-            </p>
+                  {/* Auto-advance progress line */}
+                  {isActive && !reduce && (
+                    <span
+                      key={`${active}-${paused}`}
+                      className="sun-progress-bar absolute left-0 bottom-0 h-[3px] w-full origin-left bg-[#FF5A70]"
+                      style={{
+                        animation: paused
+                          ? "none"
+                          : `sun-progress ${AUTO_MS}ms linear forwards`,
+                        transform: paused ? "scaleX(1)" : undefined,
+                        opacity: paused ? 0.35 : 1,
+                      }}
+                    />
+                  )}
+                </button>
+              );
+            })}
 
-            {/* Four Benefit Highlights Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
-              {studentLifeHighlights.map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="p-3.5 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200/80 dark:border-zinc-800 shadow-xs hover:shadow-md hover:border-[#C8102E]/30 dark:hover:border-red-900/50 transition-all group"
-                  >
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-100 dark:border-red-900/40 flex items-center justify-center text-[#C8102E] dark:text-red-400 group-hover:bg-[#C8102E] group-hover:text-white transition-colors duration-300 shrink-0">
-                        <IconComponent className="w-3.5 h-3.5" />
-                      </div>
-                      <h3 className="font-bold text-[14px] lg:text-[15px] text-slate-900 dark:text-white tracking-tight">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-normal leading-relaxed pl-1">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* CTA Button */}
-            <div>
+            <div className="flex items-center gap-4 pt-3">
               <a
                 href="/campus-life"
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#C8102E] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md hover:bg-[#A00C24] hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group cursor-pointer"
+                className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#C8102E] text-white font-bold text-sm shadow-lg shadow-[#C8102E]/30 hover:bg-[#E0163A] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <span>Explore Student Life</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                Explore Student Life
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
+              {paused && !reduce && (
+                <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-white/50">
+                  <Pause className="w-3 h-3" /> Paused
+                </span>
+              )}
             </div>
-          </motion.div>
+          </div>
 
-          {/* =========================================================================
-              RIGHT COLUMN — ASYMMETRIC RESPONSIVE IMAGE GRID
-             ========================================================================= */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 relative"
-          >
-            {/* Background Decorative Frame Line */}
-            <div className="absolute -inset-4 rounded-[40px] border-2 border-dashed border-[#C8102E]/20 dark:border-red-900/30 -z-0 pointer-events-none" />
+          {/* Right: rotating image stage */}
+          <div className="lg:col-span-7 relative">
+            <div className="absolute -inset-3 rounded-[36px] border border-dashed border-white/15 pointer-events-none" />
 
-            <div className="grid grid-cols-12 gap-4 relative z-10">
-
-              {/* Main Large Rounded Campus Card */}
-              <div className="col-span-12 sm:col-span-8 rounded-[32px] overflow-hidden shadow-2xl border border-slate-200/80 dark:border-zinc-800 h-[320px] sm:h-[400px] group relative">
-                <img
-                  src={campusMainImg}
-                  alt="Sandip University Vibrant Campus Life"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            <div className="relative h-[340px] sm:h-[460px] lg:h-full lg:min-h-[480px] rounded-[28px] overflow-hidden border border-white/15 shadow-2xl shadow-black/50">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={current.image + active}
+                  src={current.image}
+                  alt={current.alt}
+                  initial={{ opacity: 0, scale: 1.08 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border border-white/20 text-xs font-bold text-slate-900 dark:text-white flex items-center justify-between">
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-[#C8102E]" />
-                    <span>250+ Acre Eco-Campus</span>
-                  </span>
-                  <span className="text-[#C8102E] font-black">SUN Life</span>
-                </div>
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#14060A]/90 via-[#14060A]/10 to-transparent pointer-events-none" />
+
+              {/* Caption chip */}
+              <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-md border border-white/15 text-xs font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-[#FF5A70]" />
+                {current.caption}
               </div>
 
-              {/* Right Side Stacked 2 Image Cards */}
-              <div className="col-span-12 sm:col-span-4 flex sm:flex-col gap-4">
-                {/* Supporting Card 1 */}
-                <div className="flex-1 rounded-[24px] overflow-hidden shadow-lg border border-slate-200/80 dark:border-zinc-800 h-[150px] sm:h-[190px] group relative">
-                  <img
-                    src={galleryImg}
-                    alt="Cultural Events and SUN Fest"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-xs text-[10px] font-bold text-white">
-                    Cultural Fests
+              {/* Big stat */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4"
+                >
+                  <div>
+                    <p className="text-5xl sm:text-6xl font-black leading-none tracking-tight">
+                      {current.stat}
+                    </p>
+                    <p className="text-sm text-white/75 mt-1.5">
+                      {current.statLabel}
+                    </p>
+                  </div>
+                  <span className="hidden sm:block text-xs text-white/60 font-medium">
+                    {active + 1} of {pillars.length}
                   </span>
-                </div>
-
-                {/* Supporting Card 2 */}
-                <div className="flex-1 rounded-[24px] overflow-hidden shadow-lg border border-slate-200/80 dark:border-zinc-800 h-[150px] sm:h-[195px] group relative">
-                  <img
-                    src={handsOnImg}
-                    alt="Hands-on Practical Training & Workshops"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-xs text-[10px] font-bold text-white">
-                    Tech Labs
-                  </span>
-                </div>
-              </div>
-
+                </motion.div>
+              </AnimatePresence>
             </div>
+          </div>
+        </div>
+      </div>
 
-            {/* Subtle Floating Stat Card */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute -bottom-6 -left-4 sm:left-4 z-20 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl flex items-center gap-3"
+      {/* ---------- MARQUEE STRIP ---------- */}
+      <div
+        className="relative z-10 mt-16 lg:mt-24 border-y border-white/10 bg-white/[0.03] overflow-hidden"
+        aria-hidden="true"
+      >
+        <div
+          className="sun-marquee-track flex w-max gap-10 py-4"
+          style={{ animation: "sun-marquee 40s linear infinite" }}
+        >
+          {[...ticker, ...ticker].map((t, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-10 text-lg sm:text-xl font-serif italic text-white/55 whitespace-nowrap"
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
-              <div>
-                <p className="text-xs font-extrabold text-slate-900 dark:text-white leading-tight">
-                  50+ Active SUN Clubs
-                </p>
-                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-                  100% Student Participation
-                </p>
-              </div>
-            </motion.div>
-
-          </motion.div>
-
+              {t}
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
+            </span>
+          ))}
         </div>
       </div>
     </section>
