@@ -154,7 +154,7 @@ export default function WhySandipAndLegacy() {
       {/* =========================================================================
           SECTION 1: WHY SANDIP UNIVERSITY? — PREMIUM INTERACTIVE HORIZONTAL SLIDER
          ========================================================================= */}
-      <section id="why-sandip" className="py-20 lg:py-32 relative">
+      <section id="why-sandip" className="py-20 lg:py-20 relative">
         
         {/* Ambient Crimson Background Glows */}
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#C8102E]/8 rounded-full blur-3xl pointer-events-none" />
