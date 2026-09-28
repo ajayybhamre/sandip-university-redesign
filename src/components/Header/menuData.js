@@ -192,24 +192,69 @@ const menuData = [
         heading: "Research",
         links: [
           {
-            title: "Research Centres",
-            path: "/research/centres",
+            title: "Overview",
+            path: "/research?tab=overview",
             icon: Microscope,
           },
           {
-            title: "Publications",
-            path: "/research/publications",
+            title: "Faculty Publications",
+            path: "/research?tab=faculty-output",
             icon: BookOpen,
           },
           {
-            title: "Patents",
-            path: "/research/patents",
+            title: "Books / Book Chapters",
+            path: "/research?tab=books",
+            icon: BookOpen,
+          },
+          {
+            title: "Funding & Industry",
+            path: "/research?tab=funding",
+            icon: FolderKanban,
+          },
+          {
+            title: "IPR / Patents",
+            path: "/research?tab=ipr",
             icon: Award,
           },
           {
-            title: "Projects",
-            path: "/research/projects",
-            icon: FolderKanban,
+            title: "Centre of Excellence",
+            path: "/research?tab=centre-of-excellence",
+            icon: Building2,
+          },
+          {
+            title: "Central Instrumentation Center",
+            path: "/research?tab=cic",
+            icon: FlaskConical,
+          },
+          {
+            title: "Policies",
+            path: "/research?tab=policies",
+            icon: FileText,
+          },
+        ],
+      },
+      {
+        heading: "Ph.D.",
+        links: [
+          {
+            title: "Ph.D. Programme",
+            path: "/phd",
+            icon: GraduationCap,
+          },
+          {
+            title: "Admission",
+            path: "/phd/admission",
+            icon: FileEdit,
+          },
+          {
+            title: "Degrees Awarded",
+            path: "/phd/degree-awarded",
+            icon: Award,
+          },
+          {
+            title: "Undertaking",
+            path: "/phd/undertaking",
+            icon: FileText,
           },
         ],
       },
