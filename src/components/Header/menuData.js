@@ -1,204 +1,335 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {
+  GraduationCap,
+  BookOpen,
+  Users,
+  IndianRupee,
+  FileText,
+  BadgeCheck,
+  Download,
+  HelpCircle,
+  ClipboardCheck,
+  Building2,
+  Home,
+  Briefcase,
+  Scale,
+  Pill,
+  FlaskConical,
+  Microscope,
+  Award,
+  FolderKanban,
 
-import Home from "./pages/Home/Home";
-import Preloader from "./components/Preloader/Preloader";
-import AOS from "aos";
-import "aos/dist/aos.css";
-  import CursorArrow from "./components/CursorArrow";
-import Popup from "./components/Popup";
-import About from "./pages/About/About";
-import Placement from "./pages/Placement/Placement";
-import CampusLife from "./pages/CampusLife/CampusLife";
-import Committees from "./pages/Committees/Committees";
-import GrievanceRedressal from "./pages/GrievanceRedressal/GrievanceRedressal";
-import Gallery from "./pages/Gallery/Gallery";
-import FloatingAction from "./components/FloatingAction";
-import CourseDetails from "./schools/components/CourseDetails";
-import SOET from "./schools/SOET/SOET";
-import SOCSE from "./schools/SOCSE/SOCSE";
-import SOCMS from "./schools/SOCMS/SOCMS";
-import SOS from "./schools/SOS/SOS";
-import SOPS from "./schools/SOPS/SOPS";
-import SOL from "./schools/SOL/SOL";
-import SOD from "./schools/SOD/SOD";
-import Contact from "./pages/contact/Contact";
+  FileEdit,
+  Globe,
+  Sparkles,
+  Phone,
+  Library,
+  ShieldCheck,
+  Target,
+  Compass,
+  Landmark,
+  FileSpreadsheet,
+  MessageSquare,
+  Info,  Images,UsersRound,
+  HeartHandshake,Dumbbell,Trophy
 
-import Admission from "./pages/Admission/Admission";
-import AdmissionPrograms from "./pages/Admission/AdmissionPrograms";
-import DocumentList from "./pages/Admission/DocumentList";
-import Scholarships from "./pages/Admission/Scholarships";
-import Help from "./pages/Admission/Help";
-import InternationalOverviewPage from "./pages/InternationalAdmission/Overview";
-import HowToApplyPage from "./pages/InternationalAdmission/HowToApply";
-import InternationalProgramsPage from "./pages/InternationalAdmission/ProgramsOffered";
-import InternationalPartnershipsPage from "./pages/InternationalAdmission/Partnerships";
-import InternationalFAQPage from "./pages/InternationalAdmission/FAQ";
-import ContactSupportPage from "./pages/InternationalAdmission/ContactSupport";
+} from "lucide-react";
 
-import Schools from "./schools/Schools";
-import AcademicsPage from "./pages/Academics/AcademicsPage";
-import RegulationsPage from "./pages/Academics/pages/RegulationsPage";
-import EvaluationPage from "./pages/Academics/pages/EvaluationPage";
-import CalendarPage from "./pages/Academics/pages/CalendarPage";
-import COE from "./pages/COE/COE";
-import COENotices from "./pages/COE/Notices";
-import COEResults from "./pages/COE/Results";
-import COETimetables from "./pages/COE/Timetables";
-import COEHowToApply from "./pages/COE/HowToApply";
+const menuData = [
+  {
+    title: "Admissions",
+    mega: true,
+    customType: "admissions",
+    header: {
+      title: "ADMISSIONS",
+      subtitle: "Explore National & International admission pathways for 2026-27",
+      badgeText: "Admissions Open 2026-27",
+    },
+    sections: [
+      {
+        heading: "NATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "cap",
+        links: [
+          {
+
+            title: "Apply Now",
+            path: "/apply",
+            icon: FileEdit,
+            badge: "NEW",
+          },
+          {
+            // title: "Programs",
+            // path: "/programs",
+
+            title: "Postgraduate",
+            path: "/postgraduate",
+
+            icon: BookOpen,
+          },
+          {
+            title: "Document List",
+            path: "/documents",
+            icon: FileText,
+          },
+          {
+            title: "Scholarships",
+            path: "/scholarships",
+            icon: IndianRupee,
+          },
+          {
+            title: "Help Centre",
+            path: "/help",
+            icon: HelpCircle,
+          },
+        ],
+      },
+      {
+        heading: "INTERNATIONAL ADMISSION MENU",
+        badge: "NEW",
+        iconType: "globe",
+        links: [
+          {
+            title: "Overview",
+            path: "/international-admission/overview",
+            icon: Globe,
+          },
+          {
+            title: "How to Apply",
+            path: "/international-admission/how-to-apply",
+            icon: FileEdit,
+            badge: "NEW",
+          },
+          {
+            title: "Programs",
+            path: "/international-admission/programs",
+            icon: BookOpen,
+          },
+          {
+            title: "International Partnerships",
+            path: "/international-admission/partnerships",
+            icon: Users,
+          },
+          {
+            title: "FAQs",
+            path: "/international-admission/faqs",
+            icon: HelpCircle,
+          },
+          {
+            title: "Contact Us",
+            path: "/international-admission/contact",
+            icon: Phone,
+          },
+        ],
+      },
+    ],
+  },
+
+{
+    title: "Academics",
+    path: "/academics",
+    mega: false,
+  },
+
+  {
+    title: "Schools",
+    mega: true,
+    sections: [
+      {
+        heading: "Schools",
+        links: [
+          
+          {
+            title: "School Of Engineering & Technology",
+            path: "/schools/engineering-technology",
+            icon: GraduationCap,
+          },
+          {
+            title: "School Of Computer Science & Engineering",
+            path: "/schools/computer-science",
+            icon: BookOpen,
+          },
+          {
+            title: "School Of Commerce & Managment Studies",
+            path: "/schools/management",
+            icon: Briefcase,
+          },
+          {
+            title: "School Of Science",
+            path: "/schools/science",
+            icon: FlaskConical,
+          },
+          {
+            title: "School of Pharmaceutical Sciences ",
+            path: "/schools/pharma",
+            icon: Pill,
+          },
+          {
+            title: "School Of Law",
+            path: "/schools/law",
+            icon: Scale,
+          },
+          {
+            title: "School Of Design",
+            path: "/schools/fashion-beauty",
+            icon: Award,
+          },
+        ],
+      },
+    ],
+  },
 
 
-// IQAC Main Page & Sub-Pages
-import IQAC from "./pages/IQAC/IQAC";
-import IQACAboutPage from "./pages/IQAC/subpages/IQACAboutPage";
-import IQACAimsObjectivesPage from "./pages/IQAC/subpages/IQACAimsObjectivesPage";
-import IQACMembersPage from "./pages/IQAC/subpages/IQACMembersPage";
-import IQACSustainabilityPage from "./pages/IQAC/subpages/IQACSustainabilityPage";
-import IQACStrategicPlanPage from "./pages/IQAC/subpages/IQACStrategicPlanPage";
-import IQACCommitteesPage from "./pages/IQAC/subpages/IQACCommitteesPage";
-import IQACMinutesPage from "./pages/IQAC/subpages/IQACMinutesPage";
-import IQACIIQADisclosurePage from "./pages/IQAC/subpages/IQACIIQADisclosurePage";
-import IQACPublicDisclosurePage from "./pages/IQAC/subpages/IQACPublicDisclosurePage";
-import IQACAcademicPolicyPage from "./pages/IQAC/subpages/IQACAcademicPolicyPage";
-import IQACFeedbackSystemPage from "./pages/IQAC/subpages/IQACFeedbackSystemPage";
-import IQACInstitutionalDistinctivenessPage from "./pages/IQAC/subpages/IQACInstitutionalDistinctivenessPage";
-import IQACNAACPage from "./pages/IQAC/subpages/IQACNAACPage";
-import CentralLibraryPage from "./pages/Library/CentralLibraryPage";
-import Research from "./pages/Research/Research";
-import Phd from "./pages/Phd/Phd";
-import PhdAdmission from "./pages/Phd/PhdAdmission";
-import PhdDegreeAwarded from "./pages/Phd/PhdDegreeAwarded";
-import PhdInfoDegreesAwarded from "./pages/Phd/PhdInfoDegreesAwarded";
-import PhdUndertaking from "./pages/Phd/PhdUndertaking";
+  {
+    title: "Examinations",
+    path: "/coe",
+    mega: false,
+  },
+  {
+    title: "Research",
+    mega: true,
+    sections: [
+      {
+        heading: "Research",
+        links: [
+          {
+            title: "Research Centres",
+            path: "/research/centres",
+            icon: Microscope,
+          },
+          {
+            title: "Publications",
+            path: "/research/publications",
+            icon: BookOpen,
+          },
+          {
+            title: "Patents",
+            path: "/research/patents",
+            icon: Award,
+          },
+          {
+            title: "Projects",
+            path: "/research/projects",
+            icon: FolderKanban,
+          },
+        ],
+      },
+    ],
+  },
 
-import ScrollProgressBar from "./components/Animated/ScrollProgressBar";
-import ScrollToTop from "./ScrollToTop";
+  // {
+  //   title: "International",
+  //   mega: false,
+  // },
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
+  {
+    title: "Placements",
+    path: "/placement",
+    mega: false,
+  },
 
-  useEffect(() => {
-    // Hide preloader after 1 second
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+  {
+    title: "About Us",
+    path: "/about",
+    mega: false,
+  },
 
-    return () => clearTimeout(timer);
-  }, []);
+  {
+    title: "Campus Life",
+    mega: true,
+    sections: [
+      {
+        heading: "Campus Life",
+        links: [
+          {
+            title: "Gallery & Media",
+            path: "/campus-life?tab=gallery-media",
+            icon: Images,
+          },
+          {
+            title: "SUN Clubs",
+            path: "/campus-life?tab=sun-clubs",
+            icon: UsersRound,
+          },
+          {
+            title: "Student Welfare",
+            path: "/campus-life?tab=student-welfare",
+            icon: HeartHandshake,
+          },
+          {
+            title: "Achievement",
+            path: "/campus-life?tab=achievement",
+            icon: Trophy,
+          },
+          {
+            title: "Sports",
+            path: "/campus-life?tab=sports",
+            icon: Dumbbell,
+          },
+        ],
+      },
+    ],
+  },
 
-  if (loading) {
-    return <Preloader loading={loading} />;
-  }
+  // {
+  //   title: "Academic",
+  //   path: "/academic",
+  //   mega: false,
+  // },
 
-  return (
-    <>
-      <CursorArrow />
-      <BrowserRouter>
-        <ScrollProgressBar />
-        <ScrollToTop />
-        <Popup />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/apply" element={<Admission />} />
-          <Route path="/programs" element={<AdmissionPrograms />} />
-          <Route path="/eligibility" element={<AdmissionPrograms />} />
-          <Route path="/documents" element={<DocumentList />} />
-          <Route path="/brochure" element={<DocumentList />} />
-          <Route path="/scholarships" element={<Scholarships />} />
-          <Route path="/fee-structure" element={<Scholarships />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/international-admission/overview" element={<InternationalOverviewPage />} />
-          <Route path="/international" element={<InternationalOverviewPage />} />
-          <Route path="/international-admission/how-to-apply" element={<HowToApplyPage />} />
-          <Route path="/admission-process" element={<HowToApplyPage />} />
-          <Route path="/international-admission/programs" element={<InternationalProgramsPage />} />
-          <Route path="/programs-offered" element={<InternationalProgramsPage />} />
-          <Route path="/international-admission/partnerships" element={<InternationalPartnershipsPage />} />
-          <Route path="/international-partnerships" element={<InternationalPartnershipsPage />} />
-          <Route path="/international-admission/faqs" element={<InternationalFAQPage />} />
-          <Route path="/international-faqs" element={<InternationalFAQPage />} />
-          <Route path="/international-admission/contact" element={<ContactSupportPage />} />
-          <Route path="/how-to-reach" element={<ContactSupportPage />} />
-          <Route path="/contact" element={<ContactSupportPage />} />
+  {
+    title: "IQAC",
+    path: "/iqac",
+    mega: true,
+    customType: "iqac",
+    sections: [
+      {
+        links: [
+          {
+            title: "Internal Quality Assurance Cell (IQAC)",
+            path: "/iqac",
+          },
+          {
+            title: "IIQA Self Disclosure",
+            path: "/iqac/self-disclosure",
+          },
+          {
+            title: "Central Library",
+            path: "/central-library",
+          },
+          {
+            title: "Feedback System",
+            path: "/iqac/feedback-system",
+          },
+        ],
+      },
+      {
+        links: [
+          {
+            title: "Committees",
+            path: "/iqac/committees",
+          },
+          {
+            title: "Sustainability",
+            path: "/iqac/sustainability",
+          },
+          {
+            title: "Academic Policy",
+            path: "/iqac/academic-policy",
+          },
+          {
+            title: "NAAC",
+            path: "/iqac/naac",
+          },
+        ],
+      },
+    ],
+  },
 
+  // {
+  //   title: "Contact",
+  //   path: "/contact",
+  //   mega: false,
+  // },
+];
 
-        {/* Future Pages */}
-        <Route path="/about" element={<About/>} />
-        <Route path="/academics" element={<AcademicsPage/>} />
-        <Route path="/placement" element={<Placement/>} />
-          <Route path="/campus-life" element={<CampusLife />} />
-          <Route path="/events" element={<CampusLife />} />
-          <Route path="/gallery" element={<Gallery/>} />
-              <Route path="/schools" element={<Schools/>} />
-           <Route path="/schools/engineering-technology" element={<SOET/>} />
-           <Route path="/schools/computer-science" element={<SOCSE/>} />
-           <Route path="/schools/management" element={<SOCMS/>} />
-           <Route path="/schools/science" element={<SOS/>} />
-           <Route path="/schools/pharma" element={<SOPS/>} />
-           <Route path="/schools/law" element={<SOL/>} />
-           <Route path="/schools/fashion-beauty" element={<SOD/>} />
-           <Route path="/contact" element={<Contact/>} />
-          <Route path="/schools/:schoolSlug/:courseSlug" element={<CourseDetails/>} />
-          <Route path="/academics/regulations" element={<RegulationsPage/>} />
-          <Route path="/academics/evaluation" element={<EvaluationPage/>} />
-          <Route path="/academics/calendar" element={<CalendarPage/>} />
-          <Route path="/coe" element={<COE/>} />
-          <Route path="/coe/notices" element={<COENotices/>} />
-          <Route path="/coe/results" element={<COEResults/>} />
-          <Route path="/coe/timetables" element={<COETimetables/>} />
-          <Route path="/coe/how-to-apply" element={<COEHowToApply/>} />
-
-        
-          <Route path="/about" element={<About />} />
-          <Route path="/about/*" element={<About />} />
-          {/* <Route path="/academic" element={<Academics />} /> */}
-
-          {/* IQAC Landing Page & Sub-Pages */}
-          <Route path="/iqac" element={<IQAC />} />
-          <Route path="/iqac/about" element={<IQACAboutPage />} />
-          <Route path="/iqac/aims-objectives" element={<IQACAimsObjectivesPage />} />
-          <Route path="/iqac/members" element={<IQACMembersPage />} />
-          <Route path="/iqac/sustainability" element={<IQACSustainabilityPage />} />
-          <Route path="/iqac/strategic-plan" element={<IQACStrategicPlanPage />} />
-          <Route path="/iqac/committees" element={<IQACCommitteesPage />} />
-          <Route path="/iqac/minutes" element={<IQACMinutesPage />} />
-          <Route path="/iqac/iiqa-disclosure" element={<IQACIIQADisclosurePage />} />
-          <Route path="/iqac/self-disclosure" element={<IQACIIQADisclosurePage />} />
-          <Route path="/iqac/public-disclosure" element={<IQACPublicDisclosurePage />} />
-          <Route path="/iqac/naac" element={<IQACNAACPage />} />
-          <Route path="/iqac/academic-policy" element={<IQACAcademicPolicyPage />} />
-          <Route path="/iqac/feedback-system" element={<IQACFeedbackSystemPage />} />
-          <Route path="/iqac/institutional-distinctiveness" element={<IQACInstitutionalDistinctivenessPage />} />
-
-          {/* Research & PhD */}
-          <Route path="/research" element={<Research />} />
-          <Route path="/phd" element={<Phd />} />
-          <Route path="/phd/admission" element={<PhdAdmission />} />
-          <Route path="/phd/degree-awarded" element={<PhdDegreeAwarded />} />
-          <Route path="/phd/info-degrees-awarded" element={<PhdInfoDegreesAwarded />} />
-          <Route path="/phd/undertaking" element={<PhdUndertaking />} />
-
-          {/* Library Page */}
-          <Route path="/central-library" element={<CentralLibraryPage />} />
-
-          <Route path="/placement" element={<Placement />} />
-          <Route path="/gallery" element={<Gallery />} />
-          {/* <Route path="/schools/engineering" element={<SchoolEngineering />} /> */}
-          <Route path="/schools/engineering/:courseSlug" element={<CourseDetails />} />
-
-        </Routes>
-
-        <FloatingAction />
-      </BrowserRouter>
-    </>
-
-  );
-}
-
-export default App;
+export default menuData;
