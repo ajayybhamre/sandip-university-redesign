@@ -64,6 +64,12 @@ import IQACFeedbackSystemPage from "./pages/IQAC/subpages/IQACFeedbackSystemPage
 import IQACInstitutionalDistinctivenessPage from "./pages/IQAC/subpages/IQACInstitutionalDistinctivenessPage";
 import IQACNAACPage from "./pages/IQAC/subpages/IQACNAACPage";
 import CentralLibraryPage from "./pages/Library/CentralLibraryPage";
+import Research from "./pages/Research/Research";
+import Phd from "./pages/Phd/Phd";
+import PhdAdmission from "./pages/Phd/PhdAdmission";
+import PhdDegreeAwarded from "./pages/Phd/PhdDegreeAwarded";
+import PhdInfoDegreesAwarded from "./pages/Phd/PhdInfoDegreesAwarded";
+import PhdUndertaking from "./pages/Phd/PhdUndertaking";
 
 import ScrollProgressBar from "./components/Animated/ScrollProgressBar";
 import ScrollToTop from "./ScrollToTop";
@@ -169,6 +175,14 @@ function App() {
           <Route path="/iqac/academic-policy" element={<IQACAcademicPolicyPage />} />
           <Route path="/iqac/feedback-system" element={<IQACFeedbackSystemPage />} />
           <Route path="/iqac/institutional-distinctiveness" element={<IQACInstitutionalDistinctivenessPage />} />
+
+          {/* Research & PhD */}
+          <Route path="/research" element={<Research />} />
+          <Route path="/phd" element={<Phd />} />
+          <Route path="/phd/admission" element={<PhdAdmission />} />
+          <Route path="/phd/degree-awarded" element={<PhdDegreeAwarded />} />
+          <Route path="/phd/info-degrees-awarded" element={<PhdInfoDegreesAwarded />} />
+          <Route path="/phd/undertaking" element={<PhdUndertaking />} />
 
           {/* Library Page */}
           <Route path="/central-library" element={<CentralLibraryPage />} />

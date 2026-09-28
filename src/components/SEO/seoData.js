@@ -196,6 +196,22 @@ const seoData = {
     url:
       "https://yourdomain.com/schools",
   },
+  research: {
+    title: "Research | Sandip University",
+    description: "Research at Sandip University: centres of excellence, central instrumentation centre, publications, patents, funding, awards and policies.",
+    keywords: "Sandip University Research, CIC, Centre of Excellence, Patents, Publications",
+    image: "https://yourdomain.com/research.jpg",
+    url: "https://yourdomain.com/research",
+  },
+
+  phd: {
+    title: "Ph.D. Programme | Sandip University",
+    description: "Ph.D. admissions, policies, degrees awarded and programmes at Sandip University.",
+    keywords: "Sandip University PhD, PhD Admission, SUNPET, Doctoral Programmes",
+    image: "https://yourdomain.com/phd.jpg",
+    url: "https://yourdomain.com/phd",
+  },
+
   // components/SEO/seoData.js — add alongside home/about/schools
 coe: { title: "...", description: "...", keywords: "...", image: "...", url: "/coe" },
 };
