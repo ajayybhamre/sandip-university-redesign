@@ -1,120 +1,127 @@
-import { useState } from "react";
-import { MessageSquare, Users, GraduationCap, Briefcase, HeartHandshake, Send, CheckCircle2 } from "lucide-react";
+import {
+  GraduationCap,
+  HeartHandshake,
+  Briefcase,
+  Users,
+  Building2,
+  Sparkles,
+} from "lucide-react";
 import IQACSubPageLayout from "../components/IQACSubPageLayout";
+import IQACSidebarNav from "../components/IQACSidebarNav";
 import seoData from "../../../components/SEO/seoData";
+import FeedbackCard from "../components/FeedbackCard";
+import AcademicYearPill from "../components/AcademicYearPill";
 
-const feedbackCategories = [
-  { id: "students", title: "Student Feedback", icon: GraduationCap, desc: "Course content, teaching methodology, laboratory facilities, and LMS usability." },
-  { id: "faculty", title: "Faculty Feedback", icon: Users, desc: "Curriculum relevance, research encouragement, administrative support, and infrastructure." },
-  { id: "employers", title: "Employer Feedback", icon: Briefcase, desc: "Industry readiness, technical competence, soft skills, and placement performance." },
-  { id: "alumni", title: "Alumni Feedback", icon: HeartHandshake, desc: "Institutional impact, career preparation, societal relevance, and lifelong learning." },
+// Official Feedback Forms Data
+const feedbackForms = [
+  {
+    id: "student",
+    title: "Student Feedback Form",
+    icon: GraduationCap,
+    href: "https://www.sandipuniversity.edu.in/iqac/search_by_prn.php?type=1",
+  },
+  {
+    id: "alumni",
+    title: "Alumni Feedback Form",
+    icon: HeartHandshake,
+    href: "https://www.sandipuniversity.edu.in/iqac/search_by_prn.php?type=2",
+  },
+  {
+    id: "employer",
+    title: "Employer Feedback Form",
+    icon: Briefcase,
+    href: "https://www.sandipuniversity.edu.in/iqac/feedback-system/employee-feedback-form.php",
+  },
+  {
+    id: "teacher",
+    title: "Teacher Feedback Form",
+    icon: Users,
+    href: "https://www.sandipuniversity.edu.in/iqac/search_by_prn.php?type=3",
+  },
+  {
+    id: "facilities",
+    title: "Institutional Facilities Form",
+    icon: Building2,
+    href: "https://www.sandipuniversity.edu.in/iqac/feedback-system/Institutional-Facilities-form.php?form_no=INST_FAC_2025",
+  },
+];
+
+// Official Academic Year Action Taken Reports Data (Active Published Reports)
+const academicYears = [
+  { year: "2023 - 2024", href: "https://www.sandipuniversity.edu.in/iqac/feedback-system-23-24.php" },
+  { year: "2022 - 2023", href: "https://www.sandipuniversity.edu.in/iqac/feedback-system-22-23.php" },
+  { year: "2021 - 2022", href: "https://www.sandipuniversity.edu.in/iqac/feedback-system-21-22.php" },
+  { year: "2020 - 2021", href: "https://www.sandipuniversity.edu.in/iqac/feedback-system-20-21.php" },
+  { year: "2019 - 2020", href: "https://www.sandipuniversity.edu.in/iqac/feedback-system-19-20.php" },
 ];
 
 export default function IQACFeedbackSystemPage() {
-  const [activeTab, setActiveTab] = useState("students");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-  };
-
   return (
     <IQACSubPageLayout
       seo={seoData.iqacFeedback}
-      badge="STAKEHOLDER ENGAGEMENT PORTAL"
-      title="360° Feedback System"
-      subtitle="Structured online feedback mechanisms for Students, Faculty, Employers, Alumni, and Parents to drive continuous institutional quality enhancement."
+      badge="STAKEHOLDER EVALUATION PORTAL"
+      title="Feedback System"
+      subtitle="Collecting, analyzing, and taking action on feedback from students, alumni, employers, teachers, and facilities."
+      hideSubNav={true}
     >
-      <div className="space-y-12">
-        {/* Feedback Category Tabs */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {feedbackCategories.map((cat) => {
-            const IconComp = cat.icon;
-            const isSelected = activeTab === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
-                  isSelected
-                    ? "bg-[#C8102E] text-white border-[#C8102E] shadow-md scale-102"
-                    : "bg-white dark:bg-[#201C18] text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-800 hover:border-amber-300"
-                }`}
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-3">
-                  <IconComp size={20} className={isSelected ? "text-white" : "text-[#C8102E]"} />
-                </div>
-                <h4 className="font-bold text-base mb-1">{cat.title}</h4>
-                <p className={`text-xs ${isSelected ? "text-white/80" : "text-gray-500"}`}>{cat.desc}</p>
-              </button>
-            );
-          })}
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        {/* Left Sidebar Column */}
+        <div className="lg:col-span-4 w-full order-2 lg:order-1">
+          <IQACSidebarNav />
         </div>
 
-        {/* Feedback Form Card */}
-        <div className="bg-white dark:bg-[#201C18] rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-gray-800 shadow-sm max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <span className="text-xs font-mono font-bold text-[#C8102E] uppercase tracking-wider">ONLINE FEEDBACK FORM</span>
-            <h3 className="text-2xl font-black text-[#1C1917] dark:text-[#F5F2EB] mt-1 capitalize">
-              {activeTab} Feedback Submission
-            </h3>
-            <p className="text-xs text-gray-500 mt-1">Your authentic feedback helps IQAC upgrade academic benchmarks.</p>
-          </div>
-
-          {submitted ? (
-            <div className="p-6 rounded-2xl bg-emerald-50 text-emerald-800 text-center">
-              <CheckCircle2 size={36} className="mx-auto mb-2 text-emerald-600" />
-              <h4 className="font-extrabold text-base">Feedback Submitted!</h4>
-              <p className="text-xs mt-1">Thank you. Your responses have been securely logged into the IQAC feedback database.</p>
+        {/* Right Main Content Column */}
+        <div className="lg:col-span-8 space-y-6 order-1 lg:order-2">
+          {/* Compact Main White/Ivory Container Panel */}
+          <div className="bg-[#FFFDFC] dark:bg-[#1E1B18] rounded-2xl border border-[#EBD8C7] dark:border-stone-800 shadow-2xs p-5 sm:p-7 space-y-6">
+            
+            {/* 1. Compact Page Title Badge */}
+            <div className="text-center pt-1 pb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FBE8E7] dark:bg-red-950/40 border border-[#E8CFA3]/70 text-[11px] font-bold text-[#B32035] dark:text-red-300 uppercase tracking-wider mb-2">
+                <Sparkles size={12} className="text-[#C99A52]" />
+                <span>IQAC Feedback Portal</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#292321] dark:text-[#F5F2EB] tracking-tight">
+                Official Feedback Forms
+              </h2>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Full Name *</label>
-                  <input type="text" required placeholder="Enter full name" className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#181512] border border-gray-300 dark:border-gray-700 text-sm focus:outline-none focus:border-[#C8102E]" />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Email Address *</label>
-                  <input type="email" required placeholder="Enter email" className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#181512] border border-gray-300 dark:border-gray-700 text-sm focus:outline-none focus:border-[#C8102E]" />
-                </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Department / School *</label>
-                  <select className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#181512] border border-gray-300 dark:border-gray-700 text-sm focus:outline-none focus:border-[#C8102E]">
-                    <option>School of Engineering & Technology</option>
-                    <option>School of Management Studies</option>
-                    <option>School of Pharmaceutical Sciences</option>
-                    <option>School of Law</option>
-                    <option>School of Science</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Overall Quality Rating *</label>
-                  <select className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#181512] border border-gray-300 dark:border-gray-700 text-sm focus:outline-none focus:border-[#C8102E]">
-                    <option>Excellent (5 Stars)</option>
-                    <option>Very Good (4 Stars)</option>
-                    <option>Good (3 Stars)</option>
-                    <option>Satisfactory (2 Stars)</option>
-                  </select>
-                </div>
-              </div>
+            {/* 2. Five Feedback Form Cards Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3.5 items-stretch">
+              {feedbackForms.map((form) => (
+                <FeedbackCard
+                  key={form.id}
+                  title={form.title}
+                  icon={form.icon}
+                  href={form.href}
+                />
+              ))}
+            </div>
 
-              <div>
-                <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Detailed Suggestions / Comments *</label>
-                <textarea rows={4} required placeholder="Share your suggestions for curriculum or facility improvements..." className="w-full px-4 py-2.5 rounded-xl bg-[#FAF7F2] dark:bg-[#181512] border border-gray-300 dark:border-gray-700 text-sm focus:outline-none focus:border-[#C8102E] resize-none" />
+            {/* 3. Feedback Action Taken Heading */}
+            <div className="pt-6 border-t border-[#EBD8C7]/80 dark:border-stone-800/80 text-center space-y-2">
+              <h3 className="text-sm sm:text-base font-extrabold text-[#292321] dark:text-[#F5F2EB] tracking-tight max-w-3xl mx-auto leading-snug">
+                Feedback collected, analysed, action taken & communicated to relevant body
+              </h3>
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <div className="w-6 h-0.5 bg-[#E8CFA3]" />
+                <div className="w-10 h-0.5 bg-[#B32035] rounded-full" />
+                <div className="w-6 h-0.5 bg-[#E8CFA3]" />
               </div>
+            </div>
 
-              <button type="submit" className="w-full py-3 rounded-xl bg-[#C8102E] hover:bg-red-700 text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md">
-                <span>Submit Feedback</span>
-                <Send size={16} />
-              </button>
-            </form>
-          )}
+            {/* 4. Academic Year Action Report Pill Buttons */}
+            <div className="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 pb-2">
+              {academicYears.map((ay) => (
+                <AcademicYearPill
+                  key={ay.year}
+                  yearLabel={ay.year}
+                  href={ay.href}
+                />
+              ))}
+            </div>
+
+          </div>
         </div>
       </div>
     </IQACSubPageLayout>

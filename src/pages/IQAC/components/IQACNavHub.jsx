@@ -22,7 +22,7 @@ const navHubSections = [
     items: [
       {
         title: "About IQAC",
-        path: "/iqac/about",
+        path: "/iqac",
         description: "Statutory establishment background, quality governance framework, and institutional commitment.",
         icon: Info,
         badge: "Overview",

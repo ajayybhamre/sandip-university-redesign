@@ -1,5 +1,6 @@
-import { Compass, Target, Rocket, Award, GraduationCap, Building2, CheckCircle2 } from "lucide-react";
+import { Compass, Rocket, GraduationCap, Building2, CheckCircle2 } from "lucide-react";
 import IQACSubPageLayout from "../components/IQACSubPageLayout";
+import IQACSidebarNav from "../components/IQACSidebarNav";
 import seoData from "../../../components/SEO/seoData";
 
 const strategicPillars = [
@@ -52,33 +53,42 @@ export default function IQACStrategicPlanPage() {
       badge="INSTITUTIONAL ROADMAP 2025–2030"
       title="Strategic Plan & Vision 2030"
       subtitle="The 5-Year Institutional Growth Roadmap designed by Sandip University IQAC to achieve top global academic rankings and holistic excellence."
+      hideSubNav={true}
     >
-      <div className="space-y-12">
-        <div className="grid md:grid-cols-2 gap-6">
-          {strategicPillars.map((pillar, idx) => {
-            const IconComp = pillar.icon;
-            return (
-              <div key={idx} className="bg-white dark:bg-[#201C18] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-xs">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/50 flex items-center justify-center text-[#C8102E]">
-                    <IconComp size={24} />
-                  </div>
-                  <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full uppercase">
-                    {pillar.phase}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4">{pillar.title}</h3>
-                <div className="space-y-2.5">
-                  {pillar.goals.map((goal, gIdx) => (
-                    <div key={gIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
-                      <CheckCircle2 size={16} className="text-[#C8102E] flex-shrink-0 mt-0.5" />
-                      <span>{goal}</span>
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        {/* Left Sidebar Column */}
+        <div className="lg:col-span-4 w-full order-2 lg:order-1">
+          <IQACSidebarNav />
+        </div>
+
+        {/* Right Main Content Column */}
+        <div className="lg:col-span-8 space-y-8 order-1 lg:order-2">
+          <div className="grid md:grid-cols-2 gap-6">
+            {strategicPillars.map((pillar, idx) => {
+              const IconComp = pillar.icon;
+              return (
+                <div key={idx} className="bg-white dark:bg-[#201C18] rounded-2xl p-6 border border-stone-200/80 dark:border-stone-800 shadow-xs">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/50 flex items-center justify-center text-[#C8102E]">
+                      <IconComp size={24} />
                     </div>
-                  ))}
+                    <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full uppercase">
+                      {pillar.phase}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-4">{pillar.title}</h3>
+                  <div className="space-y-2.5">
+                    {pillar.goals.map((goal, gIdx) => (
+                      <div key={gIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+                        <CheckCircle2 size={16} className="text-[#C8102E] flex-shrink-0 mt-0.5" />
+                        <span>{goal}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </IQACSubPageLayout>

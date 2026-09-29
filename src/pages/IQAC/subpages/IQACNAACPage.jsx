@@ -1,49 +1,47 @@
-import { Award, ShieldCheck, FileText, Download, CheckCircle2, Star, Calendar, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Award,
+  FileCheck,
+  ShieldCheck,
+  BookOpen,
+  ArrowRight,
+  ExternalLink,
+  Download,
+} from "lucide-react";
 import IQACSubPageLayout from "../components/IQACSubPageLayout";
+import IQACSidebarNav from "../components/IQACSidebarNav";
 import seoData from "../../../components/SEO/seoData";
 
-const naacCriteria = [
+const naacReports = [
   {
-    criterion: "Criterion 1",
-    title: "Curricular Aspects",
-    score: "Key Quality Indicator",
-    description: "Outcome-Based Education (OBE) mapping, BoS syllabus revisions, interdisciplinary electives, and academic flexibility.",
+    number: "01",
+    title: "Naac Certificate",
+    pdfUrl: "https://www.sandipuniversity.edu.in/pdf/approvals/NAAC-Certificate.pdf",
+    icon: Award,
   },
   {
-    criterion: "Criterion 2",
-    title: "Teaching-Learning and Evaluation",
-    score: "Key Quality Indicator",
-    description: "Student-centric pedagogy, experiential learning, ICT integration, transparent examination evaluation, and mentor-mentee framework.",
+    number: "02",
+    title: "DVV Clarification Report 1",
+    pdfUrl: "https://www.sandipuniversity.edu.in/iqac/pdf/DVV%20Clarification%20History.pdf",
+    icon: FileCheck,
   },
   {
-    criterion: "Criterion 3",
-    title: "Research, Innovations and Extension",
-    score: "Key Quality Indicator",
-    description: "Scopus/Web of Science publications, patent filings, seed grants, Sandip Innovation incubator, and community outreach.",
+    number: "03",
+    title: "DVV Clarification Report 2",
+    pdfUrl: "https://www.sandipuniversity.edu.in/iqac/pdf/DVV%20Clarification%20History%202.pdf",
+    icon: FileCheck,
   },
   {
-    criterion: "Criterion 4",
-    title: "Infrastructure and Learning Resources",
-    score: "Key Quality Indicator",
-    description: "Smart classrooms, central library digital OPAC, IEEE e-journals, advanced engineering labs, and green campus facilities.",
+    number: "04",
+    title: "IIQA",
+    pdfUrl: "https://www.sandipuniversity.edu.in/iqac/pdf/SANDIP_UNIVERSITY_NASHIK_iiqa.pdf",
+    icon: ShieldCheck,
   },
   {
-    criterion: "Criterion 5",
-    title: "Student Support and Progression",
-    score: "Key Quality Indicator",
-    description: "Merit scholarships, placement assistance, alumni network, anti-ragging safeguards, and competitive exam guidance.",
-  },
-  {
-    criterion: "Criterion 6",
-    title: "Governance, Leadership and Management",
-    score: "Key Quality Indicator",
-    description: "Decentralized governance, statutory councils, administrative audits (AAA), e-governance ERP, and faculty development programs (FDPs).",
-  },
-  {
-    criterion: "Criterion 7",
-    title: "Institutional Values and Best Practices",
-    score: "Key Quality Indicator",
-    description: "Rooftop solar energy, zero-liquid discharge water recycling, gender equity cell, and industry-led curriculum distinctiveness.",
+    number: "05",
+    title: "SSR",
+    pdfUrl: "https://www.sandipuniversity.edu.in/iqac/pdf/ssr.pdf",
+    icon: BookOpen,
   },
 ];
 
@@ -51,95 +49,105 @@ export default function IQACNAACPage() {
   return (
     <IQACSubPageLayout
       seo={seoData.iqacNAAC}
-      badge="NATIONAL ASSESSMENT & ACCREDITATION COUNCIL"
-      title="NAAC Accreditation & Quality Ratings"
-      subtitle="Overview of Sandip University's NAAC quality accreditation framework, 7 criteria benchmarks, AQAR submissions, and statutory certificates."
+      badge="QUALITY ASSURANCE FRAMEWORK"
+      title="NAAC"
+      hideSubNav={true}
     >
-      <div className="space-y-16">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         
-        {/* Accreditation Overview Card */}
-        <div className="bg-white dark:bg-[#201C18] rounded-3xl p-8 sm:p-10 border border-amber-300/80 dark:border-amber-700/60 shadow-lg relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-300 text-xs font-bold text-amber-800 dark:text-amber-400 font-mono uppercase mb-4">
-                <Star size={14} className="text-amber-500 fill-amber-500" />
-                <span>Statutory NAAC Framework</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1C1917] dark:text-[#F5F2EB] mb-4">
-                Institutional Quality & Assessment Standards
-              </h2>
-              <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                Sandip University adheres strictly to the 7-point assessment framework formulated by the National Assessment and Accreditation Council (NAAC). The IQAC Secretariat systematically collects, audits, and uploads Annual Quality Assurance Reports (AQAR) to ensure post-accreditation quality sustenance.
-              </p>
-
-              <div className="flex flex-wrap gap-4 text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-300">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#C8102E]" />
-                  <span>UGC & NAAC Aligned</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#C8102E]" />
-                  <span>Annual AQAR Compliance</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-[#C8102E]" />
-                  <span>Periodic External AAA Audits</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-4 bg-[#FAF7F2] dark:bg-[#181512] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 text-center">
-              <Award size={48} className="mx-auto mb-3 text-[#C8102E]" />
-              <h3 className="text-lg font-extrabold text-gray-900 dark:text-white">Statutory NAAC Records</h3>
-              <p className="text-xs text-gray-500 mb-4">Official Accreditation Certificates & Reports</p>
-              <a
-                href="#download-naac"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Downloading official NAAC Accreditation Document");
-                }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#C8102E] text-white font-bold text-xs uppercase tracking-wider hover:bg-red-700 transition-all shadow-md cursor-pointer"
-              >
-                <Download size={14} />
-                <span>Download SSR Report</span>
-              </a>
-            </div>
-          </div>
+        {/* Left Sidebar Column (~30% width) */}
+        <div className="lg:col-span-4 w-full order-2 lg:order-1">
+          <IQACSidebarNav />
         </div>
 
-        {/* 7 Assessment Criteria */}
-        <div>
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold text-[#C8102E] uppercase tracking-widest">ASSESSMENT FRAMEWORK</span>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#1C1917] dark:text-[#F5F2EB] mt-1">
-              The 7 NAAC Assessment Criteria
-            </h2>
+        {/* Right Main Content Column (~70% width) */}
+        <div className="lg:col-span-8 space-y-8 order-1 lg:order-2">
+          
+          {/* Report Directory Header */}
+          <div className="flex items-center justify-between flex-wrap gap-4 pb-2 border-b border-stone-200/80 dark:border-stone-800">
+            <div>
+              <span className="text-xs font-mono font-bold text-[#C8102E] uppercase tracking-widest block mb-1">
+                ACCREDITATION & QUALITY REPORTS
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1C1917] dark:text-[#F5F2EB] tracking-tight">
+                Naac Reports
+              </h2>
+            </div>
+            
+            {/* PDF Downloads Badge */}
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C8102E] dark:text-red-400 bg-red-50 dark:bg-red-950/50 border border-red-200/80 dark:border-red-900/50 px-3.5 py-1.5 rounded-full shadow-2xs">
+              <Download size={13} className="text-[#C8102E] dark:text-red-400" />
+              <span>PDF Downloads Available</span>
+            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {naacCriteria.map((item, idx) => (
-              <div key={idx} className="bg-white dark:bg-[#201C18] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-extrabold text-[#C8102E] bg-red-50 dark:bg-red-950/60 border border-red-200 px-3 py-1 rounded-full uppercase">
-                      {item.criterion}
-                    </span>
-                    <span className="text-[10px] font-bold text-amber-700 font-mono">
-                      {item.score}
-                    </span>
+          {/* 2-Column Report Cards Grid */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+          >
+            {naacReports.map((report) => {
+              const IconComponent = report.icon;
+              return (
+                <motion.div
+                  key={report.number}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+                  }}
+                  className="group relative bg-white dark:bg-[#1E1B18] rounded-2xl p-6 sm:p-8 border border-stone-200/80 dark:border-stone-800 shadow-xs hover:shadow-xl hover:shadow-red-950/5 transition-all duration-300 ease-out flex flex-col justify-between min-h-[180px] sm:min-h-[200px] overflow-hidden hover:-translate-y-1.5"
+                >
+                  {/* Subtle Red Top Accent Bar on Hover */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#C8102E] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div>
+                    {/* Top Row: Small Icon Box (Left) + Large Faded Number (Right) */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-100 dark:border-red-900/50 text-[#C8102E] dark:text-red-400 flex items-center justify-center group-hover:bg-[#C8102E] group-hover:text-white group-hover:border-[#C8102E] transition-all duration-300 shadow-2xs">
+                        <IconComponent size={22} />
+                      </div>
+                      <span className="text-3xl sm:text-4xl font-mono font-black text-stone-300 dark:text-stone-700 group-hover:text-[#C8102E]/20 transition-colors">
+                        {report.number}
+                      </span>
+                    </div>
+
+                    {/* Exact Official Report Title */}
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1C1917] dark:text-[#F5F2EB] group-hover:text-[#C8102E] dark:group-hover:text-red-400 transition-colors leading-snug mb-6">
+                      {report.title}
+                    </h3>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">{item.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+                  {/* Bottom Divider + CTA Section */}
+                  <div className="pt-4 border-t border-stone-100 dark:border-stone-800/80 flex items-center justify-between mt-auto">
+                    <a
+                      href={report.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-[#C8102E] dark:text-red-400 group-hover:text-red-700 dark:group-hover:text-red-300 transition-colors"
+                    >
+                      <span>View Report</span>
+                      <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </a>
+                    <ExternalLink size={14} className="text-stone-400 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
         </div>
 
       </div>
     </IQACSubPageLayout>
   );
 }
+
