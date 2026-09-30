@@ -191,6 +191,12 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           {/* <Route path="/schools/engineering" element={<SchoolEngineering />} /> */}
           <Route path="/schools/engineering/:courseSlug" element={<CourseDetails />} />
+                 <Route path="/campus-life" element={<CampusLife/>} />
+                  <Route path="/committees" element={<Committees/>} />
+                         <Route path="/gallery" element={<Gallery/>} />
+   
+           <Route path="/contact" element={<Contact/>} />
+
 
         </Routes>
 

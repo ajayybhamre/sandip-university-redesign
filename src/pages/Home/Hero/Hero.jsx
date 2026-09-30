@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import heroSlide1 from "../../../assets/images/hero-slide-1.jpg";
 import heroSlide2 from "../../../assets/images/hero-slide-2.jpg";
 import heroSlide3 from "../../../assets/images/hero-slide-3.jpg";
@@ -102,21 +104,19 @@ function Hero() {
   return (
     <section className="relative overflow-hidden rounded-b-[36px] lg:rounded-b-[56px] shadow-2xl">
       <div className="relative w-full h-[60vh] sm:h-[75vh] lg:h-[88vh] flex items-center justify-center">
-        
+
         {/* Background Hero Images Carousel */}
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1500 ease-in-out ${
-              activeSlide === index ? "opacity-100 z-0" : "opacity-0 -z-10"
-            }`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1500 ease-in-out ${activeSlide === index ? "opacity-100 z-0" : "opacity-0 -z-10"
+              }`}
           >
             <img
               src={slide.image}
               alt={slide.alt}
-              className={`w-full h-full object-cover object-center transition-transform duration-12000 ease-linear ${
-                activeSlide === index ? "scale-105" : "scale-100"
-              }`}
+              className={`w-full h-full object-cover object-center transition-transform duration-12000 ease-linear ${activeSlide === index ? "scale-105" : "scale-100"
+                }`}
             />
             {/* Enhanced Contrast Dark Overlay for Maximum Visibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50"></div>
@@ -131,14 +131,14 @@ function Hero() {
           className="relative z-10 text-center px-6 max-w-5xl mx-auto translate-y-12 sm:translate-y-20 lg:translate-y-24 select-none cursor-default py-6"
         >
           {/* Title: SANDIP UNIVERSITY with Enhanced Drop-Shadow Contrast */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-playfair font-semibold uppercase tracking-tight leading-none mb-4 flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-5">
+          <h1 className="text-[32px] sm:text-[46px] lg:text-[58px] font-playfair font-semibold uppercase tracking-tight leading-none mb-3 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5">
             {/* SANDIP (Red with High-Contrast Drop Shadow) */}
             <span className="inline-flex">
               {sandipLetters.map((char, idx) => (
                 <span
                   key={`sandip-${idx}`}
                   ref={(el) => (letterRefs.current[idx] = el)}
-                  className="text-[#C8102E] inline-block transition-all duration-300 ease-out will-change-transform drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
+                  className="text-[#D71936] inline-block transition-all duration-300 ease-out will-change-transform drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
                 >
                   {char}
                 </span>
@@ -163,14 +163,33 @@ function Hero() {
           </h1>
 
           {/* Location: NASHIK */}
-          <p className="font-montserrat font-bold text-white text-base sm:text-xl md:text-2xl uppercase tracking-[10px] sm:tracking-[14px] mb-3 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+          <p className="font-montserrat font-bold text-white text-xs sm:text-sm lg:text-base uppercase tracking-[6px] sm:tracking-[10px] mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
             NASHIK
           </p>
 
           {/* Tagline: SIMPLY WORLD CLASS... */}
-          <p className="font-montserrat font-semibold text-rose-100 text-xs sm:text-sm md:text-base uppercase tracking-[4px] sm:tracking-[6px] drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+          <p className="font-montserrat font-semibold text-rose-100 text-[10px] sm:text-xs lg:text-xs uppercase tracking-[3px] sm:tracking-[4px] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
             SIMPLY WORLD CLASS...
           </p>
+
+          {/* Primary & Secondary Hero CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5">
+            <Link
+              to="/admissions"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D71936] hover:bg-red-700 text-white font-bold text-xs sm:text-sm shadow-xl transition-all duration-300 group cursor-pointer"
+            >
+              <span>Apply Now</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            <Link
+              to="/academics"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-black/40 hover:bg-white/20 backdrop-blur-md border border-white/40 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-300 group cursor-pointer"
+            >
+              <span>Explore Programs</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
 
         {/* Carousel Slide Indicators */}
@@ -180,11 +199,10 @@ function Hero() {
               key={idx}
               onClick={() => setActiveSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
-                activeSlide === idx
+              className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${activeSlide === idx
                   ? "w-8 bg-[#C8102E] shadow-md shadow-red-600/50"
                   : "w-2.5 bg-white/60 hover:bg-white"
-              }`}
+                }`}
             />
           ))}
         </div>

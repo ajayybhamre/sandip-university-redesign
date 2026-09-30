@@ -124,11 +124,11 @@ const menuData = [
     ],
   },
 
-{
-    title: "Academics",
-    path: "/academics",
-    mega: false,
-  },
+// {
+//     title: "Academics",
+//     path: "/academics",
+//     mega: false,
+//   },
 
   {
     title: "Schools",
