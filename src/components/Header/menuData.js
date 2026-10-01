@@ -30,11 +30,68 @@ import {
   FileSpreadsheet,
   MessageSquare,
   Info,  Images,UsersRound,
-  HeartHandshake,Dumbbell,Trophy
+  HeartHandshake,Dumbbell,Trophy,
+  Megaphone,
+  CalendarDays,
+  UserCheck,
 
 } from "lucide-react";
 
 const menuData = [
+  {
+    title: "About",
+    path: "/about",
+    mega: false,
+  },
+
+  {
+    title: "Schools",
+    mega: true,
+    sections: [
+      {
+        heading: "Schools",
+        links: [
+          
+          {
+            title: "School Of Engineering & Technology",
+            path: "/schools/engineering-technology",
+            icon: GraduationCap,
+          },
+          {
+            title: "School Of Computer Science & Engineering",
+            path: "/schools/computer-science",
+            icon: BookOpen,
+          },
+          {
+            title: "School Of Commerce & Managment Studies",
+            path: "/schools/management",
+            icon: Briefcase,
+          },
+          {
+            title: "School Of Science",
+            path: "/schools/science",
+            icon: FlaskConical,
+          },
+          {
+            title: "School of Pharmaceutical Sciences ",
+            path: "/schools/pharma",
+            icon: Pill,
+          },
+          {
+            title: "School Of Law",
+            path: "/schools/law",
+            icon: Scale,
+          },
+          {
+            title: "School Of Design",
+            path: "/schools/fashion-beauty",
+            icon: Award,
+          },
+        ],
+      },
+    ],
+  },
+
   {
     title: "Admissions",
     mega: true,
@@ -58,8 +115,6 @@ const menuData = [
             badge: "NEW",
           },
           {
-            // title: "Programs",
-            // path: "/programs",
 
             title: "Postgraduate",
             path: "/postgraduate",
@@ -124,66 +179,12 @@ const menuData = [
     ],
   },
 
-// {
-//     title: "Academics",
-//     path: "/academics",
-//     mega: false,
-//   },
-
   {
-    title: "Schools",
-    mega: true,
-    sections: [
-      {
-        heading: "Schools",
-        links: [
-          
-          {
-            title: "School Of Engineering & Technology",
-            path: "/schools/engineering-technology",
-            icon: GraduationCap,
-          },
-          {
-            title: "School Of Computer Science & Engineering",
-            path: "/schools/computer-science",
-            icon: BookOpen,
-          },
-          {
-            title: "School Of Commerce & Managment Studies",
-            path: "/schools/management",
-            icon: Briefcase,
-          },
-          {
-            title: "School Of Science",
-            path: "/schools/science",
-            icon: FlaskConical,
-          },
-          {
-            title: "School of Pharmaceutical Sciences ",
-            path: "/schools/pharma",
-            icon: Pill,
-          },
-          {
-            title: "School Of Law",
-            path: "/schools/law",
-            icon: Scale,
-          },
-          {
-            title: "School Of Design",
-            path: "/schools/fashion-beauty",
-            icon: Award,
-          },
-        ],
-      },
-    ],
-  },
-
-
-  {
-    title: "Examinations",
-    path: "/coe",
+    title: "Placements",
+    path: "/placement",
     mega: false,
   },
+
   {
     title: "Research",
     mega: true,
@@ -261,20 +262,27 @@ const menuData = [
     ],
   },
 
-  // {
-  //   title: "International",
-  //   mega: false,
-  // },
-
   {
-    title: "Placements",
-    path: "/placement",
-    mega: false,
+    title: "Exams",
+    path: "/exams",
+    mega: true,
+    sections: [
+      {
+        heading: "Examination",
+        links: [
+          { title: "Examination Notices", path: "/exams?tab=notices", icon: Megaphone },
+          { title: "Results", path: "/exams?tab=results", icon: Award },
+          { title: "Timetables", path: "/exams?tab=timetables", icon: CalendarDays },
+          { title: "How to Apply", path: "/exams?tab=how-to-apply", icon: ClipboardCheck },
+          { title: "CoE Co-ordinators AY 2025-2026", path: "/exams?tab=coe-coordinators", icon: UserCheck },
+        ],
+      },
+    ],
   },
 
   {
-    title: "About Us",
-    path: "/about",
+    title: "IQAC",
+    path: "/iqac",
     mega: false,
   },
 
@@ -314,67 +322,6 @@ const menuData = [
       },
     ],
   },
-
-  // {
-  //   title: "Academic",
-  //   path: "/academic",
-  //   mega: false,
-  // },
-
-  {
-    title: "IQAC",
-    path: "/iqac",
-    mega: true,
-    customType: "iqac",
-    sections: [
-      {
-        links: [
-          {
-            title: "Internal Quality Assurance Cell (IQAC)",
-            path: "/iqac",
-          },
-          {
-            title: "IIQA Self Disclosure",
-            path: "/iqac/self-disclosure",
-          },
-          {
-            title: "Central Library",
-            path: "/central-library",
-          },
-          {
-            title: "Feedback System",
-            path: "/iqac/feedback-system",
-          },
-        ],
-      },
-      {
-        links: [
-          {
-            title: "Committees",
-            path: "/iqac/committees",
-          },
-          {
-            title: "Sustainability",
-            path: "/iqac/sustainability",
-          },
-          {
-            title: "Academic Policy",
-            path: "/iqac/academic-policy",
-          },
-          {
-            title: "NAAC",
-            path: "/iqac/naac",
-          },
-        ],
-      },
-    ],
-  },
-
-  // {
-  //   title: "Contact",
-  //   path: "/contact",
-  //   mega: false,
-  // },
 ];
 
 export default menuData;

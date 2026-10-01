@@ -66,6 +66,23 @@ const seoData = {
       "https://yourdomain.com/grievance-redressal-mechanism",
   },
 
+  exams: {
+    title:
+      "Exams | Sandip University",
+
+    description:
+      "Examination notices, results, timetables, how to apply and CoE co-ordinators at Sandip University.",
+
+    keywords:
+      "Sandip University Exams, Examination Notices, Results, Timetables, CoE",
+
+    image:
+      "https://yourdomain.com/exams.jpg",
+
+    url:
+      "https://yourdomain.com/exams",
+  },
+
   contact: {
     title: "Contact Us | Sandip University",
     description: "Get in touch with Sandip University Admission Office.",
