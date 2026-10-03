@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { HiOutlinePhone } from "react-icons/hi2";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer";
@@ -22,7 +23,7 @@ export default function Exams() {
     ? requestedTab
     : tabData[0].id;
 
-  const current = tabData.find((tab) => tab.id === activeTab);
+  const ActiveTab = tabData.find((tab) => tab.id === activeTab).component;
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function Exams() {
       <Breadcrumb
         badge="Examination"
         title="Exams"
-        description="Examination notices, results, timetables, application process and Controller of Examinations co-ordinators at Sandip University."
+        description="Examination notices, results, timetables and how to apply for examination services at Sandip University."
         currentPage="Exams"
         image={examsBanner}
       />
@@ -83,14 +84,33 @@ export default function Exams() {
             p-8 lg:p-10
             min-h-[400px]
           ">
-            {/* TODO: replace this placeholder with real content for each tab */}
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              {current.title}
-            </h2>
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <ActiveTab />
+            </motion.div>
 
-            <p className="mt-4 text-gray-600 dark:text-gray-300">
-              Content for this section will be published here soon.
-            </p>
+            {/* Helpline strip */}
+            <div className="
+              mt-14 flex flex-wrap items-center gap-4
+              bg-red-50 dark:bg-red-900/20
+              border border-red-100 dark:border-red-900
+              rounded-2xl p-6
+            ">
+              <HiOutlinePhone className="text-red-600 w-6 h-6 shrink-0" />
+              <a
+                href="tel:+919607978068"
+                className="text-sm font-semibold text-gray-800 dark:text-gray-100 hover:text-red-600 transition-colors"
+              >
+                +91 9607978068
+              </a>
+              <span className="text-sm text-gray-600 dark:text-gray-300">
+                Examination Helpline
+              </span>
+            </div>
           </div>
 
         </div>

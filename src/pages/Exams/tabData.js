@@ -3,16 +3,22 @@ import {
   HiOutlineDocumentChartBar,
   HiOutlineCalendarDays,
   HiOutlineClipboardDocumentList,
-  HiOutlineUserGroup,
 } from "react-icons/hi2";
 
-/* `id` values must match the ?tab= values used in components/Header/menuData.js */
+import NoticesTab from "./tabs/NoticesTab";
+import ResultsTab from "./tabs/ResultsTab";
+import TimetablesTab from "./tabs/TimetablesTab";
+import HowToApplyTab from "./tabs/HowToApplyTab";
+
+/*
+  `id` values must match the ?tab= values used in components/Header/menuData.js.
+  CoE Co-ordinators and Helpline are dropdown-only items (PDF / phone link), so they have no tab.
+*/
 const tabData = [
-  { id: "notices", title: "Examination Notices", icon: HiOutlineMegaphone },
-  { id: "results", title: "Results", icon: HiOutlineDocumentChartBar },
-  { id: "timetables", title: "Timetables", icon: HiOutlineCalendarDays },
-  { id: "how-to-apply", title: "How to Apply", icon: HiOutlineClipboardDocumentList },
-  { id: "coe-coordinators", title: "CoE Co-ordinators AY 2025-2026", icon: HiOutlineUserGroup },
+  { id: "notices", title: "Examination Notices", icon: HiOutlineMegaphone, component: NoticesTab },
+  { id: "results", title: "Results", icon: HiOutlineDocumentChartBar, component: ResultsTab },
+  { id: "timetables", title: "Timetables", icon: HiOutlineCalendarDays, component: TimetablesTab },
+  { id: "how-to-apply", title: "How to Apply", icon: HiOutlineClipboardDocumentList, component: HowToApplyTab },
 ];
 
 export default tabData;

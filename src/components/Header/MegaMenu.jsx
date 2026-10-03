@@ -6,6 +6,26 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+/* Internal route (path) or plain URL (href: PDF, tel:, external) */
+function MenuLink({ link, children, ...props }) {
+  if (link.href) {
+    return (
+      <a
+        href={link.href}
+        {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={link.path} {...props}>
+      {children}
+    </Link>
+  );
+}
+
 function MegaMenu({ item, sections }) {
   const isAdmissions = item?.customType === "admissions";
   const isAbout = item?.customType === "about";
@@ -277,8 +297,8 @@ function MegaMenu({ item, sections }) {
                             {link}
                           </span>
                         ) : (
-                          <Link
-                            to={link.path}
+                          <MenuLink
+                            link={link}
                             className="
                               group/item
                               relative
@@ -329,7 +349,7 @@ function MegaMenu({ item, sections }) {
                                 className="text-[#C8102E] dark:text-red-400 opacity-60 group-hover/item:opacity-100 group-hover/item:translate-x-1.5 transition-all duration-300"
                               />
                             </div>
-                          </Link>
+                          </MenuLink>
                         )}
                       </li>
                     ))}

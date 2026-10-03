@@ -14,6 +14,8 @@ import Committees from "./pages/Committees/Committees";
 import GrievanceRedressal from "./pages/GrievanceRedressal/GrievanceRedressal";
 import Gallery from "./pages/Gallery/Gallery";
 import Exams from "./pages/Exams/Exams";
+import ResultLookup from "./pages/Exams/ResultLookup";
+import TranscriptApplication from "./pages/Exams/TranscriptApplication";
 import FloatingAction from "./components/FloatingAction";
 import CourseDetails from "./schools/components/CourseDetails";
 import SOET from "./schools/SOET/SOET";
@@ -137,6 +139,8 @@ function App() {
           <Route path="/events" element={<CampusLife />} />
           <Route path="/gallery" element={<Gallery/>} />
           <Route path="/exams" element={<Exams/>} />
+          <Route path="/exams/results/:slug" element={<ResultLookup/>} />
+          <Route path="/exams/transcript-application" element={<TranscriptApplication/>} />
               <Route path="/schools" element={<Schools/>} />
            <Route path="/schools/engineering-technology" element={<SOET/>} />
            <Route path="/schools/computer-science" element={<SOCSE/>} />

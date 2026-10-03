@@ -274,7 +274,17 @@ const menuData = [
           { title: "Results", path: "/exams?tab=results", icon: Award },
           { title: "Timetables", path: "/exams?tab=timetables", icon: CalendarDays },
           { title: "How to Apply", path: "/exams?tab=how-to-apply", icon: ClipboardCheck },
-          { title: "CoE Co-ordinators AY 2025-2026", path: "/exams?tab=coe-coordinators", icon: UserCheck },
+          {
+            title: "CoE Co-ordinators AY 2025-2026",
+            href: "/exam-docs/Departmentwise-CoE-Co-ordinators-AY-2025-2026.pdf",
+            external: true,
+            icon: UserCheck,
+          },
+          {
+            title: "Helpline No: +91 9607978068",
+            href: "tel:+919607978068",
+            icon: Phone,
+          },
         ],
       },
     ],
