@@ -1,5 +1,6 @@
-import { FileSpreadsheet, Download, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { FileSpreadsheet, Download } from "lucide-react";
 import IQACSubPageLayout from "../components/IQACSubPageLayout";
+import IQACSidebarNav from "../components/IQACSidebarNav";
 import seoData from "../../../components/SEO/seoData";
 
 const mandatoryDisclosures = [
@@ -48,40 +49,49 @@ export default function IQACPublicDisclosurePage() {
       badge="STATUTORY COMPLIANCE & PUBLIC DISCLOSURES"
       title="Mandatory Public Disclosures"
       subtitle="Public repository of statutory approvals, UGC 2(f) recognitions, state charter act documents, AICTE approvals, and regulatory council notifications."
+      hideSubNav={true}
     >
-      <div className="space-y-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mandatoryDisclosures.map((item, idx) => (
-            <div key={idx} className="bg-white dark:bg-[#201C18] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-xs flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/50 flex items-center justify-center text-[#C8102E]">
-                    <FileSpreadsheet size={22} />
-                  </div>
-                  <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full uppercase font-mono">
-                    {item.authority}
-                  </span>
-                </div>
-                <h3 className="text-base font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">{item.title}</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{item.description}</p>
-              </div>
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        {/* Left Sidebar Column */}
+        <div className="lg:col-span-4 w-full order-2 lg:order-1">
+          <IQACSidebarNav />
+        </div>
 
-              <div className="pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs text-gray-500">
-                <span className="font-mono">{item.fileSize}</span>
-                <a
-                  href="#download"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Downloading public disclosure: ${item.title}`);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-[#C8102E] font-bold hover:bg-[#C8102E] hover:text-white transition-all shadow-xs"
-                >
-                  <Download size={13} />
-                  <span>View PDF</span>
-                </a>
+        {/* Right Main Content Column */}
+        <div className="lg:col-span-8 space-y-8 order-1 lg:order-2">
+          <div className="grid md:grid-cols-2 gap-6">
+            {mandatoryDisclosures.map((item, idx) => (
+              <div key={idx} className="bg-white dark:bg-[#201C18] rounded-2xl p-6 border border-stone-200/80 dark:border-stone-800 shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-900/50 flex items-center justify-center text-[#C8102E]">
+                      <FileSpreadsheet size={22} />
+                    </div>
+                    <span className="text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full uppercase font-mono">
+                      {item.authority}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-2">{item.title}</h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{item.description}</p>
+                </div>
+
+                <div className="pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs text-gray-500">
+                  <span className="font-mono">{item.fileSize}</span>
+                  <a
+                    href="#download"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert(`Downloading public disclosure: ${item.title}`);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-[#C8102E] font-bold hover:bg-[#C8102E] hover:text-white transition-all shadow-xs"
+                  >
+                    <Download size={13} />
+                    <span>View PDF</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </IQACSubPageLayout>

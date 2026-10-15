@@ -7,7 +7,7 @@ import SEO from "../../../components/SEO/SEO";
 
 export const iqacNavLinks = [
   { path: "/iqac", label: "IQAC Home", short: "Overview" },
-  { path: "/iqac/about", label: "About IQAC", short: "About" },
+  { path: "/iqac", label: "About IQAC", short: "About" },
   { path: "/iqac/aims-objectives", label: "Aims & Objectives", short: "Objectives" },
   { path: "/iqac/members", label: "Members & Composition", short: "Members" },
   { path: "/iqac/sustainability", label: "Sustainability", short: "Green Campus" },
@@ -28,6 +28,7 @@ export default function IQACSubPageLayout({
   badge = "INTERNAL QUALITY ASSURANCE CELL",
   title,
   subtitle,
+  hideSubNav = false,
   children,
 }) {
   const location = useLocation();
@@ -76,9 +77,12 @@ export default function IQACSubPageLayout({
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1C1917] dark:text-[#F5F2EB] tracking-tight leading-tight mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#1C1917] dark:text-[#F5F2EB] tracking-tight leading-tight mb-3">
                 {title}
               </h1>
+
+              {/* Short Red Underline / Accent */}
+              <div className="w-16 h-1 bg-[#C8102E] rounded-full mb-4" />
 
               {subtitle && (
                 <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl">
@@ -90,31 +94,33 @@ export default function IQACSubPageLayout({
         </section>
 
         {/* Sticky Sub-Navigation Switcher Bar */}
-        <div className="sticky top-[80px] z-30 bg-white/95 dark:bg-[#161411]/95 backdrop-blur-md border-b border-[#EAE3D7] dark:border-[#2C2720] shadow-xs">
-          <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
-            <div className="flex items-center gap-1.5 overflow-x-auto py-3 no-scrollbar">
-              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest px-2 hidden lg:inline flex-shrink-0 font-mono">
-                NAVIGATE IQAC:
-              </span>
-              {iqacNavLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
-                      isActive
-                        ? "bg-[#C8102E] text-white shadow-sm scale-105"
-                        : "bg-gray-100 dark:bg-[#201C18] text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#C8102E]"
-                    }`}
-                  >
-                    {link.short}
-                  </Link>
-                );
-              })}
+        {!hideSubNav && (
+          <div className="sticky top-[80px] z-30 bg-white/95 dark:bg-[#161411]/95 backdrop-blur-md border-b border-[#EAE3D7] dark:border-[#2C2720] shadow-xs">
+            <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
+              <div className="flex items-center gap-1.5 overflow-x-auto py-3 no-scrollbar">
+                <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest px-2 hidden lg:inline flex-shrink-0 font-mono">
+                  NAVIGATE IQAC:
+                </span>
+                {iqacNavLinks.map((link) => {
+                  const isActive = location.pathname === link.path;
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex-shrink-0 ${
+                        isActive
+                          ? "bg-[#C8102E] text-white shadow-sm scale-105"
+                          : "bg-gray-100 dark:bg-[#201C18] text-gray-700 dark:text-gray-300 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-[#C8102E]"
+                      }`}
+                    >
+                      {link.short}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Main Body Content */}
         <div className="py-12 lg:py-16">
