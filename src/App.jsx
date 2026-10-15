@@ -13,6 +13,9 @@ import CampusLife from "./pages/CampusLife/CampusLife";
 import Committees from "./pages/Committees/Committees";
 import GrievanceRedressal from "./pages/GrievanceRedressal/GrievanceRedressal";
 import Gallery from "./pages/Gallery/Gallery";
+import Exams from "./pages/Exams/Exams";
+import ResultLookup from "./pages/Exams/ResultLookup";
+import TranscriptApplication from "./pages/Exams/TranscriptApplication";
 import FloatingAction from "./components/FloatingAction";
 import CourseDetails from "./schools/components/CourseDetails";
 import SOET from "./schools/SOET/SOET";
@@ -64,6 +67,12 @@ import IQACFeedbackSystemPage from "./pages/IQAC/subpages/IQACFeedbackSystemPage
 import IQACInstitutionalDistinctivenessPage from "./pages/IQAC/subpages/IQACInstitutionalDistinctivenessPage";
 import IQACNAACPage from "./pages/IQAC/subpages/IQACNAACPage";
 import CentralLibraryPage from "./pages/Library/CentralLibraryPage";
+import Research from "./pages/Research/Research";
+import Phd from "./pages/Phd/Phd";
+import PhdAdmission from "./pages/Phd/PhdAdmission";
+import PhdDegreeAwarded from "./pages/Phd/PhdDegreeAwarded";
+import PhdInfoDegreesAwarded from "./pages/Phd/PhdInfoDegreesAwarded";
+import PhdUndertaking from "./pages/Phd/PhdUndertaking";
 
 import ScrollProgressBar from "./components/Animated/ScrollProgressBar";
 import ScrollToTop from "./ScrollToTop";
@@ -129,6 +138,9 @@ function App() {
           <Route path="/campus-life" element={<CampusLife />} />
           <Route path="/events" element={<CampusLife />} />
           <Route path="/gallery" element={<Gallery/>} />
+          <Route path="/exams" element={<Exams/>} />
+          <Route path="/exams/results/:slug" element={<ResultLookup/>} />
+          <Route path="/exams/transcript-application" element={<TranscriptApplication/>} />
               <Route path="/schools" element={<Schools/>} />
            <Route path="/schools/engineering-technology" element={<SOET/>} />
            <Route path="/schools/computer-science" element={<SOCSE/>} />
@@ -187,6 +199,14 @@ function App() {
           <Route path="/iqac/academic-policy" element={<IQACAcademicPolicyPage />} />
           <Route path="/iqac/feedback-system" element={<IQACFeedbackSystemPage />} />
           <Route path="/iqac/institutional-distinctiveness" element={<IQACInstitutionalDistinctivenessPage />} />
+
+          {/* Research & PhD */}
+          <Route path="/research" element={<Research />} />
+          <Route path="/phd" element={<Phd />} />
+          <Route path="/phd/admission" element={<PhdAdmission />} />
+          <Route path="/phd/degree-awarded" element={<PhdDegreeAwarded />} />
+          <Route path="/phd/info-degrees-awarded" element={<PhdInfoDegreesAwarded />} />
+          <Route path="/phd/undertaking" element={<PhdUndertaking />} />
 
           {/* Library Page */}
           <Route path="/central-library" element={<CentralLibraryPage />} />

@@ -2,11 +2,17 @@ import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import confetti from "canvas-confetti";
 import api from "../api/api"
+import { useLocation } from "react-router-dom";
+
+/* Student task pages where the enquiry popup should never appear */
+const NO_POPUP_PATHS = ["/exams/results", "/exams/transcript-application"];
 
 export default function Popup() {
 
 
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const hidden = NO_POPUP_PATHS.some((path) => pathname.startsWith(path));
 
 
 const [formData, setFormData] = useState({
@@ -24,14 +30,16 @@ const handleChange = (e) => {
 };
 
   useEffect(() => {
+    if (hidden) return;
+
     const timer = setTimeout(() => {
       setOpen(true);
-    }, 2000); // Opens after 1 second
+    }, 2000); // Opens after 2 seconds
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [hidden]);
 
-  if (!open) return null;
+  if (!open || hidden) return null;
 const handleSubmit = async (e) => {
   e.preventDefault();
    try {

@@ -17,6 +17,26 @@ import logo from "../../assets/images/logo-dark.png";
 import whiteLogo from "../../assets/images/SU-NAAC-white.png";
 import { useTheme } from "../../context/ThemeContext";
 
+/* Internal route (path) or plain URL (href: PDF, tel:, external) */
+function MobileSectionLink({ link, children, ...props }) {
+  if (link.href) {
+    return (
+      <a
+        href={link.href}
+        {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <NavLink to={link.path} {...props}>
+      {children}
+    </NavLink>
+  );
+}
+
 function Navbar({ overlay = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
@@ -775,10 +795,8 @@ function Navbar({ overlay = false }) {
                                             {link}
                                           </span>
                                         ) : (
-                                          <NavLink
-                                            to={
-                                              link.path
-                                            }
+                                          <MobileSectionLink
+                                            link={link}
                                             onClick={() =>
                                               setIsOpen(
                                                 false
@@ -861,7 +879,7 @@ function Navbar({ overlay = false }) {
                                                 }
                                               </span>
                                             )}
-                                          </NavLink>
+                                          </MobileSectionLink>
                                         )}
                                       </li>
                                     )
