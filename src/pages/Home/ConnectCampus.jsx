@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Sparkles, Users, Heart, Globe, Compass, X, Maximize2, Layers, MapPin } from "lucide-react";
-import { FaInstagram, FaYoutube, FaLinkedin, FaFacebookF } from "react-icons/fa";
+import { ArrowRight, ArrowUpRight, Sparkles, Users, Heart, Globe, Compass, X, Maximize2, Layers, MapPin, BookOpen } from "lucide-react";
+import { FaInstagram, FaYoutube, FaFacebookF, FaTwitter } from "react-icons/fa";
 
 import campusAerial from "../../assets/images/campus.png";
 import campusHeroImage from "../../assets/images/about-entrance.jpg";
@@ -12,10 +12,10 @@ import campus1Image from "../../assets/images/campus-1.jpg";
 const socialLinks = [
   {
     name: "Instagram",
-    handle: "@sandipuniversity_nashik",
+    handle: "@sandip.university",
     label: "Campus Stories & Reels",
     icon: FaInstagram,
-    url: "https://www.instagram.com/sandipuniversity_nashik/",
+    url: "https://www.instagram.com/sandip.university/",
     iconBg: "bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white shadow-md shadow-pink-500/25 border border-white/20",
     color: "hover:text-pink-600 dark:hover:text-pink-400",
   },
@@ -24,27 +24,45 @@ const socialLinks = [
     handle: "Sandip University",
     label: "Tours & Campus Life",
     icon: FaYoutube,
-    url: "https://www.youtube.com/@SandipUniversity",
+    url: "https://www.youtube.com/channel/UCDAaVM3kH_Jk7jgSaQj5xFw",
     iconBg: "bg-gradient-to-br from-red-500 to-[#C8102E] text-white shadow-md shadow-red-500/25 border border-white/20",
     color: "hover:text-red-600 dark:hover:text-red-400",
   },
   {
-    name: "LinkedIn",
-    handle: "Sandip University",
-    label: "Corporate & Placements",
-    icon: FaLinkedin,
-    url: "https://www.linkedin.com/school/sandip-university/",
-    iconBg: "bg-gradient-to-br from-blue-500 to-[#0A66C2] text-white shadow-md shadow-blue-500/25 border border-white/20",
-    color: "hover:text-blue-600 dark:hover:text-blue-400",
-  },
-  {
     name: "Facebook",
-    handle: "Sandip University Nashik",
+    handle: "Sandip University",
     label: "Events & Announcements",
     icon: FaFacebookF,
-    url: "https://www.facebook.com/sandipuniversitynashik/",
+    url: "https://www.facebook.com/SandipUniversity/",
     iconBg: "bg-gradient-to-br from-blue-600 to-[#1877F2] text-white shadow-md shadow-blue-600/25 border border-white/20",
     color: "hover:text-blue-700 dark:hover:text-blue-400",
+  },
+  {
+    name: "Twitter / X",
+    handle: "@sandipuniv",
+    label: "Updates & News",
+    icon: FaTwitter,
+    url: "https://twitter.com/sandipuniv",
+    iconBg: "bg-gradient-to-br from-slate-800 to-black text-white shadow-md shadow-slate-900/25 border border-white/20",
+    color: "hover:text-slate-900 dark:hover:text-slate-200",
+  },
+  {
+    name: "Website",
+    handle: "sandipuniversity.edu.in",
+    label: "Official University Portal",
+    icon: Globe,
+    url: "https://www.sandipuniversity.edu.in/",
+    iconBg: "bg-gradient-to-br from-emerald-500 to-teal-700 text-white shadow-md shadow-teal-500/25 border border-white/20",
+    color: "hover:text-teal-600 dark:hover:text-teal-400",
+  },
+  {
+    name: "Informative Blogs",
+    handle: "sandipuniversity.edu.in/blog",
+    label: "Articles, Guides & Insights",
+    icon: BookOpen,
+    url: "https://www.sandipuniversity.edu.in/blog/",
+    iconBg: "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-500/25 border border-white/20",
+    color: "hover:text-amber-600 dark:hover:text-amber-400",
   },
 ];
 
@@ -100,7 +118,7 @@ export default function ConnectCampus() {
   );
 
   return (
-    <section id="connect-campus" className="py-14 lg:py-16 bg-slate-50/70 dark:bg-zinc-950 transition-colors duration-300 overflow-hidden border-t border-slate-200/60 dark:border-zinc-800/60">
+    <section id="connect-campus" className="py-16 lg:py-24 bg-[#FAF8F5] dark:bg-zinc-950 transition-colors duration-300 overflow-hidden border-t border-slate-200/60 dark:border-zinc-800/60">
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -108,18 +126,18 @@ export default function ConnectCampus() {
           {/* LEFT SIDE: Heading & 3D Styled Social Links */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/40 text-xs font-bold text-[#C8102E] uppercase tracking-wider mb-3 w-fit">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/40 text-[10px] sm:text-[11px] font-bold text-[#C8102E] uppercase tracking-wider mb-3 w-fit">
               <Sparkles className="w-3.5 h-3.5 text-[#C8102E]" />
               <span>CAMPUS & COMMUNITY</span>
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-3">
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-3">
               Connect With <span className="text-[#C8102E]">Our Campus</span>
             </h2>
 
             {/* Supporting Text */}
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed mb-6">
+            <p className="text-xs sm:text-sm lg:text-[15px] max-w-[540px] text-slate-600 dark:text-slate-300 font-normal leading-relaxed mb-5">
               Explore campus life, stay connected and discover what makes the Sandip community special.
             </p>
 

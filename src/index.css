@@ -267,17 +267,13 @@ body{
 
 /* Custom Selection */
 ::selection {
-
-    background-color: #bd1e2d;
-    color: #ffffff;
-
   background-color: #C8102E !important;
   color: #FFFFFF !important;
+}
 
-.dark body{
+.dark body {
   background: var(--surface);
   color: var(--ink);
-
 }
 
 ::-moz-selection {
@@ -342,4 +338,59 @@ article p,
 p{
   font-size: 16px;
 }
+
+/* ==================================================
+   SUBTLE PREMIUM CRIMSON GLOW HORIZONTAL SCROLLBARS
+   Official Sandip University Visual Identity
+   ================================================== */
+
+/* Webkit Horizontal Scrollbars (Chrome, Safari, Edge) */
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  background-color: #FAF6EE;
+  border-radius: 9999px;
+  margin: 0 4px;
+}
+
+html.dark ::-webkit-scrollbar-track:horizontal,
+[data-theme="dark"] ::-webkit-scrollbar-track:horizontal {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: #C8102E;
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(200, 16, 46, 0.45);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background-color: #A00C24;
+  box-shadow: 0 0 14px rgba(200, 16, 46, 0.8);
+}
+
+/* Firefox Horizontal Scrollbars */
+* {
+  scrollbar-color: #C8102E #FAF6EE;
+  scrollbar-width: thin;
+}
+
+html.dark * {
+  scrollbar-color: #C8102E rgba(255, 255, 255, 0.08);
+}
+
+/* Explicit Horizontal Scrollbar Utility Class for Custom Containers */
+.crimson-scroll,
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #C8102E #FAF6EE;
+}
+
+html.dark .crimson-scroll,
+html.dark .overflow-x-auto {
+  scrollbar-color: #C8102E rgba(255, 255, 255, 0.08);
 }

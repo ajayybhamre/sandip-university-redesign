@@ -125,7 +125,9 @@ function App() {
         {/* Future Pages */}
         <Route path="/about" element={<About/>} />
         <Route path="/academics" element={<AcademicsPage/>} />
-         <Route path="/placement" element={<Placement/>} />
+        <Route path="/placement" element={<Placement/>} />
+          <Route path="/campus-life" element={<CampusLife />} />
+          <Route path="/events" element={<CampusLife />} />
           <Route path="/gallery" element={<Gallery/>} />
               <Route path="/schools" element={<Schools/>} />
            <Route path="/schools/engineering-technology" element={<SOET/>} />
@@ -153,12 +155,30 @@ function App() {
 
           {/* IQAC Landing Page & Sub-Pages */}
           <Route path="/iqac" element={<IQAC />} />
-          <Route path="/iqac/about" element={<IQACAboutPage />} />
+          <Route path="/iqac/about" element={<IQAC />} />
           <Route path="/iqac/aims-objectives" element={<IQACAimsObjectivesPage />} />
           <Route path="/iqac/members" element={<IQACMembersPage />} />
           <Route path="/iqac/sustainability" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/gender-sensitivity" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/gender-sensitivity" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/energy-conservation-measures" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/energy-conservation-measures.php" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/energy-conservation-measures" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/waste-management" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/waste-management.php" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/waste-management" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/water-conservation" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/water-conservation-facilities" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/water-conservation-facilities.php" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/water-conservation-facilities" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/water-conservation" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/green-campus" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/sustainability/green-campus-initiatives" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/green-campus-initiatives.php" element={<IQACSustainabilityPage />} />
+          <Route path="/iqac/institutional-values-social-responsibilities/green-campus-initiatives" element={<IQACSustainabilityPage />} />
           <Route path="/iqac/strategic-plan" element={<IQACStrategicPlanPage />} />
           <Route path="/iqac/committees" element={<IQACCommitteesPage />} />
+          <Route path="/committees" element={<IQACCommitteesPage />} />
           <Route path="/iqac/minutes" element={<IQACMinutesPage />} />
           <Route path="/iqac/iiqa-disclosure" element={<IQACIIQADisclosurePage />} />
           <Route path="/iqac/self-disclosure" element={<IQACIIQADisclosurePage />} />

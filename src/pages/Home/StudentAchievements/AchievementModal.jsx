@@ -36,13 +36,20 @@ export default function AchievementModal({ achievement, onClose }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* HEADER IMAGE & BADGES */}
-        <div className="relative w-full h-56 sm:h-64 bg-slate-900 shrink-0">
+        <div className="relative w-full h-64 sm:h-80 bg-slate-950 shrink-0 overflow-hidden flex items-center justify-center">
+          {/* Ambient Blurred Background for Aspect Ratio Filling */}
+          <img
+            src={achievement.image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110 pointer-events-none"
+            aria-hidden="true"
+          />
           <img
             src={achievement.image}
             alt={achievement.title}
-            className="w-full h-full object-cover"
+            className={`relative z-10 w-full h-full object-cover ${achievement.imagePositionModal || achievement.imagePosition || "object-[center_0%]"} drop-shadow-xl`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#15151A] via-slate-950/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#15151A] via-transparent to-black/30 z-10 pointer-events-none"></div>
 
           {/* CLOSE BUTTON */}
           <button

@@ -22,7 +22,7 @@ import {
 import aboutImg from "../../../assets/images/about-entrance.jpg";
 
 export const iqac12NavLinks = [
-  { path: "/iqac/about", label: "About IQAC", icon: Info },
+  { path: "/iqac", label: "About IQAC", icon: Info },
   { path: "/iqac/aims-objectives", label: "Aims & Objectives", icon: Target },
   { path: "/iqac/members", label: "Members & Composition", icon: Users },
   { path: "/iqac/sustainability", label: "Sustainability", icon: Leaf },

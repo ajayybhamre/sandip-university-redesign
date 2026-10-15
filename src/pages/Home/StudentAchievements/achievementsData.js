@@ -31,6 +31,8 @@ export const achievementsData = [
     badge: "Rank #1",
     metric: "9.94 CGPA",
     image: ashwiniImg,
+    imagePositionCard: "object-[center_0%]",
+    imagePositionModal: "object-[center_0%]",
     date: "June 2024",
     fullDetails: {
       organization: "Sandip University Academic Board",
@@ -55,6 +57,8 @@ export const achievementsData = [
     badge: "Microsoft",
     metric: "32 LPA Package",
     image: gayatriImg,
+    imagePositionCard: "object-[center_0%]",
+    imagePositionModal: "object-[center_0%]",
     date: "March 2024",
     fullDetails: {
       organization: "Microsoft India Development Center",
@@ -78,6 +82,8 @@ export const achievementsData = [
     badge: "1st Prize Winner",
     metric: "₹1,00,000 Cash Prize",
     image: pawanImg,
+    imagePositionCard: "object-[center_0%]",
+    imagePositionModal: "object-[center_0%]",
     date: "December 2024",
     fullDetails: {
       organization: "Ministry of Education Innovation Cell (Govt. of India)",
@@ -101,6 +107,8 @@ export const achievementsData = [
     badge: "Startup Founder",
     metric: "₹10L Seed Fund",
     image: riyaImg,
+    imagePositionCard: "object-[center_0%]",
+    imagePositionModal: "object-[center_0%]",
     date: "August 2024",
     fullDetails: {
       organization: "SUN Incubation & Innovation Foundation (SU-IIF)",
@@ -124,6 +132,8 @@ export const achievementsData = [
     badge: "AWS Certified",
     metric: "Dual Certified",
     image: certGraduationImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "January 2025",
     fullDetails: {
       organization: "Amazon Web Services & Google Cloud",
@@ -147,6 +157,8 @@ export const achievementsData = [
     badge: "PMRF Fellow",
     metric: "PMRF Fellowship",
     image: researchGrantsImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "October 2024",
     fullDetails: {
       organization: "Ministry of Education & IIT Bombay",
@@ -170,6 +182,8 @@ export const achievementsData = [
     badge: "MIT Internship",
     metric: "100% Funded",
     image: handsOnTrainingImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "May 2024",
     fullDetails: {
       organization: "MIT Media Lab, Cambridge USA",
@@ -193,6 +207,8 @@ export const achievementsData = [
     badge: "Formula Student 2nd",
     metric: "2nd Rank All-India",
     image: droneImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "February 2025",
     fullDetails: {
       organization: "Formula Student India & SAE India",
@@ -216,6 +232,8 @@ export const achievementsData = [
     badge: "Patent Granted",
     metric: "Patent No. 492810",
     image: innovationCellImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "November 2024",
     fullDetails: {
       organization: "Indian Patent Office (Govt. of India)",
@@ -239,6 +257,8 @@ export const achievementsData = [
     badge: "NPTEL Gold",
     metric: "Top 1% Score",
     image: intlForumImg,
+    imagePositionCard: "object-center",
+    imagePositionModal: "object-center",
     date: "December 2024",
     fullDetails: {
       organization: "NPTEL & IIT Kharagpur",

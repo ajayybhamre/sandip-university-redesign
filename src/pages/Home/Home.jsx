@@ -4,7 +4,6 @@ import QuickLinks from "./QuickLink/QuickLinks";
 
 import Footer from "../../components/Footer";
 import AboutSandipUniversity from "./AboutSandipUniversity";
-import StudentStories from "./StudentStories/StudentStories";
 import StudentAchievements from "./StudentAchievements/StudentAchievements";
 
 import WhySandipAndLegacy from "./WhySandipAndLegacy";
@@ -19,9 +18,13 @@ import seoData from "../../components/SEO/seoData";
 import Popup from "../../components/Popup";
 import Header from "../../components/Header/Header";
 
+import StudentLifeSection from "../../components/StudentLifeSection";
+import AchievementsSection from "../../components/AchievementsSection";
+import CommunityCTA from "../../components/CommunityCTA";
+
 export default function Home() {
   return (
-    <div className="homepage-wrapper font-sans antialiased text-[#2A080C] dark:text-white bg-[#FAF6EE] dark:bg-[#0B0B0D] selection:bg-[#C8102E] selection:text-white transition-colors">
+    <div className="homepage-wrapper font-sans antialiased text-[#0F172A] dark:text-white bg-[#FAF8F5] dark:bg-[#0B0B0D] selection:bg-[#C8102E] selection:text-white transition-colors">
       <Popup />
       <SEO {...seoData.home} />
 
@@ -31,7 +34,9 @@ export default function Home() {
         <QuickLinks />
         <AboutSandipUniversity />
         <WhySandipAndLegacy />
-        <StudentStories />
+        <StudentLifeSection />
+        <AchievementsSection />
+        <CommunityCTA />
         <StudentAchievements />
         <CampusTour />
         <ConnectCampus />
