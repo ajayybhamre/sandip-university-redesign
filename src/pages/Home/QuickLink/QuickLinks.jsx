@@ -1,101 +1,68 @@
 import { Link } from "react-router-dom";
 import quickLinks from "./quickLinksData";
 
+/* Floating strip that overlaps the bottom of the hero. */
 export default function QuickLinks() {
-  const handleAnchorClick = (e, targetPath) => {
-    if (targetPath.startsWith("#")) {
-      e.preventDefault();
-      const sectionId = targetPath.replace("#", "");
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        window.history.pushState(null, "", targetPath);
-      } else {
-        window.location.href = `/${targetPath}`;
-      }
+  const goToAnchor = (e, path) => {
+    e.preventDefault();
+    const el = document.getElementById(path.replace("#", ""));
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", path);
     }
   };
 
   return (
-    <section className="relative z-30 max-w-7xl mx-auto px-6 py-6">
-      {/* Outer White Rounded Card Container */}
-      <div className="bg-white dark:bg-zinc-900 rounded-[28px] shadow-2xl border border-slate-200/80 dark:border-zinc-800 p-4 sm:p-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-zinc-800/80">
-          {quickLinks.map((item, index) => {
-            const Icon = item.icon;
-            const linkProps = {
-              key: item.id,
-              style: {
-                animationName: "fadeInUpQuickLink",
-                animationDuration: "0.6s",
-                animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-                animationFillMode: "both",
-                animationDelay: `${index * 90}ms`,
-              },
-              className:
-                "group relative pt-4 pb-3 sm:py-4 px-3 flex flex-col items-center justify-center cursor-pointer bg-transparent border border-transparent transition-all duration-300 ease-out hover:-translate-y-1.5 sm:hover:-translate-y-2 focus:outline-hidden focus:ring-2 focus:ring-[#C8102E]/40 rounded-2xl",
-              "aria-label": `${item.title} - ${item.subtitle}`,
-            };
+    <section
+      aria-label="Quick links"
+      className="relative z-30 mx-auto -mt-24 max-w-7xl px-4 sm:px-6 lg:-mt-28"
+    >
+      <div
+        data-aos="fade-up"
+        className="grid grid-cols-2 gap-1 rounded-[28px] border border-slate-200/80 bg-white p-3 shadow-2xl shadow-slate-900/15 dark:border-white/10 dark:bg-[#15151A] sm:p-4 md:grid-cols-3 lg:grid-cols-6"
+      >
+        {quickLinks.map((item, i) => {
+          const Icon = item.icon;
+          const cls =
+            "group flex flex-col items-center rounded-2xl px-3 py-5 text-center transition duration-300 hover:-translate-y-1.5 hover:bg-rose-50 dark:hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E]/50";
+          const body = (
+            <>
+              <span className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-[#C8102E] ring-1 ring-rose-100 transition duration-300 group-hover:scale-110 group-hover:bg-[#C8102E] group-hover:text-white dark:bg-[#C8102E]/15 dark:ring-[#C8102E]/20">
+                <Icon className="text-[28px]" />
+              </span>
+              <span className="block text-[15px] font-bold text-slate-900 dark:text-white">
+                {item.title}
+              </span>
+              <span className="mt-0.5 block text-[13px] text-slate-500 dark:text-slate-400">
+                {item.subtitle}
+              </span>
+            </>
+          );
 
-            const content = (
-              <>
-                {/* Light Red Icon Container */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-100 dark:border-red-900/30 text-[#C8102E] flex items-center justify-center mb-3 transition-all duration-300 ease-out group-hover:bg-[#C8102E]/10 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-red-500/15 shrink-0">
-                  <Icon className="text-2xl sm:text-3xl transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6" />
-                </div>
-
-                {/* Title */}
-                <h3 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-[#C8102E] transition-colors duration-300 text-center leading-snug">
-                  {item.title}
-                </h3>
-
-                {/* Subtitle */}
-                <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400 transition-colors duration-300 text-center mt-0.5">
-                  {item.subtitle}
-                </p>
-
-                {/* Animated Underline */}
-                <span className="h-0.5 w-0 group-hover:w-7 bg-[#C8102E] rounded-full transition-all duration-300 ease-out mt-2 opacity-0 group-hover:opacity-100"></span>
-              </>
-            );
-
-            if (item.isAnchor) {
-              return (
-                <a
-                  {...linkProps}
-                  href={item.path}
-                  onClick={(e) => handleAnchorClick(e, item.path)}
-                >
-                  {content}
-                </a>
-              );
-            }
-
-            return (
-              <Link {...linkProps} to={item.path}>
-                {content}
-              </Link>
-            );
-          })}
-        </div>
+          return item.isAnchor ? (
+            <a
+              key={item.id}
+              href={item.path}
+              onClick={(e) => goToAnchor(e, item.path)}
+              data-aos="zoom-in"
+              data-aos-delay={120 + i * 70}
+              className={cls}
+            >
+              {body}
+            </a>
+          ) : (
+            <Link
+              key={item.id}
+              to={item.path}
+              data-aos="zoom-in"
+              data-aos-delay={120 + i * 70}
+              className={cls}
+            >
+              {body}
+            </Link>
+          );
+        })}
       </div>
-
-      {/* Inline Stagger Animation Keyframes */}
-      <style>{`
-        @keyframes fadeInUpQuickLink {
-          from {
-            opacity: 0;
-            transform: translateY(18px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

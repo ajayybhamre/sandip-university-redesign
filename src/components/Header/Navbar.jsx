@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import {
   FaChevronDown,
@@ -37,26 +37,14 @@ function MobileSectionLink({ link, children, ...props }) {
   );
 }
 
-function Navbar({ overlay = false }) {
+/* `scrolled` now comes from <Header> (single scroll listener with hysteresis).
+   The Navbar used to run its own `scrollY > 80` listener, which fought with the
+   Header's and caused the flicker. */
+function Navbar({ overlay = false, scrolled = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  const [scrolled, setScrolled] = useState(false);
 
   const { isDark, toggleTheme } = useTheme();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);

@@ -1,215 +1,186 @@
-import { useRef, useState, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import heroSlide1 from "../../../assets/images/hero-slide-1.jpg";
-import heroSlide2 from "../../../assets/images/hero-slide-2.jpg";
-import heroSlide3 from "../../../assets/images/hero-slide-3.jpg";
-import heroBuilding from "../../../assets/images/hero-building.jpg";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, Pause, Play } from "lucide-react";
+import SplitHeading from "../../../components/Animated/SplitHeading";
+import HeroEnquiryForm from "./HeroEnquiryForm";
+import { heroVideos } from "../homeData";
 
-const heroSlides = [
-  {
-    image: heroSlide1,
-    alt: "Sandip University Grand Entrance Gate",
-  },
-  {
-    image: heroSlide2,
-    alt: "Sandip University Aerial Amphitheatre & Campus Layout",
-  },
-  {
-    image: heroSlide3,
-    alt: "Sandip University Academic Building Facade",
-  },
-  {
-    image: heroBuilding,
-    alt: "Sandip University Campus Building",
-  },
-];
+/* One video (or its poster image if the video cannot play). */
+function VideoSlide({ item, slideIndex, paused, staticMode, onDone }) {
+  const ref = useRef(null);
+  const [fallback, setFallback] = useState(staticMode);
 
-const sandipLetters = ["S", "A", "N", "D", "I", "P"];
-const universityLetters = ["U", "N", "I", "V", "E", "R", "S", "I", "T", "Y"];
-
-function Hero() {
-  const containerRef = useRef(null);
-  const letterRefs = useRef([]);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  // Auto slide timer - 7.5 seconds for a slower, smoother pace
+  // play / pause
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 7500);
+    const v = ref.current;
+    if (!v || fallback) return;
+    v.muted = true;
+    if (paused) {
+      v.pause();
+    } else {
+      const p = v.play();
+      if (p && p.catch) p.catch(() => setFallback(true));
+    }
+  }, [paused, fallback]);
 
-    return () => clearInterval(timer);
-  }, []);
-
+  // safety timer: move on after maxSeconds (or 7 s when only the poster shows)
   useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-    };
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
-
-  const handleMouseMove = (e) => {
-    if (!isDesktop || !containerRef.current) return;
-
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const radius = 170; // Influence radius
-
-    letterRefs.current.forEach((el) => {
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      const dist = Math.hypot(mouseX - centerX, mouseY - centerY);
-
-      if (dist < radius) {
-        const factor = Math.pow(1 - dist / radius, 1.8);
-        const scale = 1 + 0.22 * factor;
-        const translateY = -8 * factor;
-        const brightness = 1 + 0.3 * factor;
-        const spacing = 1.5 * factor;
-        const weight = Math.round(600 + 200 * factor);
-
-        el.style.transform = `scale(${scale}) translateY(${translateY}px)`;
-        el.style.filter = `brightness(${brightness})`;
-        el.style.paddingLeft = `${spacing}px`;
-        el.style.paddingRight = `${spacing}px`;
-        el.style.fontWeight = weight.toString();
-      } else {
-        el.style.transform = "scale(1) translateY(0px)";
-        el.style.filter = "brightness(1)";
-        el.style.paddingLeft = "0px";
-        el.style.paddingRight = "0px";
-        el.style.fontWeight = "600";
-      }
-    });
-  };
-
-  const handleMouseLeave = () => {
-    letterRefs.current.forEach((el) => {
-      if (!el) return;
-      el.style.transform = "scale(1) translateY(0px)";
-      el.style.filter = "brightness(1)";
-      el.style.paddingLeft = "0px";
-      el.style.paddingRight = "0px";
-      el.style.fontWeight = "600";
-    });
-  };
+    if (paused || staticMode) return undefined;
+    const seconds = fallback ? 7 : item.maxSeconds ?? 15;
+    const t = setTimeout(() => onDone(slideIndex), seconds * 1000);
+    return () => clearTimeout(t);
+  }, [paused, fallback, staticMode, item, slideIndex, onDone]);
 
   return (
-    <section className="relative overflow-hidden rounded-b-[36px] lg:rounded-b-[56px] shadow-2xl">
-      <div className="relative w-full h-[60vh] sm:h-[75vh] lg:h-[88vh] flex items-center justify-center">
-
-        {/* Background Hero Images Carousel */}
-        {heroSlides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1500 ease-in-out ${activeSlide === index ? "opacity-100 z-0" : "opacity-0 -z-10"
-              }`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.alt}
-              className={`w-full h-full object-cover object-center transition-transform duration-12000 ease-linear ${activeSlide === index ? "scale-105" : "scale-100"
-                }`}
-            />
-            {/* Enhanced Contrast Dark Overlay for Maximum Visibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/50"></div>
-          </div>
-        ))}
-
-        {/* Centered Premium Text Overlay with Maximum Legibility */}
-        <div
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="relative z-10 text-center px-6 max-w-5xl mx-auto translate-y-12 sm:translate-y-20 lg:translate-y-24 select-none cursor-default py-6"
-        >
-          {/* Title: SANDIP UNIVERSITY with Enhanced Drop-Shadow Contrast */}
-          <h1 className="text-[32px] sm:text-[46px] lg:text-[58px] font-playfair font-semibold uppercase tracking-tight leading-none mb-3 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5">
-            {/* SANDIP (Red with High-Contrast Drop Shadow) */}
-            <span className="inline-flex">
-              {sandipLetters.map((char, idx) => (
-                <span
-                  key={`sandip-${idx}`}
-                  ref={(el) => (letterRefs.current[idx] = el)}
-                  className="text-[#D71936] inline-block transition-all duration-300 ease-out will-change-transform drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
-                >
-                  {char}
-                </span>
-              ))}
-            </span>
-
-            {/* UNIVERSITY (White with High-Contrast Drop Shadow) */}
-            <span className="inline-flex">
-              {universityLetters.map((char, idx) => {
-                const globalIdx = sandipLetters.length + idx;
-                return (
-                  <span
-                    key={`univ-${idx}`}
-                    ref={(el) => (letterRefs.current[globalIdx] = el)}
-                    className="text-white inline-block transition-all duration-300 ease-out will-change-transform drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
-                  >
-                    {char}
-                  </span>
-                );
-              })}
-            </span>
-          </h1>
-
-          {/* Location: NASHIK */}
-          <p className="font-montserrat font-bold text-white text-xs sm:text-sm lg:text-base uppercase tracking-[6px] sm:tracking-[10px] mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
-            NASHIK
-          </p>
-
-          {/* Tagline: SIMPLY WORLD CLASS... */}
-          <p className="font-montserrat font-semibold text-rose-100 text-[10px] sm:text-xs lg:text-xs uppercase tracking-[3px] sm:tracking-[4px] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-            SIMPLY WORLD CLASS...
-          </p>
-
-          {/* Primary & Secondary Hero CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3.5">
-            <Link
-              to="/admissions"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#D71936] hover:bg-red-700 text-white font-bold text-xs sm:text-sm shadow-xl transition-all duration-300 group cursor-pointer"
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <Link
-              to="/academics"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-black/40 hover:bg-white/20 backdrop-blur-md border border-white/40 text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-300 group cursor-pointer"
-            >
-              <span>Explore Programs</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Carousel Slide Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-xl">
-          {heroSlides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${activeSlide === idx
-                  ? "w-8 bg-[#C8102E] shadow-md shadow-red-600/50"
-                  : "w-2.5 bg-white/60 hover:bg-white"
-                }`}
-            />
-          ))}
-        </div>
-
-      </div>
-    </section>
+    <div className="absolute inset-0">
+      {fallback ? (
+        <img src={item.poster} alt="" className="h-full w-full object-cover" />
+      ) : (
+        <video
+          ref={ref}
+          src={item.src}
+          poster={item.poster}
+          muted
+          playsInline
+          autoPlay
+          preload="auto"
+          onEnded={() => onDone(slideIndex)}
+          onError={() => setFallback(true)}
+          className="h-full w-full object-cover"
+        />
+      )}
+    </div>
   );
 }
 
-export default Hero;
+export default function Hero() {
+  const reduce = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // only advance if the slide that asked is still the current one
+  const advance = useCallback(
+    (from) => setIndex((i) => (i === from ? (i + 1) % heroVideos.length : i)),
+    []
+  );
+
+  return (
+    <section
+      aria-label="Welcome to Sandip University"
+      className="relative overflow-hidden rounded-b-[32px] bg-[#0B192C] text-white lg:rounded-b-[56px]"
+    >
+      {/* ---------- two videos sliding one after another ---------- */}
+      <div className="absolute inset-0">
+        <AnimatePresence initial={false} mode="sync">
+          <motion.div
+            key={index}
+            className="absolute inset-0"
+            initial={{ x: "100%" }}
+            animate={{ x: "0%" }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: reduce ? 0 : 1.1, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <VideoSlide
+              item={heroVideos[index]}
+              slideIndex={index}
+              paused={paused}
+              staticMode={!!reduce}
+              onDone={advance}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* readability overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B192C]/90 via-[#0B192C]/50 to-[#0B192C]/20" />
+      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#0B192C]/80 to-transparent" />
+
+      {/* ---------- content ---------- */}
+      <div className="relative z-10 mx-auto grid min-h-[640px] max-w-7xl items-center gap-10 px-6 pb-40 pt-40 sm:px-8 lg:min-h-screen lg:grid-cols-12 lg:px-12 lg:pb-44 lg:pt-40">
+        <div className="lg:col-span-7">
+          <span
+            data-aos="fade-down"
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold backdrop-blur-md"
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+            </span>
+            Admissions open for 2026-27
+          </span>
+
+          <SplitHeading
+            as="h1"
+            variant="chars"
+            trigger="load"
+            delay={0.25}
+            className="mt-6 text-[52px] font-extrabold leading-[0.95] tracking-tight sm:text-7xl lg:text-[96px]"
+            parts={[{ t: "Sandip" }, { br: true }, { t: "University" }]}
+          />
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="700"
+            className="mt-5 text-xl font-medium text-white/90 sm:text-2xl"
+          >
+            Nashik. <span className="text-rose-200">Simply world class.</span>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="850" className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/apply"
+              className="group inline-flex items-center gap-2 rounded-xl bg-[#C8102E] px-7 py-3.5 text-base font-bold shadow-xl shadow-black/30 transition hover:bg-[#A00C24] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Apply Now
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/programs"
+              className="group inline-flex items-center gap-2 rounded-xl border border-white/40 bg-white/10 px-7 py-3.5 text-base font-bold backdrop-blur-md transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              Explore Programs
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          {/* which video is playing */}
+          <div className="mt-10 flex items-center gap-2" role="tablist" aria-label="Hero videos">
+            {heroVideos.map((v, i) => (
+              <button
+                key={v.src}
+                type="button"
+                role="tab"
+                aria-selected={i === index}
+                aria-label={`Show video ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                  i === index ? "w-12 bg-[#C8102E]" : "w-6 bg-white/50 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ---------- transparent enquiry form ---------- */}
+        <div
+          data-aos="fade-left"
+          data-aos-delay="400"
+          className="w-full max-w-md justify-self-start lg:col-span-5 lg:justify-self-end"
+        >
+          <HeroEnquiryForm />
+        </div>
+      </div>
+
+      {/* pause / play */}
+      <button
+        type="button"
+        onClick={() => setPaused((p) => !p)}
+        aria-label={paused ? "Play background video" : "Pause background video"}
+        className="absolute bottom-28 right-5 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/40 bg-black/40 backdrop-blur-md transition hover:bg-black/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-white lg:bottom-32 lg:right-8"
+      >
+        {paused ? <Play className="h-4 w-4 fill-white" /> : <Pause className="h-4 w-4 fill-white" />}
+      </button>
+    </section>
+  );
+}

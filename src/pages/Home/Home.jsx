@@ -1,51 +1,67 @@
-import Hero from "./Hero/Hero";
-import FloatingAction from "../../components/FloatingAction";
-import QuickLinks from "./QuickLink/QuickLinks";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-import Footer from "../../components/Footer";
-import AboutSandipUniversity from "./AboutSandipUniversity";
-import StudentAchievements from "./StudentAchievements/StudentAchievements";
-
-import WhySandipAndLegacy from "./WhySandipAndLegacy";
-import CampusTour from "./CampusView/CampusTour";
-import ConnectCampus from "./ConnectCampus";
-
-import Recruiters from "./Recruiters/Recruiters";
-import TestimonialsFAQ from "./TestimonialsFAQ/TestimonialsFAQ";
-import SocialMedia from "./SocialMedia/SocialMedia";
 import SEO from "../../components/SEO/SEO";
 import seoData from "../../components/SEO/seoData";
-import Popup from "../../components/Popup";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer";
 
-import StudentLifeSection from "../../components/StudentLifeSection";
-import AchievementsSection from "../../components/AchievementsSection";
-import CommunityCTA from "../../components/CommunityCTA";
+import Hero from "./Hero/Hero";
+import QuickLinks from "./QuickLink/QuickLinks";
+import AboutSection from "./sections/AboutSection";
+import WhySection from "./sections/WhySection";
+import SchoolsRing from "./sections/SchoolsRing";
+import LifeStrip from "./sections/LifeStrip";
+import AdmissionsJourney from "./sections/AdmissionsJourney";
+import AchieversSection from "./sections/AchieversSection";
+import RecruitersMarquee from "./sections/RecruitersMarquee";
+import VoicesSection from "./sections/VoicesSection";
+import FindUsOnline from "./sections/FindUsOnline";
 
+/* NOTE: <Popup /> and <FloatingAction /> are already mounted once in App.jsx,
+   so they are intentionally NOT repeated here (they were showing twice). */
 export default function Home() {
-  return (
-    <div className="homepage-wrapper font-sans antialiased text-[#0F172A] dark:text-white bg-[#FAF8F5] dark:bg-[#0B0B0D] selection:bg-[#C8102E] selection:text-white transition-colors">
-      <Popup />
-      <SEO {...seoData.home} />
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    AOS.init({
+      duration: reduce ? 0 : 900,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 70,
+      disable: reduce,
+    });
 
-      <Header />
+    // images and videos change the page height after load; re-measure
+    const refresh = () => AOS.refreshHard();
+    window.addEventListener("load", refresh);
+    const t = setTimeout(refresh, 1200);
+    return () => {
+      window.removeEventListener("load", refresh);
+      clearTimeout(t);
+    };
+  }, []);
+
+  return (
+    <div className="homepage-wrapper bg-[#FAF8F5] font-sans text-slate-900 antialiased selection:bg-[#C8102E] selection:text-white dark:bg-[#0B0B0D] dark:text-white">
+      <SEO {...seoData.home} />
+      <Header overlay />
+
       <main>
         <Hero />
         <QuickLinks />
-        <AboutSandipUniversity />
-        <WhySandipAndLegacy />
-        <StudentLifeSection />
-        <AchievementsSection />
-        <CommunityCTA />
-        <StudentAchievements />
-        <CampusTour />
-        <ConnectCampus />
-        <Recruiters />
-        <TestimonialsFAQ />
-        <SocialMedia />
+        <AboutSection />
+        <WhySection />
+        <SchoolsRing />
+        <LifeStrip />
+        <AdmissionsJourney />
+        <AchieversSection />
+        <RecruitersMarquee />
+        <VoicesSection />
+        <FindUsOnline />
       </main>
+
       <Footer />
-      <FloatingAction />
     </div>
   );
 }
